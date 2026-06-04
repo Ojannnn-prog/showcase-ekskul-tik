@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dunia Ceria Wildan!</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Lucu & Google Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght=500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .font-cute {
+      font-family: 'Fredoka One', cursive;
+    }
+    /* Animasi Mengambang (Floating) */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+    .float-delayed {
+      animation: float 5s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+    /* Animasi Awan Berjalan */
+    @keyframes moveCloud {
+      0% { transform: translateX(-10%); }
+      50% { transform: translateX(10%); }
+      100% { transform: translateX(-10%); }
+    }
+    .cloud-bg {
+      animation: moveCloud 20s ease-in-out infinite;
+    }
+    /* Hover scale effect */
+    .pop-hover {
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .pop-hover:hover {
+      transform: scale(1.05) rotate(1deg);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ffeef2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #ff9ebb;
+      border-radius: 20px;
+      border: 3px solid #ffeef2;
+    }
+    /* Minecraft Block styles for mini-builder */
+    .block-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 4px;
+    }
+    .pixel-block {
+      aspect-ratio: 1;
+      border: 2px solid rgba(0,0,0,0.1);
+      image-rendering: pixelated;
+      transition: all 0.1s ease;
+    }
+    .pixel-block:hover {
+      border-color: #000;
+      transform: scale(1.05);
+    }
+    
+    /* Animasi Terbang Roket */
+    @keyframes launchRocket {
+      0% { transform: translate(-100px, 100vh) rotate(45deg); opacity: 1; }
+      100% { transform: translate(110vw, -100px) rotate(45deg); opacity: 0; }
+    }
+    .launched-rocket {
+      animation: launchRocket 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    /* Game Canvas Container Responsive */
+    #gameCanvas {
+      background-color: #0d1b2a;
+      background-image: radial-gradient(circle, #1b263b 10%, transparent 11%),
+                        radial-gradient(circle, #1b263b 10%, transparent 11%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      border-radius: 1.5rem;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#e0f7fa] via-[#fff3e0] to-[#f3e5f5] min-h-screen overflow-x-hidden text-gray-800">
+
+  <!-- Awan Dekorasi Background -->
+  <div class="absolute top-10 left-5 w-24 h-12 bg-white opacity-60 rounded-full cloud-bg pointer-events-none filter blur-[1px]"></div>
+  <div class="absolute top-40 right-10 w-36 h-16 bg-white opacity-40 rounded-full cloud-bg pointer-events-none filter blur-[1px]" style="animation-delay: -5s;"></div>
+  <div class="absolute bottom-20 left-10 w-32 h-14 bg-white opacity-50 rounded-full cloud-bg pointer-events-none filter blur-[1px]" style="animation-delay: -10s;"></div>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="p-5 flex justify-between items-center max-w-6xl mx-auto relative z-10">
+    <div class="flex items-center space-x-2">
+      <div class="bg-emerald-400 p-3 rounded-full shadow-lg border-2 border-white transform rotate-[-6deg]">
+        <span class="text-white font-cute text-2xl">W</span>
+      </div>
+      <span class="font-cute text-2xl text-emerald-600 tracking-wider hidden sm:inline-block">Dunia Wildan</span>
+    </div>
+    <nav class="flex flex-wrap gap-2 justify-center bg-white/70 backdrop-blur-md px-4 py-2 rounded-full border-2 border-pink-200 shadow-sm">
+      <a href="#tentang" class="px-3 py-1 rounded-full text-pink-600 font-bold hover:bg-pink-100 transition duration-300 text-xs sm:text-base">Tentang</a>
+      <a href="#biodata" class="px-3 py-1 rounded-full text-emerald-600 font-bold hover:bg-emerald-100 transition duration-300 text-xs sm:text-base">Biodata</a>
+      <a href="#kucing" class="px-3 py-1 rounded-full text-amber-600 font-bold hover:bg-amber-100 transition duration-300 text-xs sm:text-base">Kucing 🐾</a>
+      <a href="#minecraft" class="px-3 py-1 rounded-full text-green-600 font-bold hover:bg-green-100 transition duration-300 text-xs sm:text-base">Minecraft 🧱</a>
+      <a href="#petualangan" class="px-3 py-1 rounded-full text-indigo-600 font-bold hover:bg-indigo-100 transition duration-300 text-xs sm:text-base">Luar Angkasa 🚀</a>
+      <a href="#arcade-game" class="px-3 py-1 rounded-full text-pink-600 font-bold hover:bg-pink-100 transition duration-300 text-xs sm:text-base">Game Arkade 🕹️</a>
+      <a href="#tebak-senjata" class="px-3 py-1 rounded-full text-red-600 font-bold hover:bg-red-100 transition duration-300 text-xs sm:text-base">Tebak-Tebakan 🧩</a>
+      <a href="#moto" class="px-3 py-1 rounded-full text-violet-600 font-bold hover:bg-violet-100 transition duration-300 text-xs sm:text-base">Moto</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
+    <div class="flex-1 text-center md:text-left space-y-6">
+      <div class="inline-block bg-yellow-300 text-yellow-800 font-bold px-4 py-1.5 rounded-full text-sm uppercase tracking-wider border-2 border-yellow-400 transform -rotate-2">
+        👋 Halo Teman-Teman!
+      </div>
+      <h1 class="text-4xl md:text-6xl font-cute text-pink-500 leading-tight">
+        Selamat Datang di <br>
+        <span class="text-emerald-500 underline decoration-wavy decoration-yellow-400">Dunia Ceria</span> Wildan!
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 font-medium max-w-lg">
+        Yuk, kenalan lebih dekat denganku! Di sini kamu bisa melihat profil singkat, kesukaan, galeri kucing lucu, dunia Minecraft, dan petualangan luar angkasa favoritku! 🚀✨
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+        <a href="#biodata" class="bg-emerald-400 hover:bg-emerald-500 text-white font-cute text-lg px-8 py-4 rounded-2xl shadow-lg hover:shadow-emerald-300/50 transition-all transform hover:-translate-y-1 border-b-4 border-emerald-600">
+          Intip Biodataku 📂
+        </a>
+        <button onclick="mainkanSuara()" class="bg-pink-400 hover:bg-pink-500 text-white font-cute text-lg px-6 py-4 rounded-2xl shadow-lg hover:shadow-pink-300/50 transition-all transform hover:-translate-y-1 border-b-4 border-pink-600 flex items-center gap-2">
+          <span>Sapa Wildan!</span> 🎉
+        </button>
+      </div>
+    </div>
+
+    <!-- Avatar Ilustrasi Wildan -->
+    <div class="flex-1 flex justify-center items-center relative">
+      <!-- Background lingkaran lucu -->
+      <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-gradient-to-tr from-pink-300 to-yellow-200 rounded-full filter blur-xl opacity-70 animate-pulse"></div>
+      
+      <!-- Box Avatar Kreatif -->
+      <div class="relative bg-white p-6 rounded-[3rem] border-4 border-dashed border-emerald-400 shadow-2xl float-animation max-w-sm">
+        <!-- SVG Avatar Karakter Lucu Minecraft Style / Kartun -->
+        <svg viewBox="0 0 200 200" class="w-64 h-64 mx-auto rounded-[2rem] bg-amber-50" aria-label="Ilustrasi Wildan">
+          <!-- Background langit -->
+          <rect width="100%" height="100%" fill="#E3F2FD" rx="30" />
+          <!-- Matahari kecil -->
+          <circle cx="160" cy="40" r="15" fill="#FFF176" />
+          <!-- Awan mini -->
+          <path d="M 30,50 Q 40,40 50,50 Q 60,40 70,50 Q 80,45 80,55 L 30,55 Z" fill="white" />
+          
+          <!-- Karakter (Wildan - Anak Laki-laki Ceria) -->
+          <!-- Rambut cokelat ala anak-anak -->
+          <path d="M 50,110 Q 50,45 100,45 Q 150,45 150,110 Z" fill="#5D4037" />
+          <rect x="55" y="80" width="90" height="20" fill="#5D4037" rx="5" />
+          <!-- Wajah -->
+          <rect x="60" y="90" width="80" height="70" fill="#FFE0B2" rx="15" />
+          <!-- Poni rambut -->
+          <path d="M 60,90 Q 80,105 100,90 Q 120,105 140,90" fill="none" stroke="#5D4037" stroke-width="12" stroke-linecap="round" />
+          <!-- Mata besar lucu -->
+          <circle cx="85" cy="120" r="10" fill="#212121" />
+          <circle cx="82" cy="117" r="3" fill="white" /> <!-- Kilau mata -->
+          <circle cx="115" cy="120" r="10" fill="#212121" />
+          <circle cx="112" cy="117" r="3" fill="white" /> <!-- Kilau mata -->
+          <!-- Pipi merah merona -->
+          <circle cx="73" cy="132" r="6" fill="#FF8A80" opacity="0.8" />
+          <circle cx="127" cy="132" r="6" fill="#FF8A80" opacity="0.8" />
+          <!-- Senyum ceria lebar -->
+          <path d="M 85,138 Q 100,155 115,138" fill="none" stroke="#D32F2F" stroke-width="5" stroke-linecap="round" />
+          
+          <!-- Baju Hijau (Warna Kesukaan) -->
+          <path d="M 70,160 L 130,160 L 140,200 L 60,200 Z" fill="#4CAF50" />
+          <!-- Kerah baju kuning -->
+          <path d="M 85,160 L 100,175 L 115,160 Z" fill="#FFEE58" />
+          <!-- Logo Minecraft Creeper mini di kaos -->
+          <rect x="92" y="180" width="16" height="16" fill="#1B5E20" rx="2" />
+          <rect x="94" y="183" width="4" height="4" fill="black" />
+          <rect x="102" y="183" width="4" height="4" fill="black" />
+          <rect x="98" y="188" width="4" height="4" fill="black" />
+          <path d="M 96,192 L 104,192" stroke="black" stroke-width="2" />
+        </svg>
+        <span class="absolute -bottom-4 -right-4 bg-yellow-400 border-2 border-white text-yellow-900 font-cute text-sm px-4 py-2 rounded-full shadow-lg rotate-12">
+          Wildan 💚
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION TENTANG SAYA -->
+  <section id="tentang" class="py-20 bg-white/60 backdrop-blur-md relative">
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+      <div class="inline-block bg-pink-200 text-pink-700 font-cute text-2xl px-6 py-2 rounded-full border-2 border-pink-300">
+        ✨ Siapa itu Wildan?
+      </div>
+      <h2 class="text-3xl md:text-5xl font-cute text-violet-600">Mari Berkenalan!</h2>
+      <p class="text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto">
+        Hai! Namaku <span class="font-bold text-emerald-500">Wildan</span>. Aku adalah anak laki-laki yang sangat aktif, ceria, dan selalu penasaran dengan hal-hal baru. Aku suka sekali mengeksplorasi dunia game, menciptakan kreasi seru, dan bercita-cita tinggi untuk menginspirasi banyak orang di masa depan!
+      </p>
+      
+      <!-- Grid Hiasan Hobi & Ketertarikan -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
+        <div class="bg-gradient-to-br from-emerald-100 to-green-100 p-6 rounded-3xl border-2 border-emerald-200 pop-hover shadow-sm">
+          <div class="text-4xl mb-3">🎮</div>
+          <h3 class="font-cute text-xl text-emerald-700 mb-1">Hobi Bermain</h3>
+          <p class="text-sm text-gray-600">Selalu ceria bermain game dan berpetualang!</p>
+        </div>
+        <div class="bg-gradient-to-br from-red-100 to-orange-100 p-6 rounded-3xl border-2 border-red-200 pop-hover shadow-sm">
+          <div class="text-4xl mb-3">🍢</div>
+          <h3 class="font-cute text-xl text-red-700 mb-1">Suka Sate</h3>
+          <p class="text-sm text-gray-600">Makanan lezat nomor satu yang bikin semangat!</p>
+        </div>
+        <div class="bg-gradient-to-br from-violet-100 to-purple-100 p-6 rounded-3xl border-2 border-violet-200 pop-hover shadow-sm">
+          <div class="text-4xl mb-3">🎬</div>
+          <h3 class="font-cute text-xl text-violet-700 mb-1">Cita-Cita Youtuber</h3>
+          <p class="text-sm text-gray-600">Ingin membuat video kreatif & menghibur!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION BIODATA -->
+  <section id="biodata" class="py-20 relative overflow-hidden">
+    <!-- Ornamen Lingkaran Warna-warni di Background -->
+    <div class="absolute -top-10 -left-10 w-40 h-40 bg-pink-300 rounded-full opacity-30 filter blur-2xl"></div>
+    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-300 rounded-full opacity-30 filter blur-2xl"></div>
+
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center space-y-4 mb-16">
+        <span class="inline-block bg-emerald-200 text-emerald-800 font-cute text-xl px-5 py-1.5 rounded-full border-2 border-emerald-300">
+          📝 Biodata Lengkap
+        </span>
+        <h2 class="text-4xl md:text-5xl font-cute text-emerald-600">Kartu Identitas Kerenku</h2>
+        <p class="text-gray-600 font-medium">Inilah beberapa fakta seru tentang diriku!</p>
+      </div>
+
+      <!-- Grid Biodata Interaktif -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Bagian Kiri: Kartu Identitas (Gaya Minecraft / Pixelish Cute) -->
+        <div class="bg-white rounded-[2.5rem] border-4 border-emerald-400 p-8 shadow-2xl relative overflow-hidden transform hover:rotate-1 transition-all duration-300">
+          <div class="absolute top-0 right-0 bg-emerald-400 text-white font-cute text-xs px-6 py-2 rounded-bl-3xl">
+            ID: WILDAN-2014
+          </div>
+          
+          <h3 class="font-cute text-2xl text-emerald-600 mb-6 flex items-center gap-2">
+            <span>✨</span> Profil Wildan
+          </h3>
+
+          <div class="space-y-4">
+            <!-- Nama -->
+            <div class="flex items-center gap-4 bg-emerald-50/50 p-3 rounded-2xl border border-emerald-100">
+              <div class="text-2xl bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm">📛</div>
+              <div>
+                <span class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Nama Lengkap</span>
+                <p class="font-cute text-lg text-emerald-800">Wildan</p>
+              </div>
+            </div>
+
+            <!-- Tanggal Lahir -->
+            <div class="flex items-center gap-4 bg-pink-50/50 p-3 rounded-2xl border border-pink-100">
+              <div class="text-2xl bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm">🎂</div>
+              <div>
+                <span class="text-xs text-pink-600 font-bold uppercase tracking-wider">Hari Lahir Istimewa</span>
+                <p class="font-cute text-lg text-pink-800">23 Agustus 2014</p>
+              </div>
+            </div>
+
+            <!-- Warna Kesukaan -->
+            <div class="flex items-center gap-4 bg-green-50/50 p-3 rounded-2xl border border-green-100">
+              <div class="text-2xl bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm">💚</div>
+              <div>
+                <span class="text-xs text-green-700 font-bold uppercase tracking-wider">Warna Favorit</span>
+                <p class="font-cute text-lg text-green-800 flex items-center gap-2">
+                  Hijau <span class="w-4 h-4 rounded-full bg-green-500 border border-white inline-block"></span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Cita-cita -->
+            <div class="flex items-center gap-4 bg-violet-50/50 p-3 rounded-2xl border border-violet-100">
+              <div class="text-2xl bg-white w-12 h-12 rounded-xl flex items-center justify-center shadow-sm">🎥</div>
+              <div>
+                <span class="text-xs text-violet-600 font-bold uppercase tracking-wider">Impian Masa Depan</span>
+                <p class="font-cute text-lg text-violet-800">Youtuber Terkenal!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bagian Kanan: Hal-hal Favorit (Grid Kartu Kecil) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <!-- Hobi -->
+          <div class="bg-gradient-to-br from-amber-100 to-yellow-100 p-6 rounded-[2rem] border-2 border-yellow-300 shadow-md pop-hover text-center">
+            <div class="text-4xl mb-2 float-animation">🧸</div>
+            <h4 class="font-cute text-lg text-yellow-800">Hobi Utama</h4>
+            <p class="font-bold text-gray-700 mt-1">Bermain!</p>
+            <span class="text-xs text-yellow-600 mt-2 block bg-white/60 py-1 rounded-full">Bermain seru tiada henti</span>
+          </div>
+
+          <!-- Makanan Favorit -->
+          <div class="bg-gradient-to-br from-orange-100 to-red-100 p-6 rounded-[2rem] border-2 border-orange-300 shadow-md pop-hover text-center">
+            <div class="text-4xl mb-2 float-delayed">🍢</div>
+            <h4 class="font-cute text-lg text-orange-800">Makanan Favorit</h4>
+            <p class="font-bold text-gray-700 mt-1">Sate</p>
+            <span class="text-xs text-orange-600 mt-2 block bg-white/60 py-1 rounded-full">Sate ayam & sapi enak!</span>
+          </div>
+
+          <!-- Game Favorit -->
+          <div class="bg-gradient-to-br from-green-100 to-emerald-100 p-6 rounded-[2rem] border-2 border-emerald-300 shadow-md pop-hover text-center col-span-1">
+            <div class="text-4xl mb-2 float-animation">🧱</div>
+            <h4 class="font-cute text-lg text-emerald-800">Game Kesukaan</h4>
+            <p class="font-bold text-gray-700 mt-1">Minecraft</p>
+            <span class="text-xs text-emerald-600 mt-2 block bg-white/60 py-1 rounded-full">Kreatif membangun dunia</span>
+          </div>
+
+          <!-- Lagu Favorit -->
+          <div class="bg-gradient-to-br from-sky-100 to-blue-100 p-6 rounded-[2rem] border-2 border-blue-300 shadow-md pop-hover text-center">
+            <div class="text-4xl mb-2 float-delayed">🎵</div>
+            <h4 class="font-cute text-lg text-blue-800">Lagu Terfavorit</h4>
+            <p class="font-bold text-gray-700 mt-1">Temola</p>
+            <span class="text-xs text-blue-600 mt-2 block bg-white/60 py-1 rounded-full">Lagu paling asyik dinyanyikan</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION FOTO GALERI KUCING LUCU -->
+  <section id="kucing" class="py-20 bg-white/50 backdrop-blur-md relative overflow-hidden">
+    <!-- Hiasan jejak kaki kucing mengambang -->
+    <div class="absolute top-8 left-12 text-pink-300 text-3xl opacity-40 float-animation"><i class="fa-solid fa-paw"></i></div>
+    <div class="absolute bottom-12 right-12 text-amber-300 text-4xl opacity-40 float-delayed"><i class="fa-solid fa-paw"></i></div>
+
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center space-y-4 mb-12">
+        <span class="inline-block bg-amber-200 text-amber-800 font-cute text-xl px-5 py-1.5 rounded-full border-2 border-amber-300">
+          🐱 Galeri Menggemaskan
+        </span>
+        <h2 class="text-4xl md:text-5xl font-cute text-amber-600">Teman-Teman Bulu Wildan 🐾</h2>
+        <p class="text-gray-600 font-medium">Kumpulan foto kucing super lucu yang bikin harimu makin ceria!</p>
+      </div>
+
+      <!-- Tombol Filter Kategori -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10">
+        <button onclick="filterKucing('semua')" class="filter-btn bg-amber-500 text-white font-cute px-5 py-2.5 rounded-2xl shadow-md border-b-4 border-amber-700 transition transform hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base">
+          Semua 🐱
+        </button>
+        <button onclick="filterKucing('gemoy')" class="filter-btn bg-white hover:bg-pink-50 text-pink-600 font-bold px-5 py-2.5 rounded-2xl shadow-md border-2 border-pink-100 transition transform hover:-translate-y-0.5 text-sm sm:text-base">
+          Si Gemoy 💖
+        </button>
+        <button onclick="filterKucing('bobo')" class="filter-btn bg-white hover:bg-purple-50 text-purple-600 font-bold px-5 py-2.5 rounded-2xl shadow-md border-2 border-purple-100 transition transform hover:-translate-y-0.5 text-sm sm:text-base">
+          Kucing Bobo 😴
+        </button>
+        <button onclick="filterKucing('main')" class="filter-btn bg-white hover:bg-emerald-50 text-emerald-600 font-bold px-5 py-2.5 rounded-2xl shadow-md border-2 border-emerald-100 transition transform hover:-translate-y-0.5 text-sm sm:text-base">
+          Bermain 🧶
+        </button>
+      </div>
+
+      <!-- Grid Foto Kucing -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gridKucing">
+        
+        <!-- Kucing 1 -->
+        <div class="kucing-card bg-white p-4 rounded-[2rem] border-4 border-amber-200 shadow-lg pop-hover relative group cursor-pointer" data-kategori="gemoy" onclick="bukaLightbox('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=800&q=80', 'Si Oyen Bobo Cantik', 'Si oyen ini hobinya tidur sambil memeluk kakinya!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-amber-50 relative">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=80" alt="Kucing Oyen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/500/500'">
+            <div class="absolute top-2 left-2 bg-pink-400 text-white text-xs font-bold px-3 py-1 rounded-full">💖 Gemoy</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-amber-800">Oyen si Gembul</h3>
+            <p class="text-xs text-gray-500 font-medium">Gemar makan sate juga kayak Wildan!</p>
+          </div>
+        </div>
+
+        <!-- Kucing 2 -->
+        <div class="kucing-card bg-white p-4 rounded-[2rem] border-4 border-purple-200 shadow-lg pop-hover relative group cursor-pointer" data-kategori="bobo" onclick="bukaLightbox('https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=800&q=80', 'Miko si Raja Tidur', 'Miko bisa tidur di mana saja, bahkan di atas keyboard komputer!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-purple-50 relative">
+            <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=500&q=80" alt="Kucing Bobo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/501/500'">
+            <div class="absolute top-2 left-2 bg-purple-400 text-white text-xs font-bold px-3 py-1 rounded-full">😴 Bobo</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-purple-800">Miko si Pemalas</h3>
+            <p class="text-xs text-gray-500 font-medium">Kerjaannya santai-santai sepanjang hari.</p>
+          </div>
+        </div>
+
+        <!-- Kucing 3 -->
+        <div class="kucing-card bg-white p-4 rounded-[2rem] border-4 border-emerald-200 shadow-lg pop-hover relative group cursor-pointer" data-kategori="main" onclick="bukaLightbox('https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=800&q=80', 'Ciko si Pemburu Seru', 'Ciko sangat aktif dan selalu melompat mengejar bola benang!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-emerald-50 relative">
+            <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=500&q=80" alt="Kucing Bermain" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/502/500'">
+            <div class="absolute top-2 left-2 bg-emerald-400 text-white text-xs font-bold px-3 py-1 rounded-full">🧶 Main</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-emerald-800">Ciko si Gesit</h3>
+            <p class="text-xs text-gray-500 font-medium">Suka bermain petak umpet di taman.</p>
+          </div>
+        </div>
+
+        <!-- Kucing 4 -->
+        <div class="kucing-card bg-white p-4 rounded-[2rem] border-4 border-pink-200 shadow-lg pop-hover relative group cursor-pointer" data-kategori="gemoy" onclick="bukaLightbox('https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=800&q=80', 'Mimi si Mata Bulat', 'Mimi selalu menatap penuh rasa penasaran jika kamu memegang mainan.')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-pink-50 relative">
+            <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=500&q=80" alt="Kucing Penasaran" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/503/500'">
+            <div class="absolute top-2 left-2 bg-pink-400 text-white text-xs font-bold px-3 py-1 rounded-full">💖 Gemoy</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-pink-800">Mimi si Imut</h3>
+            <p class="text-xs text-gray-500 font-medium">Bulu lembutnya seperti gulali manis!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Kucing Ajaib Dinamis (Menerapkan Interaktivitas API) -->
+      <div class="mt-16 bg-gradient-to-br from-yellow-100 via-pink-100 to-purple-100 rounded-[3rem] p-8 border-4 border-dashed border-pink-300 text-center space-y-6 max-w-2xl mx-auto">
+        <h3 class="font-cute text-2xl text-pink-600">🪄 Pemuat Kucing Ajaib!</h3>
+        <p class="text-gray-700 font-medium">Ketuk tombol di bawah untuk memanggil foto kucing acak secara langsung dari internet!</p>
+        
+        <!-- Frame Gambar Dinamis -->
+        <div class="relative w-full max-w-xs h-64 mx-auto rounded-3xl overflow-hidden border-4 border-white shadow-lg bg-white flex items-center justify-center">
+          <img id="kucingAjaibImg" src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=500&q=80" alt="Kucing Ajaib" class="w-full h-full object-cover">
+          <!-- Spinner Pemuatan -->
+          <div id="loaderKucing" class="absolute inset-0 bg-white/90 flex flex-col items-center justify-center space-y-2 hidden">
+            <div class="w-12 h-12 border-4 border-pink-400 border-t-transparent rounded-full animate-spin"></div>
+            <p class="text-pink-600 font-bold text-sm">Memanggil kucing... 🐾</p>
+          </div>
+        </div>
+
+        <button onclick="panggilKucingBaru()" class="bg-pink-400 hover:bg-pink-500 text-white font-cute text-lg px-8 py-3.5 rounded-2xl shadow-md border-b-4 border-pink-600 transition transform hover:-translate-y-1 active:translate-y-0">
+          Panggil Kucing Baru! 🌟
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION FOTO GALERI MINECRAFT -->
+  <section id="minecraft" class="py-20 bg-gradient-to-b from-[#e2f3e4] to-[#f1fcf2] relative overflow-hidden">
+    <!-- Ornamen Piksel Minecraft di Background -->
+    <div class="absolute top-12 right-12 w-20 h-20 bg-[#4caf50]/20 rounded-xl transform rotate-12"></div>
+    <div class="absolute bottom-12 left-12 w-24 h-24 bg-[#795548]/10 rounded-xl transform -rotate-12"></div>
+
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center space-y-4 mb-12">
+        <span class="inline-block bg-green-200 text-green-800 font-cute text-xl px-5 py-1.5 rounded-full border-2 border-green-300">
+          🧱 Dunia Balok Kreatif
+        </span>
+        <h2 class="text-4xl md:text-5xl font-cute text-green-700">Galeri Game Minecraft 🎮</h2>
+        <p class="text-gray-600 font-medium">Beberapa pemandangan menakjubkan dan kreasi keren dari game kesukaan Wildan!</p>
+      </div>
+
+      <!-- Grid Galeri Minecraft -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Gambar 1: Rumah Minecraft Modern -->
+        <div class="bg-white p-4 rounded-[2rem] border-4 border-green-300 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80', 'Rumah Kayu Modern', 'Rumah tingkat di tepi danau yang dibangun dari bahan kayu Oak, Spruce, dan kaca besar. Terlihat sangat hangat di malam hari!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-green-50 relative">
+            <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80" alt="Minecraft Modern House" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/504/500'">
+            <div class="absolute top-2 left-2 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">🏰 Kreatif</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-green-800">Rumah Danau Kreatif</h3>
+            <p class="text-xs text-gray-500 font-medium">Bahan utamanya kayu ek & kaca!</p>
+          </div>
+        </div>
+
+        <!-- Gambar 2: Eksplorasi Gua Berlian -->
+        <div class="bg-white p-4 rounded-[2rem] border-4 border-blue-300 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?auto=format&fit=crop&w=800&q=80', 'Misi Mencari Berlian (Diamond)', 'Petualangan seru masuk jauh ke dalam perut bumi (koordinat Y-59) untuk menemukan balok berlian berharga dengan Diamond Pickaxe!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-blue-50 relative">
+            <img src="https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?auto=format&fit=crop&w=500&q=80" alt="Minecraft Diamond Mining" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/505/500'">
+            <div class="absolute top-2 left-2 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">🗺️ Petualangan</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-blue-800">Tambang Berlian Biru</h3>
+            <p class="text-xs text-gray-500 font-medium">Hati-hati ada aliran lava panas!</p>
+          </div>
+        </div>
+
+        <!-- Gambar 3: Kastil Megah Abad Pertengahan -->
+        <div class="bg-white p-4 rounded-[2rem] border-4 border-yellow-300 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1560942485-b2a11cc13456?auto=format&fit=crop&w=800&q=80', 'Kastil Kerajaan Batu', 'Kastil kuno super megah dengan menara tinggi penjaga. Dibuat menggunakan ratusan ribu balok Cobblestone dan Stone Brick!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-yellow-50 relative">
+            <img src="https://images.unsplash.com/photo-1560942485-b2a11cc13456?auto=format&fit=crop&w=500&q=80" alt="Minecraft Castle" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/506/500'">
+            <div class="absolute top-2 left-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full">🏰 Megah</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-yellow-800">Kastil Penjaga Awan</h3>
+            <p class="text-xs text-gray-500 font-medium">Dilengkapi bendera merah di menara.</p>
+          </div>
+        </div>
+
+        <!-- Gambar 4: Portal Nether Misterius -->
+        <div class="bg-white p-4 rounded-[2rem] border-4 border-purple-300 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80', 'Portal Dimensi Nether', 'Pintu gerbang magis berwarna ungu bersinar yang terbuat dari susunan balok Obsidian. Portal ini menghubungkan kita ke dimensi api Nether!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-purple-50 relative">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80" alt="Minecraft Nether Portal" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/507/500'">
+            <div class="absolute top-2 left-2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">😈 Dimensi Lain</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-purple-800">Portal Misterius Obsidian</h3>
+            <p class="text-xs text-gray-500 font-medium">Mengeluarkan suara berbisik magis!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAINAN INTERAKTIF: BLOCK BUILDER SEDERHANA -->
+      <div class="bg-white rounded-[3rem] p-8 border-4 border-dashed border-green-400 max-w-2xl mx-auto shadow-xl space-y-6">
+        <div class="text-center">
+          <h3 class="font-cute text-2xl text-green-700">🔨 Ayo Bangun Bareun Wildan!</h3>
+          <p class="text-gray-600 text-sm mt-1">Pilih jenis balok di bawah, lalu klik kotak grid untuk menyusun karya pertamamu!</p>
+        </div>
+
+        <!-- Pemilih Blok -->
+        <div class="flex justify-center gap-3 bg-green-50 p-3 rounded-2xl border border-green-100 max-w-sm mx-auto">
+          <button onclick="pilihBlokGaya('grass')" id="btn-grass" class="block-select-btn p-2 rounded-xl bg-green-200 border-2 border-green-500 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105">
+            <div class="w-8 h-8 rounded bg-gradient-to-b from-green-500 to-amber-700 border border-black/20"></div>
+            <span class="text-xs font-bold text-green-800 mt-1">Rumput</span>
+          </button>
+          <button onclick="pilihBlokGaya('stone')" id="btn-stone" class="block-select-btn p-2 rounded-xl bg-white border border-gray-200 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105">
+            <div class="w-8 h-8 rounded bg-gray-500 border border-black/20"></div>
+            <span class="text-xs font-bold text-gray-700 mt-1">Batu</span>
+          </button>
+          <button onclick="pilihBlokGaya('gold')" id="btn-gold" class="block-select-btn p-2 rounded-xl bg-white border border-gray-200 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105">
+            <div class="w-8 h-8 rounded bg-yellow-400 border border-black/20 animate-pulse"></div>
+            <span class="text-xs font-bold text-yellow-800 mt-1">Emas</span>
+          </button>
+          <button onclick="pilihBlokGaya('diamond')" id="btn-diamond" class="block-select-btn p-2 rounded-xl bg-white border border-gray-200 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105">
+            <div class="w-8 h-8 rounded bg-cyan-400 border border-black/20"></div>
+            <span class="text-xs font-bold text-cyan-800 mt-1">Berlian</span>
+          </button>
+        </div>
+
+        <!-- Grid Kanvas Pembangunan -->
+        <div class="flex justify-center">
+          <div class="bg-gray-100 p-4 rounded-3xl border-4 border-gray-300 shadow-inner max-w-xs w-full">
+            <div class="block-grid" id="kanvasPiksel">
+              <!-- Grid akan dihasilkan secara otomatis oleh JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tombol Kontrol Kanvas -->
+        <div class="flex justify-center gap-2">
+          <button onclick="bersihkanKanvas()" class="bg-red-400 hover:bg-red-500 text-white font-cute text-sm px-4 py-2 rounded-xl transition shadow border-b-4 border-red-600">
+            Bersihkan Blok 🧹
+          </button>
+          <button onclick="isiSemuaBlok()" class="bg-green-500 hover:bg-green-600 text-white font-cute text-sm px-4 py-2 rounded-xl transition shadow border-b-4 border-green-700">
+            Isi Penuh Balok 🎨
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION FOTO GALERI PETUALANGAN DAN LUAR ANGKASA -->
+  <section id="petualangan" class="py-20 bg-gradient-to-b from-[#1a1235] to-[#2d1b4e] text-white relative overflow-hidden">
+    <!-- Ornamen Bintang Berkelap-Kelip Lucu -->
+    <div class="absolute top-20 left-10 w-3 h-3 bg-white rounded-full opacity-60 animate-ping"></div>
+    <div class="absolute top-40 right-1/4 w-2 h-2 bg-yellow-300 rounded-full opacity-80 animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-4 h-4 bg-purple-300 rounded-full opacity-40 animate-ping" style="animation-duration: 3s"></div>
+    
+    <!-- Planet Bulat Lucu dari CSS -->
+    <div class="absolute -left-12 bottom-1/4 w-32 h-32 bg-gradient-to-tr from-pink-500 to-yellow-400 rounded-full opacity-20 filter blur-sm"></div>
+    <div class="absolute -right-16 top-1/4 w-40 h-40 bg-gradient-to-br from-indigo-500 via-purple-600 to-pink-500 rounded-full opacity-30 filter blur-md"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center space-y-4 mb-12">
+        <span class="inline-block bg-indigo-500/40 backdrop-blur-md text-indigo-200 font-cute text-xl px-5 py-1.5 rounded-full border-2 border-indigo-400/30">
+          🚀 Petualangan Galaksi Wildan
+        </span>
+        <h2 class="text-4xl md:text-5xl font-cute text-yellow-300">Galeri Luar Angkasa ✨</h2>
+        <p class="text-indigo-200 font-medium">Ayo jelajahi bintang-bintang terjauh dan raih mimpi setinggi langit bersama Wildan!</p>
+      </div>
+
+      <!-- Grid Galeri Luar Angkasa -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        
+        <!-- Gambar 1: Astronot Mengambang -->
+        <div class="bg-indigo-950/60 p-4 rounded-[2rem] border-4 border-indigo-400/50 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=800&q=80', 'Astronot Penjelajah Cilik', 'Seorang astronot ramah sedang melayang bebas di luar angkasa dengan latar belakang gugusan bintang indah nan misterius!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-indigo-900 relative">
+            <img src="https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=500&q=80" alt="Astronot Mengambang" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/508/500'">
+            <div class="absolute top-2 left-2 bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full">👨‍🚀 Melayang</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-yellow-300">Astronot Ramah</h3>
+            <p class="text-xs text-indigo-200 font-medium">Terbang santai mencari galaksi baru!</p>
+          </div>
+        </div>
+
+        <!-- Gambar 2: Peluncuran Roket -->
+        <div class="bg-indigo-950/60 p-4 rounded-[2rem] border-4 border-pink-400/50 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=800&q=80', 'Peluncuran Roket Perkasa', 'Roket luar angkasa super besar meluncur terbang menembus awan dengan semburan api membara menuju planet Mars!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-indigo-900 relative">
+            <img src="https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=500&q=80" alt="Peluncuran Roket" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/509/500'">
+            <div class="absolute top-2 left-2 bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full">🚀 Terbang</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-pink-300">Misi Terbang Roket</h3>
+            <p class="text-xs text-indigo-200 font-medium">Menembus langit biru menuju Mars!</p>
+          </div>
+        </div>
+
+        <!-- Gambar 3: Planet Saturnus & Nebula -->
+        <div class="bg-indigo-950/60 p-4 rounded-[2rem] border-4 border-yellow-400/50 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80', 'Planet Saturnus Berwarna-warni', 'Keindahan cincin Planet Saturnus raksasa yang berkilauan di tengah debu nebula galaksi yang berwarna ungu, biru, dan jingga!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-indigo-900 relative">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=80" alt="Planet Saturnus" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/510/500'">
+            <div class="absolute top-2 left-2 bg-yellow-500 text-white text-xs font-bold px-3 py-1 rounded-full">🪐 Cincin Angkasa</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-yellow-200">Planet Cincin Emas</h3>
+            <p class="text-xs text-indigo-200 font-medium">Batu es & debu berputar-putar indah!</p>
+          </div>
+        </div>
+
+        <!-- Gambar 4: Teleskop Hubble -->
+        <div class="bg-indigo-950/60 p-4 rounded-[2rem] border-4 border-purple-400/50 shadow-lg pop-hover relative group cursor-pointer" onclick="bukaLightbox('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=800&q=80', 'Gugusan Galaksi Berjuta Bintang', 'Sebuah tangkapan teleskop super canggih memperlihatkan jutaan bintang berkilau seperti pasir berlian di hamparan angkasa luar!')">
+          <div class="overflow-hidden rounded-[1.5rem] h-48 bg-indigo-900 relative">
+            <img src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=500&q=80" alt="Teleskop Luar Angkasa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.src='https://placekitten.com/511/500'">
+            <div class="absolute top-2 left-2 bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">⭐ Galaksi</div>
+          </div>
+          <div class="mt-4 text-center">
+            <h3 class="font-cute text-lg text-purple-300">Lautan Bintang Berkilau</h3>
+            <p class="text-xs text-indigo-200 font-medium">Sangat terang bagai mutiara langit!</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAINAN INTERAKTIF: PELUNCURAN ROKET WILDAN -->
+      <div class="bg-[#1e133e] rounded-[3rem] p-8 border-4 border-dashed border-indigo-400 max-w-xl mx-auto shadow-2xl text-center space-y-6">
+        <h3 class="font-cute text-3xl text-yellow-300">🚀 Pusat Kontrol Roket Wildan</h3>
+        <p class="text-indigo-200 font-medium">Ketuk tombol merah besar di bawah untuk menyalakan mesin booster dan luncurkan roket Wildan melintasi angkasa luar!</p>
+        
+        <div class="flex justify-center py-4">
+          <button onclick="luncurkanRoketInteraktif()" class="bg-red-500 hover:bg-red-600 active:bg-red-700 text-white font-cute text-2xl px-10 py-6 rounded-full shadow-lg border-b-8 border-red-800 transition transform hover:-translate-y-1 active:translate-y-1 flex items-center gap-3 animate-pulse">
+            <span>🔥</span> LUNCURKAN! <span>🔥</span>
+          </button>
+        </div>
+        
+        <p class="text-xs text-indigo-300 italic">Petunjuk: Kamu bisa terus mengetuk tombol untuk meluncurkan banyak roket secara bersamaan!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW SECTION: GAME ARKADE PEMBURU HARTA KARUN WILDAN -->
+  <section id="arcade-game" class="py-20 bg-gradient-to-b from-[#f3e5f5] via-[#ea80fc]/30 to-[#f3e5f5] relative overflow-hidden">
+    <!-- Star elements -->
+    <div class="absolute top-10 right-10 text-yellow-400 text-4xl animate-bounce">⭐</div>
+    <div class="absolute bottom-10 left-5 text-purple-400 text-3xl animate-pulse">✨</div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center space-y-4 mb-8">
+        <span class="inline-block bg-pink-200 text-pink-800 font-cute text-xl px-5 py-1.5 rounded-full border-2 border-pink-300">
+          🕹️ Game Super Seru!
+        </span>
+        <h2 class="text-4xl md:text-5xl font-cute text-pink-600">Pemburu Harta Karun Wildan 💎</h2>
+        <p class="text-gray-600 font-medium">Bantu Roket Wildan mengumpulkan Diamond, Emerald, & Sate! Hindari Creeper!</p>
+      </div>
+
+      <!-- Kotak Game Utama -->
+      <div class="bg-white rounded-[3rem] p-6 border-4 border-pink-300 shadow-2xl space-y-4 max-w-xl mx-auto">
+        
+        <!-- Papan Skor Game -->
+        <div class="flex justify-between items-center bg-pink-50 p-4 rounded-2xl border border-pink-100">
+          <div class="text-pink-700 font-bold">
+            Skor: <span id="gameScoreVal" class="font-cute text-2xl text-pink-600">0</span>
+          </div>
+          <div class="text-yellow-600 font-bold">
+            🏆 Terbaik: <span id="gameHighScoreVal" class="font-cute text-2xl">0</span>
+          </div>
+          <div class="text-red-500 font-bold flex gap-1">
+            Nyawa: <span id="gameLivesVal" class="font-cute text-2xl">❤️ ❤️ ❤️</span>
+          </div>
+        </div>
+
+        <!-- Area Layar Game (Canvas) -->
+        <div class="relative overflow-hidden w-full h-[400px] rounded-2xl bg-[#0b132b] border-4 border-indigo-950">
+          <canvas id="gameCanvas" width="400" height="400" class="w-full h-full block"></canvas>
+          
+          <!-- Layar Start Screen -->
+          <div id="gameStartScreen" class="absolute inset-0 bg-[#0b132b]/95 flex flex-col items-center justify-center text-center p-6 space-y-6">
+            <div class="text-6xl animate-bounce">🚀💎🍢</div>
+            <h3 class="text-3xl font-cute text-yellow-300">Dunia Angkasa Wildan</h3>
+            <p class="text-xs text-indigo-200 max-w-xs leading-relaxed">
+              Tangkap <span class="text-cyan-400 font-bold">Diamond (💎)</span>, <span class="text-green-400 font-bold">Emerald (💚)</span>, dan <span class="text-orange-400 font-bold">Sate (🍢)</span>. Jangan biarkan tertabrak <span class="text-red-400 font-bold">Creeper (💥)</span> atau <span class="text-yellow-500 font-bold">Meteor (☄️)</span>!
+            </p>
+            <button onclick="mulaiGameSkarang()" class="bg-gradient-to-r from-yellow-400 to-amber-500 hover:from-yellow-500 hover:to-amber-600 text-yellow-950 font-cute text-xl px-8 py-4 rounded-2xl shadow-lg border-b-4 border-amber-700 transition transform active:translate-y-1">
+              MULAI BERMAIN! 🎮
+            </button>
+            <p class="text-xs text-indigo-400">Gunakan Tombol Keyboard ⬅️ ➡️ atau Sentuh Tombol di Bawah!</p>
+          </div>
+
+          <!-- Layar Game Over Screen -->
+          <div id="gameOverScreen" class="absolute inset-0 bg-red-950/90 flex flex-col items-center justify-center text-center p-6 space-y-6 hidden">
+            <div class="text-7xl">💥💀💥</div>
+            <h3 class="text-4xl font-cute text-red-400">Yahh, Game Over!</h3>
+            <p class="text-lg text-white font-medium">
+              Skor Akhirmu: <span id="gameFinalScore" class="font-cute text-yellow-300 text-2xl">0</span>
+            </p>
+            <button onclick="mulaiGameSkarang()" class="bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 text-white font-cute text-xl px-8 py-4 rounded-2xl shadow-lg border-b-4 border-emerald-700 transition transform active:translate-y-1">
+              Main Lagi 🔄
+            </button>
+          </div>
+        </div>
+
+        <!-- Tombol Kontrol khusus Seluler / Layar Sentuh -->
+        <div class="grid grid-cols-2 gap-4 mt-2">
+          <button id="ctrlLeft" class="bg-indigo-600 active:bg-indigo-800 text-white p-4 rounded-2xl shadow-md border-b-4 border-indigo-900 flex items-center justify-center gap-2 select-none" onmousedown="setMoveDirection(-1)" onmouseup="stopMoveDirection()" ontouchstart="setMoveDirection(-1)" ontouchend="stopMoveDirection()">
+            <span class="text-2xl">⬅️</span> <span class="font-cute">KIRI</span>
+          </button>
+          <button id="ctrlRight" class="bg-indigo-600 active:bg-indigo-800 text-white p-4 rounded-2xl shadow-md border-b-4 border-indigo-900 flex items-center justify-center gap-2 select-none" onmousedown="setMoveDirection(1)" onmouseup="stopMoveDirection()" ontouchstart="setMoveDirection(1)" ontouchend="stopMoveDirection()">
+            <span class="font-cute">KANAN</span> <span class="text-2xl">➡️</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION TEBAK-TEBAKAN SENJATA TRADISIONAL MADURA -->
+  <section id="tebak-senjata" class="py-20 bg-gradient-to-b from-[#fff9db] to-[#fff3bf] relative overflow-hidden">
+    <!-- Ornamen Lucu Background -->
+    <div class="absolute top-10 left-10 text-6xl opacity-20 rotate-12 pointer-events-none">⭐</div>
+    <div class="absolute bottom-10 right-10 text-6xl opacity-20 -rotate-12 pointer-events-none">🌙</div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center space-y-4 mb-12">
+        <span class="inline-block bg-yellow-200 text-yellow-900 font-cute text-xl px-5 py-1.5 rounded-full border-2 border-yellow-300">
+          🧩 Kuis Budaya Seru
+        </span>
+        <h2 class="text-4xl md:text-5xl font-cute text-amber-700">Tebak Senjata Tradisional!</h2>
+        <p class="text-gray-700 font-medium">Asah otakmu dan bantu Wildan menjawab pertanyaan budaya yang seru ini!</p>
+      </div>
+
+      <!-- Kotak Kuis Utama -->
+      <div class="bg-white rounded-[3rem] p-8 md:p-12 border-4 border-dashed border-amber-400 shadow-2xl space-y-8 max-w-2xl mx-auto transform hover:scale-[1.01] transition-all duration-300">
+        <!-- Papan Pertanyaan -->
+        <div class="bg-amber-50 p-6 rounded-[2rem] border-2 border-amber-200 text-center space-y-4 relative">
+          <span class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-amber-400 text-white font-cute text-sm px-4 py-1 rounded-full border border-amber-500 shadow">
+            Pertanyaan #1 🌙
+          </span>
+          <p class="text-xl md:text-2xl font-bold text-amber-900 leading-relaxed pt-3">
+            "Bentukku melengkung indah seperti bulan sabit. Aku sangat terkenal dan menjadi kebanggaan dari Pulau Garam (Madura). Senjata tradisional apakah aku?"
+          </p>
+          <!-- SVG Ilustrasi Bayangan Senjata Misterius -->
+          <div class="flex justify-center py-2">
+            <svg viewBox="0 0 100 100" class="w-24 h-24 filter drop-shadow-md">
+              <!-- Bentuk Celurit Misterius Siluet Abu-abu -->
+              <path d="M 20,80 C 15,75 25,60 40,40 C 55,20 80,10 80,10 C 80,10 65,35 45,55 C 30,70 25,85 20,80 Z" fill="#90a4ae" />
+              <rect x="15" y="75" width="10" height="15" fill="#8d6e63" rx="2" transform="rotate(-30 20 80)" />
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#b0bec5" stroke-width="2" stroke-dasharray="5,5" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tombol Pilihan Jawaban -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Opsi A -->
+          <button onclick="periksaJawaban('A', this)" class="opsi-btn bg-white hover:bg-amber-50 text-gray-700 font-bold p-5 rounded-2xl border-2 border-gray-200 shadow-md transition transform hover:-translate-y-1 flex items-center justify-between group">
+            <span class="flex items-center gap-3">
+              <span class="bg-gray-100 group-hover:bg-amber-200 text-gray-700 font-cute w-10 h-10 rounded-xl flex items-center justify-center text-lg transition shadow-sm">A</span>
+              <span class="text-lg">Keris</span>
+            </span>
+            <span class="status-icon text-xl"></span>
+          </button>
+
+          <!-- Opsi B (Jawaban Benar) -->
+          <button onclick="periksaJawaban('B', this)" class="opsi-btn bg-white hover:bg-emerald-50 text-gray-700 font-bold p-5 rounded-2xl border-2 border-gray-200 shadow-md transition transform hover:-translate-y-1 flex items-center justify-between group">
+            <span class="flex items-center gap-3">
+              <span class="bg-gray-100 group-hover:bg-emerald-200 text-gray-700 font-cute w-10 h-10 rounded-xl flex items-center justify-center text-lg transition shadow-sm">B</span>
+              <span class="text-lg font-bold text-gray-800">Celurit 🏆</span>
+            </span>
+            <span class="status-icon text-xl"></span>
+          </button>
+
+          <!-- Opsi C -->
+          <button onclick="periksaJawaban('C', this)" class="opsi-btn bg-white hover:bg-amber-50 text-gray-700 font-bold p-5 rounded-2xl border-2 border-gray-200 shadow-md transition transform hover:-translate-y-1 flex items-center justify-between group">
+            <span class="flex items-center gap-3">
+              <span class="bg-gray-100 group-hover:bg-amber-200 text-gray-700 font-cute w-10 h-10 rounded-xl flex items-center justify-center text-lg transition shadow-sm">C</span>
+              <span class="text-lg">Kujang</span>
+            </span>
+            <span class="status-icon text-xl"></span>
+          </button>
+
+          <!-- Opsi D -->
+          <button onclick="periksaJawaban('D', this)" class="opsi-btn bg-white hover:bg-amber-50 text-gray-700 font-bold p-5 rounded-2xl border-2 border-gray-200 shadow-md transition transform hover:-translate-y-1 flex items-center justify-between group">
+            <span class="flex items-center gap-3">
+              <span class="bg-gray-100 group-hover:bg-amber-200 text-gray-700 font-cute w-10 h-10 rounded-xl flex items-center justify-center text-lg transition shadow-sm">D</span>
+              <span class="text-lg">Mandau</span>
+            </span>
+            <span class="status-icon text-xl"></span>
+          </button>
+        </div>
+
+        <!-- Box Pesan Edukasi Setelah Menjawab -->
+        <div id="edukasiBox" class="bg-emerald-50 p-6 rounded-[2rem] border-2 border-emerald-200 text-emerald-900 hidden transition-all duration-500 scale-95 opacity-0">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-3xl">🎉</span>
+            <h4 class="font-cute text-xl text-emerald-800">Jawabanmu Benar Sekali!</h4>
+          </div>
+          <p class="text-sm md:text-base leading-relaxed">
+            Senjata tradisional dari Madura adalah <strong>Celurit</strong>! Celurit memiliki kelengkungan khas berbentuk bulan sabit yang melambangkan kejantanan, keberanian, dan kerja keras masyarakat Madura. Senjata ini sangat ikonik dan legendaris di Nusantara!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION MOTO HIDUP -->
+  <section id="moto" class="py-20 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 text-white relative">
+    <!-- Hiasan bintang melayang -->
+    <div class="absolute top-10 left-10 text-yellow-300 text-3xl float-animation">⭐</div>
+    <div class="absolute bottom-10 right-10 text-yellow-200 text-4xl float-delayed">✨</div>
+    <div class="absolute top-1/2 right-1/4 text-white text-2xl opacity-60 float-animation">⭐</div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-8 relative z-10">
+      <span class="inline-block bg-white/30 backdrop-blur-md text-white font-cute text-xl px-6 py-2 rounded-full border border-white/20">
+        💡 Moto Hidup Wildan
+      </span>
+      
+      <!-- Box Kutipan Moto -->
+      <div class="bg-white/10 backdrop-blur-lg rounded-[3rem] p-10 md:p-16 border-2 border-white/20 shadow-2xl space-y-6 transform hover:scale-[1.02] transition-all duration-300">
+        <span class="text-5xl font-cute text-yellow-300">"</span>
+        <p class="text-2xl md:text-4xl font-cute leading-relaxed tracking-wide text-yellow-100">
+          Bermain gembira setiap hari, belajar kreatif tiada henti, dan pantang menyerah untuk raih mimpi! ✨🎮
+        </p>
+        <span class="text-5xl font-cute text-yellow-300 block transform rotate-180">"</span>
+      </div>
+
+      <p class="text-lg text-purple-100 max-w-xl mx-auto">
+        Setiap petualangan di dunia nyata maupun di game mengajarkan kita untuk selalu bangkit kembali dan membangun masa depan yang cerah!
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION INTERAKTIF GAME MINI -->
+  <section class="py-16 max-w-4xl mx-auto px-6 text-center">
+    <div class="bg-white rounded-[2.5rem] border-4 border-dashed border-violet-400 p-8 shadow-xl space-y-6">
+      <h3 class="font-cute text-3xl text-violet-600">🎮 Game Mini: Ketuk Kepala Creeper!</h3>
+      <p class="text-gray-600 font-medium">Bantu Wildan mengumpulkan skor sebanyak-banyaknya dengan mengetuk Creeper di bawah!</p>
+      
+      <!-- Area Game -->
+      <div class="relative bg-emerald-100 h-56 rounded-3xl overflow-hidden border-2 border-emerald-300 flex items-center justify-center">
+        <!-- Skor -->
+        <div class="absolute top-4 left-4 bg-white px-4 py-2 rounded-full shadow-md font-bold text-emerald-700">
+          Skor: <span id="skorGame" class="font-cute text-xl">0</span>
+        </div>
+
+        <!-- Tombol Creeper Bergerak -->
+        <button id="creeperBtn" onclick="tambahSkor()" class="absolute bg-green-500 hover:bg-green-600 p-4 rounded-xl shadow-lg border-4 border-green-700 transform transition-all duration-200 focus:outline-none flex flex-col items-center justify-center cursor-pointer" style="width: 70px; height: 70px; left: 45%; top: 35%;">
+          <!-- Wajah Creeper Sederhana -->
+          <div class="flex justify-between w-full px-1">
+            <div class="w-3 h-3 bg-black"></div>
+            <div class="w-3 h-3 bg-black"></div>
+          </div>
+          <div class="w-3 h-4 bg-black mt-1"></div>
+          <div class="flex justify-between w-6 px-1">
+            <div class="w-1.5 h-2 bg-black"></div>
+            <div class="w-1.5 h-2 bg-black"></div>
+          </div>
+        </button>
+
+        <p id="gamePesan" class="absolute bottom-4 text-emerald-800 text-xs font-bold bg-white/80 px-3 py-1 rounded-full opacity-0 transition-opacity">Keren! +1 Skor!</p>
+      </div>
+
+      <button onclick="resetGame()" class="bg-red-400 hover:bg-red-500 text-white font-cute text-sm px-4 py-2 rounded-xl transition">
+        Reset Skor 🔄
+      </button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-emerald-950 text-white py-12 text-center relative overflow-hidden">
+    <!-- Gelombang SVG Hiasan -->
+    <div class="absolute top-0 left-0 right-0 h-4 bg-emerald-900"></div>
+
+    <div class="max-w-4xl mx-auto px-6 space-y-6 relative z-10">
+      <div class="flex justify-center items-center space-x-3">
+        <div class="bg-yellow-400 p-2.5 rounded-full transform rotate-12">
+          ⭐
+        </div>
+        <span class="font-cute text-2xl text-yellow-300">Wildan's Space</span>
+      </div>
+      <p class="text-sm text-emerald-200 max-w-md mx-auto">
+        Terima kasih telah berkunjung ke halaman biodata interaktifku. Sampai jumpa di petualangan berikutnya!
+      </p>
+      
+      <div class="flex justify-center space-x-4 flex-wrap gap-y-2">
+        <a href="#tentang" class="text-emerald-300 hover:text-white transition">Tentang</a>
+        <span>•</span>
+        <a href="#biodata" class="text-emerald-300 hover:text-white transition">Biodata</a>
+        <span>•</span>
+        <a href="#kucing" class="text-emerald-300 hover:text-white transition">Galeri Kucing</a>
+        <span>•</span>
+        <a href="#minecraft" class="text-emerald-300 hover:text-white transition">Galeri Minecraft</a>
+        <span>•</span>
+        <a href="#petualangan" class="text-emerald-300 hover:text-white transition">Galeri Luar Angkasa</a>
+        <span>•</span>
+        <a href="#arcade-game" class="text-emerald-300 hover:text-white transition">Game Arkade</a>
+        <span>•</span>
+        <a href="#tebak-senjata" class="text-emerald-300 hover:text-white transition">Tebak-Tebakan</a>
+        <span>•</span>
+        <a href="#moto" class="text-emerald-300 hover:text-white transition">Moto Hidup</a>
+      </div>
+
+      <div class="pt-6 border-t border-emerald-900 text-xs text-emerald-400">
+        &copy; 2026 Dunia Ceria Wildan. Dibuat dengan penuh 💚 dan Semangat!
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal Kucing, Minecraft, & Luar Angkasa -->
+  <div id="lightboxKucing" class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-6 hidden" onclick="tutupLightbox()">
+    <div class="bg-white rounded-[3rem] border-4 border-amber-400 p-6 max-w-lg w-full text-center space-y-4 transform scale-90 transition-all duration-300" id="lightboxContent" onclick="event.stopPropagation()">
+      <div class="relative rounded-[2rem] overflow-hidden max-h-96 bg-amber-50">
+        <img id="lightboxImg" src="" alt="Detail Gambar" class="w-full h-full object-cover">
+      </div>
+      <h3 class="font-cute text-2xl text-amber-600" id="lightboxTitle">Judul Kucing</h3>
+      <p class="text-gray-600 font-medium" id="lightboxDesc">Deskripsi tentang gambar lucu ini.</p>
+      <button onclick="tutupLightbox()" class="bg-amber-400 hover:bg-amber-500 text-white font-cute text-lg px-6 py-2.5 rounded-2xl w-full shadow-md border-b-4 border-amber-600 transition">
+        Keren! Kembali 🐾
+      </button>
+    </div>
+  </div>
+
+  <!-- Box Dialog Sapaan Wildan (Modal buatan pengganti alert) -->
+  <div id="modalSapaan" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-6 hidden">
+    <div class="bg-white rounded-[3rem] border-4 border-pink-400 p-8 max-w-sm w-full text-center space-y-6 transform scale-90 transition-all duration-300" id="modalContent">
+      <div class="text-6xl animate-bounce">👦✨</div>
+      <h3 class="font-cute text-3xl text-pink-500">Hai Teman!</h3>
+      <p class="text-gray-600 font-medium">
+        "Terima kasih ya sudah mampir ke websiteku! Semoga harimu menyenangkan dan jangan lupa bermain Minecraft dengan gembira hari ini!"
+      </p>
+      <button onclick="tutupSapaan()" class="bg-pink-400 hover:bg-pink-500 text-white font-cute text-lg px-6 py-3 rounded-2xl w-full shadow-md border-b-4 border-pink-600 transition">
+        Keren! Sampai Jumpa 👋
+      </button>
+    </div>
+  </div>
+
+  <!-- Elemen Roket Melayang untuk Animasi Luncur -->
+  <div id="flyingRocketContainer" class="fixed inset-0 pointer-events-none z-40 overflow-hidden"></div>
+
+  <script>
+    // AUDIO GENERATOR (MENGGUNAKAN WEB AUDIO API) UNTUK EFEK RETRO GAME
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function mainkanSuaraSintetis(tipe) {
+      if (!audioCtx) return;
+      
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      
+      if (tipe === 'tangkap') {
+        // Efek koin klasik (tinggi & jernih)
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1); // A5
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.25);
+      } else if (tipe === 'ledak') {
+        // Suara gemuruh ledakan (noise / frekuensi rendah menyusut)
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(40, audioCtx.currentTime + 0.4);
+        gain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+      } else if (tipe === 'start') {
+        // Melodi awal naik
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(261.63, audioCtx.currentTime); // C4
+        osc.frequency.setValueAtTime(329.63, audioCtx.currentTime + 0.1); // E4
+        osc.frequency.setValueAtTime(392.00, audioCtx.currentTime + 0.2); // G4
+        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime + 0.3); // C5
+        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.5);
+      }
+    }
+
+    // FUNGSI MODAL SAPAAN
+    function mainkanSuara() {
+      const modal = document.getElementById('modalSapaan');
+      const content = document.getElementById('modalContent');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        content.classList.remove('scale-90');
+        content.classList.add('scale-100');
+      }, 10);
+      
+      // Efek Konfeti Sederhana dengan Javascript
+      buatKonfeti();
+    }
+
+    function tutupSapaan() {
+      const modal = document.getElementById('modalSapaan');
+      const content = document.getElementById('modalContent');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-90');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 200);
+    }
+
+    // FUNGSI LIGHTBOX KUCING, MINECRAFT, & LUAR ANGKASA
+    function bukaLightbox(imgSrc, title, desc) {
+      const lightbox = document.getElementById('lightboxKucing');
+      const content = document.getElementById('lightboxContent');
+      
+      document.getElementById('lightboxImg').src = imgSrc;
+      document.getElementById('lightboxTitle').innerText = title;
+      document.getElementById('lightboxDesc').innerText = desc;
+      
+      // Atur Tema Warna Lightbox Dinamis Berdasarkan Asal Foto
+      if (title.toLowerCase().includes('rumah') || title.toLowerCase().includes('tambang') || title.toLowerCase().includes('kastil') || title.toLowerCase().includes('portal')) {
+        // Tema Minecraft (Hijau)
+        content.className = "bg-white rounded-[3rem] border-4 border-green-400 p-6 max-w-lg w-full text-center space-y-4 transform scale-90 transition-all duration-300";
+        content.querySelector('button').className = "bg-green-500 hover:bg-green-600 text-white font-cute text-lg px-6 py-2.5 rounded-2xl w-full shadow-md border-b-4 border-green-700 transition";
+        content.querySelector('button').innerHTML = "Keren! Kembali 🧱";
+        content.querySelector('h3').className = "font-cute text-2xl text-green-700";
+      } else if (title.toLowerCase().includes('astronot') || title.toLowerCase().includes('peluncuran') || title.toLowerCase().includes('saturnus') || title.toLowerCase().includes('galaksi')) {
+        // Tema Luar Angkasa (Indigo/Gelap)
+        content.className = "bg-slate-900 rounded-[3rem] border-4 border-indigo-500 p-6 max-w-lg w-full text-center space-y-4 transform scale-90 transition-all duration-300 text-white";
+        content.querySelector('button').className = "bg-indigo-500 hover:bg-indigo-600 text-white font-cute text-lg px-6 py-2.5 rounded-2xl w-full shadow-md border-b-4 border-indigo-700 transition";
+        content.querySelector('button').innerHTML = "Keren! Kembali 🚀";
+        content.querySelector('h3').className = "font-cute text-2xl text-yellow-300";
+        content.querySelector('p').className = "text-indigo-200 font-medium";
+      } else {
+        // Tema Kucing (Amber/Kuning)
+        content.className = "bg-white rounded-[3rem] border-4 border-amber-400 p-6 max-w-lg w-full text-center space-y-4 transform scale-90 transition-all duration-300";
+        content.querySelector('button').className = "bg-amber-400 hover:bg-amber-500 text-white font-cute text-lg px-6 py-2.5 rounded-2xl w-full shadow-md border-b-4 border-amber-600 transition";
+        content.querySelector('button').innerHTML = "Keren! Kembali 🐾";
+        content.querySelector('h3').className = "font-cute text-2xl text-amber-600";
+        content.querySelector('p').className = "text-gray-600 font-medium";
+      }
+
+      lightbox.classList.remove('hidden');
+      setTimeout(() => {
+        content.classList.remove('scale-90');
+        content.classList.add('scale-100');
+      }, 10);
+    }
+
+    function tutupLightbox() {
+      const lightbox = document.getElementById('lightboxKucing');
+      const content = document.getElementById('lightboxContent');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-90');
+      setTimeout(() => {
+        lightbox.classList.add('hidden');
+      }, 200);
+    }
+
+    // FILTER GALERI KUCING
+    function filterKucing(kategori) {
+      const cards = document.querySelectorAll('.kucing-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      // Ubah gaya tombol filter aktif
+      buttons.forEach(btn => {
+        if (btn.innerText.toLowerCase().includes(kategori) || (kategori === 'semua' && btn.innerText.includes('Semua'))) {
+          btn.className = "filter-btn bg-amber-500 text-white font-cute px-5 py-2.5 rounded-2xl shadow-md border-b-4 border-amber-700 transition transform hover:-translate-y-0.5 text-sm sm:text-base";
+        } else {
+          btn.className = "filter-btn bg-white hover:bg-amber-50 text-amber-600 font-bold px-5 py-2.5 rounded-2xl shadow-md border-2 border-amber-100 transition transform hover:-translate-y-0.5 text-sm sm:text-base";
+        }
+      });
+
+      // Saring kartu-kartu kucing
+      cards.forEach(card => {
+        if (kategori === 'semua' || card.getAttribute('data-kategori') === kategori) {
+          card.style.display = 'block';
+          card.classList.add('scale-95');
+          setTimeout(() => card.classList.remove('scale-95'), 100);
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // API PEMUAT KUCING AJAIB
+    async function panggilKucingBaru() {
+      const imgElem = document.getElementById('kucingAjaibImg');
+      const loader = document.getElementById('loaderKucing');
+      
+      loader.classList.remove('hidden');
+      
+      try {
+        const response = await fetch('https://api.thecatapi.com/v1/images/search');
+        if (!response.ok) throw new Error('Koneksi terputus');
+        const data = await response.json();
+        
+        const newImgUrl = data[0].url;
+        imgElem.src = newImgUrl;
+        
+        imgElem.onload = () => {
+          loader.classList.add('hidden');
+          buatKonfeti();
+        };
+      } catch (err) {
+        imgElem.src = "https://images.unsplash.com/photo-" + Math.floor(Math.random() * 100000) + "?auto=format&fit=crop&w=500&q=80";
+        imgElem.onload = () => loader.classList.add('hidden');
+      }
+    }
+
+    // MINECRAFT BLOCK BUILDER KANVAS
+    const kanvas = document.getElementById('kanvasPiksel');
+    let jenisBlokAktif = 'grass';
+    const totalPiksel = 36; // Grid 6x6
+
+    const paletWarna = {
+      grass: 'linear-gradient(to bottom, #4CAF50 40%, #795548 40%)',
+      stone: '#9e9e9e',
+      gold: '#ffeb3b',
+      diamond: '#00bcd4',
+      empty: '#e0e0e0'
+    };
+
+    // Inisialisasi Kanvas Blok
+    function buatKanvasBlok() {
+      kanvas.innerHTML = '';
+      for (let i = 0; i < totalPiksel; i++) {
+        const block = document.createElement('div');
+        block.className = 'pixel-block rounded cursor-pointer bg-gray-200';
+        block.style.background = paletWarna.empty;
+        block.onclick = () => warnaiBlok(block);
+        kanvas.appendChild(block);
+      }
+    }
+
+    function pilihBlokGaya(jenis) {
+      jenisBlokAktif = jenis;
+      const buttons = document.querySelectorAll('.block-select-btn');
+      buttons.forEach(btn => {
+        btn.className = "block-select-btn p-2 rounded-xl bg-white border border-gray-200 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105";
+      });
+      
+      const activeBtn = document.getElementById(`btn-${jenis}`);
+      if (jenis === 'grass') activeBtn.className = "block-select-btn p-2 rounded-xl bg-green-200 border-2 border-green-500 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105";
+      if (jenis === 'stone') activeBtn.className = "block-select-btn p-2 rounded-xl bg-gray-200 border-2 border-gray-500 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105";
+      if (jenis === 'gold') activeBtn.className = "block-select-btn p-2 rounded-xl bg-yellow-100 border-2 border-yellow-400 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105";
+      if (jenis === 'diamond') activeBtn.className = "block-select-btn p-2 rounded-xl bg-cyan-100 border-2 border-cyan-400 shadow-sm flex flex-col items-center flex-1 transition transform hover:scale-105";
+    }
+
+    function warnaiBlok(block) {
+      if (block.style.background === paletWarna[jenisBlokAktif]) {
+        block.style.background = paletWarna.empty;
+      } else {
+        block.style.background = paletWarna[jenisBlokAktif];
+      }
+    }
+
+    function bersihkanKanvas() {
+      const blocks = document.querySelectorAll('.pixel-block');
+      blocks.forEach(block => block.style.background = paletWarna.empty);
+    }
+
+    function isiSemuaBlok() {
+      const blocks = document.querySelectorAll('.pixel-block');
+      blocks.forEach(block => block.style.background = paletWarna[jenisBlokAktif]);
+    }
+
+    buatKanvasBlok();
+
+    // GAME INTERAKTIF: LUNCURKAN ROKET WILDAN
+    function luncurkanRoketInteraktif() {
+      const container = document.getElementById('flyingRocketContainer');
+      
+      // Membuat roket kartun dengan emoji & asap ekor
+      const rocketWrapper = document.createElement('div');
+      rocketWrapper.className = 'absolute launched-rocket pointer-events-none flex flex-col items-center';
+      
+      // Isi Roket Emoji
+      rocketWrapper.innerHTML = `
+        <div class="text-6xl filter drop-shadow-[0_4px_8px_rgba(255,235,59,0.8)]">🚀</div>
+        <div class="flex gap-1 mt-1">
+          <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-yellow-500 animate-ping" style="animation-delay: 0.1s"></div>
+          <div class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-ping" style="animation-delay: 0.2s"></div>
+        </div>
+      `;
+      
+      // Letakkan roket secara acak dari bagian bawah kiri layar
+      rocketWrapper.style.left = Math.random() * 30 + 'vw';
+      rocketWrapper.style.bottom = '-100px';
+      
+      container.appendChild(rocketWrapper);
+      
+      // Hapus elemen roket dari memori DOM setelah animasi terbang selesai (2.5 detik)
+      setTimeout(() => {
+        rocketWrapper.remove();
+      }, 2500);
+      
+      // Picu efek konfeti berbentuk bintang berkelap-kelip
+      buatEfekBintangGalaksi();
+    }
+
+    // Efek khusus taburan bintang jatuh di layar
+    function buatEfekBintangGalaksi() {
+      for (let i = 0; i < 20; i++) {
+        const star = document.createElement('div');
+        star.innerHTML = ['⭐', '✨', '☄️'][Math.floor(Math.random() * 3)];
+        star.className = 'fixed text-xl pointer-events-none z-50';
+        star.style.left = Math.random() * 100 + 'vw';
+        star.style.top = Math.random() * 100 + 'vh';
+        star.style.opacity = '1';
+        star.style.transition = 'all 1s ease-out';
+        
+        document.body.appendChild(star);
+        
+        setTimeout(() => {
+          star.style.transform = `scale(0.1) translateY(${Math.random() * 100 - 50}px) translateX(${Math.random() * 100 - 50}px)`;
+          star.style.opacity = '0';
+        }, 50);
+        
+        setTimeout(() => {
+          star.remove();
+        }, 1000);
+      }
+    }
+
+    // FUNGSI MEMERIKSA JAWABAN TEBAK-TEBAKAN
+    function periksaJawaban(opsi, elemen) {
+      const semuaBtn = document.querySelectorAll('.opsi-btn');
+      const edukasiBox = document.getElementById('edukasiBox');
+      
+      // Reset semua status visual tombol pilihan
+      semuaBtn.forEach(btn => {
+        btn.className = "opsi-btn bg-white text-gray-700 font-bold p-5 rounded-2xl border-2 border-gray-200 shadow-md transition transform flex items-center justify-between group pointer-events-none";
+        btn.querySelector('.status-icon').innerHTML = "";
+      });
+
+      if (opsi === 'B') {
+        // Jawaban Benar (Celurit)
+        elemen.className = "opsi-btn bg-emerald-100 text-emerald-900 font-bold p-5 rounded-2xl border-4 border-emerald-400 shadow-lg flex items-center justify-between group pointer-events-none animate-bounce";
+        elemen.querySelector('.status-icon').innerHTML = "🟢";
+        
+        // Tampilkan kotak edukasi budaya
+        edukasiBox.classList.remove('hidden');
+        setTimeout(() => {
+          edukasiBox.classList.remove('scale-95', 'opacity-0');
+          edukasiBox.classList.add('scale-100', 'opacity-100');
+        }, 50);
+
+        // Beri efek perayaan meriah!
+        buatKonfeti();
+        buatEfekBintangGalaksi();
+      } else {
+        // Jawaban Salah
+        elemen.className = "opsi-btn bg-red-100 text-red-900 font-bold p-5 rounded-2xl border-4 border-red-400 shadow-lg flex items-center justify-between group pointer-events-none";
+        elemen.querySelector('.status-icon').innerHTML = "❌";
+        
+        // Cari tombol B (Benar) dan berikan highlight hijau halus
+        semuaBtn.forEach(btn => {
+          if (btn.innerText.includes('Celurit')) {
+            btn.className = "opsi-btn bg-emerald-50 text-emerald-800 font-bold p-5 rounded-2xl border-2 border-emerald-300 shadow-md flex items-center justify-between group pointer-events-none";
+          }
+        });
+
+        // Buka box edukasi dengan nuansa sedikit berbeda/membantu
+        edukasiBox.classList.remove('hidden');
+        edukasiBox.querySelector('h4').innerText = "Oops, Belum Tepat! 😅";
+        edukasiBox.querySelector('h4').className = "font-cute text-xl text-amber-800";
+        edukasiBox.className = "bg-amber-50 p-6 rounded-[2rem] border-2 border-amber-200 text-amber-900";
+        
+        setTimeout(() => {
+          edukasiBox.classList.remove('scale-95', 'opacity-0');
+          edukasiBox.classList.add('scale-100', 'opacity-100');
+        }, 50);
+      }
+    }
+
+    // GAME MINI - KETUK CREEPER
+    let skor = 0;
+    const creeper = document.getElementById('creeperBtn');
+    const labelSkor = document.getElementById('skorGame');
+    const pesan = document.getElementById('gamePesan');
+
+    function tambahSkor() {
+      skor++;
+      labelSkor.innerText = skor;
+      
+      pesan.classList.remove('opacity-0');
+      setTimeout(() => {
+        pesan.classList.add('opacity-0');
+      }, 800);
+
+      pindahkanCreeper();
+    }
+
+    function pindahkanCreeper() {
+      const randX = Math.floor(Math.random() * 80) + 5; 
+      const randY = Math.floor(Math.random() * 60) + 15; 
+      
+      creeper.style.left = randX + '%';
+      creeper.style.top = randY + '%';
+    }
+
+    function resetGame() {
+      skor = 0;
+      labelSkor.innerText = skor;
+      creeper.style.left = '45%';
+      creeper.style.top = '35%';
+    }
+
+    // EFEK PARTIKEL KONFETI WARNA-WARNI
+    function buatKonfeti() {
+      for (let i = 0; i < 30; i++) {
+        const konfeti = document.createElement('div');
+        const colors = ['#FF6B6B', '#4D96FF', '#6BCB77', '#FFD93D', '#FF8AAE'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        konfeti.style.position = 'fixed';
+        konfeti.style.left = Math.random() * 100 + 'vw';
+        konfeti.style.top = '-20px';
+        konfeti.style.width = Math.random() * 8 + 8 + 'px';
+        konfeti.style.height = Math.random() * 15 + 10 + 'px';
+        konfeti.style.backgroundColor = randomColor;
+        konfeti.style.borderRadius = '3px';
+        konfeti.style.zIndex = '999';
+        konfeti.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        
+        document.body.appendChild(konfeti);
+        
+        let speed = Math.random() * 4 + 4;
+        let rotationSpeed = Math.random() * 10 - 5;
+        let currentTop = -20;
+        let currentRotation = 0;
+        
+        const keyframeInterval = setInterval(() => {
+          currentTop += speed;
+          currentRotation += rotationSpeed;
+          konfeti.style.top = currentTop + 'px';
+          konfeti.style.transform = 'rotate(' + currentRotation + 'deg)';
+          
+          if (currentTop > window.innerHeight) {
+            clearInterval(keyframeInterval);
+            konfeti.remove();
+          }
+        }, 20);
+      }
+    }
+
+    // ==========================================
+    // LOGIKA RETRO GAME: PEMBURU HARTA WILDAN
+    // ==========================================
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Status State Game
+    let gameLoopAktif = false;
+    let gameScore = 0;
+    let gameHighScore = localStorage.getItem('wildanGameHighScore') || 0;
+    let gameLives = 3;
+    document.getElementById('gameHighScoreVal').innerText = gameHighScore;
+
+    // Pemain (Keranjang Pesawat Roket Wildan)
+    const player = {
+      x: 175,
+      y: 340,
+      width: 60,
+      height: 40,
+      speed: 8,
+      dx: 0
+    };
+
+    // Item Jatuh (Harta Karun & Rintangan)
+    let itemsJatuh = [];
+    const tipeItems = [
+      { nama: 'diamond', simbol: '💎', skorBonus: 15, warna: '#00bcd4', rintangan: false },
+      { nama: 'emerald', simbol: '💚', skorBonus: 10, warna: '#4caf50', rintangan: false },
+      { nama: 'sate', simbol: '🍢', skorBonus: 20, warna: '#ff9800', rintangan: false },
+      { nama: 'creeper', simbol: '💥', skorBonus: -1, warna: '#1b5e20', rintangan: true },
+      { nama: 'meteor', simbol: '☄️', skorBonus: -1, warna: '#f44336', rintangan: true }
+    ];
+
+    let itemSpawnInterval = 40; // Frame setiap kali memunculkan item baru
+    let frameCount = 0;
+
+    // Set Arah Gerak Khusus Seluler
+    function setMoveDirection(dir) {
+      player.dx = dir * player.speed;
+    }
+
+    function stopMoveDirection() {
+      player.dx = 0;
+    }
+
+    // Input keyboard untuk PC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft' || e.key === 'a') {
+        player.dx = -player.speed;
+      } else if (e.key === 'ArrowRight' || e.key === 'd') {
+        player.dx = player.speed;
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (['ArrowLeft', 'ArrowRight', 'a', 'd'].includes(e.key)) {
+        player.dx = 0;
+      }
+    });
+
+    // Mulai Ulang Game
+    function mulaiGameSkarang() {
+      // Pastikan audio di-resume (kebijakan browser)
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+
+      mainkanSuaraSintetis('start');
+
+      document.getElementById('gameStartScreen').classList.add('hidden');
+      document.getElementById('gameOverScreen').classList.add('hidden');
+      
+      gameScore = 0;
+      gameLives = 3;
+      itemsJatuh = [];
+      player.x = (canvas.width / 2) - (player.width / 2);
+      player.dx = 0;
+      
+      updateStatusTampilan();
+      
+      if (!gameLoopAktif) {
+        gameLoopAktif = true;
+        loopPermainan();
+      }
+    }
+
+    function updateStatusTampilan() {
+      document.getElementById('gameScoreVal').innerText = gameScore;
+      document.getElementById('gameLivesVal').innerText = '❤️ '.repeat(gameLives) || '💀';
+    }
+
+    // Buat Item Jatuh Baru secara Acak
+    function munculkanItem() {
+      const acak = Math.random();
+      let spec;
+      
+      // Mengatur probabilitas rintangan vs harta
+      if (acak < 0.4) {
+        // Harta Karun (Berlian, Emerald, Sate)
+        const subAcak = Math.random();
+        if (subAcak < 0.4) spec = tipeItems[0]; // Diamond
+        else if (subAcak < 0.75) spec = tipeItems[1]; // Emerald
+        else spec = tipeItems[2]; // Sate
+      } else {
+        // Rintangan (Creeper, Meteor)
+        spec = Math.random() < 0.5 ? tipeItems[3] : tipeItems[4];
+      }
+
+      // Koordinat kemunculan
+      itemsJatuh.push({
+        x: Math.random() * (canvas.width - 30),
+        y: -30,
+        width: 30,
+        height: 30,
+        speed: Math.random() * 3 + 2 + (gameScore * 0.05), // Kecepatan meningkat seiring naiknya skor
+        spec: spec
+      });
+    }
+
+    // Loop Inti Animasi Game
+    function loopPermainan() {
+      if (!gameLoopAktif) return;
+
+      // Bersihkan Canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Gambar dekorasi bintang-bintang statis mini di latar belakang canvas
+      ctx.fillStyle = "rgba(255,255,255,0.15)";
+      ctx.fillRect(40, 80, 2, 2);
+      ctx.fillRect(120, 200, 3, 3);
+      ctx.fillRect(320, 100, 2, 2);
+      ctx.fillRect(250, 300, 3, 3);
+
+      // Update & Gambar Pemain (Keranjang Roket)
+      player.x += player.dx;
+      // Batasi agar tidak keluar dinding canvas
+      if (player.x < 0) player.x = 0;
+      if (player.x > canvas.width - player.width) player.x = canvas.width - player.width;
+
+      // Gambar Roket Penangkap Kartun (Pakai Desain Canvas Path)
+      ctx.fillStyle = '#6366f1'; // Warna Indigo
+      ctx.beginPath();
+      ctx.moveTo(player.x, player.y + player.height);
+      ctx.lineTo(player.x + player.width, player.y + player.height);
+      ctx.lineTo(player.x + player.width - 10, player.y);
+      ctx.lineTo(player.x + 10, player.y);
+      ctx.closePath();
+      ctx.fill();
+
+      // Mulut keranjang atas kuning
+      ctx.fillStyle = '#facc15';
+      ctx.fillRect(player.x + 8, player.y, player.width - 16, 6);
+
+      // Label teks "WILDAN" di dalam roket keranjang
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 9px Quicksand';
+      ctx.textAlign = 'center';
+      ctx.fillText('WILDAN', player.x + (player.width / 2), player.y + 25);
+
+      // Munculkan item secara berkala
+      frameCount++;
+      if (frameCount >= itemSpawnInterval) {
+        munculkanItem();
+        frameCount = 0;
+        // Kurangi interval secara bertahap agar permainan semakin menantang
+        itemSpawnInterval = Math.max(18, 40 - Math.floor(gameScore / 30));
+      }
+
+      // Update & Gambar Item Jatuh
+      for (let i = itemsJatuh.length - 1; i >= 0; i--) {
+        const item = itemsJatuh[i];
+        item.y += item.speed;
+
+        // Gambar Simbol Item (Emoji)
+        ctx.font = '22px Arial';
+        ctx.textAlign = 'left';
+        ctx.fillText(item.spec.simbol, item.x, item.y + 18);
+
+        // Periksa Tabrakan dengan Keranjang Pemain
+        if (
+          item.x < player.x + player.width &&
+          item.x + item.width > player.x &&
+          item.y + item.height > player.y &&
+          item.y < player.y + player.height
+        ) {
+          // Terjadi Tabrakan!
+          itemsJatuh.splice(i, 1);
+          
+          if (item.spec.rintangan) {
+            // Tabrak Rintangan (Creeper / Meteor)
+            gameLives--;
+            mainkanSuaraSintetis('ledak');
+            updateStatusTampilan();
+            
+            // Efek kilau layar merah pendek saat terkena rintangan
+            canvas.style.borderColor = "#ef4444";
+            setTimeout(() => { canvas.style.borderColor = "#1e1b4b"; }, 150);
+
+            if (gameLives <= 0) {
+              akhiriPermainan();
+            }
+          } else {
+            // Berhasil menangkap harta karun
+            gameScore += item.spec.skorBonus;
+            mainkanSuaraSintetis('tangkap');
+            updateStatusTampilan();
+          }
+          continue;
+        }
+
+        // Hapus item jika sudah jatuh melewati bagian bawah canvas
+        if (item.y > canvas.height) {
+          itemsJatuh.splice(i, 1);
+          
+          // Jika tidak menangkap Harta Karun (selain bom), kurangi sedikit nilai keadilan/nyawa tidak berkurang
+          // Untuk membuat game seru, melewatkan berlian tidak mengurangi nyawa
+        }
+      }
+
+      requestAnimationFrame(loopPermainan);
+    }
+
+    // Akhiri Game / Game Over
+    function akhiriPermainan() {
+      gameLoopAktif = false;
+      
+      // Periksa rekor skor tinggi
+      if (gameScore > gameHighScore) {
+        gameHighScore = gameScore;
+        localStorage.setItem('wildanGameHighScore', gameHighScore);
+        document.getElementById('gameHighScoreVal').innerText = gameHighScore;
+      }
+
+      document.getElementById('gameFinalScore').innerText = gameScore;
+      document.getElementById('gameOverScreen').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

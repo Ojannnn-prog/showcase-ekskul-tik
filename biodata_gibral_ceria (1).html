@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunia Gibral ✨</title>
+    
+    <!-- Menggunakan Tailwind CSS untuk tata letak responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Library untuk efek Confetti saat diklik -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <!-- Google Font: Quicksand yang bulat, imut, dan ramah anak -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f0f4ff;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' style='font-size:24px'><text y='30'>🚀</text></svg>"), auto;
+        }
+
+        /* Animasi mengambang lembut */
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        /* Animasi berputar lambat untuk bintang */
+        .animate-spin-slow {
+            animation: spin 10s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Animasi kartu goyang saat di-hover */
+        .hover-pop {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-pop:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Latar belakang gelembung warna-warni yang bergerak */
+        @keyframes blob-move {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.15); }
+            66% { transform: translate(-20px, 30px) scale(0.9); }
+        }
+        .blob {
+            animation: blob-move 10s infinite ease-in-out;
+        }
+
+        /* Animasi meluncur untuk elemen buatan */
+        @keyframes rocket-shoot {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+        }
+        .rocket-fly {
+            position: fixed;
+            bottom: 0;
+            font-size: 4rem;
+            pointer-events: none;
+            z-index: 100;
+            animation: rocket-shoot 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes chicken-rain {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+        .chicken-fall {
+            position: fixed;
+            top: -10%;
+            font-size: 3rem;
+            pointer-events: none;
+            z-index: 100;
+            animation: chicken-rain 3s linear forwards;
+        }
+
+        @keyframes block-spawn {
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(15deg); }
+            100% { transform: scale(0) translateY(50px); opacity: 0; }
+        }
+        .pixel-block {
+            position: absolute;
+            font-size: 2.5rem;
+            pointer-events: none;
+            z-index: 50;
+            animation: block-spawn 1s ease-out forwards;
+        }
+
+        /* Animasi Getar (Shake) saat jawaban salah */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+        .animate-shake {
+            animation: shake 0.4s ease-in-out;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen overflow-x-hidden flex flex-col justify-between py-10 px-4">
+
+    <!-- Bulatan Warna-warni di Latar Belakang -->
+    <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
+        <div class="blob absolute top-10 left-10 w-80 h-80 bg-pink-300 rounded-full filter blur-3xl opacity-40"></div>
+        <div class="blob absolute bottom-10 right-10 w-96 h-96 bg-yellow-200 rounded-full filter blur-3xl opacity-40" style="animation-delay: 2s;"></div>
+        <div class="blob absolute top-1/3 right-1/4 w-80 h-80 bg-cyan-200 rounded-full filter blur-3xl opacity-40" style="animation-delay: 4s;"></div>
+        <div class="blob absolute bottom-1/3 left-1/4 w-72 h-72 bg-purple-300 rounded-full filter blur-3xl opacity-45" style="animation-delay: 6s;"></div>
+    </div>
+
+    <!-- Kontainer Utama -->
+    <main class="w-full max-w-4xl mx-auto flex-grow flex flex-col justify-center">
+        
+        <!-- Header / Profil -->
+        <header class="text-center mb-10">
+            <div class="relative inline-block">
+                <!-- Avatar Astronot Lucu -->
+                <div onclick="playCuteSound(600); launchRocket();" class="w-36 h-36 bg-gradient-to-tr from-indigo-400 via-purple-400 to-pink-400 rounded-full flex items-center justify-center text-7xl shadow-2xl border-8 border-white animate-float mx-auto cursor-pointer select-none relative group overflow-hidden">
+                    <span class="group-hover:scale-125 transition duration-300">🧑‍🚀</span>
+                </div>
+                <!-- Dekorasi Bintang Berputar -->
+                <div class="absolute -top-4 -left-4 text-4xl animate-spin-slow cursor-default select-none">✨</div>
+                <div class="absolute -bottom-2 -right-4 text-4xl animate-bounce cursor-default select-none">⭐</div>
+            </div>
+
+            <div class="mt-6 bg-white/80 backdrop-blur-md rounded-3xl p-6 shadow-xl border-4 border-indigo-200 inline-block max-w-xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-black text-indigo-700 tracking-wide drop-shadow-sm">
+                    Halo, Aku Gibral!
+                </h1>
+                <p class="text-lg md:text-xl text-indigo-900 font-bold mt-2">
+                    Calon Astronot hebat penakluk luar angkasa! 🚀🌌
+                </p>
+                <div class="mt-3 inline-flex items-center gap-2 bg-yellow-300 text-yellow-900 font-black text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow">
+                    <span>🎮 Gamer Sejati</span>
+                    <span>•</span>
+                    <span>🐔 Lava Chicken Lover</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Grid Informasi Biodata (6 Kartu Lucu) -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+
+            <!-- 1. Nama & Ultah -->
+            <div onclick="playCuteSound(300); triggerConfetti();" class="hover-pop bg-pink-100 rounded-[2rem] p-6 shadow-md border-4 border-pink-300 cursor-pointer relative overflow-hidden flex flex-col justify-between">
+                <div class="text-5xl mb-3 select-none">🎂</div>
+                <div>
+                    <h3 class="text-xl font-black text-pink-800">Hari Spesial</h3>
+                    <p class="text-2xl font-black text-pink-900 mt-1">29 Mei 2014</p>
+                    <p class="text-xs font-bold text-pink-700 mt-2 bg-white/80 px-2 py-1 rounded-lg inline-block">
+                        Umurku 12 Tahun! Baru ultah kemarin! 🎉
+                    </p>
+                </div>
+            </div>
+
+            <!-- 2. Hobi -->
+            <div onclick="playCuteSound(350); triggerConfetti();" class="hover-pop bg-blue-100 rounded-[2rem] p-6 shadow-md border-4 border-blue-300 cursor-pointer flex flex-col justify-between">
+                <div class="text-5xl mb-3 select-none">🎮</div>
+                <div>
+                    <h3 class="text-xl font-black text-blue-800">Hobiku</h3>
+                    <p class="text-2xl font-black text-blue-900 mt-1">Bermain Game</p>
+                    <p class="text-sm font-semibold text-blue-700 mt-2">
+                        Paling seru kalau sudah fokus di depan layar dan menyusun strategi!
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3. Makanan Kesukaan -->
+            <div onclick="playCuteSound(400); triggerConfetti();" class="hover-pop bg-amber-100 rounded-[2rem] p-6 shadow-md border-4 border-amber-300 cursor-pointer flex flex-col justify-between">
+                <div class="text-5xl mb-3 select-none">🍜</div>
+                <div>
+                    <h3 class="text-xl font-black text-amber-800">Makanan Favorit</h3>
+                    <p class="text-2xl font-black text-amber-900 mt-1">Indomie</p>
+                    <p class="text-sm font-semibold text-amber-700 mt-2">
+                        Kuah maupun goreng, rasanya juara dunia dan bikin semangat membara! 😋
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4. Game Kesukaan (Minecraft) -->
+            <div id="minecraft-card" onclick="playCuteSound(450); spawnMinecraftBlocks(event);" class="hover-pop bg-emerald-100 rounded-[2rem] p-6 shadow-md border-4 border-emerald-300 cursor-pointer relative overflow-hidden flex flex-col justify-between">
+                <div class="text-5xl mb-3 select-none">⛏️</div>
+                <div>
+                    <h3 class="text-xl font-black text-emerald-800">Game Favorit</h3>
+                    <p class="text-2xl font-black text-emerald-900 mt-1">Minecraft</p>
+                    <p class="text-xs font-bold text-emerald-700 mt-2 bg-emerald-200/50 px-2.5 py-1 rounded-full inline-block">
+                        Klik untuk taruh balok! 🧱
+                    </p>
+                </div>
+            </div>
+
+            <!-- 5. Lagu Favorit (Lava Chicken) -->
+            <div onclick="playCuteSound(500); spawnChickens();" class="hover-pop bg-orange-100 rounded-[2rem] p-6 shadow-md border-4 border-orange-300 cursor-pointer relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute right-4 top-4 text-orange-400 font-bold text-xs animate-pulse">KLIK SAYA! 🔥</div>
+                <div class="text-5xl mb-3 select-none">🎵</div>
+                <div>
+                    <h3 class="text-xl font-black text-orange-800">Lagu Favorit</h3>
+                    <p class="text-2xl font-black text-orange-900 mt-1">Lava Chicken</p>
+                    <p class="text-xs font-semibold text-orange-700 mt-2">
+                        Iramanya super asyik dan bikin pengen joget terus! 🐔🔥
+                    </p>
+                </div>
+            </div>
+
+            <!-- 6. Cita-cita (Astronot) -->
+            <div onclick="playCuteSound(550); launchRocket();" class="hover-pop bg-purple-100 rounded-[2rem] p-6 shadow-md border-4 border-purple-300 cursor-pointer relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute right-4 top-4 text-purple-400 font-bold text-xs animate-pulse">TERBANG! 🚀</div>
+                <div class="text-5xl mb-3 select-none">👩‍🚀</div>
+                <div>
+                    <h3 class="text-xl font-black text-purple-800">Cita-Cita</h3>
+                    <p class="text-2xl font-black text-purple-900 mt-1">Astronot</p>
+                    <p class="text-sm font-semibold text-purple-700 mt-2">
+                        Menembus langit, mendarat di Bulan, dan melompati rasi bintang!
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- BARU: Game Tebak Gambar Astronot & Luar Angkasa -->
+        <section class="mb-10" id="game-section">
+            <div class="bg-gradient-to-br from-indigo-950 via-slate-900 to-purple-950 rounded-[2.5rem] p-8 border-8 border-pink-400 shadow-2xl relative overflow-hidden">
+                <!-- Hiasan Game -->
+                <div class="absolute top-2 right-4 text-4xl opacity-15 animate-bounce pointer-events-none">🎮</div>
+                <div class="absolute bottom-2 left-4 text-4xl opacity-15 animate-pulse pointer-events-none">👾</div>
+                
+                <div class="text-center mb-6">
+                    <span class="bg-pink-500 text-white font-extrabold text-xs px-4 py-1 rounded-full uppercase tracking-widest shadow-md">MINI GAME SERU 🚀</span>
+                    <h2 class="text-3xl font-black text-yellow-300 tracking-wide drop-shadow mt-2">
+                        🌌 TEBAK GAMBAR ASTRONOT 👨‍🚀
+                    </h2>
+                    <p class="text-purple-200 text-sm font-bold mt-1">Ayo uji pengetahuan luar angkasamu bersama Gibral!</p>
+                </div>
+
+                <!-- Tampilan Inti Game -->
+                <div id="game-container" class="bg-black/40 backdrop-blur-sm rounded-3xl p-6 border-4 border-purple-500/30 max-w-2xl mx-auto transition duration-300">
+                    
+                    <!-- Mode Start Screen -->
+                    <div id="start-screen" class="text-center py-8">
+                        <div class="text-7xl mb-4 animate-float">🚀</div>
+                        <h3 class="text-2xl font-black text-white">Apakah Kamu Siap Terbang?</h3>
+                        <p class="text-purple-200 text-sm font-semibold max-w-md mx-auto mt-2">
+                            Jawab 4 tebakan gambar luar angkasa dengan benar untuk memenangkan lencana Astronot Agung!
+                        </p>
+                        <button onclick="startGame()" class="mt-6 bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 text-white font-black text-lg px-8 py-3 rounded-full shadow-lg hover:scale-105 active:scale-95 transition transform duration-200">
+                            Mulai Game Misi! 🎮
+                        </button>
+                    </div>
+
+                    <!-- Mode Gameplay -->
+                    <div id="play-screen" class="hidden">
+                        <!-- Progress & Score -->
+                        <div class="flex justify-between items-center text-white font-black mb-4">
+                            <span class="bg-purple-800/80 px-3 py-1.5 rounded-full text-xs" id="quiz-progress">Pertanyaan: 1/4</span>
+                            <span class="bg-pink-600/80 px-3 py-1.5 rounded-full text-xs" id="quiz-score">Skor: 0</span>
+                        </div>
+
+                        <!-- Gambar Tebakan -->
+                        <div class="relative w-full h-56 rounded-2xl overflow-hidden border-4 border-white shadow-xl mb-6 bg-slate-900">
+                            <img id="quiz-image" src="" alt="Tebakan Luar Angkasa" class="w-full h-full object-cover">
+                            <!-- Overlay Hint -->
+                            <div id="hint-overlay" class="absolute inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 text-center hidden transition duration-300">
+                                <p id="hint-text" class="text-yellow-300 font-bold text-base leading-relaxed"></p>
+                            </div>
+                        </div>
+
+                        <!-- Panel Interaksi Tambahan -->
+                        <div class="flex gap-2 justify-center mb-6">
+                            <button onclick="toggleHint()" id="hint-btn" class="bg-yellow-400 hover:bg-yellow-500 text-yellow-950 font-black text-xs px-4 py-2 rounded-full flex items-center gap-1 shadow transition active:scale-95">
+                                💡 <span>Gunakan Petunjuk</span>
+                            </button>
+                            <button onclick="skipQuestion()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-black text-xs px-4 py-2 rounded-full flex items-center gap-1 shadow transition active:scale-95">
+                                ⏩ Lewati
+                            </button>
+                        </div>
+
+                        <!-- Status Alert Box -->
+                        <div id="alert-box" class="hidden text-center mb-4 p-2.5 rounded-xl text-sm font-black transition duration-200">
+                            Status Jawaban
+                        </div>
+
+                        <!-- Pilihan Ganda -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="quiz-options">
+                            <!-- Tombol Pilihan Diisi oleh JS -->
+                        </div>
+                    </div>
+
+                    <!-- Mode End Screen -->
+                    <div id="end-screen" class="hidden text-center py-8">
+                        <div id="end-emoji" class="text-8xl mb-4 animate-bounce">🏆</div>
+                        <h3 class="text-3xl font-black text-yellow-300" id="end-title">Misi Selesai!</h3>
+                        <p class="text-purple-200 text-lg font-bold mt-2" id="end-score-text">Kamu mendapatkan skor 400!</p>
+                        
+                        <div class="bg-purple-900/60 border-2 border-purple-400 rounded-2xl p-4 my-6 max-w-sm mx-auto">
+                            <p class="text-xs font-black text-purple-300 uppercase tracking-widest">Gelar Astronotmu:</p>
+                            <p class="text-2xl font-black text-white mt-1" id="end-rank">Astronot Agung Gibral! 🧑‍🚀</p>
+                        </div>
+
+                        <button onclick="startGame()" class="bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white font-black text-base px-8 py-3 rounded-full shadow-lg transition transform hover:scale-105 active:scale-95">
+                            Main Lagi! 🔄
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeri Foto Minecraft -->
+        <section class="mb-10">
+            <div class="bg-emerald-900/95 rounded-[2.5rem] p-8 border-8 border-stone-700 shadow-2xl relative overflow-hidden">
+                <!-- Hiasan Minecraft Piksel -->
+                <div class="absolute top-2 right-4 text-5xl opacity-20 animate-bounce pointer-events-none">🧱</div>
+                <div class="absolute bottom-2 left-4 text-5xl opacity-20 animate-pulse pointer-events-none">💎</div>
+
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-black text-green-300 tracking-wide drop-shadow-md">
+                        ⛏️ GALERI MINECRAFT GIBRAL 🟩
+                    </h2>
+                    <p class="text-emerald-200 text-sm font-bold mt-1">Klik gambar untuk membaca rahasia & strategi Minecraft!</p>
+                </div>
+
+                <!-- Grid Foto Minecraft -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <!-- Foto 1 - Dunia Piksel -->
+                    <div onclick="openGalleryModal(4)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-stone-500 shadow-lg bg-stone-900 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1605899435973-ca2d1a8861cf?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Dunia Voxel Minecraft" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center text-4xl\'>🌲</div>'">
+                            <div class="absolute inset-0 bg-stone-900/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-stone-800 text-center">
+                            <p class="font-black text-green-400 text-sm">Dunia Tak Terbatas 🌲</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 2 - Kastil Megah -->
+                    <div onclick="openGalleryModal(5)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-stone-500 shadow-lg bg-stone-900 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Blok Konstruksi Megah" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-yellow-600 to-amber-700 flex items-center justify-center text-4xl\'>🏰</div>'">
+                            <div class="absolute inset-0 bg-stone-900/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-stone-800 text-center">
+                            <p class="font-black text-green-400 text-sm">Kastil & Arsitektur 🏰</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 3 - Pertambangan Berlian -->
+                    <div onclick="openGalleryModal(6)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-stone-500 shadow-lg bg-stone-900 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1607988795691-3d0147b43231?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Kubus Kristal Neon" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-4xl\'>💎</div>'">
+                            <div class="absolute inset-0 bg-stone-900/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-stone-800 text-center">
+                            <p class="font-black text-green-400 text-sm">Tambang Berlian 💎</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 4 - Monster Malam Hari -->
+                    <div onclick="openGalleryModal(7)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-stone-500 shadow-lg bg-stone-900 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1627856013091-fed6e4e30025?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Controller Game Piksel" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-red-600 to-rose-800 flex items-center justify-center text-4xl\'>🧟</div>'">
+                            <div class="absolute inset-0 bg-stone-900/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-stone-800 text-center">
+                            <p class="font-black text-green-400 text-sm">Monster Malam 🧟</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeri Foto Astronot Impian -->
+        <section class="mb-10">
+            <div class="bg-indigo-900/90 rounded-[2.5rem] p-8 border-8 border-white shadow-2xl relative overflow-hidden">
+                <!-- Hiasan Galaksi -->
+                <div class="absolute top-2 right-4 text-5xl opacity-20 animate-spin-slow pointer-events-none">🌀</div>
+                <div class="absolute bottom-2 left-4 text-5xl opacity-20 animate-bounce pointer-events-none">⭐</div>
+
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-black text-yellow-300 tracking-wide drop-shadow">
+                        🚀 GALERI ASTRONOT GIBRAL 🌌
+                    </h2>
+                    <p class="text-indigo-200 text-sm font-bold mt-1">Klik tiap foto untuk membaca fakta unik misi luar angkasanya!</p>
+                </div>
+
+                <!-- Grid Foto -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    
+                    <!-- Foto 1 -->
+                    <div onclick="openGalleryModal(0)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-white shadow-lg bg-indigo-950 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Astronot di Bulan" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-pink-400 to-purple-500 flex items-center justify-center text-4xl\'>👨‍🚀</div>'">
+                            <div class="absolute inset-0 bg-indigo-950/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-white text-center">
+                            <p class="font-black text-indigo-950 text-sm">Berjalan di Bulan 🌙</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 2 -->
+                    <div onclick="openGalleryModal(1)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-white shadow-lg bg-indigo-950 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Planet Bumi dari angkasa" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-4xl\'>🌍</div>'">
+                            <div class="absolute inset-0 bg-indigo-950/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-white text-center">
+                            <p class="font-black text-indigo-950 text-sm">Bumi yang Indah 🌍</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 3 -->
+                    <div onclick="openGalleryModal(2)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-white shadow-lg bg-indigo-950 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Stasiun Luar Angkasa ISS" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-4xl\'>🛰️</div>'">
+                            <div class="absolute inset-0 bg-indigo-950/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-white text-center">
+                            <p class="font-black text-indigo-950 text-sm">Stasiun ISS 🛰️</p>
+                        </div>
+                    </div>
+
+                    <!-- Foto 4 -->
+                    <div onclick="openGalleryModal(3)" class="group cursor-pointer overflow-hidden rounded-2xl border-4 border-white shadow-lg bg-indigo-950 relative hover:scale-105 transition-all duration-300">
+                        <div class="h-40 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?w=400&auto=format&fit=crop&q=60" 
+                                 alt="Planet Merah Mars" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-4xl\'>🔴</div>'">
+                            <div class="absolute inset-0 bg-indigo-950/20 group-hover:bg-transparent transition duration-300"></div>
+                        </div>
+                        <div class="p-3 bg-white text-center">
+                            <p class="font-black text-indigo-950 text-sm">Menjelajah Mars 🔴</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Moto Hidup -->
+        <section class="mb-10">
+            <div class="bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500 rounded-[2.5rem] p-8 md:p-10 shadow-2xl text-center text-white border-8 border-white relative overflow-hidden group hover:scale-[1.02] transition duration-300 cursor-pointer" onclick="playSuperWinSound();">
+                <div class="absolute top-0 left-[-100%] w-1/2 h-full bg-white opacity-25 skew-x-[-20deg] group-hover:left-[200%] transition-all duration-1000 ease-in-out"></div>
+                
+                <h2 class="text-2xl md:text-3xl font-black mb-4 flex justify-center items-center gap-3 text-yellow-200 drop-shadow-sm">
+                    🚀 <span class="bg-indigo-900/40 px-6 py-1.5 rounded-full border border-indigo-300">MOTO HIDUP GIBRAL</span> 🚀
+                </h2>
+                
+                <blockquote class="text-2xl md:text-3xl font-black leading-relaxed drop-shadow-md">
+                    "Main game sepuasnya, rakit dunia di Minecraft, makan Indomie selagi hangat, dan meluncurlah setinggi bintang di langit!"
+                </blockquote>
+                
+                <p class="text-xs text-yellow-100 mt-4 font-bold tracking-widest animate-pulse">KLIK DI SINI UNTUK MUSIK KEMENANGAN! 🏆</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- POP-UP MODAL JENDELA DETIL FOTO ASTRONOT & MINECRAFT -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md flex items-center justify-center z-50 p-4 hidden opacity-0 transition-opacity duration-300">
+        <div id="modal-card" class="bg-white border-8 border-indigo-400 rounded-[2.5rem] p-6 max-w-md w-full text-center relative transform scale-90 transition-transform duration-300">
+            <!-- Tombol Tutup -->
+            <button onclick="closeGalleryModal()" class="absolute -top-5 -right-5 w-12 h-12 bg-pink-500 hover:bg-pink-600 text-white rounded-full border-4 border-white flex items-center justify-center text-2xl font-black shadow-lg transition transform hover:scale-110 active:scale-95">×</button>
+            
+            <!-- Isi Modal -->
+            <div id="modal-emoji" class="text-7xl mb-4 animate-bounce">👨‍🚀</div>
+            <h3 id="modal-title" class="text-2xl font-black text-indigo-900">Judul Misi</h3>
+            <div class="bg-indigo-50/50 rounded-2xl p-4 my-4 border border-indigo-100" id="modal-desc-box">
+                <p id="modal-desc" class="text-indigo-950 font-semibold text-sm leading-relaxed">Fakta unik tentang foto akan muncul disini.</p>
+            </div>
+            
+            <button id="modal-btn" onclick="closeGalleryModal()" class="bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-black text-sm px-6 py-2.5 rounded-full shadow-lg transition active:scale-95">
+                Keren Banget! 🚀
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-indigo-900/60 text-sm font-black mt-4">
+        <p>🚀 Dibangun dengan penuh imajinasi untuk Gibral si Astronot • © 2026 🧑‍🚀</p>
+    </footer>
+
+    <!-- Logika Interaktif Khusus -->
+    <script>
+        // --- DATA FAKTA UNIK UNTUK GALERI (Index 0-3: Astronot, 4-7: Minecraft) ---
+        const galleryData = [
+            // ASTRONOT
+            {
+                emoji: "🌙",
+                title: "Berjalan di Bulan!",
+                desc: "Tahukah kamu, Gibral? Di Bulan tidak ada angin sama sekali! Itu sebabnya jejak kaki astronot Apollo di Bulan akan bertahan jutaan tahun karena tidak bisa tertiup angin.",
+                theme: 'space'
+            },
+            {
+                emoji: "🌍",
+                title: "Bumi dari Angkasa!",
+                desc: "Para astronot dari luar angkasa berkata bahwa Bumi terlihat seperti kelereng biru yang sangat indah dan bersinar. Air laut yang membentang luas memberi warna biru cantik ini!",
+                theme: 'space'
+            },
+            {
+                emoji: "🛰️",
+                title: "Stasiun Luar Angkasa ISS!",
+                desc: "Stasiun Luar Angkasa Internasional (ISS) bergerak sangat cepat! Di sana, astronot mengorbit Bumi setiap 90 menit sekali. Artinya, mereka bisa melihat matahari terbit dan terbenam sebanyak 16 kali dalam sehari!",
+                theme: 'space'
+            },
+            {
+                emoji: "🔴",
+                title: "Menjelajah Planet Mars!",
+                desc: "Cita-cita Gibral bisa terwujud di sini! Mars disebut Planet Merah karena tanahnya penuh dengan karat besi. Di Mars ada gunung berapi terbesar di tata surya kita bernama Olympus Mons!",
+                theme: 'space'
+            },
+            // MINECRAFT
+            {
+                emoji: "🌲",
+                title: "Dunia Tak Terbatas!",
+                desc: "Setiap dunia baru di Minecraft dibuat secara acak dan sangat luas! Ukuran maksimal satu dunia Minecraft sebenarnya hampir 8 kali ukuran luas permukaan planet Bumi kita, lho! Luar biasa luas, kan?",
+                theme: 'mc'
+            },
+            {
+                emoji: "🏰",
+                title: "Kreativitas Tanpa Batas!",
+                desc: "Banyak pemain profesional menghabiskan waktu bertahun-tahun untuk membangun replika kota nyata, kastil abad pertengahan, hingga komputer raksasa yang berfungsi di dalam Minecraft menggunakan Redstone!",
+                theme: 'mc'
+            },
+            {
+                emoji: "💎",
+                title: "Berlian Paling Berharga!",
+                desc: "Mencari berlian (Diamond) adalah salah satu momen paling seru! Berlian biasanya ditemukan jauh di bawah tanah, di kedalaman level Y= -58 sampai -64 setelah pembaruan Caves & Cliffs.",
+                theme: 'mc'
+            },
+            {
+                emoji: "🧟",
+                title: "Kisah Lucu Creeper!",
+                desc: "Tahukah kamu? Monster Creeper yang suka meledak itu sebenarnya adalah kesalahan kode (*bug*)! Pembuat Minecraft, Notch, awalnya ingin membuat babi, tetapi salah memasukkan tinggi dan panjang badannya, sehingga jadilah Creeper!",
+                theme: 'mc'
+            }
+        ];
+
+        // --- DATA SOAL MINI GAME TEBAK GAMBAR ASTRONOT ---
+        const quizQuestions = [
+            {
+                image: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?w=500&auto=format&fit=crop&q=80",
+                options: ["Astronot di Bulan", "Alien Hijau Mars", "Reruntuhan Kastil", "Satelit GPS"],
+                answer: 0,
+                hint: "Dia memakai baju pelindung putih besar dan berdiri di atas tanah abu-abu yang kering!"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1614313913007-2b4ae8ce32d6?w=500&auto=format&fit=crop&q=80",
+                options: ["Planet Neptunus", "Matahari", "Planet Mars", "Lubang Hitam"],
+                answer: 2,
+                hint: "Planet ini memiliki tanah merah berkarat dan merupakan planet ke-4 dari Matahari."
+            },
+            {
+                image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=80",
+                options: ["Galaksi Andromeda", "Planet Bumi", "Matahari Bersinar", "Bulan Sabit"],
+                answer: 1,
+                hint: "Ini adalah rumah kita yang bersinar biru cantik penuh air di jagat raya!"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?w=500&auto=format&fit=crop&q=80",
+                options: ["Meteor Jatuh", "Helikopter Tempur", "Roket Meluncur", " UFO Alien"],
+                answer: 2,
+                hint: "Alat transportasi super dahsyat yang mengeluarkan api besar di bawahnya untuk menembus atmosfer langit!"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let hintUsed = false;
+
+        // --- Mulai Mini Game ---
+        function startGame() {
+            currentQuestion = 0;
+            score = 0;
+            hintUsed = false;
+            
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('end-screen').classList.add('hidden');
+            document.getElementById('play-screen').classList.remove('hidden');
+            
+            loadQuestion();
+            playCuteSound(500);
+        }
+
+        // --- Mengisi data soal ke UI ---
+        function loadQuestion() {
+            hintUsed = false;
+            document.getElementById('hint-overlay').classList.add('hidden');
+            document.getElementById('hint-btn').classList.remove('bg-yellow-500', 'text-yellow-900', 'opacity-50');
+            document.getElementById('hint-btn').classList.add('bg-yellow-400', 'text-yellow-950');
+            
+            const q = quizQuestions[currentQuestion];
+            document.getElementById('quiz-image').src = q.image;
+            document.getElementById('quiz-progress').innerText = `Pertanyaan: ${currentQuestion + 1}/${quizQuestions.length}`;
+            document.getElementById('quiz-score').innerText = `Skor: ${score}`;
+            document.getElementById('hint-text').innerText = `💡 Petunjuk: ${q.hint}`;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = '';
+            
+            // Atur ulang penanda status alert
+            const alertBox = document.getElementById('alert-box');
+            alertBox.classList.add('hidden');
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "bg-purple-900/60 hover:bg-purple-800 border-2 border-purple-500 text-white font-bold p-3.5 rounded-2xl transition duration-200 text-sm hover:scale-[1.02] active:scale-95 text-left flex items-center gap-2";
+                btn.innerHTML = `<span class="bg-purple-700 w-6 h-6 flex items-center justify-center rounded-full text-xs">${idx + 1}</span> ${opt}`;
+                btn.onclick = () => submitAnswer(idx, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        // --- Kirim jawaban ---
+        function submitAnswer(idx, btnElement) {
+            const q = quizQuestions[currentQuestion];
+            const alertBox = document.getElementById('alert-box');
+            alertBox.classList.remove('hidden');
+
+            if (idx === q.answer) {
+                // Jawaban Benar
+                score += (hintUsed ? 50 : 100);
+                document.getElementById('quiz-score').innerText = `Skor: ${score}`;
+                
+                // Ganti gaya tombol benar
+                btnElement.className = "bg-green-600 border-2 border-green-300 text-white font-bold p-3.5 rounded-2xl transition duration-200 text-sm flex items-center gap-2";
+                
+                alertBox.className = "text-center mb-4 p-2.5 rounded-xl text-sm font-black bg-green-500 text-white animate-bounce";
+                alertBox.innerText = "⭐ SANGAT HEBAT! JAWABANMU BENAR! ⭐";
+                
+                // Matikan klik pada tombol lainnya
+                const buttons = document.getElementById('quiz-options').getElementsByTagName('button');
+                for (let b of buttons) { b.disabled = true; }
+
+                playCuteSound(523.25); // Nada tinggi menang
+                setTimeout(() => playCuteSound(659.25), 80);
+
+                confetti({
+                    particleCount: 50,
+                    spread: 60,
+                    origin: { y: 0.8 }
+                });
+
+                // Lanjut soal berikutnya
+                setTimeout(() => {
+                    currentQuestion++;
+                    if (currentQuestion < quizQuestions.length) {
+                        loadQuestion();
+                    } else {
+                        endGame();
+                    }
+                }, 1600);
+
+            } else {
+                // Jawaban Salah
+                btnElement.className = "bg-red-600 border-2 border-red-300 text-white font-bold p-3.5 rounded-2xl transition duration-200 text-sm flex items-center gap-2";
+                
+                alertBox.className = "text-center mb-4 p-2.5 rounded-xl text-sm font-black bg-red-500 text-white";
+                alertBox.innerText = "💥 OOPS! SALAH. COBA TEBAK LAGI! 💥";
+                
+                // Tambahkan animasi getar ke kontainer game
+                const container = document.getElementById('game-container');
+                container.classList.add('animate-shake');
+                setTimeout(() => container.classList.remove('animate-shake'), 400);
+
+                playCuteSound(150); // Nada rendah salah
+                btnElement.disabled = true; // Matikan tombol salah ini saja
+            }
+        }
+
+        // --- Aktifkan petunjuk ---
+        function toggleHint() {
+            const overlay = document.getElementById('hint-overlay');
+            if (overlay.classList.contains('hidden')) {
+                overlay.classList.remove('hidden');
+                hintUsed = true;
+                playCuteSound(300);
+                document.getElementById('hint-btn').classList.add('opacity-50');
+            } else {
+                overlay.classList.add('hidden');
+            }
+        }
+
+        // --- Lewati pertanyaan ---
+        function skipQuestion() {
+            playCuteSound(250);
+            currentQuestion++;
+            if (currentQuestion < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                endGame();
+            }
+        }
+
+        // --- Game Selesai ---
+        function endGame() {
+            document.getElementById('play-screen').classList.add('hidden');
+            document.getElementById('end-screen').classList.remove('hidden');
+            
+            document.getElementById('end-score-text').innerText = `Gibral berhasil mengumpulkan skor total: ${score} poin!`;
+            
+            // Gelar berdasar skor
+            let rank = "";
+            let emoji = "🏆";
+            if (score >= 400) {
+                rank = "🚀 Astronot Agung Gibral! 🧑‍🚀";
+                emoji = "🎖️";
+                playSuperWinSound();
+            } else if (score >= 250) {
+                rank = "🛸 Pilot Roket Senior 🌟";
+                emoji = "⭐";
+                playCuteSound(523);
+                setTimeout(() => playCuteSound(659), 100);
+            } else {
+                rank = "🛰️ Kadet Ruang Angkasa 🧸";
+                emoji = "🧑‍🚀";
+                playCuteSound(350);
+            }
+            
+            document.getElementById('end-rank').innerText = rank;
+            document.getElementById('end-emoji').innerText = emoji;
+        }
+
+        // --- Buka Modal Galeri ---
+        function openGalleryModal(index) {
+            const data = galleryData[index];
+            document.getElementById('modal-emoji').innerText = data.emoji;
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-desc').innerText = data.desc;
+
+            const modal = document.getElementById('gallery-modal');
+            const card = document.getElementById('modal-card');
+            const descBox = document.getElementById('modal-desc-box');
+            const btn = document.getElementById('modal-btn');
+
+            if (data.theme === 'mc') {
+                card.className = "bg-stone-900 border-8 border-green-600 rounded-[2.5rem] p-6 max-w-md w-full text-center relative transform scale-90 transition-transform duration-300";
+                document.getElementById('modal-title').className = "text-2xl font-black text-green-400";
+                descBox.className = "bg-stone-800 rounded-2xl p-4 my-4 border border-stone-700";
+                document.getElementById('modal-desc').className = "text-stone-200 font-semibold text-sm leading-relaxed";
+                btn.className = "bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-black text-sm px-6 py-2.5 rounded-full shadow-lg transition active:scale-95";
+                btn.innerText = "Sangat Keren! ⛏️";
+            } else {
+                card.className = "bg-white border-8 border-indigo-400 rounded-[2.5rem] p-6 max-w-md w-full text-center relative transform scale-90 transition-transform duration-300";
+                document.getElementById('modal-title').className = "text-2xl font-black text-indigo-900";
+                descBox.className = "bg-indigo-50 rounded-2xl p-4 my-4 border border-indigo-100";
+                document.getElementById('modal-desc').className = "text-indigo-950 font-semibold text-sm leading-relaxed";
+                btn.className = "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white font-black text-sm px-6 py-2.5 rounded-full shadow-lg transition active:scale-95";
+                btn.innerText = "Keren Banget! 🚀";
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modal.firstElementChild.classList.remove('scale-90');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 10);
+
+            playCuteSound(440);
+            setTimeout(() => playCuteSound(554), 100);
+            setTimeout(() => playCuteSound(659), 200);
+
+            confetti({
+                particleCount: 40,
+                spread: 40,
+                origin: { y: 0.5 }
+            });
+        }
+
+        // --- Tutup Modal Galeri ---
+        function closeGalleryModal() {
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.remove('opacity-100');
+            modal.firstElementChild.classList.remove('scale-100');
+            modal.firstElementChild.classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+
+            playCuteSound(300);
+        }
+
+        // --- 1. Audio Synthesizer (Web Audio API) untuk Suara Lucu ---
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playCuteSound(frequency) {
+            initAudio();
+            if (!audioCtx) return;
+
+            let osc = audioCtx.createOscillator();
+            let gain = audioCtx.createGain();
+
+            osc.type = 'triangle'; 
+            osc.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(frequency * 1.5, audioCtx.currentTime + 0.15);
+
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.15);
+        }
+
+        function playSuperWinSound() {
+            initAudio();
+            if (!audioCtx) return;
+
+            const notes = [261.63, 329.63, 392.00, 523.25]; 
+            notes.forEach((freq, idx) => {
+                setTimeout(() => {
+                    let osc = audioCtx.createOscillator();
+                    let gain = audioCtx.createGain();
+                    
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                    
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.3);
+                }, idx * 100);
+            });
+
+            triggerConfetti();
+        }
+
+        // --- 2. Efek Confetti ---
+        function triggerConfetti() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.65 },
+                colors: ['#ff8a00', '#da1b60', '#ff007f', '#2a9d8f', '#e9c46a']
+            });
+        }
+
+        // --- 3. Efek Hujan Ayam Lava Chicken ---
+        function spawnChickens() {
+            const chickenCount = 15;
+            for (let i = 0; i < chickenCount; i++) {
+                setTimeout(() => {
+                    const chicken = document.createElement('div');
+                    const emojis = ['🐔', '🔥', '🍗', '🐣'];
+                    chicken.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                    chicken.classList.add('chicken-fall');
+                    chicken.style.left = Math.random() * 90 + 5 + 'vw';
+                    chicken.style.animationDelay = (Math.random() * 0.5) + 's';
+                    
+                    document.body.appendChild(chicken);
+
+                    setTimeout(() => {
+                        chicken.remove();
+                    }, 3500);
+                }, i * 100);
+            }
+        }
+
+        // --- 4. Efek Peluncuran Roket ---
+        function launchRocket() {
+            const rocket = document.createElement('div');
+            rocket.innerText = '🚀';
+            rocket.classList.add('rocket-fly');
+            rocket.style.left = Math.random() * 80 + 10 + 'vw';
+            
+            document.body.appendChild(rocket);
+
+            setTimeout(() => {
+                confetti({
+                    particleCount: 30,
+                    angle: 90,
+                    spread: 45,
+                    origin: { x: parseFloat(rocket.style.left) / 100, y: 0.9 }
+                });
+            }, 100);
+
+            setTimeout(() => {
+                rocket.remove();
+            }, 1600);
+        }
+
+        // --- 5. Efek Klik Balok Minecraft ---
+        function spawnMinecraftBlocks(event) {
+            const card = document.getElementById('minecraft-card');
+            const rect = card.getBoundingClientRect();
+            
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            const blocks = ['🟩', '🧱', '💎', '📦'];
+            const block = document.createElement('div');
+            block.innerText = blocks[Math.floor(Math.random() * blocks.length)];
+            block.classList.add('pixel-block');
+            block.style.left = `${x - 20}px`;
+            block.style.top = `${y - 20}px`;
+
+            card.appendChild(block);
+
+            setTimeout(() => {
+                block.remove();
+            }, 1000);
+        }
+
+        // Sambutan meriah saat website dibuka
+        window.onload = function() {
+            setTimeout(() => {
+                confetti({
+                    particleCount: 50,
+                    spread: 80,
+                    origin: { y: 0.4 }
+                });
+            }, 500);
+        };
+    </script>
+</body>
+</html>

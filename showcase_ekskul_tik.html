@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showcase Karya Ekskul TIK 🚀</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons (Lucu & Modern) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS CDN & Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        body: ['"Public Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        neo: {
+                            yellow: '#FFDE59',
+                            pink: '#FF90E8',
+                            cyan: '#90F4FF',
+                            green: '#C0FF71',
+                            black: '#111111',
+                            white: '#FAFAFA'
+                        }
+                    },
+                    boxShadow: {
+                        'neo-sm': '3px 3px 0px #111111',
+                        'neo': '6px 6px 0px #111111',
+                        'neo-hover': '2px 2px 0px #111111',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styling untuk Neo-Brutalism */
+        body {
+            background-color: theme('colors.neo.white');
+            color: theme('colors.neo.black');
+            background-image: radial-gradient(theme('colors.neo.black') 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Custom Selection Color */
+        ::selection {
+            background: theme('colors.neo.pink');
+            color: theme('colors.neo.black');
+        }
+
+        /* Utility untuk elemen Neo-Brutalism */
+        .neo-border {
+            border: 3px solid theme('colors.neo.black');
+        }
+
+        /* Animasi Kustom */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+    </style>
+</head>
+<body class="font-body antialiased min-h-screen flex flex-col">
+
+    <!-- NAVBAR (Step 2) -->
+    <nav class="sticky top-0 z-50 bg-neo-white border-b-4 border-neo-black py-4 px-6 md:px-12 flex justify-between items-center shadow-neo-sm">
+        <!-- Logo -->
+        <div class="flex items-center gap-2 cursor-pointer group">
+            <i class="ph-fill ph-rocket-launch text-4xl text-neo-black group-hover:-translate-y-1 transition-transform"></i>
+            <span class="font-heading font-black text-2xl tracking-tight uppercase">
+                Ekskul<span class="text-neo-pink underline decoration-neo-black decoration-4 underline-offset-4">TIK</span>
+            </span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-8 font-heading font-bold text-lg">
+            <a href="#beranda" class="relative before:content-[''] before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-1 before:bg-neo-black hover:before:w-full before:transition-all before:duration-300">Beranda</a>
+            <a href="#showcase" class="relative before:content-[''] before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-1 before:bg-neo-black hover:before:w-full before:transition-all before:duration-300">Showcase</a>
+            <a href="#memori" class="relative before:content-[''] before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-1 before:bg-neo-black hover:before:w-full before:transition-all before:duration-300">Memori Kls 6</a>
+            
+            <!-- Tombol CTA Neo-Brutalism -->
+            <a href="#showcase" class="bg-neo-yellow px-6 py-2 border-2 border-neo-black shadow-neo-hover hover:shadow-none hover:translate-y-[2px] hover:translate-x-[2px] transition-all">
+                Lihat Karya 👀
+            </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden bg-neo-cyan px-3 py-2 border-2 border-neo-black shadow-neo-hover hover:bg-neo-yellow active:shadow-none active:translate-y-[2px] active:translate-x-[2px] transition-all">
+            <i class="ph ph-list text-2xl font-bold text-neo-black"></i>
+        </button>
+    </nav>
+
+    <!-- HERO SECTION (Step 3) -->
+    <header id="beranda" class="relative overflow-hidden w-full max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+        
+        <!-- Teks Kiri -->
+        <div class="w-full md:w-1/2 flex flex-col items-start gap-6 z-10">
+            <div class="opacity-0 animate-fade-up bg-neo-green px-4 py-1 neo-border shadow-neo-sm font-bold text-sm transform -rotate-2 inline-flex items-center gap-2">
+                <i class="ph-fill ph-star text-neo-black"></i> Angkatan 2026
+            </div>
+            
+            <h1 class="opacity-0 animate-fade-up delay-100 font-heading text-5xl md:text-7xl font-black leading-[1.1] uppercase tracking-tight">
+                Karya Epik <br>
+                <span class="text-transparent bg-clip-text bg-neo-black" style="text-shadow: 4px 4px 0px #FF90E8;">Anak TIK</span>
+            </h1>
+            
+            <p class="opacity-0 animate-fade-up delay-200 text-lg md:text-xl font-medium max-w-md">
+                Kumpulan project website interaktif super kreatif dari anggota ekstrakurikuler TIK. Coba mainkan gamenya dan lihat keajaiban kodenya! 💻✨
+            </p>
+            
+            <div class="opacity-0 animate-fade-up delay-200 mt-4 flex gap-4">
+                <a href="#showcase" class="bg-neo-black text-neo-white font-bold text-lg px-8 py-3 border-4 border-neo-black shadow-neo-hover hover:bg-neo-pink hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all flex items-center gap-2 group">
+                    Eksplorasi <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Ilustrasi Kanan (Kucing Hacker Lucu) -->
+        <div class="w-full md:w-1/2 flex justify-center opacity-0 animate-fade-up z-10">
+            <div class="relative w-72 h-72 md:w-96 md:h-96 animate-float">
+                <!-- Ornamen Latar Belakang -->
+                <div class="absolute inset-0 bg-neo-cyan border-4 border-neo-black shadow-neo rounded-3xl transform rotate-6"></div>
+                <div class="absolute inset-0 bg-neo-yellow border-4 border-neo-black shadow-neo rounded-3xl transform -rotate-3 flex items-center justify-center overflow-hidden">
+                    
+                    <!-- SVG Kucing Hacker Lucu -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-4/5 h-4/5 mt-10">
+                        <!-- Laptop -->
+                        <polygon points="20,180 180,180 160,140 40,140" fill="#FAFAFA" stroke="#111111" stroke-width="6" stroke-linejoin="round"/>
+                        <rect x="50" y="146" width="100" height="26" fill="#111111" rx="4"/>
+                        <!-- Badan Kucing -->
+                        <rect x="55" y="60" width="90" height="90" rx="20" fill="#FF90E8" stroke="#111111" stroke-width="6"/>
+                        <!-- Telinga -->
+                        <polygon points="55,65 35,20 80,60" fill="#FF90E8" stroke="#111111" stroke-width="6" stroke-linejoin="round"/>
+                        <polygon points="145,65 165,20 120,60" fill="#FF90E8" stroke="#111111" stroke-width="6" stroke-linejoin="round"/>
+                        <!-- Mata Cool -->
+                        <rect x="65" y="80" width="30" height="12" fill="#111111" rx="6"/>
+                        <rect x="105" y="80" width="30" height="12" fill="#111111" rx="6"/>
+                        <path d="M 50 85 L 150 85" stroke="#111111" stroke-width="6"/>
+                        <!-- Hidung & Mulut -->
+                        <circle cx="100" cy="110" r="4" fill="#111111"/>
+                        <path d="M 90 120 Q 100 130 110 120" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round"/>
+                        <!-- Keringat/Ornamen Kecil -->
+                        <circle cx="155" cy="50" r="4" fill="#111111" class="animate-ping"/>
+                    </svg>
+
+                </div>
+                <!-- Bintang Dekorasi -->
+                <i class="ph-fill ph-sparkle text-4xl text-neo-pink absolute -top-4 -left-4 animate-spin-slow"></i>
+                <i class="ph-fill ph-star text-3xl text-neo-green absolute -bottom-4 -right-4 transform rotate-12"></i>
+            </div>
+        </div>
+        
+    </header>
+
+    <!-- SHOWCASE SECTION (Step 4) -->
+    <!-- Dibungkus dengan Node section dan div container agar layout aman dan terstruktur -->
+    <section id="showcase" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-16">
+        
+        <div class="flex items-center gap-4 mb-10">
+            <h2 class="font-heading text-4xl md:text-5xl font-black uppercase bg-neo-white inline-block px-4 py-2 neo-border shadow-neo-sm transform rotate-1">
+                Galeri Karya 🎨
+            </h2>
+        </div>
+
+        <!-- Node Grid Pembungkus Karya -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Karya 1: Calista -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-pink p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">🌸 Calista</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Game rhythm musik menangkap nada jatuh dengan desain pastel yang cantik.</p>
+                    <!-- Link Node yang aman -->
+                    <a href="biodata_calista (1).html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-yellow hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Mainkan <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 2: Wildan -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-yellow p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">💎 Wildan</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Petualangan menangkap harta karun dengan fitur High Score seru!</p>
+                    <a href="biodata_ceria_wildan (1).html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-cyan hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Mainkan <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 3: Gibral -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-cyan p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">🚀 Gibral</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Website dengan interaksi memunculkan roket, confetti, dan balok Minecraft.</p>
+                    <a href="biodata_gibral_ceria (1).html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-pink hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Lihat Karya <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 4: Julian -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-green p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">⚡ Julian</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Desain 3D futuristik dengan lampu neon dan medali piala kejuaraan.</p>
+                    <a href="biodata_julian (1).html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-yellow hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Lihat Karya <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 5: Ghini -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-pink p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">✨ Ghini</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Halaman super ceria dengan hujan emoji lucu dan efek confetti.</p>
+                    <a href="biodata_lucu_ghini.html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-cyan hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Lihat Karya <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 6: Gishella -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-white p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">🎈 Gishella</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Buku harian digital dengan animasi objek mengambang yang gemas.</p>
+                    <a href="biodata_lucu_gishella.html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-green hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Lihat Karya <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 7: Najma -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-yellow p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">⭐ Najma</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Website profil interaktif dengan kemunculan bintang setiap kali layar diklik.</p>
+                    <a href="biodata_najma.html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-pink hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Lihat Karya <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 8: Rifat -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-cyan p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">🌌 Rifat</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Portofolio keren dengan fitur kartu 3D (Tilt Card) yang mengikuti kursor.</p>
+                    <a href="biodata_rifat (1).html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-green hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Lihat Karya <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 9: Atiqa -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-green p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">🧟‍♀️ Atiqa</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Mini-game menegangkan membasmi zombie dalam kegelapan malam!</p>
+                    <a href="landing_page_mutiara (1).html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-yellow hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Mainkan <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Karya 10: Hauzan -->
+            <article class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-neo-pink p-4 border-b-4 border-neo-black flex justify-between items-center">
+                    <span class="font-heading font-bold text-xl uppercase">🎇 Hauzan</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col justify-between gap-6">
+                    <p class="font-medium text-neo-black/80">Dunia warna-warni yang menghasilkan ledakan partikel kursor super mulus.</p>
+                    <a href="website_biodata_hauzan (1).html" class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-cyan hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Lihat Karya <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- MEMORI KELAS 6 SECTION -->
+    <section id="memori" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 mb-12">
+        <div class="bg-neo-white neo-border shadow-neo p-8 md:p-12 relative overflow-hidden">
+            <!-- Ornamen Dekoratif -->
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-neo-yellow rounded-full neo-border mix-blend-multiply opacity-50 blur-xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-neo-cyan rounded-full neo-border mix-blend-multiply opacity-50 blur-xl"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="w-full md:w-2/3 flex flex-col items-start gap-4">
+                    <div class="bg-neo-pink px-4 py-1 neo-border shadow-neo-sm font-bold text-sm transform rotate-2 inline-flex items-center gap-2">
+                        <i class="ph-fill ph-camera text-neo-black"></i> Kenangan Indah
+                    </div>
+                    <h2 class="font-heading text-4xl md:text-5xl font-black uppercase">
+                        Kapsul Waktu <br><span class="text-neo-black bg-neo-cyan px-2 mt-1 inline-block transform -rotate-1 shadow-neo-sm">Kelas 6</span>
+                    </h2>
+                    <p class="font-medium text-lg text-neo-black/80 max-w-xl leading-relaxed mt-2">
+                        Setiap tawa, canda, dan momen berharga bersama teman-teman telah terekam abadi. Mari bernostalgia dan melihat kembali jejak manis perjalanan kita di kelas 6! 📸✨
+                    </p>
+                    <a href="https://ojannnn-prog.github.io/memori-esdeh/" target="_blank" rel="noopener noreferrer" class="mt-4 bg-neo-black text-neo-white font-bold text-lg px-8 py-4 border-4 border-neo-black shadow-neo-hover hover:bg-neo-yellow hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all flex items-center gap-2 group">
+                        Buka Kotak Kenangan <i class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+                
+                <!-- Ilustrasi Frame Foto -->
+                <div class="w-full md:w-1/3 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-72 md:h-72 transform rotate-3 hover:-rotate-2 transition-transform duration-500 animate-float">
+                        <div class="absolute inset-0 bg-neo-white neo-border shadow-neo p-4 pb-12 flex flex-col items-center">
+                            <div class="w-full h-full bg-neo-black overflow-hidden relative">
+                                <!-- Ilustrasi SVG Abstrak / Doodle Kenangan -->
+                                <svg width="100%" height="100%" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="100%" height="100%" fill="#FAFAFA" />
+                                    <circle cx="100" cy="100" r="50" fill="#FFDE59" stroke="#111111" stroke-width="4" />
+                                    <path d="M50,150 Q100,50 150,150" fill="none" stroke="#FF90E8" stroke-width="8" stroke-linecap="round" />
+                                    <path d="M70,100 L90,120 L130,80" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                                    <circle cx="150" cy="50" r="15" fill="#90F4FF" stroke="#111111" stroke-width="4" />
+                                    <circle cx="40" cy="60" r="10" fill="#C0FF71" stroke="#111111" stroke-width="4" />
+                                </svg>
+                            </div>
+                            <span class="font-heading font-bold text-lg mt-4 handwritten text-neo-black">Best Friends Forever!</span>
+                        </div>
+                        <!-- Pin Tempel -->
+                        <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-neo-red neo-border shadow-sm"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-neo-black text-neo-white border-t-4 border-neo-black py-10 text-center relative overflow-hidden">
+        <div class="relative z-10 flex flex-col items-center gap-4">
+            <h3 class="font-heading font-black text-3xl md:text-4xl text-neo-yellow tracking-widest uppercase">
+                Ekskul TIK
+            </h3>
+            <p class="font-body font-medium text-neo-white/80 max-w-sm mx-auto">
+                Terus berkarya dan jadilah generasi digital masa depan! 🚀
+            </p>
+            <div class="mt-4 font-bold text-sm bg-neo-white text-neo-black px-4 py-2 rounded-full shadow-neo-sm transform rotate-2">
+                © 2026 - Angkatan Luar Biasa
+            </div>
+        </div>
+        
+        <!-- Ornamen Footer -->
+        <i class="ph-fill ph-code absolute -left-4 -bottom-4 text-9xl text-neo-white opacity-10"></i>
+        <i class="ph-fill ph-brackets-curly absolute -right-4 -bottom-4 text-9xl text-neo-white opacity-10"></i>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dunia Seru Ghini! ✨</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Fredoka & Patrick Hand untuk kesan lucu/childish -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  <!-- FontAwesome untuk ikon menarik -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 50%, #f0e6ff 100%);
+      overflow-x: hidden;
+    }
+    
+    .handwritten {
+      font-family: 'Patrick Hand', cursive;
+    }
+
+    /* Animasi mengambang (floating) */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    /* Animasi berputar lambat untuk background */
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Animasi denyut balon/tombol */
+    @keyframes pulse-soft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .animate-float-delayed {
+      animation: float 4.5s ease-in-out infinite;
+      animation-delay: 1.5s;
+    }
+
+    .animate-spin-slow {
+      animation: spin-slow 20s linear infinite;
+    }
+
+    .animate-pulse-soft {
+      animation: pulse-soft 3s ease-in-out infinite;
+    }
+
+    /* Kustomisasi scrollbar lucu */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #ffe5ec;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #ff8fab;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff5c8a;
+    }
+
+    /* Efek confetti buatan */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff3e6c;
+      border-radius: 50%;
+      animation: fall linear forwards;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(105vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between text-slate-700 relative">
+
+  <!-- Efek Partikel Gelembung / Awan Mini di Background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute top-10 left-10 w-24 h-24 bg-white/40 rounded-full blur-xl animate-float"></div>
+    <div class="absolute top-1/3 right-12 w-36 h-36 bg-pink-300/30 rounded-full blur-2xl animate-float-delayed"></div>
+    <div class="absolute bottom-10 left-1/4 w-32 h-32 bg-purple-300/30 rounded-full blur-2xl animate-float"></div>
+    
+    <!-- Emoji mengambang -->
+    <span class="absolute text-4xl top-20 right-1/4 opacity-40 animate-float">🎮</span>
+    <span class="absolute text-4xl bottom-40 left-10 opacity-40 animate-float-delayed">🍜</span>
+    <span class="absolute text-4xl top-2/3 right-8 opacity-40 animate-float">☕</span>
+    <span class="absolute text-5xl top-12 left-1/2 opacity-20 animate-spin-slow">⭐</span>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header class="w-full py-4 px-6 flex justify-between items-center z-10 relative">
+    <div class="flex items-center gap-2">
+      <div class="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-2.5 rounded-full shadow-md animate-bounce">
+        <i class="fa-solid fa-star text-lg"></i>
+      </div>
+      <span class="font-bold text-2xl bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">Dunia Ghini!</span>
+    </div>
+    <button onclick="buatHujanMainan()" class="bg-white/80 hover:bg-white border-2 border-pink-400 text-pink-600 px-4 py-2 rounded-full font-semibold shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2">
+      <span class="hidden sm:inline">Klik Kejutan!</span> ✨ 🎮
+    </button>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-grow flex flex-col items-center justify-center p-4 z-10 relative space-y-8 w-full max-w-5xl mx-auto">
+    
+    <!-- Bagian 1: Profil & Biodata -->
+    <div class="w-full bg-white/70 backdrop-blur-md rounded-3xl p-6 sm:p-10 shadow-2xl border-4 border-pink-300 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center transition-all duration-500 hover:shadow-pink-300/30">
+      
+      <!-- Sisi Kiri: Foto Profil Lucu & Animasi -->
+      <div class="lg:col-span-4 flex flex-col items-center text-center">
+        <!-- Bingkai Avatar Unik -->
+        <div class="relative w-48 h-48 sm:w-56 sm:h-56 animate-float">
+          <div class="absolute inset-0 bg-gradient-to-tr from-pink-400 via-purple-400 to-yellow-300 rounded-[40%_60%_70%_30%_/_40%_50%_60%_50%] animate-spin-slow opacity-80 shadow-inner"></div>
+          
+          <div class="absolute inset-2 bg-white rounded-[50%_50%_45%_45%_/_45%_45%_55%_55%] overflow-hidden border-4 border-white flex items-center justify-center shadow-lg">
+            <svg class="w-full h-full p-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="skin" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffe3d1" />
+                  <stop offset="100%" stop-color="#ffd1b3" />
+                </linearGradient>
+                <linearGradient id="hair" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#4a3728" />
+                  <stop offset="100%" stop-color="#2d1f10" />
+                </linearGradient>
+              </defs>
+              <path d="M20,60 C15,35 25,15 50,15 C75,15 85,35 80,60 C75,65 25,65 20,60 Z" fill="url(#hair)" />
+              <circle cx="23" cy="50" r="7" fill="url(#skin)" />
+              <circle cx="77" cy="50" r="7" fill="url(#skin)" />
+              <path d="M25,50 C25,35 35,28 50,28 C65,28 75,35 75,50 C75,68 65,75 50,75 C35,75 25,68 25,50 Z" fill="url(#skin)" />
+              <path d="M25,38 C35,25 45,35 50,30 C55,35 65,25 75,38 C78,30 70,20 50,20 C30,20 22,30 25,38 Z" fill="url(#hair)" />
+              <circle cx="40" cy="48" r="4.5" fill="#2d1f10" />
+              <circle cx="38.5" cy="46.5" r="1.5" fill="white" />
+              <circle cx="41.5" cy="49.5" r="0.8" fill="white" />
+              
+              <circle cx="60" cy="48" r="4.5" fill="#2d1f10" />
+              <circle cx="58.5" cy="46.5" r="1.5" fill="white" />
+              <circle cx="61.5" cy="49.5" r="0.8" fill="white" />
+              <ellipse cx="34" cy="54" rx="4" ry="2" fill="#ff9ebb" opacity="0.8" />
+              <ellipse cx="66" cy="54" rx="4" ry="2" fill="#ff9ebb" opacity="0.8" />
+              <path d="M45,56 Q50,62 55,56" stroke="#2d1f10" stroke-width="2.5" stroke-linecap="round" fill="none" />
+              <path d="M30,26 Q50,16 70,26" stroke="#ff4d8d" stroke-width="4" stroke-linecap="round" fill="none" />
+              <polygon points="50,10 52,14 57,14 53,17 55,22 50,19 45,22 47,17 43,14 48,14" fill="#ffd700" />
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Papan Nama Lucu -->
+        <div class="mt-6 bg-gradient-to-r from-pink-400 to-purple-400 text-white px-8 py-2.5 rounded-2xl shadow-md border-2 border-white transform rotate-[-2deg] transition-all hover:rotate-[2deg] hover:scale-105">
+          <h1 class="text-3xl font-bold tracking-wide">Ghini ✨</h1>
+        </div>
+        <p class="text-pink-500 font-bold mt-2 text-lg handwritten">Anak Hebat, Kreatif & Berbakti!</p>
+        
+        <!-- Badge Kreativitas -->
+        <div class="mt-4 bg-yellow-100 border border-yellow-300 text-yellow-800 text-xs px-3 py-1.5 rounded-full font-bold flex items-center gap-1.5 shadow-sm animate-pulse">
+          <i class="fa-solid fa-lightbulb"></i> Bisa Berkreasi Unik! 🧩
+        </div>
+      </div>
+
+      <!-- Sisi Kanan: Biodata Kartu Interaktif -->
+      <div class="lg:col-span-8 space-y-6">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-pink-600 border-b-4 border-dashed border-pink-200 pb-3 flex items-center gap-3">
+          <span>Dunia Ceria Ghini!</span> <span class="animate-bounce">👑</span>
+        </h2>
+        
+        <p class="text-slate-600 text-lg leading-relaxed handwritten text-xl">
+          Hai! Aku <span class="bg-pink-100 px-2 py-0.5 rounded text-pink-600 font-bold">Ghini (12 tahun)</span>. Aku anak kreatif yang senang membantu orang tua, suka berpetualang ke mal, jalan-jalan bersama keluarga tercinta, dan tentu saja... mabar bareng teman!
+        </p>
+
+        <!-- Grid Info Spesial -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Kartu Hobi -->
+          <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-blue-100 flex items-center gap-4 cursor-pointer group" onclick="mainkanEfekGame()">
+            <div class="bg-blue-400 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:animate-bounce">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <div>
+              <p class="text-xs text-blue-500 font-bold uppercase tracking-wider">Hobi Favorit</p>
+              <p class="text-base font-bold text-blue-800">Main Game 🎮</p>
+            </div>
+          </div>
+
+          <!-- Kartu Makanan -->
+          <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-red-100 flex items-center gap-4 cursor-pointer group" onclick="makanRamen()">
+            <div class="bg-red-400 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:rotate-12">
+              <i class="fa-solid fa-bowl-food"></i>
+            </div>
+            <div>
+              <p class="text-xs text-red-500 font-bold uppercase tracking-wider">Makanan Suka</p>
+              <p class="text-base font-bold text-red-800">Ramen 🍜</p>
+            </div>
+          </div>
+
+          <!-- Kartu Minuman -->
+          <div class="bg-amber-900/10 border-2 border-amber-800/20 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-amber-900/20 flex items-center gap-4 cursor-pointer group" onclick="minumCoklat()">
+            <div class="bg-amber-700 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:animate-bounce">
+              <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div>
+              <p class="text-xs text-amber-700 font-bold uppercase tracking-wider">Minuman Suka</p>
+              <p class="text-base font-bold text-amber-950">Coklat 🍫</p>
+            </div>
+          </div>
+
+          <!-- Kartu: Jalan-Jalan Keluarga -->
+          <div class="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-emerald-100 flex items-center gap-4 cursor-pointer group" onclick="jalanKeluarga()">
+            <div class="bg-emerald-500 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:scale-110">
+              <i class="fa-solid fa-car-side"></i>
+            </div>
+            <div>
+              <p class="text-xs text-emerald-600 font-bold uppercase tracking-wider">Momen Indah</p>
+              <p class="text-base font-bold text-emerald-800">Jalan-Jalan 🚗👨‍👩‍👧‍👦</p>
+            </div>
+          </div>
+
+          <!-- Kartu: Belanja di Mal -->
+          <div class="bg-pink-50 border-2 border-pink-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-pink-100 flex items-center gap-4 cursor-pointer group" onclick="belanjaMal()">
+            <div class="bg-pink-500 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:animate-shake">
+              <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <div>
+              <p class="text-xs text-pink-500 font-bold uppercase tracking-wider">Paling Seru</p>
+              <p class="text-base font-bold text-pink-800">Belanja di Mal 🛍️✨</p>
+            </div>
+          </div>
+
+          <!-- Kartu: Membantu Orang Tua -->
+          <div class="bg-cyan-50 border-2 border-cyan-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-cyan-100 flex items-center gap-4 cursor-pointer group" onclick="bantuOrangTua()">
+            <div class="bg-cyan-500 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:scale-110">
+              <i class="fa-solid fa-hands-holding-child"></i>
+            </div>
+            <div>
+              <p class="text-xs text-cyan-600 font-bold uppercase tracking-wider">Anak Berbakti</p>
+              <p class="text-base font-bold text-cyan-800">Bantu Orang Tua 🏠❤️</p>
+            </div>
+          </div>
+
+          <!-- Kartu: Kreativitas Ghini -->
+          <div class="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-yellow-100 flex items-center gap-4 cursor-pointer group sm:col-span-2" onclick="kreasiGhini()">
+            <div class="bg-yellow-500 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:rotate-12">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <div class="flex-1">
+              <p class="text-xs text-yellow-600 font-bold uppercase tracking-wider">Keahlian Unik</p>
+              <p class="text-base font-bold text-yellow-950">Aku Bisa Berkreasi! 🧩🎨❌</p>
+            </div>
+          </div>
+
+          <!-- Kartu: Mabar -->
+          <div class="bg-purple-50 border-2 border-purple-200 rounded-2xl p-4 transition-all duration-300 hover:scale-105 hover:bg-purple-100 flex items-center gap-4 cursor-pointer group sm:col-span-2" onclick="mainBarengTeman()">
+            <div class="bg-purple-500 text-white w-12 h-12 rounded-xl flex items-center justify-center text-xl shadow-md group-hover:scale-110">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="flex-1">
+              <p class="text-xs text-purple-500 font-bold uppercase tracking-wider">Aktivitas Seru</p>
+              <p class="text-base font-bold text-purple-800">Main Bareng Teman-Teman 👥✨</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box Pesan Interaktif -->
+        <div id="kotak-pesan" class="bg-pink-100 border-2 border-pink-300 rounded-2xl p-4 text-center text-pink-700 min-h-[60px] flex items-center justify-center font-semibold transition-all duration-300 animate-pulse-soft text-lg handwritten">
+          👉 Klik kartu-kartu lucu di atas untuk mendengarkan cerita interaktifku!
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEKTOR BARU: MULTI-GAME ZONE (RAMEN ATAU COKELAT PANAS) -->
+    <div id="game-zone-section" class="w-full bg-gradient-to-r from-orange-100 via-pink-100 to-amber-100 border-4 border-pink-400 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden transition-all duration-500">
+      <div class="absolute -top-6 -left-6 text-6xl opacity-10 rotate-12 pointer-events-none">🎮</div>
+      <div class="absolute -bottom-6 -right-6 text-6xl opacity-10 -rotate-12 pointer-events-none">💖</div>
+
+      <!-- Pemilih Game -->
+      <div class="text-center mb-6">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-pink-800 flex items-center justify-center gap-2 mb-2">
+          <span>🎮 Arena Game Seru Ghini!</span>
+        </h3>
+        <p class="text-pink-700 font-semibold text-sm sm:text-base handwritten mb-4">Pilih permainan seru yang ingin kamu mainkan sekarang:</p>
+        
+        <div class="flex flex-wrap justify-center gap-3">
+          <button onclick="gantiGameZone('ramen')" id="tab-game-ramen" class="px-6 py-2.5 rounded-full font-bold shadow-md transition-all text-sm flex items-center gap-2 border-2 bg-pink-500 text-white border-pink-600">
+            🍜 Dapur Ramen Ghini
+          </button>
+          <button onclick="gantiGameZone('chocolate')" id="tab-game-chocolate" class="px-6 py-2.5 rounded-full font-bold shadow-md transition-all text-sm flex items-center gap-2 border-2 bg-white text-pink-700 border-pink-300 hover:bg-pink-50">
+            ☕ Dapur Cokelat Mama
+          </button>
+        </div>
+      </div>
+
+      <!-- MINI GAME 1: DAPUR RAMEN GHINI -->
+      <div id="container-game-ramen" class="bg-white/95 border-2 border-orange-300 rounded-2xl p-4 sm:p-6 shadow-inner relative min-h-[400px] flex flex-col justify-between">
+        <!-- SCREEN 1: Mulai Game -->
+        <div id="game-start-screen" class="flex flex-col items-center justify-center text-center space-y-6 py-10">
+          <div class="text-6xl sm:text-7xl animate-bounce">🍜👨‍🍳</div>
+          <div class="max-w-md">
+            <h4 class="text-xl font-bold text-orange-800 mb-2">Dapur Ramen Ghini:</h4>
+            <p class="text-slate-600 text-sm sm:text-base handwritten leading-relaxed">
+              1. Pelanggan hewan lucu akan memesan resep ramen khusus.<br>
+              2. Klik <b>Mangkuk Mie</b>, pilih jenis <b>Kuah</b>, lalu tambahkan <b>Topping</b> yang tepat.<br>
+              3. Klik tombol <b>"Sajikan! 🥢"</b> sebelum waktu habis untuk mendapat skor!<br>
+              4. Setiap hidangan yang benar bernilai +100 poin!
+            </p>
+          </div>
+          <button onclick="mulaiGameRamen()" class="bg-red-500 hover:bg-red-600 text-white text-lg font-bold px-8 py-3.5 rounded-full shadow-lg border-2 border-white transition-all transform hover:scale-105 active:scale-95 animate-pulse-soft">
+            Mulai Masak Ramen! 🍳
+          </button>
+        </div>
+
+        <!-- SCREEN 2: Arena Bermain Game -->
+        <div id="game-play-screen" class="hidden space-y-6">
+          <div class="flex flex-wrap justify-between items-center bg-orange-50 border border-orange-200 rounded-xl p-3 text-sm sm:text-base font-bold text-orange-950 gap-2">
+            <div><i class="fa-solid fa-trophy text-yellow-500"></i> Skor: <span id="game-score" class="text-red-600 text-lg">0</span></div>
+            <div><i class="fa-solid fa-crown text-amber-500"></i> Rekor: <span id="game-highscore" class="text-amber-800">0</span></div>
+            <div class="flex items-center gap-2"><i class="fa-solid fa-clock text-blue-500"></i> Sisa Waktu: <span id="game-timer" class="text-blue-700 text-lg bg-blue-100 px-3 py-0.5 rounded-full animate-pulse">60s</span></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-amber-50/50 p-4 rounded-2xl border border-dashed border-amber-300">
+            <div class="md:col-span-4 flex flex-col items-center text-center">
+              <div id="customer-emoji" class="text-6xl sm:text-7xl animate-float">🐱</div>
+              <div id="customer-name" class="text-xs font-bold text-amber-800 uppercase mt-1">Kak Kucing</div>
+            </div>
+            <div class="md:col-span-8 bg-white border-2 border-orange-400 rounded-2xl p-4 shadow-sm relative">
+              <div class="absolute left-1/2 -top-3 md:-left-3 md:top-1/2 transform -translate-x-1/2 md:-translate-y-1/2 rotate-45 md:rotate-[-45deg] w-4 h-4 bg-white border-l-2 border-t-2 border-orange-400"></div>
+              <p class="text-xs text-amber-600 font-bold uppercase tracking-wider mb-2">Pesanan Saya:</p>
+              <div id="customer-order-display" class="flex flex-wrap gap-2 items-center"></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div class="lg:col-span-8 space-y-4">
+              <div>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-1.5"><span class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full mr-1 text-[10px]">Langkah 1</span> Ambil Piringan Mie:</p>
+                <div class="flex gap-2">
+                  <button onclick="pilihBahan('mie', 'Mie')" id="btn-mie" class="flex items-center gap-2 bg-yellow-50 hover:bg-yellow-100 border-2 border-yellow-300 text-yellow-900 rounded-xl px-4 py-2.5 font-bold transition-all active:scale-95 shadow-sm text-sm">🍜 Mie Kuning</button>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-1.5"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full mr-1 text-[10px]">Langkah 2</span> Pilih Rasa Kuah:</p>
+                <div class="grid grid-cols-3 gap-2">
+                  <button onclick="pilihBahan('kuah', 'Kuah Shoyu')" id="btn-kuah-shoyu" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-300 text-amber-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs sm:text-sm">🟤 Shoyu (Asin)</button>
+                  <button onclick="pilihBahan('kuah', 'Kuah Tonkotsu')" id="btn-kuah-tonkotsu" class="bg-slate-50 hover:bg-slate-100 border-2 border-slate-300 text-slate-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs sm:text-sm">⚪ Tonkotsu (Susu)</button>
+                  <button onclick="pilihBahan('kuah', 'Kuah Pedas')" id="btn-kuah-pedas" class="bg-red-50 hover:bg-red-100 border-2 border-red-300 text-red-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs sm:text-sm">🔴 Pedas (Miso)</button>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-1.5"><span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full mr-1 text-[10px]">Langkah 3</span> Tambahkan Toppings:</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <button onclick="pilihBahan('topping', 'Daging Chashu')" id="btn-top-daging" class="bg-pink-50 hover:bg-pink-100 border-2 border-pink-200 text-pink-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs sm:text-sm">🥩 Daging</button>
+                  <button onclick="pilihBahan('topping', 'Telur')" id="btn-top-telur" class="bg-yellow-50 hover:bg-yellow-100 border-2 border-yellow-200 text-yellow-950 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs sm:text-sm">🥚 Telur Rebus</button>
+                  <button onclick="pilihBahan('topping', 'Nori')" id="btn-top-nori" class="bg-emerald-50 hover:bg-emerald-100 border-2 border-emerald-200 text-emerald-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs sm:text-sm">🍃 Nori</button>
+                  <button onclick="pilihBahan('topping', 'Daun Bawang')" id="btn-top-bawang" class="bg-green-50 hover:bg-green-100 border-2 border-green-200 text-green-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs sm:text-sm">🌱 Daun Bawang</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-4 bg-orange-100/50 rounded-2xl border-2 border-orange-300 p-4 flex flex-col justify-between items-center text-center min-h-[220px]">
+              <div>
+                <p class="text-xs font-bold text-orange-700 uppercase mb-2">Mangkuk Racikanmu:</p>
+                <div class="relative flex items-center justify-center w-24 h-24 mx-auto mb-2 bg-white rounded-full border-4 border-orange-400 shadow-md">
+                  <span id="visual-ramen" class="text-5xl animate-pulse">🥣</span>
+                </div>
+                <div id="racikan-list-display" class="text-xs text-slate-600 font-bold space-y-0.5">Kosong</div>
+              </div>
+              <div class="flex gap-2 w-full mt-4">
+                <button onclick="buangRamen()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold px-3 py-2 rounded-xl border border-slate-300 transition-all flex items-center gap-1"><i class="fa-solid fa-trash"></i> Bersihkan</button>
+                <button onclick="sajikanRamen()" class="flex-1 bg-red-500 hover:bg-red-600 text-white text-sm font-bold py-2 px-4 rounded-xl border border-red-600 shadow-md transition-all active:scale-95 flex items-center justify-center gap-1.5">Sajikan! 🥢</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 3: Game Selesai -->
+        <div id="game-over-screen" class="hidden flex flex-col items-center justify-center text-center space-y-6 py-10">
+          <div class="text-6xl animate-bounce">🏆🎉</div>
+          <div>
+            <h4 class="text-2xl font-extrabold text-orange-800 mb-1">Dapur Tutup! Misi Selesai!</h4>
+            <p class="text-slate-500 text-sm sm:text-base handwritten">Ghini telah berhasil menyajikan banyak ramen terlezat!</p>
+          </div>
+          <div class="bg-orange-50 border border-orange-200 rounded-2xl p-4 max-w-sm w-full grid grid-cols-2 gap-4">
+            <div class="border-r border-orange-200">
+              <p class="text-xs text-orange-600 font-bold uppercase">Skor Kamu</p>
+              <p id="final-score" class="text-3xl font-extrabold text-red-600">0</p>
+            </div>
+            <div>
+              <p class="text-xs text-orange-600 font-bold uppercase">Skor Tertinggi</p>
+              <p id="final-highscore" class="text-3xl font-extrabold text-amber-800">0</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <button onclick="kembaliKeAwalRamen()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-2.5 rounded-full font-bold border border-slate-300 text-sm">Menu Utama</button>
+            <button onclick="mulaiGameRamen()" class="bg-red-500 hover:bg-red-600 text-white px-8 py-2.5 rounded-full font-bold shadow-md transition-all text-sm animate-pulse-soft">Main Lagi 🎮</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- MINI GAME 2: DAPUR COKELAT HANGAT MAMA (KONTEN BARU!) -->
+      <div id="container-game-chocolate" class="hidden bg-white/95 border-2 border-pink-300 rounded-2xl p-4 sm:p-6 shadow-inner relative min-h-[400px] flex flex-col justify-between">
+        
+        <!-- SCREEN 1: Mulai Game Cokelat -->
+        <div id="game-choc-start" class="flex flex-col items-center justify-center text-center space-y-6 py-10">
+          <div class="text-6xl sm:text-7xl animate-bounce">☕👵💖</div>
+          <div class="max-w-md">
+            <h4 class="text-xl font-bold text-pink-800 mb-2">Dapur Cokelat Hangat Ghini & Mama:</h4>
+            <p class="text-slate-600 text-sm sm:text-base handwritten leading-relaxed">
+              Bantu Ghini dan Mama menyajikan cokelat hangat yang menenangkan untuk para gamer yang sedang kelelahan dan pusing bermain game!<br>
+              1. Pilih **Jenis Cokelat** yang diinginkan pelanggan.<br>
+              2. Tambahkan **Toppings** manis yang tepat.<br>
+              3. Tambahkan **Kartu Motivasi** penyemangat.<br>
+              4. Sajikan sebelum waktu habis agar mereka kembali bahagia!
+            </p>
+          </div>
+          <button onclick="mulaiGameChoc()" class="bg-pink-500 hover:bg-pink-600 text-white text-lg font-bold px-8 py-3.5 rounded-full shadow-lg border-2 border-white transition-all transform hover:scale-105 active:scale-95 animate-pulse-soft">
+            Buat Cokelat Hangat! ☕
+          </button>
+        </div>
+
+        <!-- SCREEN 2: Arena Bermain Game Cokelat -->
+        <div id="game-choc-play" class="hidden space-y-6">
+          <div class="flex flex-wrap justify-between items-center bg-pink-50 border border-pink-200 rounded-xl p-3 text-sm sm:text-base font-bold text-pink-950 gap-2">
+            <div><i class="fa-solid fa-trophy text-yellow-500"></i> Skor: <span id="game-choc-score" class="text-pink-600 text-lg">0</span></div>
+            <div><i class="fa-solid fa-crown text-amber-500"></i> Rekor: <span id="game-choc-highscore" class="text-pink-800">0</span></div>
+            <div class="flex items-center gap-2"><i class="fa-solid fa-clock text-blue-500"></i> Sisa Waktu: <span id="game-choc-timer" class="text-blue-700 text-lg bg-blue-100 px-3 py-0.5 rounded-full animate-pulse">60s</span></div>
+          </div>
+
+          <!-- Pelanggan Gamer Kedinginan/Lelah -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center bg-pink-50/50 p-4 rounded-2xl border border-dashed border-pink-300">
+            <div class="md:col-span-4 flex flex-col items-center text-center">
+              <div id="gamer-emoji" class="text-6xl sm:text-7xl">😫</div>
+              <div id="gamer-status" class="text-xs font-bold text-red-500 uppercase mt-1 animate-pulse">Capek & Mentok Boss!</div>
+            </div>
+            <div class="md:col-span-8 bg-white border-2 border-pink-400 rounded-2xl p-4 shadow-sm relative">
+              <div class="absolute left-1/2 -top-3 md:-left-3 md:top-1/2 transform -translate-x-1/2 md:-translate-y-1/2 rotate-45 md:rotate-[-45deg] w-4 h-4 bg-white border-l-2 border-t-2 border-pink-400"></div>
+              <p class="text-xs text-pink-600 font-bold uppercase tracking-wider mb-2">Ingin Secangkir Penenang:</p>
+              <div id="gamer-order-display" class="flex flex-wrap gap-2 items-center"></div>
+            </div>
+          </div>
+
+          <!-- Meja Pembuatan Cokelat -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div class="lg:col-span-8 space-y-4">
+              <!-- Langkah 1: Tipe Cokelat -->
+              <div>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-1.5"><span class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full mr-1 text-[10px]">Langkah 1</span> Basis Cokelat Panas:</p>
+                <div class="grid grid-cols-3 gap-2">
+                  <button onclick="pilihBahanChoc('base', 'Milk Chocolate')" id="btn-choc-milk" class="bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 text-amber-950 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs">🟤 Cokelat Susu</button>
+                  <button onclick="pilihBahanChoc('base', 'Dark Chocolate')" id="btn-choc-dark" class="bg-stone-800 hover:bg-stone-900 border-2 border-stone-600 text-white rounded-xl py-2 font-bold transition-all active:scale-95 text-xs">⚫ Cokelat Hitam</button>
+                  <button onclick="pilihBahanChoc('base', 'White Chocolate')" id="btn-choc-white" class="bg-slate-50 hover:bg-slate-100 border-2 border-slate-300 text-slate-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs">⚪ Cokelat Putih</button>
+                </div>
+              </div>
+
+              <!-- Langkah 2: Topping Cokelat -->
+              <div>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-1.5"><span class="bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full mr-1 text-[10px]">Langkah 2</span> Tambah Topping Manis:</p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <button onclick="pilihBahanChoc('topping', 'Marshmallow')" id="btn-choc-marsh" class="bg-pink-50 hover:bg-pink-100 border-2 border-pink-200 text-pink-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs">🍥 Marshmallow</button>
+                  <button onclick="pilihBahanChoc('topping', 'Whipped Cream')" id="btn-choc-cream" class="bg-yellow-50 hover:bg-yellow-100 border-2 border-yellow-200 text-yellow-950 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs">🧁 Krim Kocok</button>
+                  <button onclick="pilihBahanChoc('topping', 'Cookie Crumbs')" id="btn-choc-crumbs" class="bg-amber-50 hover:bg-amber-100 border-2 border-amber-200 text-amber-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs">🍪 Remahan Kue</button>
+                  <button onclick="pilihBahanChoc('topping', 'Cinnamon')" id="btn-choc-cinnamon" class="bg-orange-50 hover:bg-orange-100 border-2 border-orange-200 text-orange-950 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs">🌿 Kayu Manis</button>
+                </div>
+              </div>
+
+              <!-- Langkah 3: Kartu Penyemangat -->
+              <div>
+                <p class="text-xs font-bold text-slate-500 uppercase mb-1.5"><span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full mr-1 text-[10px]">Langkah 3</span> Berikan Kartu Motivasi Mama:</p>
+                <div class="grid grid-cols-2 gap-2">
+                  <button onclick="pilihBahanChoc('note', 'Istirahat Dulu')" id="btn-choc-note1" class="bg-purple-50 hover:bg-purple-100 border-2 border-purple-200 text-purple-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs text-left px-3">💬 \"Istirahat Dulu Sayang\"</button>
+                  <button onclick="pilihBahanChoc('note', 'Pasti Bisa')" id="btn-choc-note2" class="bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 text-blue-900 rounded-xl py-2 font-bold transition-all active:scale-95 text-xs text-left px-3">💬 \"Tenang, Kamu Pasti Bisa\"</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cangkir Cokelat Panas Racikan -->
+            <div class="lg:col-span-4 bg-pink-100/50 rounded-2xl border-2 border-pink-300 p-4 flex flex-col justify-between items-center text-center min-h-[220px]">
+              <div>
+                <p class="text-xs font-bold text-pink-700 uppercase mb-2">Cangkir Cokelatmu:</p>
+                <div class="relative flex items-center justify-center w-24 h-24 mx-auto mb-2 bg-white rounded-full border-4 border-pink-400 shadow-md">
+                  <span id="visual-chocolate" class="text-5xl animate-bounce">🥛</span>
+                  <!-- Efek Uap Panas -->
+                  <span class="absolute top-1 text-xl animate-pulse opacity-75">♨️</span>
+                </div>
+                <div id="choc-list-display" class="text-xs text-slate-600 font-bold space-y-0.5">Kosong</div>
+              </div>
+              <div class="flex gap-2 w-full mt-4">
+                <button onclick="buangChoc()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold px-3 py-2 rounded-xl border border-slate-300 transition-all flex items-center gap-1"><i class="fa-solid fa-trash"></i> Bersihkan</button>
+                <button onclick="sajikanChoc()" class="flex-1 bg-pink-500 hover:bg-pink-600 text-white text-sm font-bold py-2 px-4 rounded-xl border border-pink-600 shadow-md transition-all active:scale-95 flex items-center justify-center gap-1.5">Sajikan! ☕</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCREEN 3: Game Selesai Cokelat -->
+        <div id="game-choc-over" class="hidden flex flex-col items-center justify-center text-center space-y-6 py-10">
+          <div class="text-6xl animate-bounce">👵❤️☕</div>
+          <div>
+            <h4 class="text-2xl font-extrabold text-pink-800 mb-1">Dapur Tutup! Semua Gamer Berhasil Tenang!</h4>
+            <p class="text-slate-500 text-sm sm:text-base handwritten">Cokelat buatan Ghini dan Mama memang paling menenangkan sedunia!</p>
+          </div>
+          <div class="bg-pink-50 border border-pink-200 rounded-2xl p-4 max-w-sm w-full grid grid-cols-2 gap-4">
+            <div class="border-r border-pink-200">
+              <p class="text-xs text-pink-600 font-bold uppercase">Skor Kamu</p>
+              <p id="final-choc-score" class="text-3xl font-extrabold text-pink-600">0</p>
+            </div>
+            <div>
+              <p class="text-xs text-pink-600 font-bold uppercase">Skor Tertinggi</p>
+              <p id="final-choc-highscore" class="text-3xl font-extrabold text-purple-800">0</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <button onclick="kembaliKeAwalChoc()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-2.5 rounded-full font-bold border border-slate-300 text-sm">Menu Utama</button>
+            <button onclick="mulaiGameChoc()" class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-2.5 rounded-full font-bold shadow-md transition-all text-sm animate-pulse-soft">Main Lagi ☕</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bagian 3: BUKU HARIAN AJAIB GHINI (Dua Kisah Pilihan!) -->
+    <div id="kisah-ramen-section" class="w-full bg-gradient-to-r from-amber-100 via-orange-100 to-amber-100 border-4 border-amber-400 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden transition-all duration-500">
+      <div class="absolute -top-6 -right-6 text-6xl opacity-10 rotate-12 pointer-events-none">📖</div>
+      <div class="absolute -bottom-6 -left-6 text-6xl opacity-10 -rotate-12 pointer-events-none">💖</div>
+
+      <div class="text-center mb-6">
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-amber-800 flex items-center justify-center gap-2">
+          <span>📖 Buku Harian Ajaib Ghini</span>
+        </h3>
+        <p class="text-amber-700 font-semibold text-sm sm:text-base handwritten">"Kumpulan kisah petualangan seru & penuh inspirasi!"</p>
+      </div>
+
+      <!-- Tab Pemilihan Cerita -->
+      <div class="flex justify-center gap-3 mb-6">
+        <button onclick="pilihStory('ramen')" id="tab-story-ramen" class="px-5 py-2 rounded-full font-bold shadow-md transition-all text-xs sm:text-sm flex items-center gap-1.5 border-2 bg-amber-500 text-white border-amber-600">
+          🍜 Misi Penyelamatan Ramen
+        </button>
+        <button onclick="pilihStory('boss')" id="tab-story-boss" class="px-5 py-2 rounded-full font-bold shadow-md transition-all text-xs sm:text-sm flex items-center gap-1.5 border-2 bg-white text-amber-700 border-amber-300 hover:bg-amber-50">
+          ☕ Cokelat & Boss Terakhir
+        </button>
+      </div>
+
+      <!-- Kotak Tampilan Buku Cerita Interaktif -->
+      <div class="bg-white/80 border-2 border-amber-300 rounded-2xl p-6 relative min-h-[220px] flex flex-col justify-between shadow-inner">
+        <!-- Halaman Berjalan -->
+        <div class="absolute top-2 right-4 text-xs font-bold text-amber-500 uppercase" id="halaman-story">
+          Halaman 1 / 5
+        </div>
+
+        <!-- Konten Halaman Komik -->
+        <div class="flex flex-col md:flex-row items-center gap-6 py-2 transition-all duration-300" id="konten-story">
+          <!-- Ilustrasi Emoji Besar -->
+          <div class="w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-tr from-amber-400 to-orange-400 text-white rounded-full flex items-center justify-center text-5xl shadow-md border-4 border-white animate-float" id="emoji-story">
+            🎮
+          </div>
+          <!-- Teks Cerita -->
+          <div class="flex-1 text-center md:text-left">
+            <h4 class="text-lg font-bold text-amber-900 mb-1" id="judul-story">Rutinitas Sepulang Sekolah</h4>
+            <p class="text-slate-600 text-base leading-relaxed handwritten text-lg" id="teks-story">
+              Setiap kali bel pulang sekolah berbunyi, Ghini langsung bergegas pulang. Dia paling suka menyalakan konsol game kesayangannya, bermain seru-seruan sambil ditemani secangkir coklat panas yang lezat dan manis!
+            </p>
+          </div>
+        </div>
+
+        <!-- Tombol Kontrol Buku -->
+        <div class="flex justify-between items-center mt-6 border-t border-amber-200 pt-4">
+          <button onclick="navigasiStory(-1)" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full font-bold shadow-md transition-all active:scale-90 disabled:opacity-50 flex items-center gap-1.5 text-xs sm:text-sm" id="btn-prev">
+            <i class="fa-solid fa-arrow-left"></i> Sebelum
+          </button>
+          
+          <button onclick="mainkanSuaraHalaman()" class="bg-orange-400 hover:bg-orange-500 text-white w-9 h-9 rounded-full flex items-center justify-center shadow-md active:scale-90" title="Putar Efek Suara Halaman">
+            <i class="fa-solid fa-volume-high text-sm"></i>
+          </button>
+
+          <button onclick="navigasiStory(1)" class="bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full font-bold shadow-md transition-all active:scale-90 flex items-center gap-1.5 text-xs sm:text-sm" id="btn-next">
+            Lanjut <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="w-full text-center py-4 text-slate-500/80 text-sm z-10 relative">
+    <p>Dibuat dengan ❤️ untuk <span class="font-bold text-pink-500">Ghini</span> | © 2026 Dunia Fantasi Ghini</p>
+  </footer>
+
+  <!-- Audio Sintetis Menggunakan Web Audio API -->
+  <script>
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    function playSound(freq, type, duration) {
+      try {
+        initAudio();
+        if (!audioCtx) return;
+        
+        let osc = audioCtx.createOscillator();
+        let gain = audioCtx.createGain();
+        
+        osc.type = type || 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {
+        console.log("Audio belum didukung atau diizinkan peramban");
+      }
+    }
+
+    // Fungsi interaksi hobi game
+    function mainkanEfekGame() {
+      playSound(523.25, 'square', 0.1); 
+      setTimeout(() => { playSound(659.25, 'square', 0.15); }, 80);
+      
+      const pesan = [
+        "🎮 Level Up! Ghini mengalahkan boss besar di game favoritnya!",
+        "👾 Biip Boop! Ghini meraih rekor skor tertinggi hari ini!",
+        "🏆 Menang lagi! Ghini memang pro-gamer sejati!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-blue-100 text-blue-700 border-blue-300");
+      buatAnimasiEmoji("🎮");
+    }
+
+    // Fungsi interaksi makanan ramen
+    function makanRamen() {
+      playSound(300, 'triangle', 0.2);
+      setTimeout(() => { playSound(450, 'triangle', 0.1); }, 100);
+
+      const pesan = [
+        "🍜 Nyam nyam slurrp! Ramen hangat kuah gurih kesukaan Ghini siap dihidangkan!",
+        "🥢 Sumpit siap, mangkok siap! Kuah kaldu ramennya enak sekali!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-red-100 text-red-700 border-red-300");
+      buatAnimasiEmoji("🍜");
+    }
+
+    // Fungsi interaksi minuman coklat
+    function minumCoklat() {
+      playSound(392, 'sine', 0.3);
+      setTimeout(() => { playSound(587.33, 'sine', 0.2); }, 150);
+
+      const pesan = [
+        "🍫 Manis sekali! Minuman coklat hangat/dingin selalu bikin Ghini bersemangat!",
+        "🥛 Choco-Bomb! Rasa cokelat manis ini bikin hari-hari makin ceria!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-amber-100 text-amber-950 border-amber-300");
+      buatAnimasiEmoji("🍫");
+    }
+
+    // Fungsi interaksi main bareng teman-teman
+    function mainBarengTeman() {
+      playSound(261.63, 'sine', 0.1); 
+      setTimeout(() => playSound(329.63, 'sine', 0.1), 80);  
+      setTimeout(() => playSound(392.00, 'sine', 0.1), 160); 
+      setTimeout(() => playSound(523.25, 'sine', 0.2), 240); 
+
+      const pesan = [
+        "👥 Squad Active! Main bareng teman-teman adalah momen paling seru!",
+        "💖 Kompak selalu! Ghini dan kawan-kawan selalu punya petualangan asyik!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-purple-100 text-purple-700 border-purple-300");
+      buatAnimasiEmoji("👥");
+      setTimeout(() => { buatAnimasiEmoji("💖"); }, 300);
+    }
+
+    // Jalan-Jalan Keluarga
+    function jalanKeluarga() {
+      playSound(440, 'triangle', 0.15);
+      setTimeout(() => { playSound(440, 'triangle', 0.15); }, 150);
+
+      const pesan = [
+        "🚗 Wuss! Ghini senang sekali jalan-jalan menikmati pemandangan indah bersama keluarga tercinta!",
+        "👨‍👩‍👧‍👦 Quality Time! Liburan keluarga adalah momen terhangat yang paling Ghini tunggu-tunggu!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-emerald-100 text-emerald-700 border-emerald-300");
+      buatAnimasiEmoji("🚗");
+      setTimeout(() => { buatAnimasiEmoji("❤️"); }, 200);
+    }
+
+    // Belanja di Mal
+    function belanjaMal() {
+      playSound(987.77, 'sine', 0.1); 
+      setTimeout(() => { playSound(1318.51, 'sine', 0.2); }, 80); 
+
+      const pesan = [
+        "🛍️ Wah indahnya! Ghini suka jalan-jalan keliling mal-mal keren dan belanja barang seru!",
+        "✨ Window shopping dan berburu barang lucu di mal bareng keluarga itu seru abis!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-pink-100 text-pink-700 border-pink-300");
+      buatAnimasiEmoji("🛍️");
+    }
+
+    // Membantu Orang Tua
+    function bantuOrangTua() {
+      playSound(880, 'sine', 0.2);
+      setTimeout(() => { playSound(1046.50, 'sine', 0.2); }, 100);
+
+      const pesan = [
+        "🏠 Hebat! Ghini adalah anak yang berbakti karena sering membantu Ayah dan Ibu di rumah!",
+        "🌟 Anak jempolan! Membantu orang tua bikin rumah jadi penuh senyuman dan kebahagiaan!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-cyan-100 text-cyan-700 border-cyan-300");
+      buatAnimasiEmoji("⭐");
+      setTimeout(() => { buatAnimasiEmoji("🏠"); }, 250);
+    }
+
+    // Kreasi Ghini
+    function kreasiGhini() {
+      playSound(330, 'square', 0.08);
+      setTimeout(() => { playSound(440, 'square', 0.08); }, 100);
+
+      const pesan = [
+        "🧩 Aku memang tidak suka menggambar 🎨❌, tapi aku sangat kreatif dalam membuat hal luar biasa lainnya!",
+        "💡 Si pembuat kreasi! Ghini jago berkreasi dengan cara-cara unik dan ide yang cemerlang!"
+      ];
+      const acak = pesan[Math.floor(Math.random() * pesan.length)];
+      tampilkanPesan(acak, "bg-yellow-100 text-yellow-800 border-yellow-300");
+      buatAnimasiEmoji("🧩");
+      setTimeout(() => { buatAnimasiEmoji("💡"); }, 300);
+    }
+
+    // ==========================================
+    // SISTEM MULTI-GAME ZONE (BARU!)
+    // ==========================================
+    function gantiGameZone(gamePilihan) {
+      const tabRamen = document.getElementById('tab-game-ramen');
+      const tabChocolate = document.getElementById('tab-game-chocolate');
+      const containerRamen = document.getElementById('container-game-ramen');
+      const containerChocolate = document.getElementById('container-game-chocolate');
+
+      // Matikan game yang sedang aktif sebelum bertukar
+      if (gameActive) selesaiGameRamen();
+      if (gameChocActive) selesaiGameChoc();
+
+      if (gamePilihan === 'ramen') {
+        containerRamen.classList.remove('hidden');
+        containerChocolate.classList.add('hidden');
+        tabRamen.className = "px-6 py-2.5 rounded-full font-bold shadow-md transition-all text-sm flex items-center gap-2 border-2 bg-pink-500 text-white border-pink-600";
+        tabChocolate.className = "px-6 py-2.5 rounded-full font-bold shadow-md transition-all text-sm flex items-center gap-2 border-2 bg-white text-pink-700 border-pink-300 hover:bg-pink-50";
+      } else {
+        containerRamen.classList.add('hidden');
+        containerChocolate.classList.remove('hidden');
+        tabChocolate.className = "px-6 py-2.5 rounded-full font-bold shadow-md transition-all text-sm flex items-center gap-2 border-2 bg-pink-500 text-white border-pink-600";
+        tabRamen.className = "px-6 py-2.5 rounded-full font-bold shadow-md transition-all text-sm flex items-center gap-2 border-2 bg-white text-pink-700 border-pink-300 hover:bg-pink-50";
+      }
+      
+      playSound(392, 'sine', 0.15);
+    }
+
+    // ==========================================
+    // ENGINE GAME 1: COOKING RAMEN GHINI
+    // ==========================================
+    let gameScore = 0;
+    let gameHighScore = 0;
+    let gameTimeLeft = 60;
+    let gameInterval = null;
+    let gameActive = false;
+
+    // Pelanggan hewan lucu
+    const customers = [
+      { emoji: "🐱", name: "Kak Kucing" },
+      { emoji: "🐼", name: "Kak Panda" },
+      { emoji: "🐰", name: "Kak Kelinci" },
+      { emoji: "🐻", name: "Kak Beruang" },
+      { emoji: "🐶", name: "Kak Gukguk" }
+    ];
+
+    const listToppings = ["Daging Chashu", "Telur", "Nori", "Daun Bawang"];
+    const listKuah = ["Kuah Shoyu", "Kuah Tonkotsu", "Kuah Pedas"];
+
+    let targetOrder = { mie: "Mie", kuah: "", toppings: [] };
+    let currentPrep = { mie: "", kuah: "", toppings: [] };
+
+    function mulaiGameRamen() {
+      initAudio();
+      gameActive = true;
+      gameScore = 0;
+      gameTimeLeft = 60;
+      buangRamen();
+
+      document.getElementById('game-start-screen').classList.add('hidden');
+      document.getElementById('game-over-screen').classList.add('hidden');
+      document.getElementById('game-play-screen').classList.remove('hidden');
+
+      document.getElementById('game-score').innerText = gameScore;
+      document.getElementById('game-timer').innerText = gameTimeLeft + 's';
+
+      if (gameInterval) clearInterval(gameInterval);
+      gameInterval = setInterval(() => {
+        gameTimeLeft--;
+        document.getElementById('game-timer').innerText = gameTimeLeft + 's';
+
+        if (gameTimeLeft <= 10 && gameTimeLeft > 0) {
+          playSound(600, 'sine', 0.05);
+        }
+
+        if (gameTimeLeft <= 0) {
+          selesaiGameRamen();
+        }
+      }, 1000);
+
+      buatPelangganBaru();
+      playSound(392, 'sine', 0.1);
+      setTimeout(() => playSound(523.25, 'sine', 0.15), 100);
+      setTimeout(() => playSound(659.25, 'sine', 0.25), 200);
+    }
+
+    function buatPelangganBaru() {
+      if (!gameActive) return;
+
+      const cust = customers[Math.floor(Math.random() * customers.length)];
+      document.getElementById('customer-emoji').innerText = cust.emoji;
+      document.getElementById('customer-name').innerText = cust.name;
+
+      targetOrder.mie = "Mie"; 
+      targetOrder.kuah = listKuah[Math.floor(Math.random() * listKuah.length)];
+      
+      targetOrder.toppings = [];
+      const jumlahTopping = Math.floor(Math.random() * 3) + 1; 
+      const toppingsTeracak = [...listToppings].sort(() => 0.5 - Math.random());
+      for (let i = 0; i < jumlahTopping; i++) {
+        targetOrder.toppings.push(toppingsTeracak[i]);
+      }
+
+      renderOrderBubble();
+    }
+
+    function renderOrderBubble() {
+      const container = document.getElementById('customer-order-display');
+      container.innerHTML = "";
+
+      container.appendChild(createBadge("🍜 Mie Kuning", "bg-yellow-100 border-yellow-300 text-yellow-800"));
+
+      let kuahStyle = "bg-amber-100 border-amber-300 text-amber-800";
+      if (targetOrder.kuah === "Kuah Tonkotsu") kuahStyle = "bg-slate-100 border-slate-300 text-slate-800";
+      if (targetOrder.kuah === "Kuah Pedas") kuahStyle = "bg-red-100 border-red-300 text-red-800";
+      container.appendChild(createBadge(targetOrder.kuah, kuahStyle));
+
+      targetOrder.toppings.forEach(top => {
+        let topStyle = "bg-purple-100 border-purple-300 text-purple-800";
+        if (top === "Daging Chashu") topStyle = "bg-pink-100 border-pink-300 text-pink-800";
+        if (top === "Telur") topStyle = "bg-yellow-50 border-yellow-200 text-yellow-950";
+        if (top === "Nori") topStyle = "bg-emerald-100 border-emerald-300 text-emerald-800";
+        if (top === "Daun Bawang") topStyle = "bg-green-100 border-green-300 text-green-800";
+        
+        container.appendChild(createBadge(top, topStyle));
+      });
+    }
+
+    function pilihBahan(kategori, nilai) {
+      if (!gameActive) return;
+      playSound(600, 'triangle', 0.08);
+
+      if (kategori === 'mie') {
+        currentPrep.mie = nilai;
+      } else if (kategori === 'kuah') {
+        currentPrep.kuah = nilai;
+      } else if (kategori === 'topping') {
+        const idx = currentPrep.toppings.indexOf(nilai);
+        if (idx > -1) {
+          currentPrep.toppings.splice(idx, 1);
+        } else {
+          currentPrep.toppings.push(nilai);
+        }
+      }
+      updateMangkukUI();
+    }
+
+    function updateMangkukUI() {
+      const visual = document.getElementById('visual-ramen');
+      const listDisplay = document.getElementById('racikan-list-display');
+
+      if (!currentPrep.mie && !currentPrep.kuah && currentPrep.toppings.length === 0) {
+        visual.innerText = "🥣";
+        listDisplay.innerHTML = "Kosong";
+        return;
+      }
+
+      let items = [];
+      if (currentPrep.mie) items.push("🍜 Mie");
+      if (currentPrep.kuah) items.push(`🍶 ${currentPrep.kuah}`);
+      
+      currentPrep.toppings.forEach(t => {
+        let icon = "🌱";
+        if (t === "Daging Chashu") icon = "🥩";
+        if (t === "Telur") icon = "🥚";
+        if (t === "Nori") icon = "🍃";
+        items.push(`${icon} ${t}`);
+      });
+
+      listDisplay.innerHTML = items.join(" + ");
+
+      if (currentPrep.mie && currentPrep.kuah) {
+        visual.innerText = "🍜"; 
+      } else {
+        visual.innerText = "🥣";
+      }
+    }
+
+    function buangRamen() {
+      currentPrep = { mie: "", kuah: "", toppings: [] };
+      playSound(150, 'sawtooth', 0.15);
+      updateMangkukUI();
+    }
+
+    function sajikanRamen() {
+      if (!gameActive) return;
+
+      const mieCocok = currentPrep.mie === targetOrder.mie;
+      const kuahCocok = currentPrep.kuah === targetOrder.kuah;
+      
+      const topPrepSorted = [...currentPrep.toppings].sort().join(',');
+      const topTargetSorted = [...targetOrder.toppings].sort().join(',');
+      const toppingCocok = topPrepSorted === topTargetSorted;
+
+      if (mieCocok && kuahCocok && toppingCocok) {
+        gameScore += 100;
+        document.getElementById('game-score').innerText = gameScore;
+        
+        playSound(523.25, 'sine', 0.08);
+        setTimeout(() => playSound(659.25, 'sine', 0.08), 80);
+        setTimeout(() => playSound(783.99, 'sine', 0.15), 160);
+
+        buatAnimasiEmoji("✨");
+        buatAnimasiEmoji("🥰");
+
+        tampilkanPesan("🍳 Nyam! Kak Pelanggan sangat menyukai ramen racikan Ghini!", "bg-green-100 text-green-700 border-green-300");
+        buangRamen();
+        buatPelangganBaru();
+      } else {
+        playSound(150, 'sawtooth', 0.3);
+        buatAnimasiEmoji("💢");
+        tampilkanPesan("⚠️ Oops! Resepnya salah, periksa pesanan pelanggan lagi ya!", "bg-red-100 text-red-700 border-red-300");
+      }
+    }
+
+    function selesaiGameRamen() {
+      gameActive = false;
+      clearInterval(gameInterval);
+
+      if (gameScore > gameHighScore) {
+        gameHighScore = gameScore;
+      }
+
+      document.getElementById('final-score').innerText = gameScore;
+      document.getElementById('final-highscore').innerText = gameHighScore;
+
+      document.getElementById('game-play-screen').classList.add('hidden');
+      document.getElementById('game-over-screen').classList.remove('hidden');
+
+      playSound(523.25, 'triangle', 0.1);
+      setTimeout(() => playSound(659.25, 'triangle', 0.1), 100);
+      setTimeout(() => playSound(783.99, 'triangle', 0.3), 200);
+    }
+
+    function kembaliKeAwalRamen() {
+      document.getElementById('game-over-screen').classList.add('hidden');
+      document.getElementById('game-start-screen').classList.remove('hidden');
+    }
+
+
+    // ==========================================
+    // ENGINE GAME 2: COKELAT HANGAT MAMA (BARU!)
+    // ==========================================
+    let gameChocScore = 0;
+    let gameChocHighScore = 0;
+    let gameChocTimeLeft = 60;
+    let gameChocInterval = null;
+    let gameChocActive = false;
+
+    // Gamer Lelah & Kedinginan
+    const gamers = [
+      { emoji: "😫", name: "Gamer Capek" },
+      { emoji: "🥶", name: "Gamer Kedinginan" },
+      { emoji: "🤯", name: "Gamer Kalah 10x" },
+      { emoji: "🥺", name: "Gamer Mau Menyerah" },
+      { emoji: "😴", name: "Gamer Ngantuk" }
+    ];
+
+    const listChocBases = ["Milk Chocolate", "Dark Chocolate", "White Chocolate"];
+    const listChocToppings = ["Marshmallow", "Whipped Cream", "Cookie Crumbs", "Cinnamon"];
+    const listNotes = ["Istirahat Dulu", "Pasti Bisa"];
+
+    let targetChocOrder = { base: "", toppings: [], note: "" };
+    let currentChocPrep = { base: "", toppings: [], note: "" };
+
+    function mulaiGameChoc() {
+      initAudio();
+      gameChocActive = true;
+      gameChocScore = 0;
+      gameChocTimeLeft = 60;
+      buangChoc();
+
+      document.getElementById('game-choc-start').classList.add('hidden');
+      document.getElementById('game-choc-over').classList.add('hidden');
+      document.getElementById('game-choc-play').classList.remove('hidden');
+
+      document.getElementById('game-choc-score').innerText = gameChocScore;
+      document.getElementById('game-choc-timer').innerText = gameChocTimeLeft + 's';
+
+      if (gameChocInterval) clearInterval(gameChocInterval);
+      gameChocInterval = setInterval(() => {
+        gameChocTimeLeft--;
+        document.getElementById('game-choc-timer').innerText = gameChocTimeLeft + 's';
+
+        if (gameChocTimeLeft <= 10 && gameChocTimeLeft > 0) {
+          playSound(750, 'sine', 0.05);
+        }
+
+        if (gameChocTimeLeft <= 0) {
+          selesaiGameChoc();
+        }
+      }, 1000);
+
+      buatGamerBaru();
+      // Suara penyemangat pembuka
+      playSound(523.25, 'sine', 0.1);
+      setTimeout(() => playSound(659.25, 'sine', 0.1), 80);
+      setTimeout(() => playSound(783.99, 'sine', 0.25), 160);
+    }
+
+    function buatGamerBaru() {
+      if (!gameChocActive) return;
+
+      const gamer = gamers[Math.floor(Math.random() * gamers.length)];
+      document.getElementById('gamer-emoji').innerText = gamer.emoji;
+      
+      // Beri status berdasarkan emoji
+      let statusText = "Capek & Mentok Boss!";
+      if (gamer.emoji === "🥶") statusText = "Kedinginan!";
+      if (gamer.emoji === "🤯") statusText = "Stres Kalah Terus!";
+      if (gamer.emoji === "🥺") statusText = "Sedih Mau Menyerah!";
+      if (gamer.emoji === "😴") statusText = "Otak Mulai Lelah!";
+      document.getElementById('gamer-status').innerText = statusText;
+
+      // Buat Pesanan Acak
+      targetChocOrder.base = listChocBases[Math.floor(Math.random() * listChocBases.length)];
+      targetChocOrder.note = listNotes[Math.floor(Math.random() * listNotes.length)];
+      
+      targetChocOrder.toppings = [];
+      const jumlahTopping = Math.floor(Math.random() * 2) + 1; // 1 atau 2 topping
+      const toppingsTeracak = [...listChocToppings].sort(() => 0.5 - Math.random());
+      for (let i = 0; i < jumlahTopping; i++) {
+        targetChocOrder.toppings.push(toppingsTeracak[i]);
+      }
+
+      renderGamerOrderBubble();
+    }
+
+    function renderGamerOrderBubble() {
+      const container = document.getElementById('gamer-order-display');
+      container.innerHTML = "";
+
+      // Item Basis Cokelat
+      let baseIndo = "Cokelat Susu";
+      let baseStyle = "bg-amber-100 border-amber-300 text-amber-800";
+      if (targetChocOrder.base === "Dark Chocolate") {
+        baseIndo = "Cokelat Hitam";
+        baseStyle = "bg-stone-800 border-stone-600 text-stone-100";
+      } else if (targetChocOrder.base === "White Chocolate") {
+        baseIndo = "Cokelat Putih";
+        baseStyle = "bg-slate-100 border-slate-300 text-slate-800";
+      }
+      container.appendChild(createBadge(`☕ ${baseIndo}`, baseStyle));
+
+      // Item Toppings
+      targetChocOrder.toppings.forEach(top => {
+        let topIndo = top;
+        let topStyle = "bg-pink-100 border-pink-300 text-pink-800";
+        if (top === "Marshmallow") { topIndo = "🍥 Marshmallow"; topStyle = "bg-pink-100 border-pink-200 text-pink-700"; }
+        if (top === "Whipped Cream") { topIndo = "🧁 Krim Kocok"; topStyle = "bg-yellow-50 border-yellow-200 text-yellow-900"; }
+        if (top === "Cookie Crumbs") { topIndo = "🍪 Remahan Kue"; topStyle = "bg-amber-50 border-amber-200 text-amber-900"; }
+        if (top === "Cinnamon") { topIndo = "🌿 Kayu Manis"; topStyle = "bg-orange-50 border-orange-200 text-orange-950"; }
+        
+        container.appendChild(createBadge(topIndo, topStyle));
+      });
+
+      // Item Kartu Motivasi
+      const noteIndo = targetChocOrder.note === "Istirahat Dulu" ? "💬 \"Istirahat Dulu\"" : "💬 \"Pasti Bisa\"";
+      container.appendChild(createBadge(noteIndo, "bg-purple-100 border-purple-300 text-purple-800"));
+    }
+
+    function pilihBahanChoc(kategori, nilai) {
+      if (!gameChocActive) return;
+      // Suara tuangan hangat
+      playSound(450, 'sine', 0.1);
+
+      if (kategori === 'base') {
+        currentChocPrep.base = nilai;
+      } else if (kategori === 'note') {
+        currentChocPrep.note = nilai;
+      } else if (kategori === 'topping') {
+        const idx = currentChocPrep.toppings.indexOf(nilai);
+        if (idx > -1) {
+          currentChocPrep.toppings.splice(idx, 1);
+        } else {
+          currentChocPrep.toppings.push(nilai);
+        }
+      }
+      updateCangkurUI();
+    }
+
+    function updateCangkurUI() {
+      const visual = document.getElementById('visual-chocolate');
+      const listDisplay = document.getElementById('choc-list-display');
+
+      if (!currentChocPrep.base && currentChocPrep.toppings.length === 0 && !currentChocPrep.note) {
+        visual.innerText = "🥛";
+        listDisplay.innerHTML = "Kosong";
+        return;
+      }
+
+      let items = [];
+      if (currentChocPrep.base) {
+        let baseIndo = currentChocPrep.base === "Milk Chocolate" ? "Cokelat Susu" : currentChocPrep.base === "Dark Chocolate" ? "Cokelat Hitam" : "Cokelat Putih";
+        items.push(`☕ ${baseIndo}`);
+      }
+      
+      currentChocPrep.toppings.forEach(t => {
+        let icon = "🍥";
+        if (t === "Whipped Cream") icon = "🧁";
+        if (t === "Cookie Crumbs") icon = "🍪";
+        if (t === "Cinnamon") icon = "🌿";
+        items.push(`${icon} ${t}`);
+      });
+
+      if (currentChocPrep.note) {
+        items.push(`💬 "${currentChocPrep.note}"`);
+      }
+
+      listDisplay.innerHTML = items.join(" + ");
+
+      // Atur warna visual cangkir
+      if (currentChocPrep.base) {
+        visual.innerText = "☕"; 
+      } else {
+        visual.innerText = "🥛";
+      }
+    }
+
+    function buangChoc() {
+      currentChocPrep = { base: "", toppings: [], note: "" };
+      playSound(150, 'sawtooth', 0.15);
+      updateCangkurUI();
+    }
+
+    function sajikanChoc() {
+      if (!gameChocActive) return;
+
+      const baseCocok = currentChocPrep.base === targetChocOrder.base;
+      const noteCocok = currentChocPrep.note === targetChocOrder.note;
+      
+      const topPrepSorted = [...currentChocPrep.toppings].sort().join(',');
+      const topTargetSorted = [...targetChocOrder.toppings].sort().join(',');
+      const toppingCocok = topPrepSorted === topTargetSorted;
+
+      if (baseCocok && noteCocok && toppingCocok) {
+        gameChocScore += 100;
+        document.getElementById('game-choc-score').innerText = gameChocScore;
+        
+        // Melodi harpa menenangkan saat menyajikan cokelat hangat
+        playSound(523.25, 'sine', 0.15);
+        setTimeout(() => playSound(659.25, 'sine', 0.15), 100);
+        setTimeout(() => playSound(783.99, 'sine', 0.15), 200);
+        setTimeout(() => playSound(1046.50, 'sine', 0.25), 300);
+
+        buatAnimasiEmoji("☕");
+        buatAnimasiEmoji("💖");
+        buatAnimasiEmoji("👵");
+
+        tampilkanPesan("☕ Ahhh hangatnya... Gamer berterima kasih karena cokelat buatan Ghini & Mama sukses menenangkannya!", "bg-pink-100 text-pink-700 border-pink-300");
+        buangChoc();
+        buatGamerBaru();
+      } else {
+        playSound(150, 'sawtooth', 0.3);
+        buatAnimasiEmoji("💢");
+        tampilkanPesan("⚠️ Hmm, racikannya kurang tepat. Gamer ini butuh cokelat yang sesuai pesanannya!", "bg-red-100 text-red-700 border-red-300");
+      }
+    }
+
+    function selesaiGameChoc() {
+      gameChocActive = false;
+      clearInterval(gameChocInterval);
+
+      if (gameChocScore > gameChocHighScore) {
+        gameChocHighScore = gameChocScore;
+      }
+
+      document.getElementById('final-choc-score').innerText = gameChocScore;
+      document.getElementById('final-choc-highscore').innerText = gameChocHighScore;
+
+      document.getElementById('game-choc-play').classList.add('hidden');
+      document.getElementById('game-choc-over').classList.remove('hidden');
+
+      // Musik penutup game over manis
+      playSound(392, 'sine', 0.15);
+      setTimeout(() => playSound(493.88, 'sine', 0.15), 120);
+      setTimeout(() => playSound(587.33, 'sine', 0.3), 240);
+    }
+
+    function kembaliKeAwalChoc() {
+      document.getElementById('game-choc-over').classList.add('hidden');
+      document.getElementById('game-choc-start').classList.remove('hidden');
+    }
+
+    // ==========================================
+    // DATA & ENGINE BUKU HARIAN MULTI-STORY
+    // ==========================================
+    const stories = {
+      ramen: [
+        {
+          halaman: 1,
+          emoji: "🎮",
+          gradient: "from-amber-400 to-orange-400",
+          judul: "Rutinitas Sepulang Sekolah",
+          teks: "Setiap pulang sekolah, Ghini selalu bersemangat. Dia langsung menyalakan konsol game kesayangannya, bermain seru-seruan sambil ditemani secangkir coklat panas hangat yang lezat dan manis! Surga dunia!",
+          nada: () => {
+            playSound(261.63, 'square', 0.1);
+            setTimeout(() => playSound(392, 'square', 0.2), 100);
+          }
+        },
+        {
+          halaman: 2,
+          emoji: "😭",
+          gradient: "from-red-400 to-pink-500",
+          judul: "Berita Gawat & Darurat!",
+          teks: "Suatu hari, Om penjual warung ramen langganannya memberi tahu kabar menyedihkan: 'Besok adalah hari terakhir warung ramen ini buka...'. Ghini seketika panik setengah mati! Itu kan ramen terenak sedunia baginya!",
+          nada: () => {
+            playSound(440, 'sine', 0.3);
+            setTimeout(() => playSound(293.66, 'sine', 0.4), 150);
+          }
+        },
+        {
+          halaman: 3,
+          emoji: "👥",
+          gradient: "from-blue-400 to-purple-500",
+          judul: "Mengumpulkan Pasukan Game",
+          teks: "Ghini tidak tinggal diam! Dia langsung mengumpulkan tim handal dari squad game online-nya. Bersama teman-temannya, mereka menyusun misi rahasia dunia nyata: Menyelamatkan warung ramen Om agar ramai kembali!",
+          nada: () => {
+            playSound(523.25, 'triangle', 0.15);
+            setTimeout(() => playSound(659.25, 'triangle', 0.15), 100);
+            setTimeout(() => playSound(783.99, 'triangle', 0.3), 200);
+          }
+        },
+        {
+          halaman: 4,
+          emoji: "💡",
+          gradient: "from-yellow-400 to-orange-500",
+          judul: "Strategi Pro-Gamer Ghini",
+          teks: "Dengan kecerdasan taktik strategi yang ia pelajari dari bermain game, Ghini meluncurkan ide promo jenius: 'Beli Ramen Gratis Coklat Panas!'. Dia mengatur seluruh jalannya promosi layaknya memimpin perang di dalam game!",
+          nada: () => {
+            playSound(880, 'sine', 0.1);
+            setTimeout(() => playSound(1046.50, 'sine', 0.1), 80);
+            setTimeout(() => playSound(1318.51, 'sine', 0.2), 160);
+          }
+        },
+        {
+          halaman: 5,
+          emoji: "🏆",
+          gradient: "from-green-400 to-emerald-500",
+          judul: "Misi Sukses & Hadiah Spesial!",
+          teks: "BOOM! Warung ramen Om seketika penuh sesak diburu pelanggan! Sebagai tanda terima kasih, Om memberikan Ghini semangkok ramen dan coklat sepuasnya gratis sebulan penuh! Sejak saat itu, Ghini sadar keahlian main game-nya sangat berguna jika dipakai membantu orang lain! ❤️",
+          nada: () => {
+            const notes = [523.25, 587.33, 659.25, 698.46, 783.99, 880, 987.77, 1046.50];
+            notes.forEach((freq, index) => {
+              setTimeout(() => { playSound(freq, 'sine', 0.15); }, index * 80);
+            });
+          }
+        }
+      ],
+      boss: [
+        {
+          halaman: 1,
+          emoji: "😤",
+          gradient: "from-red-400 to-purple-500",
+          judul: "Mentok di Boss Terakhir!",
+          teks: "Suatu malam yang sunyi, Ghini sedang berjuang di kamar. Dia mentok di boss terakhir game-nya! Sudah 10 kali kalah berturut-turut, jarinya pegal sekali, kepalanya pusing, dan rasanya ingin menyerah saja saat itu juga.",
+          nada: () => {
+            playSound(330, 'sawtooth', 0.15);
+            setTimeout(() => playSound(293.66, 'sawtooth', 0.2), 120);
+          }
+        },
+        {
+          halaman: 2,
+          emoji: "☕",
+          gradient: "from-amber-500 to-amber-700",
+          judul: "Kehadiran Mama Tercinta",
+          teks: "Saat Ghini hampir mematikan konsol gamenya dengan sedih, tiba-tiba pintu kamarnya terbuka. Mama masuk sambil membawa secangkir cokelat panas! Aromanya sangat manis, uap hangatnya langsung membuat suasana menjadi tenang.",
+          nada: () => {
+            playSound(392, 'sine', 0.3); 
+            setTimeout(() => playSound(523.25, 'sine', 0.4), 200);
+          }
+        },
+        {
+          halaman: 3,
+          emoji: "👵",
+          gradient: "from-pink-400 to-rose-400",
+          judul: "Nasihat Bijak Dari Mama",
+          teks: "Mama memberikan cokelat hangat itu sambil tersenyum lembut dan menasihati: 'Istirahat dulu deh, sayang. Otak yang capek nggak akan bisa berpikir jernih.' Ghini menuruti kata Mama dan mulai menyeruput cokelatnya perlahan.",
+          nada: () => {
+            playSound(440, 'triangle', 0.2);
+            setTimeout(() => playSound(554.37, 'triangle', 0.2), 120);
+            setTimeout(() => playSound(659.25, 'triangle', 0.3), 240);
+          }
+        },
+        {
+          halaman: 4,
+          emoji: "🏆",
+          gradient: "from-green-400 to-yellow-400",
+          judul: "Kemenangan yang Manis!",
+          teks: "Setelah beristirahat dan menyeruput cokelat manis hangat buatan Mama, tubuh Ghini segar kembali. Dia menyalakan konsolnya lagi. Hasilnya? BOSS TERAKHIR BERHASIL DIKALAHKAN DALAM SEKALI COBA! Beristirahat ternyata adalah strategi gaming terbaik! 💖",
+          nada: () => {
+            const notes = [523.25, 587.33, 659.25, 783.99, 880, 1046.50];
+            notes.forEach((freq, index) => {
+              setTimeout(() => { playSound(freq, 'sine', 0.12); }, index * 80);
+            });
+          }
+        }
+      ]
+    };
+
+    let storyAktif = "ramen";
+    let indexHalamanSekarang = 0;
+
+    function pilihStory(pilihan) {
+      storyAktif = pilihan;
+      indexHalamanSekarang = 0;
+
+      const tabRamen = document.getElementById('tab-story-ramen');
+      const tabBoss = document.getElementById('tab-story-boss');
+
+      if (pilihan === 'ramen') {
+        tabRamen.className = "px-5 py-2 rounded-full font-bold shadow-md transition-all text-xs sm:text-sm flex items-center gap-1.5 border-2 bg-amber-500 text-white border-amber-600";
+        tabBoss.className = "px-5 py-2 rounded-full font-bold shadow-md transition-all text-xs sm:text-sm flex items-center gap-1.5 border-2 bg-white text-amber-700 border-amber-300 hover:bg-amber-50";
+      } else {
+        tabBoss.className = "px-5 py-2 rounded-full font-bold shadow-md transition-all text-xs sm:text-sm flex items-center gap-1.5 border-2 bg-amber-500 text-white border-amber-600";
+        tabRamen.className = "px-5 py-2 rounded-full font-bold shadow-md transition-all text-xs sm:text-sm flex items-center gap-1.5 border-2 bg-white text-amber-700 border-amber-300 hover:bg-amber-50";
+      }
+
+      navigasiStory(0);
+    }
+
+    function navigasiStory(arah) {
+      const dataAktif = stories[storyAktif];
+      indexHalamanSekarang += arah;
+      
+      if (indexHalamanSekarang < 0) {
+        indexHalamanSekarang = 0;
+      } else if (indexHalamanSekarang >= dataAktif.length) {
+        indexHalamanSekarang = dataAktif.length - 1;
+      }
+
+      const hlm = dataAktif[indexHalamanSekarang];
+      
+      const konten = document.getElementById('konten-story');
+      konten.classList.add('opacity-0', 'scale-95');
+
+      setTimeout(() => {
+        document.getElementById('halaman-story').innerText = `Halaman ${hlm.halaman} / ${dataAktif.length}`;
+        
+        const emojiBox = document.getElementById('emoji-story');
+        emojiBox.innerText = hlm.emoji;
+        emojiBox.className = `w-24 h-24 sm:w-28 sm:h-28 bg-gradient-to-tr ${hlm.gradient} text-white rounded-full flex items-center justify-center text-5xl shadow-md border-4 border-white animate-float`;
+        
+        document.getElementById('judul-story').innerText = hlm.judul;
+        document.getElementById('teks-story').innerText = hlm.teks;
+        
+        konten.classList.remove('opacity-0', 'scale-95');
+        
+        hlm.nada();
+        buatAnimasiEmoji(hlm.emoji);
+      }, 200);
+
+      document.getElementById('btn-prev').disabled = indexHalamanSekarang === 0;
+      document.getElementById('btn-next').disabled = indexHalamanSekarang === dataAktif.length - 1;
+    }
+
+    function mainkanSuaraHalaman() {
+      stories[storyAktif][indexHalamanSekarang].nada();
+    }
+
+    // Update kotak pesan interaktif
+    function tampilkanPesan(teks, skemaWarna) {
+      const box = document.getElementById('kotak-pesan');
+      box.className = `border-2 rounded-2xl p-4 text-center min-h-[60px] flex items-center justify-center font-bold transition-all duration-300 ${skemaWarna} transform scale-102 text-lg handwritten`;
+      box.innerHTML = teks;
+      
+      setTimeout(() => {
+        box.classList.remove('scale-102');
+      }, 150);
+    }
+
+    // Animasi memunculkan emoji terbang ke atas
+    function buatAnimasiEmoji(emojiText) {
+      for (let i = 0; i < 5; i++) {
+        const emoji = document.createElement('div');
+        emoji.innerText = emojiText;
+        emoji.style.position = 'fixed';
+        emoji.style.left = (Math.random() * 80 + 10) + 'vw';
+        emoji.style.bottom = '0px';
+        emoji.style.fontSize = (Math.random() * 20 + 20) + 'px';
+        emoji.style.pointerEvents = 'none';
+        emoji.style.zIndex = '999';
+        emoji.style.transition = 'all 2s ease-out';
+        
+        document.body.appendChild(emoji);
+        
+        setTimeout(() => {
+          emoji.style.transform = `translateY(-105vh) rotate(${Math.random() * 360}deg)`;
+          emoji.style.opacity = '0';
+        }, 50);
+
+        setTimeout(() => {
+          emoji.remove();
+        }, 2050);
+      }
+    }
+
+    // Kejutan hujan mainan/confetti warna warni
+    function buatHujanMainan() {
+      playSound(523.25, 'sine', 0.1);
+      setTimeout(() => playSound(659.25, 'sine', 0.1), 100);
+      setTimeout(() => playSound(783.99, 'sine', 0.1), 200);
+      setTimeout(() => playSound(1046.50, 'sine', 0.3), 300);
+
+      const warna = ['#ff8fab', '#ffc2d1', '#b388ff', '#80d8ff', '#ffd180', '#ccff90'];
+      const emojis = ['🎮', '🍜', '🍫', '🚗', '🛍️', '🏠', '🧩', '💖', '⭐', '🏆', '☕', '👵'];
+      
+      for (let i = 0; i < 45; i++) {
+        const c = document.createElement('div');
+        
+        if (Math.random() > 0.45) {
+          c.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+          c.style.fontSize = (Math.random() * 15 + 15) + 'px';
+          c.style.background = 'transparent';
+        } else {
+          c.className = 'confetti';
+          c.style.backgroundColor = warna[Math.floor(Math.random() * warna.length)];
+          c.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+        }
+
+        c.style.position = 'fixed';
+        c.style.left = (Math.random() * 100) + 'vw';
+        c.style.top = '-20px';
+        c.style.zIndex = '9999';
+        c.style.pointerEvents = 'none';
+        
+        const durasi = Math.random() * 2 + 2; 
+        c.style.animation = `fall ${durasi}s linear forwards`;
+        
+        document.body.appendChild(c);
+        
+        setTimeout(() => {
+          c.remove();
+        }, durasi * 1000);
+      }
+
+      tampilkanPesan("✨ Horeee! Pesta kejutan warna-warni Ghini meluncur! 🎉🎈🚗🎮🍜☕👵", "bg-purple-100 text-purple-700 border-purple-300");
+    }
+
+    // Inisialisasi keadaan awal saat dimuat
+    window.onload = function() {
+      document.getElementById('btn-prev').disabled = true;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dunia Cerita Gishel ✨</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts untuk font yang lucu dan bulat -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fef0f4;
+            overflow-x: hidden;
+        }
+        .font-funny {
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        /* Animasi mengapung lambat (Floating) */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Animasi goyang gemas (Wiggle) */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .animate-wiggle {
+            animation: wiggle 2.5s ease-in-out infinite;
+        }
+
+        /* Animasi goyang cepat sekali saat koin/pensil masuk */
+        @keyframes shake {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            20%, 60% { transform: scale(1.05) rotate(-6deg); }
+            40%, 80% { transform: scale(1.05) rotate(6deg); }
+        }
+        .animate-shake {
+            animation: shake 0.4s ease-in-out;
+        }
+
+        /* Animasi koin/alat tulis jatuh masuk wadah */
+        @keyframes coinDrop {
+            0% { transform: translateY(-120px) scale(0.5); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(0) scale(0.8); opacity: 0; }
+        }
+        .animate-coindrop {
+            animation: coinDrop 0.6s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
+        }
+
+        /* Animasi awan berjalan di latar belakang */
+        @keyframes moveCloud {
+            0% { transform: translateX(-10%); }
+            100% { transform: translateX(110%); }
+        }
+        .cloud-1 {
+            animation: moveCloud 25s linear infinite;
+        }
+        .cloud-2 {
+            animation: moveCloud 35s linear infinite;
+            animation-delay: -10s;
+        }
+
+        /* Efek klik balon/bintang pecah */
+        .pop-effect {
+            animation: pop 0.4s ease-out forwards;
+        }
+        @keyframes pop {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Animasi berputar cepat untuk whisking matcha & aduk nasgor */
+        @keyframes whisk {
+            0%, 100% { transform: rotate(-15deg) translateX(-5px); }
+            50% { transform: rotate(15deg) translateX(5px); }
+        }
+        .animate-whisk {
+            animation: whisk 0.15s infinite;
+        }
+
+        /* Custom scrollbar manis */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff0f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ffb7c5;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col items-center justify-between p-4 md:p-8">
+
+    <!-- Dekorasi Awan di Latar Belakang -->
+    <div class="absolute top-10 left-0 w-full overflow-hidden pointer-events-none z-0">
+        <svg class="cloud-1 absolute top-0 left-0 opacity-40 w-32 md:w-48 text-white fill-current" viewBox="0 0 100 100">
+            <path d="M10,50 C10,35 25,30 35,35 C40,25 60,25 65,35 C75,30 90,35 90,50 C95,60 85,75 70,75 L30,75 C15,75 5,60 10,50 Z"/>
+        </svg>
+        <svg class="cloud-2 absolute top-24 left-0 opacity-30 w-40 md:w-56 text-white fill-current" viewBox="0 0 100 100">
+            <path d="M10,50 C10,35 25,30 35,35 C40,25 60,25 65,35 C75,30 90,35 90,50 C95,60 85,75 70,75 L30,75 C15,75 5,60 10,50 Z"/>
+        </svg>
+    </div>
+
+    <!-- Header / Judul Utama -->
+    <header class="text-center z-10 my-6">
+        <div class="inline-block bg-white px-6 py-3 rounded-full shadow-lg border-4 border-pink-300 animate-wiggle">
+            <h1 class="text-3xl md:text-5xl font-funny font-bold text-pink-500 tracking-wider">
+                ✨ Halo, Aku Gishel! ✨
+            </h1>
+        </div>
+        <p class="text-gray-600 mt-4 text-lg font-medium">Selamat datang di dunia kecilku yang penuh kreativitas! 🌸✂️</p>
+    </header>
+
+    <!-- Konten Utama: Kartu Biodata Interaktif -->
+    <main class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center z-10 my-auto">
+        
+        <!-- Sisi Kiri: Avatar Gishel yang Lucu -->
+        <div class="flex flex-col items-center justify-center relative">
+            <!-- Frame Foto Lucu -->
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-[40px] bg-gradient-to-tr from-pink-300 to-emerald-200 p-4 shadow-2xl animate-float border-8 border-white">
+                <!-- Ilustrasi Karakter Perempuan Lucu (SVG) -->
+                <div class="w-full h-full bg-pink-100 rounded-[30px] overflow-hidden flex items-center justify-center relative">
+                    <svg viewBox="0 0 200 200" class="w-full h-full">
+                        <!-- Background lingkaran dalam -->
+                        <circle cx="100" cy="110" r="80" fill="#FFE4E1" />
+                        <!-- Rambut Belakang -->
+                        <path d="M40 100 C20 40, 180 40, 160 100 C150 140, 50 140, 40 100 Z" fill="#4A3728"/>
+                        <!-- Kuping -->
+                        <circle cx="48" cy="110" r="12" fill="#FFD1BA"/>
+                        <circle cx="152" cy="110" r="12" fill="#FFD1BA"/>
+                        <!-- Muka -->
+                        <path d="M55 90 C55 60, 145 60, 145 90 C145 130, 55 130, 55 90 Z" fill="#FFE4D1"/>
+                        <!-- Rambut Depan / Poni Lucu -->
+                        <path d="M45 80 C50 40, 150 40, 155 80 C130 65, 110 75, 100 65 C90 75, 70 65, 45 80 Z" fill="#4A3728"/>
+                        <!-- Kunciran Dua / Rambut Samping -->
+                        <circle cx="35" cy="80" r="18" fill="#4A3728" />
+                        <circle cx="165" cy="80" r="18" fill="#4A3728" />
+                        <!-- Pita Rambut Merah Muda -->
+                        <path d="M25 75 Q35 75 35 85 Q25 85 25 75" fill="#FF6B8B"/>
+                        <path d="M175 75 Q165 75 165 85 Q175 85 175 75" fill="#FF6B8B"/>
+                        <!-- Mata Berbinar -->
+                        <circle cx="80" cy="95" r="7" fill="#2D2D2D"/>
+                        <circle cx="78" cy="92" r="2.5" fill="#FFFFFF"/>
+                        <circle cx="120" cy="95" r="7" fill="#2D2D2D"/>
+                        <circle cx="118" cy="92" r="2.5" fill="#FFFFFF"/>
+                        <!-- Pipi Merona -->
+                        <ellipse cx="68" cy="104" rx="10" ry="5" fill="#FF8E9E" opacity="0.6"/>
+                        <ellipse cx="132" cy="104" rx="10" ry="5" fill="#FF8E9E" opacity="0.6"/>
+                        <!-- Senyum Lebar -->
+                        <path d="M92 106 Q100 114 108 106" stroke="#2D2D2D" stroke-width="4" stroke-linecap="round" fill="none"/>
+                        <!-- Baju Berkerah Hijau Matcha Pastel -->
+                        <path d="M70 140 L130 140 L120 180 L80 180 Z" fill="#A7D5C4"/>
+                        <path d="M100 140 L80 155 L70 140 Z" fill="#FFFFFF"/>
+                        <path d="M100 140 L120 155 L130 140 Z" fill="#FFFFFF"/>
+                    </svg>
+                </div>
+                
+                <!-- Badge Umur -->
+                <div id="age-badge" class="absolute -bottom-5 -right-5 bg-yellow-400 text-yellow-950 font-funny font-bold px-4 py-2 rounded-2xl border-4 border-white shadow-lg transform rotate-12 hover:scale-110 transition-transform cursor-pointer" onclick="clickAgeEffect(event)">
+                    🎂 12 Tahun
+                </div>
+            </div>
+            
+            <!-- Petunjuk Interaktif -->
+            <p class="text-xs text-pink-400 mt-8 animate-pulse">💡 Coba klik di mana saja untuk memunculkan efek sihir!</p>
+        </div>
+
+        <!-- Sisi Kanan: Kartu Informasi / Biodata -->
+        <div class="space-y-4">
+            
+            <!-- Kartu 1: Hobi Kreatif -->
+            <div class="bg-white p-5 rounded-3xl shadow-md border-b-8 border-pink-300 hover:translate-y-[-5px] transition-all duration-300 flex items-start space-x-4">
+                <div class="p-3 bg-pink-100 rounded-2xl text-3xl">
+                    ✂️
+                </div>
+                <div>
+                    <h3 class="font-funny font-bold text-pink-500 text-lg">Hobi Seru</h3>
+                    <p class="text-gray-700 text-base font-semibold">Membuat Kreasi Cantik ✨</p>
+                    <p class="text-gray-500 text-sm mt-1">
+                        Aku suka sekali membuat kerajinan tangan dari barang bekas! Mengubahnya menjadi barang yang berguna dan cantik banget! 🍼🌻
+                    </p>
+                </div>
+            </div>
+
+            <!-- Kartu 2: Makanan Favorit -->
+            <div class="bg-white p-5 rounded-3xl shadow-md border-b-8 border-orange-300 hover:translate-y-[-5px] transition-all duration-300 flex items-start space-x-4">
+                <div class="p-3 bg-orange-50 rounded-2xl text-3xl relative">
+                    🍣
+                    <span class="absolute -top-2 -right-2 text-xs animate-bounce">🍛</span>
+                </div>
+                <div>
+                    <h3 class="font-funny font-bold text-orange-600 text-lg">Makanan Favorit</h3>
+                    <p class="text-gray-700 text-base font-semibold">Sushi & Nasi Goreng 🍛</p>
+                    <p class="text-gray-500 text-sm mt-1">
+                        Aku suka sushi karena bentuknya lucu-lucu! Aku juga suka nasi goreng hangat yang gurih, harum, dan super enak dimakan kapan saja! 😋
+                    </p>
+                </div>
+            </div>
+
+            <!-- Kartu 3: Minuman Favorit -->
+            <div class="bg-white p-5 rounded-3xl shadow-md border-b-8 border-emerald-300 hover:translate-y-[-5px] transition-all duration-300 flex items-start space-x-4">
+                <div class="p-3 bg-emerald-50 rounded-2xl text-3xl">
+                    🍵
+                </div>
+                <div>
+                    <h3 class="font-funny font-bold text-emerald-600 text-lg">Minuman Favorit</h3>
+                    <p class="text-gray-700 text-base font-semibold">Matcha Segar 💚</p>
+                    <p class="text-gray-500 text-sm mt-1">
+                        Rasanya segar dengan perpaduan manis dan pahit yang pas! Warnanya juga hijau cantik alami seperti daun teh asli yang segar.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- BAGIAN INTERAKTIF 1: Bengkel Kreasi Ajaib Gishel -->
+    <section class="w-full max-w-xl bg-white p-6 rounded-[35px] shadow-xl border-4 border-pink-200 z-10 my-8 text-center relative overflow-hidden">
+        <!-- Dekorasi pita kertas mini -->
+        <div class="absolute -top-2 -left-2 w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-xs">📎</div>
+        <div class="absolute -top-2 -right-2 w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-xs">✂️</div>
+        
+        <h2 class="font-funny font-bold text-pink-500 text-xl md:text-2xl mb-1">📐 Meja Kreasi Ajaib Gishel 🛠️</h2>
+        <p class="text-xs text-gray-500 mb-4">Mari sulap barang bekas di sekitar kita menjadi kerajinan tangan yang cantik!</p>
+
+        <!-- Navigasi Tab Kreasi (Tiga Tab Sekarang!) -->
+        <div class="flex flex-wrap justify-center gap-2 mb-6 bg-pink-50 p-1.5 rounded-2xl">
+            <button id="tab-pot" onclick="switchCraft('pot')" class="flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all bg-pink-500 text-white shadow-sm">
+                🐱 Pot Kucing
+            </button>
+            <button id="tab-celengan" onclick="switchCraft('celengan')" class="flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all text-pink-600 hover:bg-pink-100">
+                🐷 Celengan Babi
+            </button>
+            <button id="tab-tempatpensil" onclick="switchCraft('tempatpensil')" class="flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all text-pink-600 hover:bg-pink-100">
+                ✏️ Tempat Pensil
+            </button>
+        </div>
+        
+        <!-- WADAH KREASI A: BIKIN POT KUCING -->
+        <div id="craft-pot-container" class="flex flex-col items-center justify-center space-y-6">
+            <!-- Tempat Botol Daur Ulang -->
+            <div id="craft-box" class="relative w-40 h-40 flex items-center justify-center bg-pink-50 rounded-3xl border-2 border-dashed border-pink-300 transition-all duration-500 transform hover:scale-105">
+                
+                <!-- Tampilan 1: Botol Plastik Bekas -->
+                <div id="craft-step-1" class="flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-5xl animate-bounce">🍼</span>
+                    <span class="text-xs font-bold text-pink-400 bg-white px-2 py-1 rounded-full shadow-sm">Botol Bekas Kosong</span>
+                </div>
+
+                <!-- Tampilan 2: Botol Setelah Digunting (Setengah Jadi) -->
+                <div id="craft-step-2" class="hidden flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-5xl">✂️🍼</span>
+                    <span class="text-xs font-bold text-orange-400 bg-white px-2 py-1 rounded-full shadow-sm">Digunting & Dirapikan</span>
+                </div>
+
+                <!-- Tampilan 3: Pot Tanaman Kucing Cantik! -->
+                <div id="craft-step-3" class="hidden flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-6xl">🐱🌱</span>
+                    <span class="text-xs font-bold text-emerald-500 bg-white px-2 py-1 rounded-full shadow-sm">Pot Kucing Berguna! ✨</span>
+                </div>
+
+                <!-- Efek kilau kelap-kelip -->
+                <div id="sparkle-layer" class="absolute inset-0 pointer-events-none flex items-center justify-center text-3xl opacity-0 transition-opacity duration-200">
+                    ✨🌟✨
+                </div>
+            </div>
+
+            <!-- Tombol Aksi Daur Ulang -->
+            <button id="btn-craft" onclick="makeCraft()" class="bg-gradient-to-r from-pink-400 to-pink-500 text-white font-funny font-bold px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:from-pink-500 hover:to-pink-600 active:scale-95 transition-all text-sm md:text-base">
+                ✨ Sulap Botol Bekas! ✨
+            </button>
+            
+            <button id="btn-reset-craft" onclick="resetCraft()" class="hidden text-xs text-gray-400 underline hover:text-pink-500">
+                Ulangi dari awal
+            </button>
+        </div>
+
+        <!-- WADAH KREASI B: BIKIN CELENGAN BABI -->
+        <div id="craft-celengan-container" class="hidden flex flex-col items-center justify-center space-y-6">
+            <!-- Kotak Celengan Interaktif -->
+            <div id="piggy-bank-box" class="relative w-44 h-44 flex items-center justify-center bg-pink-50 rounded-3xl border-2 border-dashed border-pink-300 transition-all duration-300 transform hover:scale-105">
+                
+                <!-- Animasi Koin Jatuh -->
+                <div id="flying-coin" class="absolute top-2 text-3xl opacity-0 z-30 pointer-events-none">🪙</div>
+
+                <!-- Tampilan 1: Kaleng Bekas Kosong -->
+                <div id="celengan-step-1" class="flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-5xl animate-bounce">🥫</span>
+                    <span class="text-xs font-bold text-pink-400 bg-white px-2 py-1 rounded-full shadow-sm">Kaleng Bekas Kosong</span>
+                </div>
+
+                <!-- Tampilan 2: Kaleng Setelah Dibungkus & Dilubangi -->
+                <div id="celengan-step-2" class="hidden flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-5xl">📦✂️</span>
+                    <span class="text-xs font-bold text-orange-400 bg-white px-2 py-1 rounded-full shadow-sm">Dilubangi & Dibungkus</span>
+                </div>
+
+                <!-- Tampilan 3: Celengan Babi Jadi! (Belum ada koin) -->
+                <div id="celengan-step-3" class="hidden flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-6xl">🐷🌟</span>
+                    <span class="text-xs font-bold text-pink-500 bg-white px-2 py-1 rounded-full shadow-sm">Celengan Babi Imut! ✨</span>
+                </div>
+
+                <!-- Efek kilau kelap-kelip Celengan -->
+                <div id="celengan-sparkle" class="absolute inset-0 pointer-events-none flex items-center justify-center text-3xl opacity-0 transition-opacity duration-200">
+                    ✨🐷✨
+                </div>
+            </div>
+
+            <!-- Panel Menabung (Hanya tampil setelah celengan selesai dibuat) -->
+            <div id="saving-panel" class="hidden bg-yellow-50 p-3 rounded-2xl w-full border border-yellow-200 text-center animate-bounce">
+                <p class="text-xs font-bold text-yellow-800 mb-2">Celengan Siap! Tekan koin emas di bawah untuk menabung! 👇</p>
+                <div class="flex justify-center items-center space-x-3">
+                    <button onclick="insertCoin()" class="bg-yellow-400 hover:bg-yellow-500 active:scale-90 text-2xl p-3 rounded-full shadow-md transition-transform">
+                        🪙
+                    </button>
+                    <div class="text-left">
+                        <p class="text-xs text-gray-500 font-semibold">Koin Terkumpul:</p>
+                        <p id="total-coins" class="text-lg font-funny font-bold text-yellow-600">0 Koin</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tombol Aksi Daur Ulang Celengan -->
+            <button id="btn-celengan-craft" onclick="makeCelengan()" class="bg-gradient-to-r from-pink-400 to-pink-500 text-white font-funny font-bold px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:from-pink-500 hover:to-pink-600 active:scale-95 transition-all text-sm md:text-base">
+                ✨ Lubangi & Bungkus Kaleng! ✨
+            </button>
+            
+            <button id="btn-reset-celengan" onclick="resetCelengan()" class="hidden text-xs text-gray-400 underline hover:text-pink-500">
+                Ulangi dari awal
+            </button>
+        </div>
+
+        <!-- WADAH KREASI C: BIKIN TEMPAT PENSIL -->
+        <div id="craft-tempatpensil-container" class="hidden flex flex-col items-center justify-center space-y-6">
+            <!-- Kotak Tempat Pensil Interaktif -->
+            <div id="pencil-holder-box" class="relative w-44 h-44 flex items-center justify-center bg-pink-50 rounded-3xl border-2 border-dashed border-pink-300 transition-all duration-300 transform hover:scale-105">
+                
+                <!-- Animasi Alat Tulis Jatuh -->
+                <div id="flying-pencil" class="absolute top-2 text-3xl opacity-0 z-30 pointer-events-none">✏️</div>
+
+                <!-- Tampilan 1: Rol Karton Bekas Kosong -->
+                <div id="tempatpensil-step-1" class="flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-5xl animate-bounce">🧻</span>
+                    <span class="text-xs font-bold text-pink-400 bg-white px-2 py-1 rounded-full shadow-sm">Rol Karton Bekas</span>
+                </div>
+
+                <!-- Tampilan 2: Ditutup stik es krim warna-warni -->
+                <div id="tempatpensil-step-2" class="hidden flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-5xl">🪵🎨</span>
+                    <span class="text-xs font-bold text-orange-400 bg-white px-2 py-1 rounded-full shadow-sm">Tempel Stik Es Krim</span>
+                </div>
+
+                <!-- Tampilan 3: Tempat Pensil Jadi! (Siap diisi) -->
+                <div id="tempatpensil-step-3" class="hidden flex flex-col items-center space-y-1 transition-opacity duration-300">
+                    <span class="text-6xl">✏️🎀</span>
+                    <span class="text-xs font-bold text-pink-500 bg-white px-2 py-1 rounded-full shadow-sm">Tempat Pensil Cantik! ✨</span>
+                </div>
+
+                <!-- Efek kilau kelap-kelip Tempat Pensil -->
+                <div id="tempatpensil-sparkle" class="absolute inset-0 pointer-events-none flex items-center justify-center text-3xl opacity-0 transition-opacity duration-200">
+                    ✨✏️✨
+                </div>
+            </div>
+
+            <!-- Panel Mengisi Alat Tulis (Hanya tampil setelah tempat pensil selesai dibuat) -->
+            <div id="pencil-panel" class="hidden bg-purple-50 p-3 rounded-2xl w-full border border-purple-200 text-center animate-bounce">
+                <p class="text-xs font-bold text-purple-800 mb-2">Hore! Yuk masukkan alat tulismu ke dalam! 👇</p>
+                <div class="flex justify-center items-center space-x-3">
+                    <div class="flex space-x-2">
+                        <button onclick="insertPencil('✏️')" class="bg-pink-100 hover:bg-pink-200 active:scale-90 text-xl p-2 rounded-xl shadow-sm transition-transform">✏️</button>
+                        <button onclick="insertPencil('🖊️')" class="bg-blue-100 hover:bg-blue-200 active:scale-90 text-xl p-2 rounded-xl shadow-sm transition-transform">🖊️</button>
+                        <button onclick="insertPencil('🖍️')" class="bg-yellow-100 hover:bg-yellow-200 active:scale-90 text-xl p-2 rounded-xl shadow-sm transition-transform">🖍️</button>
+                        <button onclick="insertPencil('📐')" class="bg-green-100 hover:bg-green-200 active:scale-90 text-xl p-2 rounded-xl shadow-sm transition-transform">📐</button>
+                    </div>
+                    <div class="text-left border-l pl-3 border-purple-200">
+                        <p class="text-[10px] text-gray-500 font-semibold">Isi Tempat Pensil:</p>
+                        <p id="total-pencils" class="text-sm font-funny font-bold text-purple-600">0 Alat Tulis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tombol Aksi Daur Ulang Tempat Pensil -->
+            <button id="btn-tempatpensil-craft" onclick="makeTempatPensil()" class="bg-gradient-to-r from-pink-400 to-pink-500 text-white font-funny font-bold px-6 py-3 rounded-full shadow-md hover:shadow-lg hover:from-pink-500 hover:to-pink-600 active:scale-95 transition-all text-sm md:text-base">
+                ✨ Tempel Stik Warna-Warni! ✨
+            </button>
+            
+            <button id="btn-reset-tempatpensil" onclick="resetTempatPensil()" class="hidden text-xs text-gray-400 underline hover:text-pink-500">
+                Ulangi dari awal
+            </button>
+        </div>
+    </section>
+
+    <!-- BAGIAN INTERAKTIF 2: GAME MEMASAK KESUKAAN GISHEL (SUSH, MATCHA, & NASI GORENG) -->
+    <section class="w-full max-w-xl bg-white p-6 rounded-[35px] shadow-xl border-4 border-emerald-200 z-10 my-8 text-center relative overflow-hidden">
+        <!-- Dekorasi dapur -->
+        <div class="absolute -top-2 -left-2 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-xs">🍳</div>
+        <div class="absolute -top-2 -right-2 w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center text-xs">🔔</div>
+
+        <h2 class="font-funny font-bold text-emerald-600 text-xl md:text-2xl mb-1">👩‍🍳 Dapur Mini Gishel: Game Memasak 🍣🍛🍵</h2>
+        <p class="text-xs text-gray-500 mb-6">Pilih resep favoritmu dan mari kita masak hidangan yang lezat & imut!</p>
+
+        <!-- Navigasi Tab Game Memasak (Tiga Tab!) -->
+        <div class="flex flex-wrap justify-center gap-2 mb-6 bg-emerald-50 p-1.5 rounded-2xl">
+            <button id="tab-sushi" onclick="switchCookingGame('sushi')" class="flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all bg-emerald-500 text-white shadow-sm">
+                🍣 Bikin Sushi
+            </button>
+            <button id="tab-nasigoreng" onclick="switchCookingGame('nasigoreng')" class="flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all text-emerald-600 hover:bg-emerald-100">
+                🍛 Nasi Goreng
+            </button>
+            <button id="tab-matcha" onclick="switchCookingGame('matcha')" class="flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all text-emerald-600 hover:bg-emerald-100">
+                🍵 Matcha Latte
+            </button>
+        </div>
+
+        <!-- WADAH 1: GAME MEMBUAT SUSHI -->
+        <div id="game-sushi-container" class="space-y-6">
+            <!-- Piring Sushi -->
+            <div class="relative w-44 h-44 mx-auto flex items-center justify-center bg-orange-50 rounded-full border-4 border-orange-200 shadow-inner overflow-hidden">
+                <div id="sushi-plate-content" class="flex flex-wrap justify-center items-center gap-1 p-4 transition-all duration-300">
+                    <!-- Bahan yang dimasukkan akan tampil di sini secara dinamis -->
+                    <p id="sushi-hint" class="text-xs text-gray-400 font-medium">Piring masih kosong!<br>Tambahkan bahan 👇</p>
+                </div>
+                <!-- Hasil akhir sushi gulung yang super imut -->
+                <div id="sushi-final-result" class="hidden text-7xl animate-bounce">
+                    🍣✨
+                </div>
+            </div>
+
+            <!-- Info Bahan yang Sudah Ditambahkan -->
+            <div class="h-6">
+                <p id="sushi-ingredients-status" class="text-xs text-emerald-600 font-bold"></p>
+            </div>
+
+            <!-- Rak Bahan Makanan -->
+            <div class="grid grid-cols-4 gap-2 px-2">
+                <button onclick="addSushiIngredient('🍙', 'Nasi')" class="sushi-ing-btn bg-yellow-50 hover:bg-yellow-100 p-2 rounded-2xl border border-yellow-200 transition-all active:scale-90 text-center">
+                    <span class="text-2xl block">🍙</span>
+                    <span class="text-[10px] font-bold text-yellow-700">Nasi</span>
+                </button>
+                <button onclick="addSushiIngredient('⬛', 'Nori')" class="sushi-ing-btn bg-gray-100 hover:bg-gray-200 p-2 rounded-2xl border border-gray-300 transition-all active:scale-90 text-center">
+                    <span class="text-2xl block">⬛</span>
+                    <span class="text-[10px] font-bold text-gray-700">Nori</span>
+                </button>
+                <button onclick="addSushiIngredient('🐟', 'Salmon')" class="sushi-ing-btn bg-red-50 hover:bg-red-100 p-2 rounded-2xl border border-red-200 transition-all active:scale-90 text-center">
+                    <span class="text-2xl block">🐟</span>
+                    <span class="text-[10px] font-bold text-red-600">Salmon</span>
+                </button>
+                <button onclick="addSushiIngredient('🥑', 'Alpukat')" class="sushi-ing-btn bg-emerald-50 hover:bg-emerald-100 p-2 rounded-2xl border border-emerald-200 transition-all active:scale-90 text-center">
+                    <span class="text-2xl block">🥑</span>
+                    <span class="text-[10px] font-bold text-emerald-700">Alpukat</span>
+                </button>
+            </div>
+
+            <!-- Tombol Gulung Sushi -->
+            <div class="flex space-x-2 pt-2">
+                <button id="btn-roll-sushi" onclick="rollSushi()" disabled class="flex-1 bg-gray-200 text-gray-400 font-funny font-bold py-2.5 rounded-full shadow cursor-not-allowed transition-all text-sm">
+                    🔒 Masukkan minimal 3 bahan!
+                </button>
+                <button onclick="resetSushiGame()" class="bg-red-100 hover:bg-red-200 text-red-600 px-4 py-2.5 rounded-full text-xs font-bold transition-all">
+                    Reset 🗑️
+                </button>
+            </div>
+        </div>
+
+        <!-- WADAH 2: GAME MEMASAK NASI GORENG -->
+        <div id="game-nasigoreng-container" class="hidden space-y-6">
+            <!-- Wajan Penggorengan -->
+            <div class="relative w-44 h-44 mx-auto flex flex-col items-center justify-center bg-gray-100 rounded-full border-4 border-gray-300 shadow-inner">
+                <!-- Gagang Wajan -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-8 h-4 bg-gray-600 rounded-r-lg"></div>
+                <!-- Isi Wajan -->
+                <div id="wok-container" class="w-28 h-28 rounded-full bg-gray-200 border border-dashed border-gray-400 flex items-center justify-center transition-all duration-500 relative overflow-hidden">
+                    <span id="wok-emoji" class="text-5xl">🍳</span>
+                    <!-- Efek asap/panas -->
+                    <span id="wok-steam" class="absolute top-2 text-lg opacity-0 animate-bounce">♨️</span>
+                    <!-- Alat aduk spatula bambu melayang -->
+                    <div id="wok-spatula" class="absolute top-2 text-3xl hidden z-20">
+                        🥄
+                    </div>
+                </div>
+            </div>
+
+            <!-- Petunjuk Langkah Pembuatan -->
+            <div class="bg-orange-50 p-3 rounded-2xl">
+                <p id="nasigoreng-instruction" class="text-xs font-bold text-orange-700">Langkah 1: Lelehkan mentega gurih di wajan panas! 🧈</p>
+                <!-- Progress Bar khusus aduk Nasi Goreng -->
+                <div id="nasigoreng-progress-container" class="w-full bg-gray-200 h-3 rounded-full mt-2 hidden overflow-hidden">
+                    <div id="nasigoreng-progress-bar" class="bg-orange-500 h-full w-0 transition-all"></div>
+                </div>
+            </div>
+
+            <!-- Tombol Interaksi Membuat Nasi Goreng -->
+            <div class="flex justify-center space-x-2">
+                <button id="btn-nasigoreng-action" onclick="playNasiGorengStep()" class="bg-gradient-to-r from-orange-400 to-orange-500 text-white font-funny font-bold px-6 py-3 rounded-full shadow-md hover:from-orange-500 hover:to-orange-600 active:scale-95 transition-all text-xs md:text-sm">
+                    🧈 Lelehkan Mentega
+                </button>
+                <button onclick="resetNasiGorengGame()" class="bg-red-100 hover:bg-red-200 text-red-600 px-4 py-3 rounded-full text-xs font-bold transition-all">
+                    Reset 🗑️
+                </button>
+            </div>
+        </div>
+
+        <!-- WADAH 3: GAME MENYEDUH MATCHA LATTE -->
+        <div id="game-matcha-container" class="hidden space-y-6">
+            <!-- Cangkir Matcha -->
+            <div class="relative w-44 h-44 mx-auto flex flex-col items-center justify-center bg-emerald-50 rounded-full border-4 border-emerald-200 shadow-inner">
+                <!-- Elemen Whisk Bambu yang bergerak jika diaduk -->
+                <div id="matcha-whisk-tool" class="absolute top-4 text-4xl hidden z-20">
+                    🎋
+                </div>
+                <!-- Isi Mangkok Matcha yang Berubah Warna sesuai tahapan -->
+                <div id="matcha-bowl-liquid" class="w-28 h-28 rounded-full bg-white border border-dashed border-emerald-300 flex items-center justify-center transition-all duration-500">
+                    <span id="matcha-bowl-emoji" class="text-5xl">🥣</span>
+                </div>
+            </div>
+
+            <!-- Petunjuk Langkah Pembuatan -->
+            <div class="bg-emerald-50/50 p-3 rounded-2xl">
+                <p id="matcha-instruction" class="text-xs font-bold text-emerald-700">Langkah 1: Masukkan bubuk Matcha murni 🟢</p>
+                <!-- Progress Bar khusus untuk mengaduk Matcha -->
+                <div id="matcha-progress-container" class="w-full bg-gray-200 h-3 rounded-full mt-2 hidden overflow-hidden">
+                    <div id="matcha-progress-bar" class="bg-emerald-500 h-full w-0 transition-all"></div>
+                </div>
+            </div>
+
+            <!-- Tombol Interaksi Membuat Matcha -->
+            <div class="flex justify-center space-x-2">
+                <button id="btn-matcha-action" onclick="playMatchaStep()" class="bg-gradient-to-r from-emerald-400 to-emerald-500 text-white font-funny font-bold px-6 py-3 rounded-full shadow-md hover:from-emerald-500 hover:to-emerald-600 active:scale-95 transition-all text-xs md:text-sm">
+                    🟢 Tambah Bubuk Matcha
+                </button>
+                <button onclick="resetMatchaGame()" class="bg-red-100 hover:bg-red-200 text-red-600 px-4 py-3 rounded-full text-xs font-bold transition-all">
+                    Reset 🗑️
+                </button>
+            </div>
+        </div>
+
+        <!-- Pesan Sukses / Masakan Selesai -->
+        <div id="cooking-alert" class="hidden mt-4 p-3 bg-yellow-100 border border-yellow-200 rounded-2xl text-xs font-bold text-yellow-800 animate-bounce">
+            🎉 Hebat Gishel! Masakanmu terlihat sangat cantik & lezat! 😋
+        </div>
+    </section>
+
+    <!-- BAGIAN INTERAKTIF 3: GALERI FOTO KREASI GISHEL (NEW!) -->
+    <section class="w-full max-w-4xl bg-white p-6 md:p-8 rounded-[40px] shadow-2xl border-4 border-pink-200 z-10 my-8 relative overflow-hidden">
+        <!-- Dekorasi pita kertas mini di pojok -->
+        <div class="absolute -top-3 -left-3 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-sm">📸</div>
+        <div class="absolute -top-3 -right-3 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center text-sm">🎨</div>
+
+        <h2 class="font-funny font-bold text-pink-500 text-2xl md:text-3xl mb-1 text-center">📸 Galeri Foto Kreasi Gishel 🌸</h2>
+        <p class="text-xs md:text-sm text-gray-500 mb-8 text-center">Inilah galeri karya kerajinan tangan daur ulang dan masakan lezat buatan tanganku sendiri!</p>
+
+        <!-- Filter Galeri -->
+        <div class="flex justify-center space-x-2 mb-8 bg-pink-50/50 p-1 rounded-2xl max-w-md mx-auto">
+            <button onclick="filterGallery('semua')" id="btn-filter-semua" class="flex-1 py-1.5 px-3 rounded-xl text-xs font-bold font-funny transition-all bg-pink-500 text-white shadow-sm"> Semua </button>
+            <button onclick="filterGallery('kerajinan')" id="btn-filter-kerajinan" class="flex-1 py-1.5 px-3 rounded-xl text-xs font-bold font-funny transition-all text-pink-600 hover:bg-pink-100"> ✂️ Kerajinan </button>
+            <button onclick="filterGallery('masakan')" id="btn-filter-masakan" class="flex-1 py-1.5 px-3 rounded-xl text-xs font-bold font-funny transition-all text-pink-600 hover:bg-pink-100"> 🍳 Masakan </button>
+        </div>
+
+        <!-- Kotak Grid Galeri Gambar (Polaroid Style) -->
+        <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Isi Galeri akan dibuat menggunakan JavaScript secara otomatis di bawah -->
+        </div>
+
+        <!-- Form Tambah Kreasi Baru -->
+        <div class="mt-12 bg-gradient-to-r from-pink-50 to-purple-50 p-6 rounded-3xl border-2 border-dashed border-pink-200 max-w-xl mx-auto">
+            <h3 class="font-funny font-bold text-pink-600 text-lg mb-2 text-center">✨ Pajang Karya Barumu di Sini! ✨</h3>
+            <p class="text-[11px] text-gray-400 mb-4 text-center">Punya kreasi baru yang habis kamu buat? Yuk masukkan ke galeri agar tidak hilang!</p>
+            
+            <form id="add-creation-form" onsubmit="addCreation(event)" class="space-y-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" id="new-title" placeholder="Nama kreasimu (Contoh: Kipas Kertas)" required class="px-4 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-300">
+                    <select id="new-category" class="px-4 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-300">
+                        <option value="kerajinan">✂️ Kerajinan Tangan</option>
+                        <option value="masakan">🍳 Masakan / Minuman</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input type="text" id="new-emoji" placeholder="Emoji pajangan (Contoh: 🪭 atau 🍕)" required class="px-4 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-300 text-center">
+                    <input type="text" id="new-description" placeholder="Cerita singkat kreasimu..." required class="px-4 py-2 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-300">
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-pink-400 to-purple-400 text-white font-funny font-bold py-2.5 rounded-xl shadow hover:shadow-md transition-all active:scale-95 text-xs md:text-sm">
+                    🚀 Pajang Karya ke Galeri!
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- MODAL POPUP DETAIL FOTO POLAROID (NEW!) -->
+    <div id="gallery-modal" class="fixed inset-0 bg-black/60 z-[99999] hidden flex items-center justify-center p-4">
+        <!-- Bingkai Foto Polaroid Besar -->
+        <div class="bg-white p-5 pb-8 rounded-2xl max-w-sm w-full shadow-2xl transform scale-95 opacity-0 transition-all duration-300 relative border-8 border-white flex flex-col" id="modal-card">
+            <!-- Tombol Tutup Silang di atas -->
+            <button onclick="closeGalleryModal()" class="absolute -top-3 -right-3 bg-red-400 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-lg hover:bg-red-500 active:scale-90 transition-transform">✕</button>
+
+            <!-- Foto Polaroid (Emoji Gambar Besar) -->
+            <div id="modal-image-container" class="w-full h-56 rounded-xl flex items-center justify-center text-8xl shadow-inner mb-4">
+                <!-- Emoji ditaruh di sini -->
+            </div>
+
+            <!-- Teks Catatan Kaki Polaroid (Tulis tangan) -->
+            <div class="space-y-2 px-1 text-center">
+                <span id="modal-tag" class="inline-block text-[10px] bg-pink-100 text-pink-600 font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Kategori</span>
+                <h4 id="modal-title" class="font-funny font-bold text-gray-800 text-xl">Nama Karya</h4>
+                <p id="modal-desc" class="text-xs text-gray-500 italic font-medium leading-relaxed">Cerita singkat pembuatan karya di sini...</p>
+                <p id="modal-date" class="text-[10px] text-gray-400 font-bold pt-2">Dibuat: Mei 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Interaktif -->
+    <footer class="w-full max-w-xl text-center z-10 mt-4 mb-4">
+        <!-- Kotak Interaksi Tombol Suasana Hati -->
+        <div class="bg-white p-4 rounded-3xl shadow-lg border-2 border-dashed border-pink-300">
+            <p class="text-sm font-bold text-pink-400 mb-2 font-funny">Kirim reaksi lucumu untuk menyemangati Gishel! 👇</p>
+            <div class="flex justify-center space-x-3">
+                <button onclick="spawnEmoji('🌸')" class="text-2xl hover:scale-125 active:scale-95 transition-transform duration-100 bg-pink-50 p-2 rounded-xl">🌸</button>
+                <button onclick="spawnEmoji('💖')" class="text-2xl hover:scale-125 active:scale-95 transition-transform duration-100 bg-red-50 p-2 rounded-xl">💖</button>
+                <button onclick="spawnEmoji('🍣')" class="text-2xl hover:scale-125 active:scale-95 transition-transform duration-100 bg-orange-50 p-2 rounded-xl">🍣</button>
+                <button onclick="spawnEmoji('🍛')" class="text-2xl hover:scale-125 active:scale-95 transition-transform duration-100 bg-yellow-50 p-2 rounded-xl">🍛</button>
+                <button onclick="spawnEmoji('🍵')" class="text-2xl hover:scale-125 active:scale-95 transition-transform duration-100 bg-emerald-50 p-2 rounded-xl">🍵</button>
+            </div>
+        </div>
+        <p class="text-xs text-gray-400 mt-6">Dibuat dengan cinta & penuh keceriaan untuk Gishel 🌸💫</p>
+    </footer>
+
+    <!-- Efek Suara Lucu Sederhana menggunakan Web Audio API -->
+    <script>
+        // Membuat nada pop lucu saat berinteraksi
+        function playPopSound(freq = 600, type = 'sine') {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                oscillator.type = type;
+                oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(freq * 1.6, audioCtx.currentTime + 0.12);
+                
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + 0.15);
+            } catch (e) {
+                // Diabaikan jika browser memblokir audio otomatis
+            }
+        }
+
+        // --- DATA AWAL GALERI KREASI GISHEL ---
+        let galleryData = [
+            {
+                id: 1,
+                title: "Pot Kucing Lucu",
+                category: "kerajinan",
+                emoji: "🐱🌱",
+                bgGradient: "from-emerald-100 to-green-100",
+                description: "Dibuat dari botol plastik kosong bekas soda yang digunting berbentuk telinga kucing imut, diwarnai putih, lalu diisi tanah dan tanaman hijau cantik!",
+                likes: 24,
+                date: "Mei 2026"
+            },
+            {
+                id: 2,
+                title: "Celengan Babi Pink",
+                category: "kerajinan",
+                emoji: "🐷🪙",
+                bgGradient: "from-pink-100 to-rose-100",
+                description: "Menggunakan kaleng susu bekas yang dibungkus kertas flanel merah muda cerah, diberi lubang koin di atasnya, serta dihiasi telinga dan hidung babi!",
+                likes: 35,
+                date: "Mei 2026"
+            },
+            {
+                id: 3,
+                title: "Tempat Pensil Pelangi",
+                category: "kerajinan",
+                emoji: "✏️🎀",
+                bgGradient: "from-purple-100 to-indigo-100",
+                description: "Rol karton tisu bekas disulap jadi tempat pensil kokoh dengan ditempeli stik es krim yang sudah dicat warna-warni pelangi dan diberi pita kado pink manis!",
+                likes: 19,
+                date: "Mei 2026"
+            },
+            {
+                id: 4,
+                title: "Sushi Roll Ceria",
+                category: "masakan",
+                emoji: "🍣✨",
+                bgGradient: "from-orange-100 to-yellow-100",
+                description: "Sushi gulung super lezat hasil rakitan dapur mini! Memiliki rasa gurih perpaduan nori rumput laut, nasi jepang pulen, salmon segar, dan alpukat creamy.",
+                likes: 42,
+                date: "Mei 2026"
+            },
+            {
+                id: 5,
+                title: "Nasi Goreng Gurih",
+                category: "masakan",
+                emoji: "🍛🍳",
+                bgGradient: "from-red-100 to-orange-100",
+                description: "Nasi goreng hangat dengan wangi harum mentega yang dilelehkan, ditumis bumbu halus lengkap bawang merah, dihias irisan sosis bulat manis dan telur mata sapi hangat!",
+                likes: 56,
+                date: "Mei 2026"
+            },
+            {
+                id: 6,
+                title: "Matcha Latte Creamy",
+                category: "masakan",
+                emoji: "🍵💚",
+                bgGradient: "from-emerald-100 to-teal-100",
+                description: "Minuman matcha murni premium berwarna hijau daun segar yang diseduh air hangat, dikocok cepat berbusa dengan whisk bambu, lalu dituang susu segar manis.",
+                likes: 39,
+                date: "Mei 2026"
+            }
+        ];
+
+        let activeFilter = 'semua';
+
+        // Fungsi Render Item Galeri
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = ''; // Kosongkan grid terlebih dahulu
+
+            // Filter data
+            const filteredData = galleryData.filter(item => {
+                if (activeFilter === 'semua') return true;
+                return item.category === activeFilter;
+            });
+
+            // Tampilkan kartu kreasi
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-4 pb-6 rounded-2xl shadow-lg border-4 border-white hover:rotate-2 hover:scale-[1.03] transition-all duration-300 cursor-pointer flex flex-col justify-between";
+                
+                // Elemen Polaroid Image
+                card.innerHTML = `
+                    <div onclick="openGalleryModal(${item.id})" class="w-full h-40 bg-gradient-to-tr ${item.bgGradient} rounded-xl flex items-center justify-center text-6xl shadow-inner mb-4">
+                        ${item.emoji}
+                    </div>
+                    <div onclick="openGalleryModal(${item.id})" class="text-center mb-4">
+                        <span class="text-[9px] bg-pink-50 text-pink-500 font-bold px-2 py-0.5 rounded-full uppercase">${item.category}</span>
+                        <h4 class="font-funny font-bold text-gray-700 text-sm mt-1">${item.title}</h4>
+                    </div>
+                    <!-- Footer Polaroid dengan tombol Like -->
+                    <div class="flex items-center justify-between border-t border-dashed border-pink-100 pt-3 px-1">
+                        <span class="text-[10px] text-gray-400 font-bold">${item.date}</span>
+                        <button onclick="likeGalleryItem(event, ${item.id})" class="flex items-center space-x-1.5 bg-rose-50 hover:bg-rose-100 text-rose-500 font-bold px-2.5 py-1 rounded-full text-xs transition-colors">
+                            <span>❤️</span>
+                            <span id="likes-count-${item.id}">${item.likes}</span>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Fungsi Saring (Filter) Galeri
+        function filterGallery(category) {
+            activeFilter = category;
+            playPopSound(600, 'sine');
+
+            // Reset semua style tombol filter
+            const btns = ['semua', 'kerajinan', 'masakan'];
+            btns.forEach(btn => {
+                const element = document.getElementById(`btn-filter-${btn}`);
+                if (btn === category) {
+                    element.className = "flex-1 py-1.5 px-3 rounded-xl text-xs font-bold font-funny transition-all bg-pink-500 text-white shadow-sm";
+                } else {
+                    element.className = "flex-1 py-1.5 px-3 rounded-xl text-xs font-bold font-funny transition-all text-pink-600 hover:bg-pink-100";
+                }
+            });
+
+            renderGallery();
+        }
+
+        // Tambah Karya Baru ke Galeri dari Form
+        function addCreation(event) {
+            event.preventDefault();
+            
+            const titleInput = document.getElementById('new-title');
+            const categoryInput = document.getElementById('new-category');
+            const emojiInput = document.getElementById('new-emoji');
+            const descInput = document.getElementById('new-description');
+
+            const title = titleInput.value;
+            const category = categoryInput.value;
+            const emoji = emojiInput.value;
+            const description = descInput.value;
+
+            // Buat warna gradasi acak yang imut
+            const gradients = [
+                'from-pink-100 to-orange-100',
+                'from-yellow-100 to-amber-100',
+                'from-emerald-100 to-teal-100',
+                'from-purple-100 to-fuchsia-100',
+                'from-sky-100 to-blue-100',
+                'from-pink-100 to-purple-100'
+            ];
+            const bgGradient = gradients[Math.floor(Math.random() * gradients.length)];
+
+            // Masukkan data baru ke array
+            const newId = galleryData.length + 1;
+            galleryData.unshift({
+                id: newId,
+                title,
+                category,
+                emoji,
+                bgGradient,
+                description,
+                likes: 1,
+                date: "Mei 2026"
+            });
+
+            // Putar nada sukses sihir
+            playPopSound(700, 'sine');
+            setTimeout(() => playPopSound(1000, 'sine'), 80);
+
+            // Bersihkan form input
+            titleInput.value = '';
+            emojiInput.value = '';
+            descInput.value = '';
+
+            // Render ulang dan paksa ke filter semua agar terlihat
+            filterGallery('semua');
+
+            // Ledakan emosi gembira di sekitar form
+            const rect = event.target.getBoundingClientRect();
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createFloatingParticle(
+                        rect.left + rect.width / 2 + (Math.random() - 0.5) * 200,
+                        rect.top + (Math.random() - 0.5) * 50,
+                        emoji
+                    );
+                }, i * 35);
+            }
+        }
+
+        // Beri suka (Like) pada karya
+        function likeGalleryItem(event, id) {
+            event.stopPropagation(); // Mencegah memicu modal buka
+            
+            // Temukan item di array data
+            const item = galleryData.find(d => d.id === id);
+            if (item) {
+                item.likes++;
+                document.getElementById(`likes-count-${id}`).innerText = item.likes;
+                playPopSound(1100, 'triangle');
+
+                // Efek letupan hati merah dari tombol yang diklik
+                const rect = event.target.getBoundingClientRect();
+                createFloatingParticle(rect.left + rect.width / 2, rect.top, '❤️');
+                
+                // Tambah kembang api hati kecil di sekitarnya
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        createFloatingParticle(
+                            rect.left + rect.width / 2 + (Math.random() - 0.5) * 50, 
+                            rect.top - 20, 
+                            '✨'
+                        );
+                    }, i * 50);
+                }
+            }
+        }
+
+        // Buka Detail Modal Polaroid Besar
+        function openGalleryModal(id) {
+            const item = galleryData.find(d => d.id === id);
+            if (!item) return;
+
+            playPopSound(800, 'sine');
+
+            const modal = document.getElementById('gallery-modal');
+            const card = document.getElementById('modal-card');
+            const imgContainer = document.getElementById('modal-image-container');
+            
+            // Masukkan data detail karya ke dalam modal polaroid
+            document.getElementById('modal-tag').innerText = item.category;
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-desc').innerText = item.description;
+            document.getElementById('modal-date').innerText = `Dibuat: ${item.date}`;
+            
+            // Atur emoji dan gradasi latar polaroid
+            imgContainer.className = `w-full h-56 rounded-xl flex items-center justify-center text-8xl shadow-inner mb-4 bg-gradient-to-tr ${item.bgGradient}`;
+            imgContainer.innerText = item.emoji;
+
+            // Munculkan modal dengan transisi
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                card.classList.remove('scale-95', 'opacity-0');
+                card.classList.add('scale-100', 'opacity-100');
+            }, 50);
+        }
+
+        // Tutup Detail Modal
+        function closeGalleryModal() {
+            playPopSound(500, 'sine');
+            const modal = document.getElementById('gallery-modal');
+            const card = document.getElementById('modal-card');
+
+            card.classList.remove('scale-100', 'opacity-100');
+            card.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 250);
+        }
+
+        // Tutup modal jika area luar diklik
+        document.getElementById('gallery-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('gallery-modal')) {
+                closeGalleryModal();
+            }
+        });
+
+
+        // --- SISTEM NAVIGASI TAB KREASI ---
+        function switchCraft(craftType) {
+            playPopSound(600, 'sine');
+            const tabPot = document.getElementById('tab-pot');
+            const tabCelengan = document.getElementById('tab-celengan');
+            const tabTempatPensil = document.getElementById('tab-tempatpensil');
+            
+            const potContainer = document.getElementById('craft-pot-container');
+            const celenganContainer = document.getElementById('craft-celengan-container');
+            const tempatPensilContainer = document.getElementById('craft-tempatpensil-container');
+
+            const activeClass = "flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all bg-pink-500 text-white shadow-sm";
+            const inactiveClass = "flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all text-pink-600 hover:bg-pink-100";
+
+            tabPot.className = inactiveClass;
+            tabCelengan.className = inactiveClass;
+            tabTempatPensil.className = inactiveClass;
+
+            potContainer.classList.add('hidden');
+            celenganContainer.classList.add('hidden');
+            tempatPensilContainer.classList.add('hidden');
+
+            if (craftType === 'pot') {
+                tabPot.className = activeClass;
+                potContainer.classList.remove('hidden');
+            } else if (craftType === 'celengan') {
+                tabCelengan.className = activeClass;
+                celenganContainer.classList.remove('hidden');
+            } else if (craftType === 'tempatpensil') {
+                tabTempatPensil.className = activeClass;
+                tempatPensilContainer.classList.remove('hidden');
+            }
+        }
+
+        // --- SISTEM KREASI POT KUCING ---
+        let currentCraftStep = 1;
+
+        function makeCraft() {
+            const step1 = document.getElementById('craft-step-1');
+            const step2 = document.getElementById('craft-step-2');
+            const step3 = document.getElementById('craft-step-3');
+            const btnCraft = document.getElementById('btn-craft');
+            const btnReset = document.getElementById('btn-reset-craft');
+            const sparkle = document.getElementById('sparkle-layer');
+            const craftBox = document.getElementById('craft-box');
+
+            playPopSound(700 + currentCraftStep * 100, 'triangle');
+            sparkle.style.opacity = '1';
+            craftBox.classList.add('scale-110');
+            
+            setTimeout(() => {
+                sparkle.style.opacity = '0';
+                craftBox.classList.remove('scale-110');
+            }, 350);
+
+            if (currentCraftStep === 1) {
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                btnCraft.innerText = "✨ Warnai & Gambar Wajah Kucing ✨";
+                currentCraftStep = 2;
+                
+                for (let i = 0; i < 5; i++) {
+                    createFloatingParticle(window.innerWidth / 2 + (Math.random() - 0.5) * 100, window.innerHeight / 2, '✂️');
+                }
+            } else if (currentCraftStep === 2) {
+                step2.classList.add('hidden');
+                step3.classList.remove('hidden');
+                btnCraft.innerText = "✨ Hore! Berhasil Dibuat! ✨";
+                btnCraft.disabled = true;
+                btnCraft.classList.add('opacity-70', 'cursor-not-allowed');
+                btnReset.classList.remove('hidden');
+                currentCraftStep = 3;
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const angle = (i / 15) * Math.PI * 2;
+                        const rx = window.innerWidth / 2 + Math.cos(angle) * 120;
+                        const ry = window.innerHeight - 350 + Math.sin(angle) * 120;
+                        createFloatingParticle(rx, ry, ['🌸', '✨', '🌱', '🎨', '🐱'][Math.floor(Math.random() * 5)]);
+                    }, i * 35);
+                }
+            }
+        }
+
+        function resetCraft() {
+            document.getElementById('craft-step-1').classList.remove('hidden');
+            document.getElementById('craft-step-2').classList.add('hidden');
+            document.getElementById('craft-step-3').classList.add('hidden');
+            
+            const btnCraft = document.getElementById('btn-craft');
+            btnCraft.innerText = "✨ Sulap Botol Bekas! ✨";
+            btnCraft.disabled = false;
+            btnCraft.classList.remove('opacity-70', 'cursor-not-allowed');
+            
+            document.getElementById('btn-reset-craft').classList.add('hidden');
+            currentCraftStep = 1;
+            playPopSound(500, 'sine');
+        }
+
+
+        // --- SISTEM KREASI CELENGAN BABI ---
+        let celenganStep = 1;
+        let savedCoinsCount = 0;
+
+        function makeCelengan() {
+            const step1 = document.getElementById('celengan-step-1');
+            const step2 = document.getElementById('celengan-step-2');
+            const step3 = document.getElementById('celengan-step-3');
+            const btnCraft = document.getElementById('btn-celengan-craft');
+            const btnReset = document.getElementById('btn-reset-celengan');
+            const sparkle = document.getElementById('celengan-sparkle');
+            const craftBox = document.getElementById('piggy-bank-box');
+            const savingPanel = document.getElementById('saving-panel');
+
+            playPopSound(700 + celenganStep * 100, 'triangle');
+            sparkle.style.opacity = '1';
+            craftBox.classList.add('scale-110');
+            
+            setTimeout(() => {
+                sparkle.style.opacity = '0';
+                craftBox.classList.remove('scale-110');
+            }, 350);
+
+            if (celenganStep === 1) {
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                btnCraft.innerText = "✨ Pasang Telinga & Hidung Babi ✨";
+                celenganStep = 2;
+                
+                for (let i = 0; i < 5; i++) {
+                    createFloatingParticle(window.innerWidth / 2 + (Math.random() - 0.5) * 100, window.innerHeight / 2, '✂️');
+                }
+            } else if (celenganStep === 2) {
+                step2.classList.add('hidden');
+                step3.classList.remove('hidden');
+                btnCraft.innerText = "✨ Celengan Babi Selesai! ✨";
+                btnCraft.disabled = true;
+                btnCraft.classList.add('opacity-70', 'cursor-not-allowed');
+                btnReset.classList.remove('hidden');
+                savingPanel.classList.remove('hidden');
+                celenganStep = 3;
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const angle = (i / 15) * Math.PI * 2;
+                        const rx = window.innerWidth / 2 + Math.cos(angle) * 120;
+                        const ry = window.innerHeight - 350 + Math.sin(angle) * 120;
+                        createFloatingParticle(rx, ry, ['🐷', '✨', '🪙', '💖', '🎉'][Math.floor(Math.random() * 5)]);
+                    }, i * 35);
+                }
+            }
+        }
+
+        function insertCoin() {
+            const coin = document.getElementById('flying-coin');
+            const craftBox = document.getElementById('piggy-bank-box');
+            const totalCoinsText = document.getElementById('total-coins');
+
+            playPopSound(950, 'sine');
+            setTimeout(() => playPopSound(1400, 'sine'), 80);
+
+            coin.classList.remove('animate-coindrop');
+            void coin.offsetWidth;
+            coin.classList.add('animate-coindrop');
+
+            setTimeout(() => {
+                craftBox.classList.add('animate-shake');
+                savedCoinsCount++;
+                totalCoinsText.innerText = `${savedCoinsCount} Koin`;
+                
+                for (let i = 0; i < 3; i++) {
+                    createFloatingParticle(
+                        window.innerWidth / 2 + (Math.random() - 0.5) * 40, 
+                        window.innerHeight / 2 - 20, 
+                        '✨'
+                    );
+                }
+            }, 300);
+
+            setTimeout(() => {
+                craftBox.classList.remove('animate-shake');
+            }, 700);
+        }
+
+        function resetCelengan() {
+            document.getElementById('celengan-step-1').classList.remove('hidden');
+            document.getElementById('celengan-step-2').classList.add('hidden');
+            document.getElementById('celengan-step-3').classList.add('hidden');
+            
+            const btnCraft = document.getElementById('btn-celengan-craft');
+            btnCraft.innerText = "✨ Lubangi & Bungkus Kaleng! ✨";
+            btnCraft.disabled = false;
+            btnCraft.classList.remove('opacity-70', 'cursor-not-allowed');
+            
+            document.getElementById('btn-reset-celengan').classList.add('hidden');
+            document.getElementById('saving-panel').classList.add('hidden');
+            
+            celenganStep = 1;
+            savedCoinsCount = 0;
+            document.getElementById('total-coins').innerText = "0 Koin";
+            playPopSound(500, 'sine');
+        }
+
+
+        // --- SISTEM KREASI TEMPAT PENSIL ---
+        let tempatpensilStep = 1;
+        let pencilsCount = 0;
+
+        function makeTempatPensil() {
+            const step1 = document.getElementById('tempatpensil-step-1');
+            const step2 = document.getElementById('tempatpensil-step-2');
+            const step3 = document.getElementById('tempatpensil-step-3');
+            const btnCraft = document.getElementById('btn-tempatpensil-craft');
+            const btnReset = document.getElementById('btn-reset-tempatpensil');
+            const sparkle = document.getElementById('tempatpensil-sparkle');
+            const craftBox = document.getElementById('pencil-holder-box');
+            const pencilPanel = document.getElementById('pencil-panel');
+
+            playPopSound(700 + tempatpensilStep * 100, 'triangle');
+            sparkle.style.opacity = '1';
+            craftBox.classList.add('scale-110');
+            
+            setTimeout(() => {
+                sparkle.style.opacity = '0';
+                craftBox.classList.remove('scale-110');
+            }, 350);
+
+            if (tempatpensilStep === 1) {
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                btnCraft.innerText = "✨ Pasang Pita & Hiasan Cantik ✨";
+                tempatpensilStep = 2;
+                
+                for (let i = 0; i < 5; i++) {
+                    createFloatingParticle(window.innerWidth / 2 + (Math.random() - 0.5) * 100, window.innerHeight / 2, '🎨');
+                }
+            } else if (tempatpensilStep === 2) {
+                step2.classList.add('hidden');
+                step3.classList.remove('hidden');
+                btnCraft.innerText = "✨ Tempat Pensil Selesai! ✨";
+                btnCraft.disabled = true;
+                btnCraft.classList.add('opacity-70', 'cursor-not-allowed');
+                btnReset.classList.remove('hidden');
+                pencilPanel.classList.remove('hidden');
+                tempatpensilStep = 3;
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const angle = (i / 15) * Math.PI * 2;
+                        const rx = window.innerWidth / 2 + Math.cos(angle) * 120;
+                        const ry = window.innerHeight - 350 + Math.sin(angle) * 120;
+                        createFloatingParticle(rx, ry, ['✏️', '✨', '🖍️', '💖', '🎉'][Math.floor(Math.random() * 5)]);
+                    }, i * 35);
+                }
+            }
+        }
+
+        function insertPencil(emoji) {
+            const flyingPencil = document.getElementById('flying-pencil');
+            const craftBox = document.getElementById('pencil-holder-box');
+            const totalPencilsText = document.getElementById('total-pencils');
+
+            flyingPencil.innerText = emoji;
+
+            playPopSound(1000, 'sine');
+            setTimeout(() => playPopSound(1300, 'sine'), 80);
+
+            flyingPencil.classList.remove('animate-coindrop');
+            void flyingPencil.offsetWidth;
+            flyingPencil.classList.add('animate-coindrop');
+
+            setTimeout(() => {
+                craftBox.classList.add('animate-shake');
+                pencilsCount++;
+                totalPencilsText.innerText = `${pencilsCount} Alat Tulis`;
+                
+                for (let i = 0; i < 3; i++) {
+                    createFloatingParticle(
+                        window.innerWidth / 2 + (Math.random() - 0.5) * 40, 
+                        window.innerHeight / 2 - 20, 
+                        '✨'
+                    );
+                }
+            }, 300);
+
+            setTimeout(() => {
+                craftBox.classList.remove('animate-shake');
+            }, 700);
+        }
+
+        function resetTempatPensil() {
+            document.getElementById('tempatpensil-step-1').classList.remove('hidden');
+            document.getElementById('tempatpensil-step-2').classList.add('hidden');
+            document.getElementById('tempatpensil-step-3').classList.add('hidden');
+            
+            const btnCraft = document.getElementById('btn-tempatpensil-craft');
+            btnCraft.innerText = "✨ Tempel Stik Warna-Warni! ✨";
+            btnCraft.disabled = false;
+            btnCraft.classList.remove('opacity-70', 'cursor-not-allowed');
+            
+            document.getElementById('btn-reset-tempatpensil').classList.add('hidden');
+            document.getElementById('pencil-panel').classList.add('hidden');
+            
+            tempatpensilStep = 1;
+            pencilsCount = 0;
+            document.getElementById('total-pencils').innerText = "0 Alat Tulis";
+            playPopSound(500, 'sine');
+        }
+
+
+        // --- SISTEM GAME MEMASAK ---
+        let currentCookingGame = 'sushi';
+        let addedIngredients = [];
+        let matchaStep = 1;
+        let matchaWhiskCount = 0;
+        let nasigorengStep = 1;
+        let nasigorengStirCount = 0;
+
+        function switchCookingGame(gameType) {
+            currentCookingGame = gameType;
+            playPopSound(600, 'sine');
+            
+            const tabSushi = document.getElementById('tab-sushi');
+            const tabMatcha = document.getElementById('tab-matcha');
+            const tabNasigoreng = document.getElementById('tab-nasigoreng');
+            
+            const gameSushi = document.getElementById('game-sushi-container');
+            const gameMatcha = document.getElementById('game-matcha-container');
+            const gameNasigoreng = document.getElementById('game-nasigoreng-container');
+            const alertBox = document.getElementById('cooking-alert');
+
+            alertBox.classList.add('hidden');
+
+            const activeClass = "flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all bg-emerald-500 text-white shadow-sm";
+            const inactiveClass = "flex-1 min-w-[80px] py-2 rounded-xl text-xs md:text-sm font-bold font-funny transition-all text-emerald-600 hover:bg-emerald-100";
+
+            tabSushi.className = inactiveClass;
+            tabMatcha.className = inactiveClass;
+            tabNasigoreng.className = inactiveClass;
+
+            gameSushi.classList.add('hidden');
+            gameMatcha.classList.add('hidden');
+            gameNasigoreng.classList.add('hidden');
+
+            if (gameType === 'sushi') {
+                tabSushi.className = activeClass;
+                gameSushi.classList.remove('hidden');
+            } else if (gameType === 'matcha') {
+                tabMatcha.className = activeClass;
+                gameMatcha.classList.remove('hidden');
+            } else if (gameType === 'nasigoreng') {
+                tabNasigoreng.className = activeClass;
+                gameNasigoreng.classList.remove('hidden');
+            }
+        }
+
+        // GAME 1: MEMBUAT SUSHI GULUNG
+        function addSushiIngredient(emoji, name) {
+            if (addedIngredients.length >= 4) {
+                playPopSound(300, 'sawtooth');
+                return;
+            }
+
+            playPopSound(500 + (addedIngredients.length * 100), 'sine');
+            addedIngredients.push({ emoji, name });
+
+            document.getElementById('sushi-hint').classList.add('hidden');
+
+            const plate = document.getElementById('sushi-plate-content');
+            const ingNode = document.createElement('span');
+            ingNode.innerText = emoji;
+            ingNode.className = "text-4xl animate-bounce transform transition-all";
+            plate.appendChild(ingNode);
+
+            updateSushiStatus();
+            
+            const rollBtn = document.getElementById('btn-roll-sushi');
+            if (addedIngredients.length >= 3) {
+                rollBtn.disabled = false;
+                rollBtn.innerText = "✨ Gulung Sushinya Sekarang! 🌀 ✨";
+                rollBtn.className = "flex-1 bg-gradient-to-r from-orange-400 to-orange-500 text-white font-funny font-bold py-2.5 rounded-full shadow hover:from-orange-500 hover:to-orange-600 active:scale-95 transition-all text-sm cursor-pointer";
+            }
+        }
+
+        function updateSushiStatus() {
+            const statusText = document.getElementById('sushi-ingredients-status');
+            const names = addedIngredients.map(item => item.name).join(' + ');
+            statusText.innerText = `Bahan terpilih: ${names}`;
+        }
+
+        function rollSushi() {
+            if (addedIngredients.length < 3) return;
+
+            playPopSound(800, 'triangle');
+            setTimeout(() => playPopSound(950, 'sine'), 100);
+            setTimeout(() => playPopSound(1100, 'triangle'), 200);
+
+            document.getElementById('sushi-plate-content').classList.add('hidden');
+            
+            const sushiResult = document.getElementById('sushi-final-result');
+            sushiResult.classList.remove('hidden');
+
+            document.getElementById('cooking-alert').classList.remove('hidden');
+
+            const rollBtn = document.getElementById('btn-roll-sushi');
+            rollBtn.disabled = true;
+            rollBtn.className = "flex-1 bg-gray-200 text-gray-400 font-funny font-bold py-2.5 rounded-full shadow cursor-not-allowed transition-all text-sm";
+            rollBtn.innerText = "🍣 Sushi Berhasil Disajikan!";
+
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createFloatingParticle(
+                        window.innerWidth / 2 + (Math.random() - 0.5) * 150, 
+                        window.innerHeight / 2, 
+                        '🍣'
+                    );
+                }, i * 50);
+            }
+        }
+
+        function resetSushiGame() {
+            addedIngredients = [];
+            document.getElementById('sushi-plate-content').innerHTML = '<p id="sushi-hint" class="text-xs text-gray-400 font-medium">Piring masih kosong!<br>Tambahkan bahan 👇</p>';
+            document.getElementById('sushi-plate-content').classList.remove('hidden');
+            document.getElementById('sushi-final-result').classList.add('hidden');
+            document.getElementById('cooking-alert').classList.add('hidden');
+            document.getElementById('sushi-ingredients-status').innerText = '';
+
+            const rollBtn = document.getElementById('btn-roll-sushi');
+            rollBtn.disabled = true;
+            rollBtn.className = "flex-1 bg-gray-200 text-gray-400 font-funny font-bold py-2.5 rounded-full shadow cursor-not-allowed transition-all text-sm";
+            rollBtn.innerText = "🔒 Masukkan minimal 3 bahan!";
+            playPopSound(450, 'sine');
+        }
+
+
+        // GAME 2: MEMASAK NASI GORENG GURIH
+        function playNasiGorengStep() {
+            const container = document.getElementById('wok-container');
+            const emojiSpan = document.getElementById('wok-emoji');
+            const actionBtn = document.getElementById('btn-nasigoreng-action');
+            const instruction = document.getElementById('nasigoreng-instruction');
+            const progressContainer = document.getElementById('nasigoreng-progress-container');
+            const progressBar = document.getElementById('nasigoreng-progress-bar');
+            const steam = document.getElementById('wok-steam');
+            const spatula = document.getElementById('wok-spatula');
+
+            if (nasigorengStep === 1) {
+                playPopSound(500, 'sine');
+                steam.style.opacity = '1';
+                container.style.backgroundColor = '#fdf2e2';
+                emojiSpan.innerText = "🧈";
+                instruction.innerText = "Langkah 2: Tumis bumbu halus aromatik (bawang & cabai)! 🧄🌶️";
+                actionBtn.innerText = "🧄 Tumis Bumbu Halus";
+                nasigorengStep = 2;
+            } 
+            else if (nasigorengStep === 2) {
+                playPopSound(550, 'triangle');
+                container.style.backgroundColor = '#fed7aa';
+                emojiSpan.innerText = "🧄🌶️";
+                instruction.innerText = "Langkah 3: Masukkan bahan utama (Nasi dingin, Telur, dan Sosis)! 🍚🥚🍖";
+                actionBtn.innerText = "🍚 Masukkan Bahan Utama";
+                nasigorengStep = 3;
+            } 
+            else if (nasigorengStep === 3) {
+                playPopSound(600, 'sine');
+                container.style.backgroundColor = '#ffedd5';
+                emojiSpan.innerText = "🍚🥚🍖";
+                instruction.innerText = "Langkah 4: Tuangkan kecap manis legendaris & aduk rata sampai matang! (Klik terus untuk aduk!) 🤎🌀";
+                actionBtn.innerText = "🤎 Tuang Kecap & Aduk Nasgor!";
+                progressContainer.classList.remove('hidden');
+                nasigorengStep = 4;
+            } 
+            else if (nasigorengStep === 4) {
+                spatula.classList.remove('hidden');
+                spatula.classList.add('animate-whisk');
+                
+                nasigorengStirCount += 20;
+                progressBar.style.width = `${nasigorengStirCount}%`;
+                playPopSound(450 + (nasigorengStirCount * 3.5), 'triangle');
+
+                if (nasigorengStirCount === 40) {
+                    container.style.backgroundColor = '#fed7aa';
+                } else if (nasigorengStirCount === 80) {
+                    container.style.backgroundColor = '#ea580c';
+                }
+
+                if (nasigorengStirCount >= 100) {
+                    spatula.classList.add('hidden');
+                    spatula.classList.remove('animate-whisk');
+                    progressContainer.classList.add('hidden');
+                    
+                    container.style.backgroundColor = '#ffedd5';
+                    emojiSpan.innerText = "🍛✨";
+                    
+                    instruction.innerText = "Hore! Nasi Goreng spesial Gishel matang dengan sempurna! 🍛🎈";
+                    actionBtn.innerText = "🍛 Sajikan Nasi Goreng Harum!";
+                    nasigorengStep = 5;
+                }
+            } 
+            else if (nasigorengStep === 5) {
+                playPopSound(800, 'sine');
+                emojiSpan.innerText = "🍛😋";
+                instruction.innerText = "Nyam! Nasi Goreng hangat siap disantap selagi lezat! ❤️";
+                actionBtn.innerText = "❤️ Selamat Makan Gishel!";
+                actionBtn.disabled = true;
+                actionBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+                document.getElementById('cooking-alert').classList.remove('hidden');
+
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        createFloatingParticle(
+                            window.innerWidth / 2 + (Math.random() - 0.5) * 160, 
+                            window.innerHeight / 2, 
+                            ['🍛', '🍳', '✨', '🔥'][Math.floor(Math.random() * 4)]
+                        );
+                    }, i * 50);
+                }
+            }
+        }
+
+        function resetNasiGorengGame() {
+            nasigorengStep = 1;
+            nasigorengStirCount = 0;
+            
+            const container = document.getElementById('wok-container');
+            const emojiSpan = document.getElementById('wok-emoji');
+            const actionBtn = document.getElementById('btn-nasigoreng-action');
+            const instruction = document.getElementById('nasigoreng-instruction');
+            const progressContainer = document.getElementById('nasigoreng-progress-container');
+            const progressBar = document.getElementById('nasigoreng-progress-bar');
+            const steam = document.getElementById('wok-steam');
+            const spatula = document.getElementById('wok-spatula');
+
+            container.style.backgroundColor = '#f3f4f6';
+            emojiSpan.innerText = "🍳";
+            instruction.innerText = "Langkah 1: Lelehkan mentega gurih di wajan panas! 🧈";
+            actionBtn.innerText = "🧈 Lelehkan Mentega";
+            actionBtn.disabled = false;
+            actionBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+
+            progressContainer.classList.add('hidden');
+            progressBar.style.width = '0%';
+            steam.style.opacity = '0';
+            spatula.classList.add('hidden');
+            spatula.classList.remove('animate-whisk');
+
+            document.getElementById('cooking-alert').classList.add('hidden');
+            playPopSound(450, 'sine');
+        }
+
+
+        // GAME 3: MENYEDUH MATCHA LATTE
+        function playMatchaStep() {
+            const liquid = document.getElementById('matcha-bowl-liquid');
+            const emojiSpan = document.getElementById('matcha-bowl-emoji');
+            const actionBtn = document.getElementById('btn-matcha-action');
+            const instruction = document.getElementById('matcha-instruction');
+            const progressBarContainer = document.getElementById('matcha-progress-container');
+            const progressBar = document.getElementById('matcha-progress-bar');
+            const whiskTool = document.getElementById('matcha-whisk-tool');
+
+            if (matchaStep === 1) {
+                playPopSound(500, 'sine');
+                liquid.style.backgroundColor = '#d1e7dd';
+                emojiSpan.innerText = "🟢";
+                instruction.innerText = "Langkah 2: Tuangkan air hangat segar 💧";
+                actionBtn.innerText = "💧 Tuang Air Hangat";
+                matchaStep = 2;
+            } 
+            else if (matchaStep === 2) {
+                playPopSound(600, 'triangle');
+                liquid.style.backgroundColor = '#a3cfbb';
+                emojiSpan.innerText = "🥣";
+                instruction.innerText = "Langkah 3: Aduk cepat sampai berbusa lembut! (Klik berkali-kali) 🌪️";
+                actionBtn.innerText = "🌪️ Aduk Matcha!";
+                progressBarContainer.classList.remove('hidden');
+                matchaStep = 3;
+            } 
+            else if (matchaStep === 3) {
+                whiskTool.classList.remove('hidden');
+                whiskTool.classList.add('animate-whisk');
+                
+                matchaWhiskCount += 15;
+                progressBar.style.width = `${matchaWhiskCount}%`;
+                playPopSound(400 + (matchaWhiskCount * 3), 'triangle');
+
+                if (matchaWhiskCount >= 100) {
+                    whiskTool.classList.add('hidden');
+                    whiskTool.classList.remove('animate-whisk');
+                    progressBarContainer.classList.add('hidden');
+                    
+                    liquid.style.backgroundColor = '#479f76';
+                    emojiSpan.innerText = "🍵";
+                    
+                    instruction.innerText = "Langkah 4: Tambahkan susu manis berbusa! 🥛";
+                    actionBtn.innerText = "🥛 Tambah Susu Manis";
+                    matchaStep = 4;
+                }
+            } 
+            else if (matchaStep === 4) {
+                playPopSound(800, 'sine');
+                liquid.style.backgroundColor = '#a7d5c4';
+                emojiSpan.innerText = "🍵✨";
+                
+                instruction.innerText = "Selesai! Matcha Latte buatan Gishel siap dinikmati! 💚";
+                actionBtn.innerText = "💚 Selamat Menikmati Matcha Latte!";
+                actionBtn.disabled = true;
+                actionBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+                document.getElementById('cooking-alert').classList.remove('hidden');
+
+                for (let i = 0; i < 12; i++) {
+                    setTimeout(() => {
+                        createFloatingParticle(
+                            window.innerWidth / 2 + (Math.random() - 0.5) * 150, 
+                            window.innerHeight / 2, 
+                            '🍵'
+                        );
+                    }, i * 50);
+                }
+            }
+        }
+
+        function resetMatchaGame() {
+            matchaStep = 1;
+            matchaWhiskCount = 0;
+            
+            const liquid = document.getElementById('matcha-bowl-liquid');
+            const emojiSpan = document.getElementById('matcha-bowl-emoji');
+            const actionBtn = document.getElementById('btn-matcha-action');
+            const instruction = document.getElementById('matcha-instruction');
+            const progressBarContainer = document.getElementById('matcha-progress-container');
+            const progressBar = document.getElementById('matcha-progress-bar');
+            const whiskTool = document.getElementById('matcha-whisk-tool');
+
+            liquid.style.backgroundColor = 'transparent';
+            emojiSpan.innerText = "🥣";
+            instruction.innerText = "Langkah 1: Masukkan bubuk Matcha murni 🟢";
+            actionBtn.innerText = "🟢 Tambah Bubuk Matcha";
+            actionBtn.disabled = false;
+            actionBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+
+            progressBarContainer.classList.add('hidden');
+            progressBar.style.width = '0%';
+            whiskTool.classList.add('hidden');
+            whiskTool.classList.remove('animate-whisk');
+
+            document.getElementById('cooking-alert').classList.add('hidden');
+            playPopSound(450, 'sine');
+        }
+
+
+        // --- EFEK KLIK GLOBAL ---
+        document.body.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target.closest('#age-badge') || e.target.closest('#craft-box') || e.target.closest('#piggy-bank-box') || e.target.closest('#pencil-holder-box') || e.target.closest('.sushi-ing-btn') || e.target.closest('#btn-matcha-action') || e.target.closest('#btn-nasigoreng-action') || e.target.closest('#add-creation-form') || e.target.closest('#gallery-modal')) return;
+
+            const emojis = ['✨', '🌸', '💖', '🍣', '🍛', '🍵', '✂️', '🎨', '🌱', '🐷', '🪙', '✏️', '🖊️'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            createFloatingParticle(e.clientX, e.clientY, randomEmoji);
+            playPopSound(500 + Math.random() * 350, 'sine');
+        });
+
+        function clickAgeEffect(e) {
+            e.stopPropagation();
+            playPopSound(800, 'sine');
+            
+            const rect = e.target.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const angle = (i / 10) * Math.PI * 2;
+                    const distance = 40 + Math.random() * 60;
+                    const x = centerX + Math.cos(angle) * distance;
+                    const y = centerY + Math.sin(angle) * distance;
+                    createFloatingParticle(x, y, '🎉');
+                }, i * 30);
+            }
+        }
+
+        function spawnEmoji(emoji) {
+            playPopSound(440, 'triangle');
+            
+            const startX = window.innerWidth / 2;
+            const startY = window.innerHeight - 100;
+            
+            for (let i = 0; i < 5; i++) {
+                const targetX = startX + (Math.random() - 0.5) * 300;
+                const targetY = startY - 200 - Math.random() * 300;
+                
+                createFloatingParticle(targetX, targetY, emoji, startX, startY);
+            }
+        }
+
+        function createFloatingParticle(x, y, emoji, fromX = null, fromY = null) {
+            const particle = document.createElement('div');
+            particle.innerText = emoji;
+            particle.style.position = 'fixed';
+            particle.style.pointerEvents = 'none';
+            particle.style.fontSize = '24px';
+            particle.style.zIndex = '99999';
+            
+            if (fromX !== null && fromY !== null) {
+                particle.style.left = `${fromX}px`;
+                particle.style.top = `${fromY}px`;
+                document.body.appendChild(particle);
+
+                particle.animate([
+                    { transform: 'translate(0, 0) scale(0.5)', opacity: 0 },
+                    { transform: `translate(${x - fromX}px, ${y - fromY}px) scale(1.2)`, opacity: 1, offset: 0.2 },
+                    { transform: `translate(${x - fromX}px, ${y - fromY - 100}px) scale(0.8)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 500,
+                    easing: 'ease-out'
+                }).onfinish = () => particle.remove();
+            } else {
+                particle.style.left = `${x - 12}px`;
+                particle.style.top = `${y - 12}px`;
+                particle.classList.add('pop-effect');
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 400);
+            }
+        }
+
+        // --- MULAI PERTAMA KALI (ON LOAD) ---
+        window.onload = function() {
+            renderGallery(); // Gambar isi galeri awal
+        };
+    </script>
+</body>
+</html>

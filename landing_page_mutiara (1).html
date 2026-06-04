@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Mutiara Cantika Bunga</title>
+    <!-- Tailwind CSS untuk styling cepat dan responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts untuk huruf sambung (cursive) -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Pengaturan Font & Latar Belakang Malam Hari */
+        body {
+            font-family: 'Caveat', cursive;
+            background: linear-gradient(135deg, #0b0f19, #1e112a, #111e38, #2a102f);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #ffe4e6; /* Warna teks diubah menjadi pink muda terang agar terbaca di malam hari */
+            font-size: 1.25rem; /* Ukuran font disesuaikan agar tulisan sambung mudah dibaca */
+        }
+        h1, h2, h3, .title-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Animasi Background Gradient */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animasi Mengambang (Floating) */
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Animasi Pulse Lucu */
+        .pulse-cute {
+            animation: pulseCute 2s infinite;
+        }
+        @keyframes pulseCute {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Efek Hover pada Kartu */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 25px -5px rgba(244, 63, 94, 0.2), 0 10px 10px -5px rgba(244, 63, 94, 0.1);
+        }
+
+        /* --- ANIMASI KUPU-KUPU TERBANG --- */
+        .butterfly-container {
+            position: fixed;
+            pointer-events: none;
+            z-index: 30;
+        }
+        
+        /* Gerakan terbang kupu-kupu */
+        .butterfly-1 {
+            animation: flyPath1 18s linear infinite;
+        }
+        .butterfly-2 {
+            animation: flyPath2 22s linear infinite;
+            animation-delay: 4s;
+        }
+        .butterfly-3 {
+            animation: flyPath3 25s linear infinite;
+            animation-delay: 8s;
+        }
+
+        /* Gerakan kepakan sayap kiri */
+        .wing-left {
+            transform-origin: right center;
+            animation: wingFlapLeft 0.25s ease-in-out infinite alternate;
+        }
+        
+        /* Gerakan kepakan sayap kanan */
+        .wing-right {
+            transform-origin: left center;
+            animation: wingFlapRight 0.25s ease-in-out infinite alternate;
+        }
+
+        @keyframes wingFlapLeft {
+            0% { transform: scaleX(1); }
+            100% { transform: scaleX(0.25); }
+        }
+
+        @keyframes wingFlapRight {
+            0% { transform: scaleX(1); }
+            100% { transform: scaleX(0.25); }
+        }
+
+        /* Rute Terbang 1 */
+        @keyframes flyPath1 {
+            0% { left: -10%; top: 70%; transform: scale(0.7) rotate(45deg); }
+            30% { left: 30%; top: 30%; transform: scale(0.75) rotate(15deg); }
+            70% { left: 70%; top: 60%; transform: scale(0.7) rotate(60deg); }
+            100% { left: 110%; top: 10%; transform: scale(0.65) rotate(35deg); }
+        }
+
+        /* Rute Terbang 2 */
+        @keyframes flyPath2 {
+            0% { left: -10%; top: 20%; transform: scale(0.8) rotate(30deg); }
+            40% { left: 40%; top: 50%; transform: scale(0.85) rotate(50deg); }
+            80% { left: 80%; top: 20%; transform: scale(0.8) rotate(15deg); }
+            100% { left: 110%; top: 60%; transform: scale(0.75) rotate(40deg); }
+        }
+
+        /* Rute Terbang 3 */
+        @keyframes flyPath3 {
+            0% { left: 40%; top: 110%; transform: scale(0.6) rotate(-45deg); }
+            50% { left: 70%; top: 40%; transform: scale(0.65) rotate(-20deg); }
+            100% { left: 100%; top: -10%; transform: scale(0.55) rotate(-35deg); }
+        }
+
+        /* --- ANIMASI AWAN DAN BULAN --- */
+        /* Bulan Sabit Indah dengan Efek Glow */
+        .glowing-moon {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 18px 18px 0 0 #ffe4e6;
+            transform: rotate(-20deg);
+            filter: drop-shadow(0 0 20px rgba(255, 182, 193, 0.8));
+            z-index: 1;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Gerakan Awan Berjalan */
+        @keyframes cloudDrift {
+            0% { transform: translateX(-120%); }
+            100% { transform: translateX(120vw); }
+        }
+
+        .drifting-cloud {
+            position: fixed;
+            pointer-events: none;
+            z-index: 2; /* Berada di belakang konten utama, tapi di atas background */
+            opacity: 0.12; /* Transparan agar tidak menutupi tulisan */
+            animation: cloudDrift linear infinite;
+        }
+
+        /* --- GAME ARCADE STYLING --- */
+        #game-arena, #zombie-canvas {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            background: linear-gradient(to bottom, #0f1123, #1c1335, #2d183f);
+            overflow: hidden;
+            border-radius: 1.5rem;
+            border: 3px solid #db2777;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animasi kilat saat terkena rintangan */
+        @keyframes flashRed {
+            0% { background-color: rgba(239, 68, 68, 0.4); }
+            100% { background-color: transparent; }
+        }
+        .damage-flash {
+            animation: flashRed 0.3s ease-out;
+        }
+
+        /* Jalanan berbintang di game */
+        .starry-road::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            opacity: 0.4;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e112a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #db2777; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff69b4; 
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+
+    <!-- Bulan Sabit Pink Cantik yang Bersinar -->
+    <div class="glowing-moon"></div>
+
+    <!-- Awan-Awan Estetik Berjalan -->
+    <div class="drifting-cloud" style="top: 10%; animation-duration: 40s;">
+        <svg width="180" height="100" viewBox="0 0 100 60" fill="#ffffff">
+            <path d="M10 40 A15 15 0 0 1 25 20 A18 18 0 0 1 55 15 A15 15 0 0 1 75 22 A12 12 0 0 1 90 40 Z" />
+        </svg>
+    </div>
+    <div class="drifting-cloud" style="top: 35%; animation-duration: 75s; animation-delay: -25s; opacity: 0.08;">
+        <svg width="250" height="130" viewBox="0 0 100 60" fill="#ffffff">
+            <path d="M10 40 A15 15 0 0 1 25 20 A18 18 0 0 1 55 15 A15 15 0 0 1 75 22 A12 12 0 0 1 90 40 Z" />
+        </svg>
+    </div>
+    <div class="drifting-cloud" style="top: 65%; animation-duration: 55s; animation-delay: -10s;">
+        <svg width="220" height="110" viewBox="0 0 100 60" fill="#ffffff">
+            <path d="M10 40 A15 15 0 0 1 25 20 A18 18 0 0 1 55 15 A15 15 0 0 1 75 22 A12 12 0 0 1 90 40 Z" />
+        </svg>
+    </div>
+
+    <!-- Kupu-Kupu Merah Muda yang Terbang Bebas -->
+    <div class="butterfly-container butterfly-1">
+        <svg width="60" height="50" viewBox="0 0 100 80">
+            <path class="wing-left" d="M 50 40 Q 20 10 15 30 Q 15 50 35 50 Q 20 70 35 75 Q 50 60 50 40" fill="#ff7da0" opacity="0.9" />
+            <path class="wing-right" d="M 50 40 Q 80 10 85 30 Q 85 50 65 50 Q 80 70 65 75 Q 50 60 50 40" fill="#ff7da0" opacity="0.9" />
+            <ellipse cx="50" cy="45" rx="3" ry="18" fill="#e63946" />
+            <path d="M 50 27 Q 45 15 40 10 M 50 27 Q 55 15 60 10" stroke="#e63946" stroke-width="2" fill="none" />
+        </svg>
+    </div>
+    <div class="butterfly-container butterfly-2">
+        <svg width="50" height="40" viewBox="0 0 100 80">
+            <path class="wing-left" d="M 50 40 Q 20 10 15 30 Q 15 50 35 50 Q 20 70 35 75 Q 50 60 50 40" fill="#ff9ebb" opacity="0.95" />
+            <path class="wing-right" d="M 50 40 Q 80 10 85 30 Q 85 50 65 50 Q 80 70 65 75 Q 50 60 50 40" fill="#ff9ebb" opacity="0.95" />
+            <ellipse cx="50" cy="45" rx="2.5" ry="16" fill="#d90429" />
+            <path d="M 50 29 Q 46 17 42 12 M 50 29 Q 54 17 58 12" stroke="#d90429" stroke-width="1.8" fill="none" />
+        </svg>
+    </div>
+    <div class="butterfly-container butterfly-3">
+        <svg width="45" height="35" viewBox="0 0 100 80">
+            <path class="wing-left" d="M 50 40 Q 20 10 15 30 Q 15 50 35 50 Q 20 70 35 75 Q 50 60 50 40" fill="#ff5d8f" opacity="0.85" />
+            <path class="wing-right" d="M 50 40 Q 80 10 85 30 Q 85 50 65 50 Q 80 70 65 75 Q 50 60 50 40" fill="#ff5d8f" opacity="0.85" />
+            <ellipse cx="50" cy="45" rx="2" ry="14" fill="#a10035" />
+            <path d="M 50 31 Q 47 20 44 15 M 50 31 Q 53 20 56 15" stroke="#a10035" stroke-width="1.5" fill="none" />
+        </svg>
+    </div>
+
+    <!-- Dekorasi Bintang Kejora Langit Malam -->
+    <div class="fixed bottom-20 left-20 text-4xl float opacity-50 z-0" style="animation-delay: 1s;">⭐️</div>
+    <div class="fixed top-40 right-20 text-3xl float opacity-60 z-0" style="animation-delay: 2s;">✨</div>
+    <div class="fixed bottom-40 right-10 text-4xl float opacity-50 z-0" style="animation-delay: 1.5s;">🌠</div>
+
+    <div class="container mx-auto px-4 py-12 relative z-10 max-w-4xl">
+        
+        <!-- Header / Hero Section -->
+        <header class="text-center mb-16">
+            <div class="inline-block bg-[#1e1b4b] p-4 rounded-full shadow-lg mb-6 float border-4 border-pink-400">
+                <img src="https://api.dicebear.com/9.x/lorelei/svg?seed=Mutiara&backgroundColor=ffd5dc" alt="Avatar Mutiara" class="w-32 h-32 rounded-full">
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-pink-400 mb-2 drop-shadow-md">
+                Hai! Aku Mutiara ✨
+            </h1>
+            
+            <!-- Elemen Bahasa Korea 'Cantik' -->
+            <div class="inline-flex items-center gap-2 bg-[#2d123d] text-pink-300 px-4 py-1.5 rounded-full text-xl font-semibold shadow-md border border-pink-500/30 mb-6 pulse-cute">
+                <span>예쁜</span> 
+                <span class="text-base text-pink-400">•</span>
+                <span class="text-lg">Yeppun (Cantik) 🌸</span>
+            </div>
+
+            <p class="text-3xl title-font text-purple-300 font-semibold mb-6">
+                Calon Artis Masa Depan 🎬
+            </p>
+        </header>
+
+        <!-- Moto Hidup -->
+        <section class="mb-16">
+            <div class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 p-1 rounded-3xl shadow-xl">
+                <div class="bg-[#111122]/90 rounded-[23px] px-8 py-6 text-center h-full border border-pink-500/20">
+                    <h2 class="text-4xl text-pink-400 mb-2 title-font">💖 Moto Hidup 💖</h2>
+                    <p class="text-2xl font-bold text-pink-100 italic">
+                        "Berani bermimpi besar, kejar cita-cita jadi artis, dan jadilah pemimpin yang bisa diandalkan!"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tentang Aku -->
+        <section class="mb-16">
+            <h2 class="text-5xl text-center text-purple-300 mb-8 title-font drop-shadow-sm">Tentang Aku 📖</h2>
+            <div class="bg-[#1a142e]/90 text-gray-200 rounded-3xl p-8 shadow-2xl border-t-8 border-pink-500 card-hover relative overflow-hidden border border-pink-500/10">
+                <div class="absolute -right-4 -top-4 text-6xl opacity-10">🎀</div>
+                <p class="text-xl leading-relaxed font-medium text-pink-50">
+                    Hai perkenalkan saya <strong>Mutiara</strong>! Saya mempunyai motor impian namanya <strong>Aerox berwarna pink</strong> dan saya ingin mempunyai <strong>HP iPhone 16 warna pink</strong>. 
+                </p>
+                <p class="text-xl leading-relaxed font-medium text-pink-50 mt-4">
+                    Saya ingin bersekolah di <strong>SMP 17</strong> dan aku ingin mempelajari motor saat aku kelas 6 SD. Nanti saat libur sekolah SMA, aku ingin menyewa villa yang ada kolam renangnya dengan 3 kamar untuk saya dan teman-teman saya berlibur. 🏖️
+                </p>
+                <p class="text-xl leading-relaxed font-medium text-pink-50 mt-4">
+                    Setelah itu, aku ingin mengikuti lomba-lomba saat sekolah SMP, SMA, dan lain-lain. Saya sangat ingin mengikuti lomba pramuka dan aku ingin menjadi <strong>pemimpin yang baik yang juga bisa diandalkan</strong>! 🏕️✨
+                </p>
+            </div>
+        </section>
+
+        <!-- Biodata Grid -->
+        <section class="mb-16">
+            <h2 class="text-5xl text-center text-blue-300 mb-8 title-font drop-shadow-sm">Biodata Mutiara 🌈</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                
+                <!-- Nama -->
+                <div class="bg-[#2d111d] rounded-3xl p-6 shadow-md card-hover border-2 border-pink-500/30 text-center">
+                    <div class="text-4xl mb-3">👧</div>
+                    <h3 class="text-2xl text-pink-400 font-bold title-font">Nama Lengkap</h3>
+                    <p class="text-xl font-semibold mt-2 text-pink-100">Mutiara Cantika Bunga</p>
+                    <p class="text-sm text-pink-300 mt-1">(예쁜 꽃 - Bunga Cantik)</p>
+                </div>
+
+                <!-- Tanggal Lahir -->
+                <div class="bg-[#2d1e11] rounded-3xl p-6 shadow-md card-hover border-2 border-orange-500/30 text-center">
+                    <div class="text-4xl mb-3">🎂</div>
+                    <h3 class="text-2xl text-orange-400 font-bold title-font">Lahir</h3>
+                    <p class="text-xl font-semibold mt-2 text-orange-100">8 Januari 2012</p>
+                </div>
+
+                <!-- Hobi -->
+                <div class="bg-[#2d2a11] rounded-3xl p-6 shadow-md card-hover border-2 border-yellow-500/30 text-center">
+                    <div class="text-4xl mb-3">🎤</div>
+                    <h3 class="text-2xl text-yellow-400 font-bold title-font">Hobi</h3>
+                    <p class="text-xl font-semibold mt-2 text-yellow-100">Menyanyi</p>
+                </div>
+
+                <!-- Makanan -->
+                <div class="bg-[#122d11] rounded-3xl p-6 shadow-md card-hover border-2 border-green-500/30 text-center">
+                    <div class="text-4xl mb-3">🍳</div>
+                    <h3 class="text-2xl text-green-400 font-bold title-font">Makanan Favorit</h3>
+                    <p class="text-xl font-semibold mt-2 text-green-100">Nasgor & Seblak</p>
+                </div>
+
+                <!-- Minuman -->
+                <div class="bg-[#11232d] rounded-3xl p-6 shadow-md card-hover border-2 border-blue-500/30 text-center">
+                    <div class="text-4xl mb-3">🧋</div>
+                    <h3 class="text-2xl text-blue-400 font-bold title-font">Minuman Favorit</h3>
+                    <p class="text-xl font-semibold mt-2 text-blue-100">Air Anget & Es Teh</p>
+                </div>
+
+                <!-- Bunga -->
+                <div class="bg-[#2d1127] rounded-3xl p-6 shadow-md card-hover border-2 border-pink-500/30 text-center">
+                    <div class="text-4xl mb-3">🌹</div>
+                    <h3 class="text-2xl text-pink-400 font-bold title-font">Bunga Kesukaan</h3>
+                    <p class="text-xl font-semibold mt-2 text-pink-100">Bunga Mawar</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- --- SEKSI GALERI ESTETIK --- -->
+        <section class="mb-16">
+            <h2 class="text-5xl text-center text-pink-400 mb-2 title-font drop-shadow-sm">Destinasi Impian di Korea 📸🇰🇷</h2>
+            <p class="text-center text-lg text-pink-200 mb-8 font-semibold">Koleksi tempat-tempat estetik, indah, dan bersejarah yang ingin dikunjungi Mutiara!</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                
+                <!-- Foto 1 - Gyeongbokgung Palace -->
+                <div class="bg-[#111029] p-4 pb-8 rounded-2xl shadow-xl card-hover border-2 border-pink-500/20 transform -rotate-2 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-pink-500 text-xs px-3 py-1 rounded-md text-white font-bold shadow-md">📎 CLIP</div>
+                    <div class="overflow-hidden rounded-lg aspect-square mb-4">
+                        <img src="https://images.unsplash.com/photo-1538669715515-5c3794b3c253?w=500&auto=format&fit=crop&q=80" 
+                             alt="Istana Gyeongbokgung" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                             onerror="this.src='https://api.dicebear.com/9.x/lorelei/svg?seed=BeautifulPlace1&backgroundColor=ffd5dc'">
+                    </div>
+                    <p class="text-center text-2xl text-pink-400 font-bold">Istana Gyeongbokgung ✨</p>
+                    <p class="text-center text-sm text-pink-300">(경복궁 - Gyeongbokgung)</p>
+                </div>
+
+                <!-- Foto 2 - Namsan Seoul Tower -->
+                <div class="bg-[#111029] p-4 pb-8 rounded-2xl shadow-xl card-hover border-2 border-pink-500/20 transform rotate-1 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500 text-xs px-3 py-1 rounded-md text-white font-bold shadow-md">📎 CLIP</div>
+                    <div class="overflow-hidden rounded-lg aspect-square mb-4">
+                        <img src="https://images.unsplash.com/photo-1508004526068-1526a48cbac9?w=500&auto=format&fit=crop&q=80" 
+                             alt="Namsan Seoul Tower" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                             onerror="this.src='https://api.dicebear.com/9.x/lorelei/svg?seed=BeautifulPlace2&backgroundColor=ffd5dc'">
+                    </div>
+                    <p class="text-center text-2xl text-purple-400 font-bold">Namsan Seoul Tower 🗼</p>
+                    <p class="text-center text-sm text-purple-300">(N서울타워 - N Seoul Tower)</p>
+                </div>
+
+                <!-- Foto 3 - Bukchon Hanok Village -->
+                <div class="bg-[#111029] p-4 pb-8 rounded-2xl shadow-xl card-hover border-2 border-pink-500/20 transform -rotate-1 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-xs px-3 py-1 rounded-md text-white font-bold shadow-md">📎 CLIP</div>
+                    <div class="overflow-hidden rounded-lg aspect-square mb-4">
+                        <img src="https://images.unsplash.com/photo-1548115184-bc6544d06a58?w=500&auto=format&fit=crop&q=80" 
+                             alt="Desa Bukchon Hanok" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                             onerror="this.src='https://api.dicebear.com/9.x/lorelei/svg?seed=BeautifulPlace3&backgroundColor=ffd5dc'">
+                    </div>
+                    <p class="text-center text-2xl text-blue-400 font-bold">Bukchon Hanok Village 🏡</p>
+                    <p class="text-center text-sm text-blue-300">(북촌한옥마을 - Bukchon Hanok Maeul)</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Cita-Cita Highlight -->
+        <section class="mb-16">
+            <div class="bg-[#1f163a] rounded-3xl p-8 shadow-xl card-hover border-4 border-dashed border-pink-500 text-center relative">
+                <div class="absolute -left-2 -top-4 text-5xl">🌟</div>
+                <div class="absolute -right-2 -bottom-4 text-5xl">🌟</div>
+                <h2 class="text-3xl text-pink-300 mb-2 title-font">Cita - Cita</h2>
+                <p class="text-4xl font-bold text-pink-400 mt-4 pulse-cute">
+                    Menjadi Artis 🎬✨
+                </p>
+            </div>
+        </section>
+
+        <!-- --- SEKSI: GAME ZOMBIE LEVEL 1-10 --- -->
+        <section class="mb-16">
+            <h2 class="text-5xl text-center text-pink-400 mb-2 title-font drop-shadow-sm">Mutiara vs Zombie Pastel 🔫🧟‍♀️</h2>
+            <p class="text-center text-lg text-pink-200 mb-6 font-semibold">Tembak jatuh para zombie dengan Bintang Ajaib! Tap/Klik ke arah zombie untuk menembak!</p>
+            
+            <div class="bg-[#16122b] rounded-3xl p-5 shadow-2xl border-4 border-pink-500/30 max-w-xl mx-auto relative overflow-hidden">
+                <!-- Info Atas Game (Level, Skor, Nyawa, & Tombol Ulang) -->
+                <div class="flex justify-between items-center bg-[#231d3c] p-3 rounded-2xl border border-pink-500/20 mb-3 flex-wrap gap-2">
+                    <div class="text-lg font-bold text-pink-300 flex items-center gap-1">
+                        🏆 Level: <span id="zombie-level-indicator" class="text-2xl text-pink-400">1</span>
+                    </div>
+                    <div class="text-lg font-bold text-pink-300">
+                        Kills: <span id="zombie-kills" class="text-2xl text-purple-400">0</span> / <span id="zombie-target" class="text-pink-300">5</span>
+                    </div>
+                    <div class="text-lg font-bold text-pink-300 flex items-center gap-1">
+                        Benteng: <span id="zombie-hp-text" class="text-xl text-red-500">❤️❤️❤️</span>
+                    </div>
+                    <button id="zombie-reset-btn" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-3 py-1 rounded-full shadow-md transition-all duration-300 transform active:scale-95 text-sm border border-pink-400/20">
+                        Ulang 🔄
+                    </button>
+                </div>
+
+                <!-- Arena Utama Game -->
+                <div class="relative">
+                    <canvas id="zombie-canvas" width="480" height="340" class="w-full bg-gradient-to-b from-[#0f1123] to-[#2d183f] rounded-2xl border-2 border-purple-500 cursor-crosshair shadow-lg"></canvas>
+                    
+                    <!-- Overlay Start / Mulai -->
+                    <div id="zombie-start-overlay" class="absolute inset-0 bg-[#0f1123]/90 z-50 flex flex-col justify-center items-center p-6 text-center rounded-2xl">
+                        <div class="text-5xl mb-3 animate-bounce">🧟‍♀️🔫🎀</div>
+                        <h3 id="zombie-overlay-title" class="text-3xl font-bold text-pink-400 title-font mb-2">Penyelamat K-Pop Land!</h3>
+                        <p class="text-base text-pink-200 mb-6 max-w-xs">Tap/Klik ke mana saja pada layar permainan untuk menembakkan bintang laser ke arah zombie!</p>
+                        <button id="zombie-start-btn" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 text-xl">
+                            Siap Tempur! 💥
+                        </button>
+                    </div>
+
+                    <!-- Overlay Level Up -->
+                    <div id="zombie-levelup-overlay" class="absolute inset-0 bg-[#0f1123]/95 z-50 hidden flex flex-col justify-center items-center p-6 text-center rounded-2xl">
+                        <div class="text-6xl mb-4">⭐🎉🔫</div>
+                        <h3 class="text-4xl font-bold text-pink-400 title-font mb-2">Level Sukses!</h3>
+                        <p id="zombie-levelup-text" class="text-lg text-pink-200 mb-6">Kemampuan menembakmu luar biasa, Mutiara!</p>
+                        <button id="zombie-next-btn" class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 text-xl">
+                            Lanjut Level <span id="zombie-next-num">2</span> ➡️
+                        </button>
+                    </div>
+
+                    <!-- Overlay Game Over -->
+                    <div id="zombie-gameover-overlay" class="absolute inset-0 bg-[#0f1123]/95 z-50 hidden flex flex-col justify-center items-center p-6 text-center rounded-2xl">
+                        <div class="text-6xl mb-4">💥🧟‍♂️💥</div>
+                        <h3 class="text-4xl font-bold text-red-500 title-font mb-2">Benteng Jebol!</h3>
+                        <p class="text-lg text-pink-200 mb-6">Para zombie pastel berhasil menembus pertahananmu!</p>
+                        <button id="zombie-retry-btn" class="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 text-xl">
+                            Bangkit Lagi! 🔁
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Jenis Zombie -->
+                <div class="grid grid-cols-2 gap-2 mt-4 p-3 bg-[#231d3c]/40 rounded-2xl text-xs border border-pink-500/10">
+                    <div class="text-green-300"><strong>ZOMBIE IMUT:</strong><br>🟢 Hijau: Normal • 🔵 Biru: Cepat (+Bayangan) • 🟣 Ungu: Raksasa (+Armor)</div>
+                    <div class="text-pink-300"><strong>BINTANG AJAIB:</strong><br>Ketuk/Klik area canvas untuk membidik sasaran! ⭐</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- SEKSI GAME MINI ARCADE LEVEL 1-10 --- -->
+        <section class="mb-12">
+            <h2 class="text-5xl text-center text-pink-400 mb-2 title-font drop-shadow-sm">Midnight Aerox Ride 🏍️🌠</h2>
+            <p class="text-center text-lg text-pink-200 mb-6 font-semibold">Kendarai Aerox Pink! Tangkap barang impianmu & hindari rintangan awan petir!</p>
+            
+            <div class="bg-[#16122b] rounded-3xl p-5 shadow-2xl border-4 border-pink-500/30 max-w-xl mx-auto relative overflow-hidden">
+                <!-- Info Atas Game (Level, Skor, Nyawa, & Tombol Ulang) -->
+                <div class="flex justify-between items-center bg-[#231d3c] p-3 rounded-2xl border border-pink-500/20 mb-3 flex-wrap gap-2">
+                    <div class="text-lg font-bold text-pink-300 flex items-center gap-1">
+                        🏆 Level: <span id="game-level-indicator" class="text-2xl text-pink-400">1</span>
+                    </div>
+                    <div class="text-lg font-bold text-pink-300">
+                        Skor: <span id="game-score" class="text-2xl text-purple-400">0</span> / <span id="game-target" class="text-pink-300">5</span>
+                    </div>
+                    <div class="text-lg font-bold text-pink-300 flex items-center gap-1">
+                        Nyawa: <span id="game-lives" class="text-xl text-red-500">💖💖💖</span>
+                    </div>
+                    <!-- Tombol Ulang -->
+                    <button id="reset-btn" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white px-3 py-1 rounded-full shadow-md transition-all duration-300 transform active:scale-95 text-sm border border-pink-400/20">
+                        Ulang 🔄
+                    </button>
+                </div>
+
+                <!-- Arena Utama Game -->
+                <div id="game-arena" class="starry-road">
+                    <!-- Flash merah saat kena damage -->
+                    <div id="flash-overlay" class="absolute inset-0 pointer-events-none z-40 transition-colors duration-100"></div>
+
+                    <!-- Mutiara di atas Aerox Pink -->
+                    <div id="player" class="absolute bottom-2 text-4xl select-none z-30 transition-all duration-75" style="left: 45%; filter: drop-shadow(0 0 8px rgba(255, 105, 180, 0.8));">
+                        🏍️
+                    </div>
+
+                    <!-- Layar Mulai / Start Screen -->
+                    <div id="start-overlay" class="absolute inset-0 bg-[#0f1123]/90 z-50 flex flex-col justify-center items-center p-6 text-center">
+                        <div class="text-5xl mb-3 animate-bounce">🏍️💖</div>
+                        <h3 id="overlay-title" class="text-3xl font-bold text-pink-400 title-font mb-2">Petualangan Aerox Pink!</h3>
+                        <p id="overlay-desc" class="text-base text-pink-200 mb-6 max-w-xs">Gunakan tombol di bawah layar atau Tombol Panah Kiri/Kanan ⌨️ untuk bergerak.</p>
+                        <p class="text-xs text-pink-300/80 mb-6">Atau gunakan tombol kontrol di bawah di smartphone!</p>
+                        <button id="start-game-btn" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 text-xl">
+                            Mulai Bermain 🎮
+                        </button>
+                    </div>
+
+                    <!-- Layar Level Up -->
+                    <div id="level-up-overlay" class="absolute inset-0 bg-[#0f1123]/95 z-50 hidden flex flex-col justify-center items-center p-6 text-center">
+                        <div class="text-6xl mb-4">🌟🎉🌟</div>
+                        <h3 class="text-4xl font-bold text-pink-400 title-font mb-2">Hebat! Level Up!</h3>
+                        <p id="level-up-text" class="text-lg text-pink-200 mb-6">Kamu siap untuk level berikutnya!</p>
+                        <button id="next-level-btn" class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 text-xl">
+                            Mainkan Level <span id="next-level-num">2</span> ➡️
+                        </button>
+                    </div>
+
+                    <!-- Layar Game Over -->
+                    <div id="game-over-overlay" class="absolute inset-0 bg-[#0f1123]/95 z-50 hidden flex flex-col justify-center items-center p-6 text-center">
+                        <div class="text-6xl mb-4">😢🏍️💥</div>
+                        <h3 class="text-4xl font-bold text-red-500 title-font mb-2">Game Over!</h3>
+                        <p id="game-over-reason" class="text-lg text-pink-200 mb-6">Waduh, motor Aerox kamu nabrak rintangan!</p>
+                        <button id="retry-game-btn" class="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 active:scale-95 text-xl">
+                            Coba Lagi 🔁
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Petunjuk Item Game -->
+                <div class="grid grid-cols-2 gap-2 my-4 p-2.5 bg-[#231d3c]/40 rounded-2xl text-xs border border-pink-500/10">
+                    <div class="text-green-300"><strong>Tangkap (Skor +1):</strong><br>📱 iPhone • 🍳 Seblak • 🌹 Mawar • 👑 Mahkota</div>
+                    <div class="text-red-400"><strong>Hindari (Nyawa -1):</strong><br>🌧️ Awan • ⚡ Petir • 📝 PR Sekolah</div>
+                </div>
+
+                <!-- Tombol Kontrol Layar Sentuh Besar (Sangat Ramah HP!) -->
+                <div class="grid grid-cols-2 gap-4">
+                    <button id="ctrl-left" class="bg-gradient-to-l from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-400 text-white font-bold py-4 rounded-2xl shadow-lg transition-all active:scale-95 select-none text-2xl border-b-4 border-pink-700 flex justify-center items-center gap-2">
+                        ◀️ KIRI
+                    </button>
+                    <button id="ctrl-right" class="bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-500 hover:to-pink-400 text-white font-bold py-4 rounded-2xl shadow-lg transition-all active:scale-95 select-none text-2xl border-b-4 border-pink-700 flex justify-center items-center gap-2">
+                        KANAN ▶️
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 pb-8 text-pink-300/60 font-semibold">
+            <p>Dibuat dengan 💖 untuk Mutiara</p>
+        </footer>
+
+    </div>
+
+    <!-- Logic Javascript untuk Game Catcher Aerox Pink -->
+    <script>
+        // Data Tingkatan Level 1 Sampai 10
+        const levels = [
+            { level: 1, targetScore: 5,  spawnSpeed: 1500, fallSpeed: 3,  obstacleRatio: 0.1, name: "Perjalanan Santai 🌸" },
+            { level: 2, targetScore: 8,  spawnSpeed: 1300, fallSpeed: 3.5,obstacleRatio: 0.2, name: "Mulai Ngebut ✨" },
+            { level: 3, targetScore: 12, spawnSpeed: 1200, fallSpeed: 4,  obstacleRatio: 0.25,name: "Awan Mendung 🌧️" },
+            { level: 4, targetScore: 15, spawnSpeed: 1100, fallSpeed: 4.5,obstacleRatio: 0.3, name: "Hujan Gerimis ☔" },
+            { level: 5, targetScore: 18, spawnSpeed: 1000, fallSpeed: 5,  obstacleRatio: 0.35,name: "PR Sekolah Menumpuk 📝" },
+            { level: 6, targetScore: 20, spawnSpeed: 900,  fallSpeed: 5.5,obstacleRatio: 0.4, name: "Mengejar iPhone 16 📱" },
+            { level: 7, targetScore: 22, spawnSpeed: 800,  fallSpeed: 6,  obstacleRatio: 0.45,name: "Petir Mengkilat ⚡" },
+            { level: 8, targetScore: 25, spawnSpeed: 750,  fallSpeed: 6.5,obstacleRatio: 0.5, name: "Ngebut ke SMP 17 🎒" },
+            { level: 9, targetScore: 30, spawnSpeed: 700,  fallSpeed: 7,  obstacleRatio: 0.55,name: "Konser Artis Mutiara 🎤" },
+            { level: 10,targetScore: 35, spawnSpeed: 600,  fallSpeed: 8,  obstacleRatio: 0.6, name: "Ratu Aerox Pink Mutiara 👑" }
+        ];
+
+        // Item Baik (Meningkatkan skor)
+        const goodItems = [
+            { icon: '📱', color: 'text-pink-400' },
+            { icon: '🍳', color: 'text-yellow-400' },
+            { icon: '🌹', color: 'text-red-500' },
+            { icon: '👑', color: 'text-amber-400' },
+            { icon: '🍦', color: 'text-blue-300' }
+        ];
+
+        // Item Buruk / Rintangan (Mengurangi nyawa)
+        const badItems = [
+            { icon: '🌧️', color: 'text-blue-400' },
+            { icon: '⚡', color: 'text-yellow-300' },
+            { icon: '📝', color: 'text-red-400' }
+        ];
+
+        let gameLevel = 1;
+        let score = 0;
+        let lives = 3;
+        let playerX = 45; // Posisi player dalam persen (0 - 90)
+        let isPlaying = false;
+        let gameLoopId = null;
+        let spawnIntervalId = null;
+        let fallingObjects = [];
+        
+        // Element Selector
+        const player = document.getElementById('player');
+        const gameArena = document.getElementById('game-arena');
+        const flashOverlay = document.getElementById('flash-overlay');
+        const gameScoreText = document.getElementById('game-score');
+        const gameTargetText = document.getElementById('game-target');
+        const gameLevelText = document.getElementById('game-level-indicator');
+        const gameLivesText = document.getElementById('game-lives');
+        
+        // Overlay Element Selector
+        const startOverlay = document.getElementById('start-overlay');
+        const levelUpOverlay = document.getElementById('level-up-overlay');
+        const gameOverOverlay = document.getElementById('game-over-overlay');
+        const overlayTitle = document.getElementById('overlay-title');
+        const overlayDesc = document.getElementById('overlay-desc');
+        const nextLevelNum = document.getElementById('next-level-num');
+        const levelUpText = document.getElementById('level-up-text');
+        
+        // Button Selector
+        const startGameBtn = document.getElementById('start-game-btn');
+        const nextLevelBtn = document.getElementById('next-level-btn');
+        const retryGameBtn = document.getElementById('retry-game-btn');
+        const ctrlLeft = document.getElementById('ctrl-left');
+        const ctrlRight = document.getElementById('ctrl-right');
+
+        // Sintesis Efek Suara Retro (Web Audio API)
+        function playSound(type) {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'hit') {
+                    // Bunyi dapet poin (tinggi, imut)
+                    osc.frequency.setValueAtTime(520, ctx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(1040, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.15);
+                } else if (type === 'damage') {
+                    // Bunyi tabrakan (rendah, mendengung)
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(80, ctx.currentTime + 0.3);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                } else if (type === 'level-up') {
+                    // Melodi selebrasi naik level
+                    const notes = [523.25, 659.25, 783.99, 1046.50];
+                    notes.forEach((freq, idx) => {
+                        const noteOsc = ctx.createOscillator();
+                        const noteGain = ctx.createGain();
+                        noteOsc.connect(noteGain);
+                        noteGain.connect(ctx.destination);
+                        noteOsc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.08);
+                        noteGain.gain.setValueAtTime(0.1, ctx.currentTime + idx * 0.08);
+                        noteGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.08 + 0.18);
+                        noteOsc.start(ctx.currentTime + idx * 0.08);
+                        noteOsc.stop(ctx.currentTime + idx * 0.08 + 0.18);
+                    });
+                } else if (type === 'game-over') {
+                    // Nada turun menyedihkan
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(300, ctx.currentTime);
+                    osc.frequency.linearRampToValueAtTime(100, ctx.currentTime + 0.5);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.5);
+                }
+            } catch (e) {
+                // Diabaikan jika browser menolak AudioContext sebelum ada interaksi langsung
+            }
+        }
+
+        // Mulai Game
+        function startGame() {
+            isPlaying = true;
+            score = 0;
+            lives = 3;
+            playerX = 45;
+            player.style.left = `${playerX}%`;
+            fallingObjects.forEach(obj => obj.element.remove());
+            fallingObjects = [];
+
+            // Sinkronkan UI HUD
+            updateHUD();
+
+            // Sembunyikan semua overlay layar
+            startOverlay.classList.add('hidden');
+            levelUpOverlay.classList.add('hidden');
+            gameOverOverlay.classList.add('hidden');
+
+            // Jalankan Game Loop & Spawn Loop
+            if (gameLoopId) cancelAnimationFrame(gameLoopId);
+            if (spawnIntervalId) clearInterval(spawnIntervalId);
+
+            gameLoop();
+            const currentLvlCfg = levels[gameLevel - 1];
+            spawnIntervalId = setInterval(spawnObject, currentLvlCfg.spawnSpeed);
+        }
+
+        // Perbarui Tampilan Angka Skor, Nyawa, Target
+        function updateHUD() {
+            const currentLvlCfg = levels[gameLevel - 1];
+            gameScoreText.textContent = score;
+            gameTargetText.textContent = currentLvlCfg.targetScore;
+            gameLevelText.textContent = gameLevel;
+
+            // Nyawa dalam simbol hati imut
+            let hearts = '';
+            for (let i = 0; i < lives; i++) hearts += '💖';
+            gameLivesText.textContent = hearts || '💀';
+        }
+
+        // Fungsi Bergerak ke Kiri
+        function moveLeft() {
+            if (!isPlaying) return;
+            playerX = Math.max(2, playerX - 8);
+            player.style.left = `${playerX}%`;
+        }
+
+        // Fungsi Bergerak ke Kanan
+        function moveRight() {
+            if (!isPlaying) return;
+            playerX = Math.min(88, playerX + 8);
+            player.style.left = `${playerX}%`;
+        }
+
+        // Deteksi Input Keyboard
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                moveLeft();
+            } else if (e.key === 'ArrowRight') {
+                moveRight();
+            }
+        });
+
+        // Kontrol Sentuh Layar (Tombol Besar)
+        ctrlLeft.addEventListener('touchstart', (e) => { e.preventDefault(); moveLeft(); });
+        ctrlLeft.addEventListener('mousedown', moveLeft);
+        ctrlRight.addEventListener('touchstart', (e) => { e.preventDefault(); moveRight(); });
+        ctrlRight.addEventListener('mousedown', moveRight);
+
+        // Munculkan Item Jatuh Baru dari Langit
+        function spawnObject() {
+            if (!isPlaying) return;
+
+            const currentLvlCfg = levels[gameLevel - 1];
+            const isObstacle = Math.random() < currentLvlCfg.obstacleRatio;
+            let chosenItem;
+
+            if (isObstacle) {
+                chosenItem = badItems[Math.floor(Math.random() * badItems.length)];
+            } else {
+                chosenItem = goodItems[Math.floor(Math.random() * goodItems.length)];
+            }
+
+            const element = document.createElement('div');
+            element.className = `absolute text-3xl select-none pointer-events-none z-20 ${chosenItem.color}`;
+            element.textContent = chosenItem.icon;
+            
+            // Atur posisi X acak
+            const randomX = Math.floor(Math.random() * 85) + 5;
+            element.style.left = `${randomX}%`;
+            element.style.top = `-35px`;
+
+            gameArena.appendChild(element);
+
+            fallingObjects.push({
+                element: element,
+                x: randomX,
+                y: -35,
+                isObstacle: isObstacle
+            });
+        }
+
+        // Frame Loop Animasi Berjalan Utama (60 FPS)
+        function gameLoop() {
+            if (!isPlaying) return;
+
+            const currentLvlCfg = levels[gameLevel - 1];
+
+            for (let i = fallingObjects.length - 1; i >= 0; i--) {
+                const obj = fallingObjects[i];
+                obj.y += currentLvlCfg.fallSpeed;
+                obj.element.style.top = `${obj.y}px`;
+
+                // Deteksi Tabrakan / Penangkapan (Collision)
+                // Arena Game setinggi 340px, letak player di y ~ 290px
+                if (obj.y >= 275 && obj.y <= 315) {
+                    const xDifference = Math.abs(obj.x - playerX);
+                    // Toleransi kedekatan tabrakan
+                    if (xDifference < 11) {
+                        obj.element.remove();
+                        fallingObjects.splice(i, 1);
+
+                        if (obj.isObstacle) {
+                            handleObstacleHit();
+                        } else {
+                            handleItemCollect();
+                        }
+                        continue;
+                    }
+                }
+
+                // Hapus jika sudah lolos melewati bagian bawah arena
+                if (obj.y > 340) {
+                    obj.element.remove();
+                    fallingObjects.splice(i, 1);
+                }
+            }
+
+            gameLoopId = requestAnimationFrame(gameLoop);
+        }
+
+        // Kejadian Berhasil Menangkap Item Impian
+        function handleItemCollect() {
+            score++;
+            playSound('hit');
+            updateHUD();
+
+            const currentLvlCfg = levels[gameLevel - 1];
+            if (score >= currentLvlCfg.targetScore) {
+                handleLevelUp();
+            }
+        }
+
+        // Kejadian Menabrak Rintangan Awan/Petir
+        function handleObstacleHit() {
+            lives--;
+            playSound('damage');
+            updateHUD();
+
+            // Efek kilatan merah di layar arena
+            flashOverlay.classList.add('damage-flash');
+            setTimeout(() => {
+                flashOverlay.classList.remove('damage-flash');
+            }, 300);
+
+            if (lives <= 0) {
+                handleGameOver();
+            }
+        }
+
+        // Naik Level Selebrasi
+        function handleLevelUp() {
+            isPlaying = false;
+            playSound('level-up');
+            if (gameLoopId) cancelAnimationFrame(gameLoopId);
+            if (spawnIntervalId) clearInterval(spawnIntervalId);
+
+            // Bersihkan sisa objek
+            fallingObjects.forEach(obj => obj.element.remove());
+            fallingObjects = [];
+
+            if (gameLevel >= 10) {
+                // Menang Game Sempurna!
+                overlayTitle.textContent = "🏆 Ratu Jalanan Malam! 👑";
+                overlayDesc.textContent = "Luar biasa, Mutiara! Kamu sukses menaklukkan semua rintangan dari Level 1 sampai 10! Impianmu semakin dekat! 💖";
+                startGameBtn.textContent = "Ulangi Game dari Level 1 🔄";
+                gameLevel = 1;
+                startOverlay.classList.remove('hidden');
+            } else {
+                // Tampilkan overlay naik tingkat
+                nextLevelNum.textContent = gameLevel + 1;
+                levelUpText.textContent = `Hebat sekali! Level ${gameLevel} berhasil dilompati dengan skor sempurna! Lanjut ke level berikutnya: ${levels[gameLevel].name}`;
+                levelUpOverlay.classList.remove('hidden');
+            }
+        }
+
+        // Game Selesai/Kalah
+        function handleGameOver() {
+            isPlaying = false;
+            playSound('game-over');
+            if (gameLoopId) cancelAnimationFrame(gameLoopId);
+            if (spawnIntervalId) clearInterval(spawnIntervalId);
+
+            fallingObjects.forEach(obj => obj.element.remove());
+            fallingObjects = [];
+
+            gameOverOverlay.classList.remove('hidden');
+        }
+
+        // Tombol Klik Start
+        startGameBtn.addEventListener('click', () => {
+            startGame();
+        });
+
+        // Tombol Klik Next Level
+        nextLevelBtn.addEventListener('click', () => {
+            gameLevel++;
+            startGame();
+        });
+
+        // Tombol Klik Coba Lagi
+        retryGameBtn.addEventListener('click', () => {
+            startGame();
+        });
+
+        // Hubungkan Tombol Mulai Ulang di samping Kiri Atas Game
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            startGame();
+        });
+    </script>
+
+    <!-- Logic Javascript untuk Game Zombie Menembak Sederhana -->
+    <script>
+        // Konfigurasi Level 1-10 untuk Game Zombie
+        const zombieLevels = [
+            { level: 1, targetKills: 5,  zombieSpeed: 0.8, spawnRate: 2000, zombieHp: 1, name: "Invasi Mini 🧟" },
+            { level: 2, targetKills: 8,  zombieSpeed: 1.0, spawnRate: 1800, zombieHp: 1, name: "Malam Berkabut 🌫️" },
+            { level: 3, targetKills: 11, zombieSpeed: 1.2, spawnRate: 1600, zombieHp: 1, name: "Gerombolan Agresif 🧟" },
+            { level: 4, targetKills: 14, zombieSpeed: 1.4, spawnRate: 1400, zombieHp: 2, name: "Zombie Berlapis Baja 🪖" },
+            { level: 5, targetKills: 18, zombieSpeed: 1.6, spawnRate: 1200, zombieHp: 2, name: "Gelombang Cepat ⚡" },
+            { level: 6, targetKills: 22, zombieSpeed: 1.8, spawnRate: 1000, zombieHp: 2, name: "Pengepungan Ketat 🏰" },
+            { level: 7, targetKills: 26, zombieSpeed: 2.0, spawnRate: 900,  zombieHp: 3, name: "Malam Berdarah 🩸" },
+            { level: 8, targetKills: 30, zombieSpeed: 2.2, spawnRate: 800,  zombieHp: 3, name: "Gerbang Neraka Terbuka 🌌" },
+            { level: 9, targetKills: 35, zombieSpeed: 2.5, spawnRate: 700,  zombieHp: 3, name: "Horde Tak Terbendung 💀" },
+            { level: 10,targetKills: 40, zombieSpeed: 3.0, spawnRate: 550,  zombieHp: 4, name: "Mutiara: Penyelamat K-Pop! 👑" }
+        ];
+
+        const zCanvas = document.getElementById('zombie-canvas');
+        const zCtx = zCanvas.getContext('2d');
+
+        // Elemen UI Game Zombie
+        const zLevelText = document.getElementById('zombie-level-indicator');
+        const zKillsText = document.getElementById('zombie-kills');
+        const zTargetText = document.getElementById('zombie-target');
+        const zHpText = document.getElementById('zombie-hp-text');
+        
+        // Elemen Overlay Game Zombie
+        const zStartOverlay = document.getElementById('zombie-start-overlay');
+        const zLevelupOverlay = document.getElementById('zombie-levelup-overlay');
+        const zGameoverOverlay = document.getElementById('zombie-gameover-overlay');
+        const zNextLevelNum = document.getElementById('zombie-next-num');
+        const zLevelupText = document.getElementById('zombie-levelup-text');
+
+        // Elemen Tombol Game Zombie
+        const zStartBtn = document.getElementById('zombie-start-btn');
+        const zNextBtn = document.getElementById('zombie-next-btn');
+        const zRetryBtn = document.getElementById('zombie-retry-btn');
+        const zResetBtn = document.getElementById('zombie-reset-btn');
+
+        // Game State
+        let zCurrentLevel = 1;
+        let zKills = 0;
+        let zBaseHp = 3;
+        let zIsPlaying = false;
+        let zLoopId = null;
+        let zSpawnTimeoutId = null;
+
+        // Entitas Game
+        let zombies = [];
+        let bullets = [];
+        let particles = [];
+        const playerPos = { x: 240, y: 310 }; // Mutiara diam di dasar tengah
+
+        // Atur ukuran canvas internal agar selalu stabil
+        function adjustCanvasResolution() {
+            zCanvas.width = 480;
+            zCanvas.height = 340;
+        }
+        adjustCanvasResolution();
+
+        // Memulai Game Zombie
+        function startZombieGame() {
+            zIsPlaying = true;
+            zKills = 0;
+            zBaseHp = 3;
+            zombies = [];
+            bullets = [];
+            particles = [];
+
+            updateZombieHUD();
+
+            // Sembunyikan Overlay
+            zStartOverlay.classList.add('hidden');
+            zLevelupOverlay.classList.add('hidden');
+            zGameoverOverlay.classList.add('hidden');
+
+            if (zLoopId) cancelAnimationFrame(zLoopId);
+            if (zSpawnTimeoutId) clearTimeout(zSpawnTimeoutId);
+
+            zombieGameLoop();
+            scheduleZombieSpawn();
+        }
+
+        // Mengatur HUD Game Zombie
+        function updateZombieHUD() {
+            const currentCfg = zombieLevels[zCurrentLevel - 1];
+            zLevelText.textContent = zCurrentLevel;
+            zKillsText.textContent = zKills;
+            zTargetText.textContent = currentCfg.targetKills;
+
+            let hearts = '';
+            for (let i = 0; i < zBaseHp; i++) {
+                hearts += '❤️';
+            }
+            zHpText.textContent = hearts || '💀';
+        }
+
+        // Munculkan Zombie Baru
+        function spawnZombie() {
+            if (!zIsPlaying) return;
+
+            const currentCfg = zombieLevels[zCurrentLevel - 1];
+            
+            // Variasi tipe zombie
+            const randType = Math.random();
+            let type = "normal"; // normal, fast, boss
+            let hp = currentCfg.zombieHp;
+            let speed = currentCfg.zombieSpeed;
+            let size = 26;
+
+            if (randType > 0.8) {
+                type = "fast"; // Zombie Cepat Biru
+                speed *= 1.4;
+                hp = Math.max(1, hp - 1);
+                size = 24;
+            } else if (randType > 0.93 && zCurrentLevel >= 4) {
+                type = "boss"; // Zombie Raksasa Ungu
+                hp = Math.ceil(hp * 2.5);
+                speed *= 0.6;
+                size = 40;
+            }
+
+            const x = Math.random() * (zCanvas.width - 60) + 30;
+            zombies.push({
+                x: x,
+                y: -30,
+                speed: speed,
+                hp: hp,
+                maxHp: hp,
+                type: type,
+                size: size,
+                pulse: 0,
+                hitTimer: 0 // Efek kilat merah ketika kena tembak
+            });
+
+            // Jadwalkan kemunculan berikutnya
+            scheduleZombieSpawn();
+        }
+
+        function scheduleZombieSpawn() {
+            if (!zIsPlaying) return;
+            const currentCfg = zombieLevels[zCurrentLevel - 1];
+            // Randomisasi spawn rate agar terasa alami
+            const delay = currentCfg.spawnRate * (0.8 + Math.random() * 0.4);
+            zSpawnTimeoutId = setTimeout(spawnZombie, delay);
+        }
+
+        // Tembak Bintang Ajaib kearah Click/Tap
+        zCanvas.addEventListener('mousedown', (e) => {
+            if (!zIsPlaying) return;
+            
+            // Dapatkan posisi klik relatif terhadap canvas
+            const rect = zCanvas.getBoundingClientRect();
+            const clickX = (e.clientX - rect.left) * (zCanvas.width / rect.width);
+            const clickY = (e.clientY - rect.top) * (zCanvas.height / rect.height);
+
+            // Hitung vektor arah tembakan
+            const diffX = clickX - playerPos.x;
+            const diffY = clickY - playerPos.y;
+            const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+
+            // Kecepatan peluru bintang
+            const bulletSpeed = 7;
+            const vx = (diffX / distance) * bulletSpeed;
+            const vy = (diffY / distance) * bulletSpeed;
+
+            bullets.push({
+                x: playerPos.x,
+                y: playerPos.y,
+                vx: vx,
+                vy: vy,
+                size: 14
+            });
+
+            // Putar efek suara tembakan imut
+            playLaserSound();
+        });
+
+        // Efek Suara Tembakan Laser Bintang
+        function playLaserSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(880, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.15);
+                gain.gain.setValueAtTime(0.08, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + 0.15);
+            } catch (e) {}
+        }
+
+        // Efek Suara Zombie Hancur
+        function playExplodeSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(120, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+                
+                osc.start();
+                osc.stop(ctx.currentTime + 0.25);
+            } catch (e) {}
+        }
+
+        // Buat efek partikel pecah saat zombie tertembak
+        function createExplosion(x, y, color) {
+            const count = 10;
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 1 + Math.random() * 3;
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    size: 2 + Math.random() * 3,
+                    color: color,
+                    alpha: 1,
+                    decay: 0.02 + Math.random() * 0.02
+                });
+            }
+        }
+
+        // Menggambar Zombie Vektor Detail di Canvas
+        function drawVectorZombie(z) {
+            zCtx.save();
+            
+            // Titik tengah zombie
+            const cx = z.x;
+            const cy = z.y;
+            const r = z.size / 2;
+            
+            // Hitungan wobble goyang-goyang jalan
+            const wobble = Math.sin(z.pulse) * 3;
+            zCtx.translate(cx + wobble, cy);
+
+            // Efek berkedip merah saat terkena tembakan
+            let skinColor = "#86efac"; // Hijau pastel default
+            let eyeColor = "#facc15";  // Kuning default
+            let hairColor = "#f472b6"; // Rambut pink
+            let clothesColor = "#818cf8"; // Baju biru
+
+            if (z.type === "fast") {
+                skinColor = "#93c5fd"; // Biru muda pastel
+                hairColor = "#ef4444"; // Rambut merah membara
+                clothesColor = "#f59e0b"; // Baju jingga
+            } else if (z.type === "boss") {
+                skinColor = "#c084fc"; // Ungu pastel tebal
+                hairColor = "#3b82f6"; // Rambut biru tua
+                clothesColor = "#4b5563"; // Baju besi abu-abu
+            }
+
+            // Jika sedang berkedip terkena damage
+            if (z.hitTimer > 0) {
+                skinColor = "#ef4444";
+                eyeColor = "#ffffff";
+                z.hitTimer--;
+            }
+
+            // Efek Motion Blur Bayangan Kecepatan (Khusus zombie biru cepat)
+            if (z.type === "fast") {
+                zCtx.fillStyle = "rgba(147, 197, 253, 0.15)";
+                zCtx.beginPath();
+                zCtx.arc(0, -z.speed * 4, r, 0, Math.PI * 2);
+                zCtx.fill();
+                zCtx.beginPath();
+                zCtx.arc(0, -z.speed * 8, r * 0.8, 0, Math.PI * 2);
+                zCtx.fill();
+            }
+
+            // 1. Rambut Zombie (Rambut acak-acakan di atas kepala)
+            zCtx.fillStyle = hairColor;
+            zCtx.beginPath();
+            zCtx.moveTo(-r, -r * 0.2);
+            zCtx.lineTo(-r * 1.2, -r * 0.8);
+            zCtx.lineTo(-r * 0.6, -r * 0.6);
+            zCtx.lineTo(-r * 0.3, -r * 1.3);
+            zCtx.lineTo(0, -r * 0.7);
+            zCtx.lineTo(r * 0.3, -r * 1.3);
+            zCtx.lineTo(r * 0.6, -r * 0.6);
+            zCtx.lineTo(r * 1.2, -r * 0.8);
+            zCtx.lineTo(r, -r * 0.2);
+            zCtx.closePath();
+            zCtx.fill();
+
+            // 2. Badan (Baju koyak-koyak)
+            zCtx.fillStyle = clothesColor;
+            zCtx.beginPath();
+            zCtx.moveTo(-r * 0.8, r * 0.5);
+            zCtx.lineTo(-r * 1.2, r * 1.3);
+            zCtx.lineTo(-r * 0.5, r * 1.1);
+            zCtx.lineTo(0, r * 1.4); // robekan tengah
+            zCtx.lineTo(r * 0.5, r * 1.1);
+            zCtx.lineTo(r * 1.2, r * 1.3);
+            zCtx.lineTo(r * 0.8, r * 0.5);
+            zCtx.closePath();
+            zCtx.fill();
+
+            // Kulit tangan terjulur ke depan (Ciri khas zombie)
+            zCtx.fillStyle = skinColor;
+            zCtx.fillRect(-r * 1.1, r * 0.4, r * 0.4, r * 0.7); // Tangan kiri
+            zCtx.fillRect(r * 0.7, r * 0.4, r * 0.4, r * 0.7);  // Tangan kanan
+
+            // 3. Kepala (Bulat besar imut)
+            zCtx.fillStyle = skinColor;
+            zCtx.beginPath();
+            zCtx.arc(0, 0, r, 0, Math.PI * 2);
+            zCtx.fill();
+
+            // Detail Helm Pelindung (Khusus zombie raksasa ungu)
+            if (z.type === "boss") {
+                zCtx.strokeStyle = "#475569";
+                zCtx.lineWidth = 3;
+                zCtx.fillStyle = "#64748b";
+                // Helm melengkung di atas
+                zCtx.beginPath();
+                zCtx.arc(0, -r * 0.2, r * 1.05, Math.PI, 0);
+                zCtx.closePath();
+                zCtx.fill();
+                zCtx.stroke();
+
+                // Duri helm
+                zCtx.fillStyle = "#cbd5e1";
+                zCtx.beginPath();
+                zCtx.moveTo(0, -r * 1.2);
+                zCtx.lineTo(-r * 0.3, -r * 1.6);
+                zCtx.lineTo(r * 0.3, -r * 1.6);
+                zCtx.closePath();
+                zCtx.fill();
+            }
+
+            // Detail Ikat Kepala Sporty (Khusus zombie cepat biru)
+            if (z.type === "fast") {
+                zCtx.fillStyle = "#ef4444";
+                zCtx.fillRect(-r * 0.95, -r * 0.5, r * 1.9, r * 0.3);
+                // Ikatan ikat kepala di belakang samping kiri
+                zCtx.beginPath();
+                zCtx.moveTo(-r, -r * 0.4);
+                zCtx.lineTo(-r * 1.4, -r * 0.1);
+                zCtx.lineTo(-r * 1.3, -r * 0.5);
+                zCtx.closePath();
+                zCtx.fill();
+            }
+
+            // 4. Dua Mata Bersinar Lucu (Kanan & Kiri)
+            zCtx.fillStyle = eyeColor;
+            zCtx.beginPath();
+            zCtx.arc(-r * 0.35, -r * 0.1, r * 0.22, 0, Math.PI * 2); // Mata kiri
+            zCtx.arc(r * 0.35, -r * 0.1, r * 0.22, 0, Math.PI * 2);  // Mata kanan
+            zCtx.fill();
+
+            // Pupil hitam kecil di dalam mata (Mata juling imut khas zombie)
+            zCtx.fillStyle = "#000000";
+            zCtx.beginPath();
+            zCtx.arc(-r * 0.25, -r * 0.1, r * 0.08, 0, Math.PI * 2);
+            zCtx.arc(r * 0.45, -r * 0.1, r * 0.08, 0, Math.PI * 2);
+            zCtx.fill();
+
+            // 5. Mulut Menganga Konyol (Sedikit miring ke samping)
+            zCtx.fillStyle = "#31111d";
+            zCtx.beginPath();
+            zCtx.arc(r * 0.1, r * 0.35, r * 0.25, 0, Math.PI);
+            zCtx.closePath();
+            zCtx.fill();
+
+            // Gigi taring kecil di dalam mulut zombie
+            zCtx.fillStyle = "#ffffff";
+            zCtx.beginPath();
+            zCtx.moveTo(r * 0.0, r * 0.35);
+            zCtx.lineTo(-r * 0.1, r * 0.45);
+            zCtx.lineTo(r * 0.1, r * 0.35);
+            zCtx.moveTo(r * 0.2, r * 0.35);
+            zCtx.lineTo(r * 0.3, r * 0.45);
+            zCtx.lineTo(r * 0.1, r * 0.35);
+            zCtx.fill();
+
+            zCtx.restore();
+        }
+
+        // Game Loop Utama (Canvas Render)
+        function zombieGameLoop() {
+            if (!zIsPlaying) return;
+
+            zCtx.clearRect(0, 0, zCanvas.width, zCanvas.height);
+
+            // Render Latar Belakang Jalan Berbintang
+            zCtx.fillStyle = 'rgba(255,255,255,0.05)';
+            for(let i=0; i<15; i++) {
+                const sx = (Math.sin(i * 4124) * 0.5 + 0.5) * zCanvas.width;
+                const sy = ((i * 532 + Date.now() * 0.05) % zCanvas.height);
+                zCtx.fillRect(sx, sy, 2, 2);
+            }
+
+            const currentCfg = zombieLevels[zCurrentLevel - 1];
+
+            // 1. Update & Render Bullets
+            for (let i = bullets.length - 1; i >= 0; i--) {
+                const b = bullets[i];
+                b.x += b.vx;
+                b.y += b.vy;
+
+                // Menggambar Peluru Bintang Ajaib ⭐
+                zCtx.save();
+                zCtx.shadowBlur = 8;
+                zCtx.shadowColor = '#f472b6';
+                zCtx.fillStyle = '#fbcfe8';
+                zCtx.font = `${b.size}px Arial`;
+                zCtx.textAlign = 'center';
+                zCtx.textBaseline = 'middle';
+                zCtx.fillText('⭐', b.x, b.y);
+                zCtx.restore();
+
+                // Hapus peluru keluar batas
+                if (b.x < 0 || b.x > zCanvas.width || b.y < 0 || b.y > zCanvas.height) {
+                    bullets.splice(i, 1);
+                }
+            }
+
+            // 2. Update & Render Zombies
+            for (let i = zombies.length - 1; i >= 0; i--) {
+                const z = zombies[i];
+                z.y += z.speed;
+                z.pulse += 0.08;
+
+                // Memanggil Fungsi Menggambar Zombie Vektor Detail Baru
+                drawVectorZombie(z);
+
+                // Menggambar Bar HP Mini di atas kepala Zombie
+                if (z.hp < z.maxHp) {
+                    zCtx.save();
+                    const barWidth = z.size * 1.1;
+                    const barHeight = 4;
+                    const hpRatio = z.hp / z.maxHp;
+                    
+                    // Background Bar (Merah)
+                    zCtx.fillStyle = 'rgba(239, 68, 68, 0.4)';
+                    zCtx.fillRect(z.x - barWidth/2, z.y - z.size * 0.9, barWidth, barHeight);
+                    
+                    // Fill Bar (Hijau Bersinar)
+                    zCtx.fillStyle = '#10b981';
+                    zCtx.shadowBlur = 4;
+                    zCtx.shadowColor = '#10b981';
+                    zCtx.fillRect(z.x - barWidth/2, z.y - z.size * 0.9, barWidth * hpRatio, barHeight);
+                    zCtx.restore();
+                }
+
+                // Deteksi tertembak peluru
+                for (let j = bullets.length - 1; j >= 0; j--) {
+                    const b = bullets[j];
+                    const dist = Math.sqrt((b.x - z.x) * (b.x - z.x) + (b.y - z.y) * (b.y - z.y));
+                    
+                    if (dist < (z.size / 1.3 + 8)) {
+                        // Kena hit!
+                        z.hp--;
+                        z.hitTimer = 5; // Nyalakan efek kedip merah selama 5 frame
+                        createExplosion(b.x, b.y, '#f472b6'); // ledakan bintang pink
+                        bullets.splice(j, 1);
+
+                        if (z.hp <= 0) {
+                            zKills++;
+                            playExplodeSound();
+                            
+                            // Pilih warna efek ledakan hancur sesuai tipe zombie
+                            let explosionColor = '#86efac'; // Hijau default
+                            if (z.type === 'fast') explosionColor = '#93c5fd'; // Biru
+                            if (z.type === 'boss') explosionColor = '#c084fc'; // Ungu
+
+                            createExplosion(z.x, z.y, explosionColor);
+                            zombies.splice(i, 1);
+                            updateZombieHUD();
+
+                            // Cek Menang Level
+                            if (zKills >= currentCfg.targetKills) {
+                                handleZombieLevelWin();
+                                return;
+                            }
+                        }
+                        break;
+                    }
+                }
+
+                // Deteksi menembus pertahanan batas bawah
+                if (z.y > zCanvas.height - 25) {
+                    zBaseHp--;
+                    createExplosion(z.x, z.y, '#ef4444');
+                    zombies.splice(i, 1);
+                    updateZombieHUD();
+
+                    // Flash merah pada layar canvas
+                    zCanvas.classList.add('damage-flash');
+                    setTimeout(() => zCanvas.classList.remove('damage-flash'), 250);
+
+                    if (zBaseHp <= 0) {
+                        handleZombieGameOver();
+                        return;
+                    }
+                }
+            }
+
+            // 3. Update & Render Partikel Ledakan
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= p.decay;
+
+                if (p.alpha <= 0) {
+                    particles.splice(i, 1);
+                    continue;
+                }
+
+                zCtx.save();
+                zCtx.globalAlpha = p.alpha;
+                zCtx.fillStyle = p.color;
+                zCtx.beginPath();
+                zCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                zCtx.fill();
+                zCtx.restore();
+            }
+
+            // 4. Gambar Karakter Pemain (Mutiara) di dasar tengah
+            zCtx.save();
+            zCtx.shadowBlur = 10;
+            zCtx.shadowColor = '#ec4899';
+            zCtx.font = '36px Arial';
+            zCtx.textAlign = 'center';
+            zCtx.textBaseline = 'middle';
+            // Avatar Mutiara menembak dengan blaster pink
+            zCtx.fillText('👧⚡', playerPos.x, playerPos.y);
+            zCtx.restore();
+
+            // Batas pertahanan garis pink
+            zCtx.strokeStyle = 'rgba(236, 72, 153, 0.4)';
+            zCtx.lineWidth = 2;
+            zCtx.setLineDash([5, 5]);
+            zCtx.beginPath();
+            zCtx.moveTo(0, zCanvas.height - 35);
+            zCtx.lineTo(zCanvas.width, zCanvas.height - 35);
+            zCtx.stroke();
+
+            zLoopId = requestAnimationFrame(zombieGameLoop);
+        }
+
+        // Berhasil Menang Level Zombie
+        function handleZombieLevelWin() {
+            zIsPlaying = false;
+            playSound('level-up');
+            if (zLoopId) cancelAnimationFrame(gameLoopId); // perbaikan minor penamaan ID interval
+            if (zLoopId) cancelAnimationFrame(zLoopId);
+            if (zSpawnTimeoutId) clearTimeout(zSpawnTimeoutId);
+
+            if (zCurrentLevel >= 10) {
+                // Menang Sempurna Game Zombie
+                document.getElementById('zombie-overlay-title').textContent = "👑 Penyelamat Dunia K-Pop! 👑";
+                document.getElementById('zombie-overlay-title').className = "text-3xl font-bold text-yellow-400 title-font mb-2";
+                zStartOverlay.querySelector('p').textContent = "Mutiara berhasil membasmi seluruh kawanan zombie dengan Bintang Ajaib! Impianmu bersinar benderang! 🌟💖";
+                zStartBtn.textContent = "Main Lagi Level 1 🎮";
+                zCurrentLevel = 1;
+                zStartOverlay.classList.remove('hidden');
+            } else {
+                zNextLevelNum.textContent = zCurrentLevel + 1;
+                zLevelupText.textContent = `Luar biasa! Level ${zCurrentLevel} diselesaikan dengan keberanian tinggi! Lanjut ke Level berikutnya: ${zombieLevels[zCurrentLevel].name}`;
+                zLevelupOverlay.classList.remove('hidden');
+            }
+        }
+
+        // Kalah Game Zombie
+        function handleZombieGameOver() {
+            zIsPlaying = false;
+            playSound('game-over');
+            if (zLoopId) cancelAnimationFrame(zLoopId);
+            if (zSpawnTimeoutId) clearTimeout(zSpawnTimeoutId);
+
+            zGameoverOverlay.classList.remove('hidden');
+        }
+
+        // Event Listener Tombol Game Zombie
+        zStartBtn.addEventListener('click', () => {
+            startZombieGame();
+        });
+
+        zNextBtn.addEventListener('click', () => {
+            zCurrentLevel++;
+            startZombieGame();
+        });
+
+        zRetryBtn.addEventListener('click', () => {
+            startZombieGame();
+        });
+
+        zResetBtn.addEventListener('click', () => {
+            startZombieGame();
+        });
+    </script>
+</body>
+</html>

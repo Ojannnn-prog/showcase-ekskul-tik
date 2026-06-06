@@ -66,7 +66,7 @@
             border: 3px solid theme('colors.neo.black');
         }
 
-        /* Animasi Kustom */
+        /* Animasi Masuk */
         @keyframes fadeUp {
             from {
                 opacity: 0;
@@ -113,7 +113,7 @@
 
 <body class="font-body antialiased min-h-screen flex flex-col">
 
-    <!-- NAVBAR (Step 2) -->
+    <!-- NAVBAR -->
     <nav
         class="sticky top-0 z-50 bg-neo-white border-b-4 border-neo-black py-4 px-6 md:px-12 flex justify-between items-center shadow-neo-sm">
         <!-- Logo -->
@@ -132,28 +132,35 @@
                 class="relative before:content-[''] before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-1 before:bg-neo-black hover:before:w-full before:transition-all before:duration-300">Beranda</a>
             <a href="#showcase"
                 class="relative before:content-[''] before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-1 before:bg-neo-black hover:before:w-full before:transition-all before:duration-300">Showcase</a>
-            <a href="#memori"
+            <a href="#kapsul-waktu"
                 class="relative before:content-[''] before:absolute before:-bottom-1 before:left-0 before:w-0 before:h-1 before:bg-neo-black hover:before:w-full before:transition-all before:duration-300">Memori
                 Kls 6</a>
 
-            <!-- Tombol CTA Neo-Brutalism -->
+            <!-- Tombol CTA -->
             <a href="#showcase"
                 class="bg-neo-yellow px-6 py-2 border-2 border-neo-black shadow-neo-hover hover:shadow-none hover:translate-y-[2px] hover:translate-x-[2px] transition-all">
                 Lihat Karya 👀
             </a>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button
+        <!-- Mobile Menu Button (Sudah ditambahkan ID) -->
+        <button id="mobile-menu-btn"
             class="md:hidden bg-neo-cyan px-3 py-2 border-2 border-neo-black shadow-neo-hover hover:bg-neo-yellow active:shadow-none active:translate-y-[2px] active:translate-x-[2px] transition-all">
             <i class="ph ph-list text-2xl font-bold text-neo-black"></i>
         </button>
     </nav>
 
-    <!-- HERO SECTION (Step 3) -->
+    <!-- Mobile Menu Dropdown (Disembunyikan secara default) -->
+    <div id="mobile-menu"
+        class="hidden md:hidden bg-neo-white border-b-4 border-neo-black shadow-neo fixed top-[76px] left-0 w-full flex flex-col font-heading font-bold text-lg text-center divide-y-2 divide-neo-black z-40">
+        <a href="#beranda" class="mobile-link py-4 hover:bg-neo-cyan transition-colors">Beranda</a>
+        <a href="#showcase" class="mobile-link py-4 hover:bg-neo-pink transition-colors">Showcase</a>
+        <a href="#kapsul-waktu" class="mobile-link py-4 hover:bg-neo-green transition-colors">Memori Kls 6</a>
+    </div>
+
+    <!-- HERO SECTION -->
     <header id="beranda"
         class="relative overflow-hidden w-full max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
-
         <!-- Teks Kiri -->
         <div class="w-full md:w-1/2 flex flex-col items-start gap-6 z-10">
             <div
@@ -181,17 +188,14 @@
             </div>
         </div>
 
-        <!-- Ilustrasi Kanan (Kucing Hacker Lucu) -->
+        <!-- Ilustrasi Kanan (Kucing Hacker) -->
         <div class="w-full md:w-1/2 flex justify-center opacity-0 animate-fade-up z-10">
             <div class="relative w-72 h-72 md:w-96 md:h-96 animate-float">
-                <!-- Ornamen Latar Belakang -->
                 <div
                     class="absolute inset-0 bg-neo-cyan border-4 border-neo-black shadow-neo rounded-3xl transform rotate-6">
                 </div>
                 <div
                     class="absolute inset-0 bg-neo-yellow border-4 border-neo-black shadow-neo rounded-3xl transform -rotate-3 flex items-center justify-center overflow-hidden">
-
-                    <!-- SVG Kucing Hacker Lucu -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" class="w-4/5 h-4/5 mt-10">
                         <!-- Laptop -->
                         <polygon points="20,180 180,180 160,140 40,140" fill="#FAFAFA" stroke="#111111" stroke-width="6"
@@ -213,23 +217,18 @@
                         <circle cx="100" cy="110" r="4" fill="#111111" />
                         <path d="M 90 120 Q 100 130 110 120" fill="none" stroke="#111111" stroke-width="6"
                             stroke-linecap="round" />
-                        <!-- Keringat/Ornamen Kecil -->
+                        <!-- Keringat -->
                         <circle cx="155" cy="50" r="4" fill="#111111" class="animate-ping" />
                     </svg>
-
                 </div>
-                <!-- Bintang Dekorasi -->
                 <i class="ph-fill ph-sparkle text-4xl text-neo-pink absolute -top-4 -left-4 animate-spin-slow"></i>
                 <i class="ph-fill ph-star text-3xl text-neo-green absolute -bottom-4 -right-4 transform rotate-12"></i>
             </div>
         </div>
-
     </header>
 
-    <!-- SHOWCASE SECTION (Step 4) -->
-    <!-- Dibungkus dengan Node section dan div container agar layout aman dan terstruktur -->
-    <section id="showcase" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-16">
-
+    <!-- SHOWCASE SECTION -->
+    <section id="showcase" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 z-10 relative">
         <div class="flex items-center gap-4 mb-10">
             <h2
                 class="font-heading text-4xl md:text-5xl font-black uppercase bg-neo-white inline-block px-4 py-2 neo-border shadow-neo-sm transform rotate-1">
@@ -237,10 +236,10 @@
             </h2>
         </div>
 
-        <!-- Node Grid Pembungkus Karya -->
+        <!-- Grid Karya Anak TIK -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Karya 1: Calista -->
+            <!-- Karya 1 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-pink p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -249,7 +248,6 @@
                 <div class="p-6 flex-grow flex flex-col justify-between gap-6">
                     <p class="font-medium text-neo-black/80">Game rhythm musik menangkap nada jatuh dengan desain pastel
                         yang cantik.</p>
-                    <!-- Link Node yang aman -->
                     <a href="biodata_calista (1).html"
                         class="text-center bg-neo-black text-neo-white font-bold py-3 px-4 border-2 border-neo-black shadow-neo-hover hover:bg-neo-yellow hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
                         Mainkan <i class="ph-bold ph-arrow-right inline-block ml-1"></i>
@@ -257,7 +255,7 @@
                 </div>
             </article>
 
-            <!-- Karya 2: Wildan -->
+            <!-- Karya 2 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-yellow p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -273,7 +271,7 @@
                 </div>
             </article>
 
-            <!-- Karya 3: Gibral -->
+            <!-- Karya 3 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-cyan p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -289,7 +287,7 @@
                 </div>
             </article>
 
-            <!-- Karya 4: Julian -->
+            <!-- Karya 4 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-green p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -305,7 +303,7 @@
                 </div>
             </article>
 
-            <!-- Karya 5: Ghini -->
+            <!-- Karya 5 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-pink p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -321,7 +319,7 @@
                 </div>
             </article>
 
-            <!-- Karya 6: Gishella -->
+            <!-- Karya 6 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-white p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -337,7 +335,7 @@
                 </div>
             </article>
 
-            <!-- Karya 7: Najma -->
+            <!-- Karya 7 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-yellow p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -353,7 +351,7 @@
                 </div>
             </article>
 
-            <!-- Karya 8: Rifat -->
+            <!-- Karya 8 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-cyan p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -369,7 +367,7 @@
                 </div>
             </article>
 
-            <!-- Karya 9: Atiqa -->
+            <!-- Karya 9 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-green p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -385,7 +383,7 @@
                 </div>
             </article>
 
-            <!-- Karya 10: Hauzan -->
+            <!-- Karya 10 -->
             <article
                 class="bg-neo-white neo-border shadow-neo flex flex-col overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                 <div class="bg-neo-pink p-4 border-b-4 border-neo-black flex justify-between items-center">
@@ -404,74 +402,51 @@
         </div>
     </section>
 
-    <!-- MEMORI KELAS 6 SECTION -->
-    <section id="memori" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 mb-12">
-        <div class="bg-neo-white neo-border shadow-neo p-8 md:p-12 relative overflow-hidden">
-            <!-- Ornamen Dekoratif -->
-            <div
-                class="absolute -top-10 -right-10 w-40 h-40 bg-neo-yellow rounded-full neo-border mix-blend-multiply opacity-50 blur-xl">
-            </div>
-            <div
-                class="absolute -bottom-10 -left-10 w-40 h-40 bg-neo-cyan rounded-full neo-border mix-blend-multiply opacity-50 blur-xl">
-            </div>
+    <!-- KAPSUL WAKTU KELAS 6 SECTION (SPECIAL) -->
+    <section id="kapsul-waktu" class="w-full max-w-7xl mx-auto px-6 md:px-12 py-16 z-10 relative">
+        <div
+            class="bg-neo-cyan neo-border shadow-neo p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 rounded-lg">
 
-            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
-                <div class="w-full md:w-2/3 flex flex-col items-start gap-4">
-                    <div
-                        class="bg-neo-pink px-4 py-1 neo-border shadow-neo-sm font-bold text-sm transform rotate-2 inline-flex items-center gap-2">
-                        <i class="ph-fill ph-camera text-neo-black"></i> Kenangan Indah
-                    </div>
-                    <h2 class="font-heading text-4xl md:text-5xl font-black uppercase">
-                        Kapsul Waktu <br><span
-                            class="text-neo-black bg-neo-cyan px-2 mt-1 inline-block transform -rotate-1 shadow-neo-sm">Kelas
-                            6</span>
-                    </h2>
-                    <p class="font-medium text-lg text-neo-black/80 max-w-xl leading-relaxed mt-2">
-                        Setiap tawa, canda, dan momen berharga bersama teman-teman telah terekam abadi. Mari
-                        bernostalgia dan melihat kembali jejak manis perjalanan kita di kelas 6! 📸✨
-                    </p>
-                    <a href="https://ojannnn-prog.github.io/memori-esdeh/" target="_blank" rel="noopener noreferrer"
-                        class="mt-4 bg-neo-black text-neo-white font-bold text-lg px-8 py-4 border-4 border-neo-black shadow-neo-hover hover:bg-neo-yellow hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all flex items-center gap-2 group">
-                        Buka Kotak Kenangan <i
-                            class="ph-bold ph-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            <div class="w-full md:w-2/3 flex flex-col gap-6">
+                <h2 class="font-heading text-4xl md:text-5xl font-black uppercase text-neo-black">
+                    Kapsul Waktu Kelas 6 📸
+                </h2>
+                <p
+                    class="font-body text-xl font-medium text-neo-black/80 leading-relaxed bg-neo-white px-4 py-3 neo-border shadow-neo-sm transform -rotate-1">
+                    Setiap tawa, canda, dan cerita di bangku kelas 6 kini terangkum manis. Mari buka kembali lembaran
+                    kenangan yang tak terlupakan sebelum kita melangkah ke jenjang yang baru.
+                </p>
+                <div class="mt-2">
+                    <a href="https://ojannnn-prog.github.io/memori-esdeh/" target="_blank"
+                        class="inline-flex items-center gap-2 bg-neo-black text-neo-white font-bold text-lg px-8 py-4 border-4 border-neo-black shadow-neo-hover hover:bg-neo-yellow hover:text-neo-black hover:translate-y-[2px] hover:translate-x-[2px] hover:shadow-none transition-all">
+                        Buka Album Kenangan <i class="ph-bold ph-heart text-xl"></i>
                     </a>
                 </div>
+            </div>
 
-                <!-- Ilustrasi Frame Foto -->
-                <div class="w-full md:w-1/3 flex justify-center">
+            <!-- Ilustrasi Polaroid -->
+            <div class="w-full md:w-1/3 flex justify-center animate-float delay-200">
+                <div class="bg-neo-white p-4 pb-12 neo-border shadow-neo transform rotate-6 max-w-[250px] relative">
                     <div
-                        class="relative w-64 h-64 md:w-72 md:h-72 transform rotate-3 hover:-rotate-2 transition-transform duration-500 animate-float">
-                        <div
-                            class="absolute inset-0 bg-neo-white neo-border shadow-neo p-4 pb-12 flex flex-col items-center">
-                            <div class="w-full h-full bg-neo-black overflow-hidden relative">
-                                <!-- Ilustrasi SVG Abstrak / Doodle Kenangan -->
-                                <svg width="100%" height="100%" viewBox="0 0 200 200"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect width="100%" height="100%" fill="#FAFAFA" />
-                                    <circle cx="100" cy="100" r="50" fill="#FFDE59" stroke="#111111" stroke-width="4" />
-                                    <path d="M50,150 Q100,50 150,150" fill="none" stroke="#FF90E8" stroke-width="8"
-                                        stroke-linecap="round" />
-                                    <path d="M70,100 L90,120 L130,80" fill="none" stroke="#111111" stroke-width="6"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <circle cx="150" cy="50" r="15" fill="#90F4FF" stroke="#111111" stroke-width="4" />
-                                    <circle cx="40" cy="60" r="10" fill="#C0FF71" stroke="#111111" stroke-width="4" />
-                                </svg>
-                            </div>
-                            <span class="font-heading font-bold text-lg mt-4 handwritten text-neo-black">Best Friends
-                                Forever!</span>
-                        </div>
-                        <!-- Pin Tempel -->
-                        <div
-                            class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-neo-red neo-border shadow-sm">
-                        </div>
+                        class="w-full aspect-square bg-neo-pink neo-border flex items-center justify-center overflow-hidden">
+                        <span class="text-6xl animate-pulse">🎓🏫</span>
+                    </div>
+                    <span class="absolute bottom-4 left-0 right-0 text-center font-heading font-bold text-xl uppercase">
+                        Kawan Selamanya
+                    </span>
+                    <!-- Selotip -->
+                    <div
+                        class="absolute -top-3 left-1/2 transform -translate-x-1/2 w-16 h-6 bg-neo-yellow/80 neo-border -rotate-3">
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-neo-black text-neo-white border-t-4 border-neo-black py-10 text-center relative overflow-hidden">
+    <footer
+        class="bg-neo-black text-neo-white border-t-4 border-neo-black py-10 mt-auto text-center relative overflow-hidden">
         <div class="relative z-10 flex flex-col items-center gap-4">
             <h3 class="font-heading font-black text-3xl md:text-4xl text-neo-yellow tracking-widest uppercase">
                 Ekskul TIK
@@ -490,6 +465,24 @@
         <i class="ph-fill ph-brackets-curly absolute -right-4 -bottom-4 text-9xl text-neo-white opacity-10"></i>
     </footer>
 
+    <!-- Script untuk Interaksi Navbar Mobile -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Memunculkan/menyembunyikan menu saat tombol diklik
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Otomatis menyembunyikan menu saat salah satu link diklik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 
 </html>

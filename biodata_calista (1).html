@@ -1,52 +1,237 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biodata Calista 🌸</title>
+    <title>Biodata Calista 🦋</title>
     <!-- Tailwind CSS untuk styling cepat dan responsif -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Dancing Script untuk huruf sambung (cursive) -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <!-- Google Fonts: Dancing Script untuk huruf sambung, Quicksand untuk teks utama -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         body {
-            /* Menambahkan prioritas font Apple Color Emoji */
-            font-family: 'Dancing Script', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', cursive;
-            /* Latar belakang foto senja pastel yang indah dengan overlay transparan */
-            background-image: linear-gradient(rgba(255, 240, 245, 0.35), rgba(224, 234, 252, 0.35)), 
-                              url('https://images.unsplash.com/photo-1532767153582-b1a0e5145009?w=1600&auto=format&fit=crop&q=80');
-            background-size: cover;
-            background-position: center;
+            /* Kombinasi font elegan dan font emoji Apple */
+            font-family: 'Quicksand', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+
+            /* Latar belakang Biru Pastel Soft dengan elemen Y2K Grid */
+            background-color: #dbeafe;
+            /* Soft blue */
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(255, 182, 193, 0.4), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(191, 219, 254, 0.6), transparent 25%),
+                linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
             background-attachment: fixed;
-            background-repeat: no-repeat;
+
+            color: #334155;
             overflow-x: hidden;
-            font-size: 1.25rem; /* Ukuran dibesarkan sedikit agar huruf sambung mudah dibaca */
+            font-size: 1.15rem;
         }
 
-        /* Memaksa elemen emoji berukuran besar untuk menggunakan font iPhone */
-        .animate-float, .animate-float-delayed, .bouncing-cat, .cute-card .text-5xl, .ado-badge {
-            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
-            font-style: normal;
+        .font-cursive {
+            font-family: 'Dancing Script', cursive;
         }
 
-        /* Animasi Mengambang Organik & Dinamis */
-        @keyframes organicSway {
-            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-            25% { transform: translateY(-15px) translateX(10px) rotate(5deg); }
-            50% { transform: translateY(-25px) translateX(-10px) rotate(-5deg); }
-            75% { transform: translateY(-10px) translateX(15px) rotate(3deg); }
+        .font-mono-y2k {
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: -0.5px;
         }
 
-        .animate-sway {
-            animation: organicSway 6s ease-in-out infinite;
-        }
-        
-        .animate-sway-delayed {
-            animation: organicSway 8s ease-in-out 1.5s infinite;
+        /* Jendela Y2K dengan Glassmorphism Biru Pastel */
+        .y2k-window {
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 6px 6px 0px 0px rgba(147, 197, 253, 0.8);
+            /* Blue shadow */
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Transisi untuk Scroll Reveal */
+        .y2k-window:hover {
+            transform: translateY(-4px);
+            box-shadow: 10px 10px 0px 0px rgba(147, 197, 253, 0.9);
+        }
+
+        /* Kartu Biodata Y2K yang membal */
+        .cute-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+            border: 3px solid #fff;
+            box-shadow: 4px 4px 0px 0px rgba(147, 197, 253, 0.6);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .cute-card:hover {
+            transform: translateY(-8px) scale(1.03) rotate(2deg);
+            box-shadow: 8px 8px 0px 0px rgba(147, 197, 253, 1);
+            z-index: 10;
+        }
+
+        /* Animasi Mengambang Santai (Nonchalant Float) */
+        @keyframes chillFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+
+        .animate-chill-float {
+            animation: chillFloat 5s ease-in-out infinite;
+        }
+
+        .animate-chill-float-delayed {
+            animation: chillFloat 6s ease-in-out 2s infinite;
+        }
+
+        /* Kucing Berjalan & Ekor Bergoyang */
+        @keyframes walkCat {
+            0% {
+                transform: translateX(-10vw) scaleX(1);
+            }
+
+            49% {
+                transform: translateX(110vw) scaleX(1);
+            }
+
+            50% {
+                transform: translateX(110vw) scaleX(-1);
+            }
+
+            100% {
+                transform: translateX(-10vw) scaleX(-1);
+            }
+        }
+
+        .walking-cat-container {
+            position: fixed;
+            bottom: 15px;
+            left: 0;
+            z-index: 40;
+            animation: walkCat 18s linear infinite;
+        }
+
+        @keyframes bounceCat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
+
+            /* Efek jalan menggemaskan */
+        }
+
+        .bouncing-cat {
+            animation: bounceCat 0.4s ease-in-out infinite;
+            display: inline-block;
+            font-size: 4rem;
+            filter: drop-shadow(2px 2px 0px rgba(255, 255, 255, 0.8));
+            cursor: pointer;
+        }
+
+        /* Blob Shape Avatar */
+        .blob-avatar {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: chillFloat 6s ease-in-out infinite alternate;
+            box-shadow: inset 10px 10px 20px rgba(255, 255, 255, 0.8), 10px 10px 30px rgba(147, 197, 253, 0.5);
+        }
+
+        /* Game Variables (Ayam Berjoget) */
+        @keyframes chickenDance {
+
+            0%,
+            100% {
+                transform: scale(1) translateY(0);
+            }
+
+            50% {
+                transform: scale(0.9, 1.1) translateY(-4px);
+            }
+        }
+
+        .dancing-chicken-sprite {
+            display: inline-block;
+            transform-origin: bottom center;
+        }
+
+        .chicken-idle {
+            animation: chickenDance 0.4s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        @keyframes chickenFlip {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .chicken-flip-anim {
+            animation: chickenFlip 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .floating-score {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #fde047;
+            text-shadow: 2px 2px 0 #000;
+            pointer-events: none;
+            z-index: 25;
+            animation: floatScore 0.8s ease-out forwards;
+        }
+
+        @keyframes floatScore {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-40px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkle Cursor */
+        .pointer-sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 1.2rem;
+            animation: fadeAndFly 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeAndFly {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--x-dir), var(--y-dir)) scale(0.3) rotate(var(--rot));
+            }
+        }
+
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -57,735 +242,260 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Bentuk Blob Lucu untuk Foto Profil */
-        .blob-shape {
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            animation: morph 8s ease-in-out infinite;
-            box-shadow: inset 10px 10px 20px rgba(255,255,255,0.5), 
-                        15px 15px 35px rgba(0,0,0,0.15);
-        }
-
-        @keyframes morph {
-            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
-        }
-
-        /* Jendela Y2K dengan Efek Glassmorphism yang lebih terbaca di atas foto senja */
-        .y2k-window {
-            border: 3px solid #fff;
-            box-shadow: 8px 8px 0px 0px rgba(161,196,253,0.8);
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(15px);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
-        }
-        .y2k-window:hover {
-            transform: translateY(-2px);
-            box-shadow: 10px 10px 0px 0px rgba(161,196,253,0.9);
-        }
-
-        /* Animasi Membal Kenyalan (Squash and Stretch) */
-        @keyframes squashStretch {
-            0%, 100% { transform: scale(1, 1); }
-            30% { transform: scale(1.2, 0.8); }
-            40% { transform: scale(0.8, 1.2); }
-            55% { transform: scale(1.1, 0.9); }
-            70% { transform: scale(0.95, 1.05); }
-        }
-
-        .hover-squash {
-            transition: transform 0.2s ease;
-        }
-        .hover-squash:hover {
-            animation: squashStretch 0.8s ease-in-out;
-        }
-
-        /* Efek Hover Kartu */
-        .cute-card {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-            border: 3px solid #fff;
-            box-shadow: 5px 5px 0px 0px rgba(161,196,253,0.6);
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-        }
-        .cute-card:hover {
-            transform: translateY(-8px) scale(1.03) rotate(1deg);
-            box-shadow: 12px 12px 0px 0px rgba(161,196,253,0.9);
-            z-index: 10;
-        }
-
-        /* Polaris/Polaroid photo card style dengan efek melayang dinamis */
-        .polaroid {
-            background: white;
-            padding: 12px;
-            padding-bottom: 24px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-            border: 1px solid rgba(0,0,0,0.05);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-        }
-        .polaroid:hover {
-            transform: scale(1.08) rotate(0deg) translateY(-10px) !important;
-            z-index: 10;
-            box-shadow: 0 20px 30px rgba(0,0,0,0.25);
-        }
-
-        .font-mono-y2k {
-            font-family: 'Courier New', Courier, monospace;
-            letter-spacing: -0.5px;
-        }
-
-        /* Animasi Kucing Berjalan */
-        @keyframes walkCat {
-            0% { transform: translateX(-10vw) scaleX(1); }
-            49% { transform: translateX(110vw) scaleX(1); }
-            50% { transform: translateX(110vw) scaleX(-1); }
-            100% { transform: translateX(-10vw) scaleX(-1); }
-        }
-        .walking-cat-container {
-            position: fixed;
-            bottom: 12px;
-            left: 0;
-            z-index: 40;
-            animation: walkCat 16s linear infinite;
-        }
-        
-        /* Animasi tubuh kucing memantul lembut */
-        @keyframes bounceCat {
-            0%, 100% { transform: translateY(0) scaleY(1); }
-            50% { transform: translateY(-12px) scaleY(0.9); }
-        }
-        .bouncing-cat {
-            animation: bounceCat 0.5s ease-in-out infinite;
-            display: inline-block;
-            font-size: 4rem;
-            filter: drop-shadow(2px 2px 0px #fff);
-            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Animasi Lompat Kucing saat Diklik */
-        .cat-jump {
-            animation: catJumpAnim 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
-        }
-        @keyframes catJumpAnim {
-            0% { transform: translateY(0) scaleY(1); }
-            30% { transform: translateY(-60px) scaleY(1.1) rotate(-10deg); }
-            70% { transform: translateY(-10px) scaleY(0.8); }
-            100% { transform: translateY(0) scaleY(1); }
-        }
-
-        /* Teks Aesthetic Jepang */
-        .japanese-text {
-            font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
-            font-style: normal;
-        }
-        .vertical-text {
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-            letter-spacing: 0.2em;
-        }
-
-        /* Efek Sparkle Trail Kursor */
-        .pointer-sparkle {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
-            font-size: 1.2rem;
-            animation: fadeAndFly 1s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-        }
-
-        @keyframes fadeAndFly {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--x-dir), var(--y-dir)) scale(0.3) rotate(var(--rot));
-            }
-        }
-
-        /* Animasi Kucing Diam Bergetar / Wiggle saat di-klik */
-        @keyframes staticCatWiggle {
-            0%, 100% { transform: rotate(0deg) scale(1); }
-            20% { transform: rotate(-8deg) scale(1.1) translateY(-5px); }
-            40% { transform: rotate(6deg) scale(0.9) translateY(2px); }
-            60% { transform: rotate(-4deg) scale(1.05) translateY(-2px); }
-            80% { transform: rotate(2deg) scale(0.98); }
-        }
-        .static-cat-active {
-            animation: staticCatWiggle 0.6s cubic-bezier(0.25, 1, 0.5, 1) !important;
-        }
-
-        /* Efek Makanan Melayang */
-        @keyframes floatFoodUp {
-            0% { transform: translateY(0) scale(0.4); opacity: 1; }
-            100% { transform: translateY(-140px) scale(1.4) rotate(45deg); opacity: 0; }
-        }
-        .floating-food-particle {
-            position: absolute;
-            pointer-events: none;
-            z-index: 50;
-            font-size: 2.2rem;
-            animation: floatFoodUp 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-        }
-
-        /* ==================== DESKTOP BUDDY PHYSICS MASCOT SYSTEM ==================== */
-        #desktop-mascot {
-            position: fixed;
-            width: 100px;
-            height: 120px;
-            z-index: 999;
-            cursor: grab;
-            user-select: none;
-            touch-action: none;
-            transition: transform 0.1s ease-out; /* Responsif instan */
-        }
-        #desktop-mascot:active {
-            cursor: grabbing;
-        }
-
-        /* Animasi Organik Bagian-bagian Tubuh Maskot (Vector SVG) */
-        @keyframes earSwayL {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(-18deg); }
-        }
-        @keyframes earSwayR {
-            0%, 100% { transform: rotate(10deg); }
-            50% { transform: rotate(18deg); }
-        }
-        @keyframes mascotBreathe {
-            0%, 100% { transform: scale(1, 1); }
-            50% { transform: scale(1.04, 0.96) translateY(1px); }
-        }
-        @keyframes eyesBlink {
-            0%, 95%, 100% { transform: scaleY(1); }
-            97% { transform: scaleY(0.1); }
-        }
-        @keyframes blushGlow {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.9; }
-        }
-
-        /* Class untuk menaruh animasi ke dalam part SVG */
-        .mascot-ear-l {
-            animation: earSwayL 3s ease-in-out infinite;
-            transform-origin: 35px 50px;
-        }
-        .mascot-ear-r {
-            animation: earSwayR 3s ease-in-out infinite;
-            transform-origin: 65px 50px;
-        }
-        .mascot-body {
-            animation: mascotBreathe 4s ease-in-out infinite;
-            transform-origin: 50px 100px;
-        }
-        .mascot-eyes {
-            animation: eyesBlink 4s linear infinite;
-            transform-origin: 50px 70px;
-        }
-        .mascot-blush {
-            animation: blushGlow 2s ease-in-out infinite;
-        }
-        .mascot-hand-l {
-            transform-origin: 30px 85px;
-            transition: transform 0.3s;
-        }
-        .mascot-hand-r {
-            transform-origin: 70px 85px;
-            transition: transform 0.3s;
-        }
-        #desktop-mascot:hover .mascot-hand-l {
-            transform: rotate(30deg);
-        }
-        #desktop-mascot:hover .mascot-hand-r {
-            transform: rotate(-30deg);
-        }
-
-        /* Animasi Putaran Udara Spin 360 saat klik */
-        @keyframes activeMascotSpin {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.3); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-        .mascot-spin-active {
-            animation: activeMascotSpin 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
     </style>
 </head>
-<body class="min-h-screen text-gray-700 relative">
 
-    <!-- DESKTOP BUDDY MASCOT: MOCHI 🐰 (Vector SVG Interaktif) -->
-    <div id="desktop-mascot" title="Lempar atau seret aku! Klik untuk memutar! ✨">
-        <!-- SVG Kelinci Layered Sangat Halus -->
-        <svg id="mascot-svg" viewBox="0 0 100 120" width="100" height="120">
-            <!-- Telinga Kiri -->
-            <g class="mascot-ear-l">
-                <ellipse cx="35" cy="35" rx="9" ry="25" fill="#FFF0F5" stroke="#FFA6C9" stroke-width="2.5"/>
-                <ellipse cx="35" cy="38" rx="5" ry="18" fill="#FFC0CB"/>
-            </g>
-            <!-- Telinga Kanan -->
-            <g class="mascot-ear-r">
-                <ellipse cx="65" cy="35" rx="9" ry="25" fill="#FFF0F5" stroke="#FFA6C9" stroke-width="2.5"/>
-                <ellipse cx="65" cy="38" rx="5" ry="18" fill="#FFC0CB"/>
-            </g>
-            <!-- Badan & Kepala Kelinci -->
-            <g class="mascot-body">
-                <!-- Tubuh Utama -->
-                <ellipse cx="50" cy="85" rx="26" ry="22" fill="#FFF" stroke="#A1C4FD" stroke-width="2.5"/>
-                <!-- Kepala Utama -->
-                <ellipse cx="50" cy="70" rx="28" ry="24" fill="#FFF" stroke="#FFA6C9" stroke-width="2.5"/>
-                
-                <!-- Pipi Merona Merah Muda -->
-                <ellipse cx="32" cy="76" rx="5" ry="3" fill="#FFB6C1" class="mascot-blush"/>
-                <ellipse cx="68" cy="76" rx="5" ry="3" fill="#FFB6C1" class="mascot-blush"/>
-                
-                <!-- Mata Mengikuti Gerakan Kursor -->
-                <g class="mascot-eyes">
-                    <!-- Kiri -->
-                    <circle cx="38" cy="68" r="4.5" fill="#4B5563"/>
-                    <circle id="eye-pupil-l" cx="39" cy="67" r="1.8" fill="#FFF"/> <!-- Pupil Bergerak -->
-                    <!-- Kanan -->
-                    <circle cx="62" cy="68" r="4.5" fill="#4B5563"/>
-                    <circle id="eye-pupil-r" cx="63" cy="67" r="1.8" fill="#FFF"/> <!-- Pupil Bergerak -->
-                </g>
-
-                <!-- Mulut Lucu "3" Kucing -->
-                <path d="M46 75 Q48 77 50 75 Q52 77 54 75" fill="none" stroke="#4B5563" stroke-width="2" stroke-linecap="round"/>
-                
-                <!-- Kaki Kiri -->
-                <ellipse cx="34" cy="104" rx="6" ry="4" fill="#FFF" stroke="#FFA6C9" stroke-width="2"/>
-                <!-- Kaki Kanan -->
-                <ellipse cx="66" cy="104" rx="6" ry="4" fill="#FFF" stroke="#FFA6C9" stroke-width="2"/>
-                
-                <!-- Tangan Kiri Waving -->
-                <ellipse class="mascot-hand-l" cx="24" cy="82" rx="5" ry="8" fill="#FFF" stroke="#FFA6C9" stroke-width="2" transform="rotate(10 24 82)"/>
-                <!-- Tangan Kanan Waving -->
-                <ellipse class="mascot-hand-r" cx="76" cy="82" rx="5" ry="8" fill="#FFF" stroke="#FFA6C9" stroke-width="2" transform="rotate(-10 76 82)"/>
-            </g>
-        </svg>
-    </div>
+<body class="min-h-screen relative selection:bg-blue-300 selection:text-white">
 
     <!-- Y2K Music Player -->
-    <div class="fixed top-6 right-4 md:right-8 z-50 y2k-window p-2 px-3 flex items-center gap-3 bg-white/70 backdrop-blur-md max-w-[200px] md:max-w-[250px] hover-squash">
-        <button id="music-toggle" class="w-10 h-10 min-w-[40px] bg-pink-400 rounded-full text-white flex items-center justify-center hover:bg-pink-500 hover:scale-110 transition-transform shadow-sm border-2 border-white text-sm">
+    <div class="fixed top-6 right-4 md:right-8 z-50 y2k-window p-2 px-3 flex items-center gap-3 w-max max-w-[220px]">
+        <button id="music-toggle"
+            class="w-10 h-10 min-w-[40px] bg-blue-400 rounded-full text-white flex items-center justify-center hover:bg-blue-500 hover:scale-110 transition-transform shadow-sm border-2 border-white text-sm">
             ▶
         </button>
-        <div class="overflow-hidden w-full text-xs md:text-sm font-mono-y2k text-pink-500 font-bold whitespace-nowrap">
-            <!-- Teks berjalan (marquee) klasik ala Y2K dengan judul lagu baru -->
-            <marquee scrollamount="4">🎵 可愛くてごめん (Kawaikute Gomen) - HoneyWorks feat. Chutan CV: Saori Hayami 💕 ✧･ﾟ:*</marquee>
+        <div class="overflow-hidden w-full text-xs font-mono-y2k text-blue-500 font-bold whitespace-nowrap">
+            <marquee scrollamount="4">🎵 可愛くてごめん (Kawaikute Gomen) - HoneyWorks 💕 ✧･ﾟ:*</marquee>
         </div>
-        <!-- Menggunakan file musik lokal yang sama folder dengan index.html -->
         <audio id="bgm" loop>
             <source src="可愛くてごめん feat. ちゅーたんCV早見沙織HoneyWorks.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <!-- Animasi Kucing Berjalan di Layar dengan Balon Percakapan Dinamis -->
+    <!-- Animasi Kucing Berjalan -->
     <div class="walking-cat-container">
         <div class="relative flex flex-col items-center">
-            <!-- Balon Percakapan yang Lembut & Wobbly -->
-            <div id="cat-bubble" class="absolute -top-14 bg-white/90 text-pink-500 border-2 border-pink-300 text-xs px-3 py-1 rounded-2xl shadow-md font-mono-y2k font-bold transition-all duration-300 opacity-0 scale-75 select-none pointer-events-none whitespace-nowrap z-50">
-                mew~ 🐾
-                <!-- Panah kecil balon percakapan -->
-                <div class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-white border-r-2 border-b-2 border-pink-300 rotate-45"></div>
+            <!-- Balon Chat -->
+            <div id="cat-bubble"
+                class="absolute -top-12 bg-white text-blue-500 border-2 border-blue-200 text-xs px-3 py-1 rounded-2xl shadow-sm font-bold transition-all duration-300 opacity-0 scale-75 whitespace-nowrap z-50 font-mono-y2k">
+                meow~ 🐾
+                <div
+                    class="absolute bottom-[-6px] left-1/2 -translate-x-1/2 w-2 h-2 bg-white border-r-2 border-b-2 border-blue-200 rotate-45">
+                </div>
             </div>
-            <!-- Badan Kucing -->
-            <div id="walking-cat" class="bouncing-cat cursor-pointer pointer-events-auto hover:scale-110" title="Klik aku untuk melompat! 🐾">🐈</div>
+            <div id="walking-cat" class="bouncing-cat" title="Klik aku!">🐈</div>
         </div>
     </div>
 
-    <!-- Teks Jepang Vertikal Mengambang (Aesthetic Vibe) -->
-    <div class="fixed top-32 left-4 md:left-12 text-3xl md:text-5xl text-pink-500/60 font-bold japanese-text vertical-text animate-sway z-0 pointer-events-none drop-shadow-[2px_2px_0px_rgba(255,255,255,0.8)]">かわいい</div>
-    <div class="fixed bottom-40 right-4 md:right-12 text-3xl md:text-5xl text-blue-500/60 font-bold japanese-text vertical-text animate-sway-delayed z-0 pointer-events-none drop-shadow-[2px_2px_0px_rgba(255,255,255,0.8)]">芸術 di mimpi</div>
+    <!-- Ornamen Mengambang Y2K Aesthetic -->
+    <div class="fixed top-20 left-10 text-4xl animate-chill-float opacity-70 pointer-events-none z-0">🦋</div>
+    <div class="fixed top-40 right-20 text-5xl animate-chill-float-delayed opacity-70 pointer-events-none z-0">💿</div>
+    <div class="fixed bottom-32 left-16 text-4xl animate-chill-float opacity-70 pointer-events-none z-0">🎧</div>
+    <div class="fixed bottom-40 right-10 text-5xl animate-chill-float-delayed opacity-70 pointer-events-none z-0">🌸
+    </div>
 
-    <!-- Ornamen Mengambang di Background (Y2K Vibes) -->
-    <div class="fixed top-20 left-10 text-4xl animate-sway opacity-75 pointer-events-none z-0">🦋</div>
-    <div class="fixed top-40 right-20 text-5xl animate-sway-delayed opacity-75 pointer-events-none z-0">💿</div>
-    <div class="fixed bottom-20 left-32 text-4xl animate-sway-delayed opacity-75 pointer-events-none z-0">💙🌹</div>
-    <div class="fixed bottom-40 right-10 text-5xl animate-float opacity-75 pointer-events-none z-0">🎙️</div>
+    <!-- HEADER / HERO SECTION -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative z-10">
 
-    <!-- Header / Hero Section -->
-    <header class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative overflow-hidden z-10">
-        
-        <!-- Avatar / Ilustrasi Blob -->
-        <div class="w-48 h-48 md:w-64 md:h-64 bg-white/60 backdrop-blur-sm mb-8 blob-shape flex items-center justify-center relative border-4 border-blue-200 shadow-[0_0_25px_rgba(161,196,253,0.9)] hover:scale-105 transition-transform duration-500 cursor-pointer">
-            <!-- Menggunakan emoji sebagai ilustrasi karakter yang lucu -->
-            <div class="text-7xl md:text-8xl animate-sway drop-shadow-lg">👧🏻🎨</div>
+        <!-- Avatar Cute/Lofi -->
+        <div
+            class="w-48 h-48 md:w-64 md:h-64 bg-white/50 backdrop-blur-md mb-6 blob-avatar flex items-center justify-center relative border-4 border-white overflow-hidden group">
+            <!-- Placeholder Anime Lofi yang Aesthetic & Nonchalant -->
+            <img src="https://media.giphy.com/media/1n4FT4KRQkDvK0IQ4u/giphy.gif" alt="Aesthetic Anime Character"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 pointer-events-none"
+                onerror="this.onerror=null; this.src='https://media.tenor.com/f_Z2a3j2JqQAAAAC/anime-girl.gif';">
         </div>
 
-        <h1 class="text-5xl md:text-7xl font-bold text-blue-500 drop-shadow-[3px_3px_0px_#fff] mb-4 tracking-wider lowercase">
-            yo, aku <span class="text-pink-500 hover:text-pink-600 transition-colors duration-300">calista.</span>
+        <!-- Nama Huruf Sambung -->
+        <h1 class="text-7xl md:text-8xl font-cursive text-blue-500 drop-shadow-[3px_3px_0px_#fff] mb-2 tracking-wide">
+            calista
         </h1>
-        
-        <!-- Subtitle Aesthetic Jepang -->
-        <p class="japanese-text text-xl md:text-2xl text-pink-600 drop-shadow-[1.5px_1.5px_0px_#fff] mt-[-10px] mb-4 font-bold tracking-[0.3em] animate-pulse">カリスタ • アート</p>
-        
-        <div class="bg-white/70 backdrop-blur-md rounded-2xl px-6 py-3 border-2 border-white shadow-[4px_4px_0px_0px_rgba(161,196,253,0.8)] animate-sway-delayed mt-2 hover-squash cursor-pointer">
-            <p class="text-lg md:text-xl font-semibold text-blue-800 font-mono-y2k lowercase">
-                * just chilling, coloring, & vibing * ⋆ ˚｡⋆୨୧˚
-            </p>
-        </div>
 
-        <!-- Scroll down indicator -->
-        <div class="absolute bottom-10 animate-bounce cursor-pointer opacity-80 z-10">
-            <p class="text-blue-600 font-bold mb-2 drop-shadow-[1.5px_1.5px_0px_#fff] font-mono-y2k lowercase">scroll down</p>
-            <div class="w-8 h-12 rounded-full border-4 border-blue-500 flex justify-center mx-auto bg-white/60 backdrop-blur-sm hover-squash">
-                <div class="w-2 h-3 bg-blue-500 rounded-full mt-2 animate-pulse"></div>
+        <p class="text-xl md:text-2xl text-blue-400 font-bold tracking-widest mb-6 font-mono-y2k uppercase">
+            * chill, coloring, & vibing *
+        </p>
+
+        <div class="animate-bounce mt-8 cursor-pointer opacity-80 z-10 text-blue-400">
+            <p class="font-bold mb-2 font-mono-y2k text-sm lowercase">scroll down</p>
+            <div class="w-6 h-10 rounded-full border-2 border-blue-400 flex justify-center mx-auto bg-white/50">
+                <div class="w-1.5 h-2 bg-blue-400 rounded-full mt-2 animate-pulse"></div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content Container -->
-    <main class="max-w-5xl mx-auto px-6 py-12 space-y-20 relative z-10">
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-24 relative z-10">
 
-        <!-- SECTION: Ado Y2K Desktop Buddy Widget -->
-        <section class="reveal y2k-window p-0 overflow-hidden relative border-blue-400/80 shadow-[8px_8px_0px_0px_rgba(59,130,246,0.5)]">
-            <!-- Window Top Bar -->
-            <div class="bg-gradient-to-r from-blue-900 via-indigo-950 to-pink-900 border-b-2 border-white px-4 py-2 flex items-center justify-between">
-                <div class="flex gap-2">
-                    <div class="w-3 h-3 rounded-full bg-red-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-blue-400 border border-white"></div>
-                </div>
-                <div class="font-mono-y2k text-sm text-blue-100 font-bold tracking-widest">ADO_SHINJIDAI.EXE 💙</div>
-                <div class="text-white text-xs cursor-pointer">🗙</div>
-            </div>
-            
-            <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 bg-slate-950/20 backdrop-blur-md">
-                <!-- Chibi Ado Representation with Real Aesthetic Concert/Art Image -->
-                <div class="w-36 h-36 rounded-full overflow-hidden border-4 border-blue-400 relative shadow-inner animate-sway bg-slate-800 flex-shrink-0 hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&auto=format&fit=crop&q=80" 
-                         alt="Ado Concert Aesthetic" 
-                         class="w-full h-full object-cover"
-                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=400';">
-                    <!-- Blue Rose Decor overlay -->
-                    <span class="absolute bottom-1 right-1 text-3xl">💙🌹</span>
-                </div>
-                
-                <div class="flex-1 text-center md:text-left">
-                    <span class="inline-block bg-blue-500 text-white font-mono-y2k text-xs px-2 py-1 rounded-md mb-2 font-bold uppercase tracking-wider animate-bounce">Ado (アド) corner</span>
-                    <h3 class="text-3xl font-bold text-blue-900 drop-shadow-[1px_1px_0px_#fff] mb-2 lowercase">my fav soloist: Ado!</h3>
-                    <p class="text-gray-900 text-lg md:text-xl font-bold leading-relaxed">
-                        selain suka anime, aku ngefans banget sama <strong class="text-blue-700">Ado</strong>! suaranya yang super keren, powerful, dan lagu-lagunya (seperti <em>Shin Jidai / New Genesis</em>) selalu bikin hari-hari mewarnaiku jadi lebih bersemangat n modis 🎧✨.
-                    </p>
-                    <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-2">
-                        <span class="bg-white/90 border border-blue-300 text-blue-800 px-3 py-1 rounded-full text-sm font-bold shadow-sm hover-squash cursor-pointer">#AdoVibes</span>
-                        <span class="bg-white/90 border border-blue-300 text-blue-800 px-3 py-1 rounded-full text-sm font-bold shadow-sm hover-squash cursor-pointer">#UTA_OnePiece</span>
-                        <span class="bg-white/90 border border-blue-300 text-blue-800 px-3 py-1 rounded-full text-sm font-bold shadow-sm hover-squash cursor-pointer">#BlueRose💙</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: MY_PET.EXE (Kucing Diam Interaktif Spawner Makanan) -->
-        <section class="reveal y2k-window p-0 overflow-hidden relative border-pink-400 shadow-[8px_8px_0px_0px_rgba(244,63,94,0.5)]">
-            <!-- Window Top Bar -->
-            <div class="bg-gradient-to-r from-pink-500 to-rose-400 border-b-2 border-white px-4 py-2 flex items-center justify-between">
-                <div class="flex gap-2">
-                    <div class="w-3 h-3 rounded-full bg-red-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-blue-400 border border-white"></div>
-                </div>
-                <div class="font-mono-y2k text-sm text-white font-bold tracking-widest">MY_PET.EXE 🐾</div>
-                <div class="text-white text-xs cursor-pointer">🗙</div>
-            </div>
-            
-            <div class="p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 bg-pink-50/20 backdrop-blur-md relative">
-                <!-- Spawner Area untuk Emoji Makanan -->
-                <div id="food-spawner" class="relative w-44 h-44 rounded-3xl overflow-hidden border-4 border-pink-400 bg-white/80 shadow-md flex items-center justify-center flex-shrink-0 cursor-pointer group hover-squash">
-                    
-                    <!-- Kucing Diam (Foto Unsplash Anak Kucing Fluffy Sangat Lucu) -->
-                    <img id="interactive-cat-img" 
-                         src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&auto=format&fit=crop&q=80" 
-                         alt="Interactive Cat" 
-                         class="w-full h-full object-cover transition-transform duration-300 pointer-events-none select-none">
-                    
-                    <!-- Overlay Panduan Ketuk -->
-                    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300 pointer-events-none text-white font-bold text-center text-xs px-2 font-mono-y2k drop-shadow">
-                        ketuk aku untuk kasih makan! 🍟
-                    </div>
-                </div>
-                
-                <div class="flex-1 text-center md:text-left">
-                    <span class="inline-block bg-pink-500 text-white font-mono-y2k text-xs px-2 py-1 rounded-md mb-2 font-bold uppercase tracking-wider">calista's room pet</span>
-                    <h3 class="text-3xl font-bold text-pink-700 drop-shadow-[1px_1px_0px_#fff] mb-2 lowercase">si fluffy pemalas 💤</h3>
-                    <p class="text-gray-900 text-lg md:text-xl font-bold leading-relaxed">
-                        ini kucing peliharaanku! dia cuma suka berdiam diri dengan malas. tapi kalau kamu <span class="text-pink-500 font-extrabold underline decoration-wavy cursor-pointer">ketuk gambarnya</span>, dia akan langsung senang, menari kegirangan, dan menyemburkan emoji kentang goreng favoritku! 🍟🍛✨
-                    </p>
-                    <div class="mt-4 flex justify-center md:justify-start gap-4 text-xs font-mono-y2k text-pink-500 font-bold">
-                        <div>🍿 makanan tersuap: <span id="feed-count" class="text-blue-600 text-sm">0</span></div>
-                        <div>🎀 status: <span id="cat-mood" class="text-green-600 text-sm">chilling..</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION: GAME RHYTHM BEATS (Y2K Arcade) -->
-        <section class="reveal y2k-window p-0 overflow-hidden relative border-purple-400 shadow-[8px_8px_0px_0px_rgba(167,139,250,0.6)]">
-            <!-- Window Top Bar -->
-            <div class="bg-gradient-to-r from-purple-800 to-pink-800 border-b-2 border-white px-4 py-2 flex items-center justify-between">
-                <div class="flex gap-2">
-                    <div class="w-3 h-3 rounded-full bg-red-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-400 border border-white"></div>
-                </div>
-                <div class="font-mono-y2k text-sm text-purple-100 font-bold tracking-widest">BEAT_HERO.EXE 🎹</div>
-                <div class="text-white text-xs cursor-pointer">🗙</div>
-            </div>
-
-            <div class="p-4 md:p-6 bg-slate-950/80 backdrop-blur-md text-white flex flex-col items-center">
-                <div class="text-center mb-4">
-                    <h2 class="text-3xl md:text-4xl font-bold text-pink-400 drop-shadow-[2px_2px_0px_#000] lowercase">✧ rhythm beats arcade ✧</h2>
-                    <p class="text-xs md:text-sm font-mono-y2k text-purple-300 tracking-wider mt-1 animate-pulse">tekan tombol panah [⬅️ ⬆️ ⬇️ ➡️] atau ketuk tombol bundar di bawah!</p>
-                </div>
-
-                <!-- Game Container Layout -->
-                <div class="w-full max-w-[400px] bg-slate-900 border-4 border-purple-300 rounded-3xl overflow-hidden relative shadow-[0_0_20px_rgba(167,139,250,0.5)]">
-                    
-                    <!-- Stats Overlay -->
-                    <div class="absolute top-3 left-4 right-4 flex justify-between font-mono-y2k text-xs z-20 text-purple-200">
-                        <div>score: <span id="game-score" class="text-pink-400 font-bold text-sm">0</span></div>
-                        <div>combo: <span id="game-combo" class="text-blue-400 font-bold text-sm">0</span></div>
-                        <div>max: <span id="game-max-combo" class="text-yellow-400 font-bold text-sm">0</span></div>
-                    </div>
-
-                    <!-- Combo & Rating Popup in Center -->
-                    <div class="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center pointer-events-none z-20">
-                        <div id="game-rating" class="text-4xl font-extrabold uppercase tracking-widest drop-shadow-[2px_2px_0px_#000] scale-0 transition-transform duration-100"></div>
-                        <div id="game-combo-popup" class="text-2xl font-bold text-white drop-shadow-[1px_1px_0px_#000] opacity-0"></div>
-                    </div>
-
-                    <!-- Canvas Rhythm Area -->
-                    <canvas id="game-canvas" width="400" height="420" class="w-full h-[420px] bg-slate-950 block z-10"></canvas>
-
-                    <!-- Mobile Tapping Buttons & Key Indicators (Updated with Arrow Icons) -->
-                    <div class="grid grid-cols-4 border-t-4 border-purple-300 bg-slate-900/90 py-2 relative z-20">
-                        <button id="btn-0" class="flex flex-col items-center justify-center py-2 active:bg-pink-500/30 transition-colors cursor-pointer touch-none">
-                            <span class="w-10 h-10 rounded-full border-2 border-pink-400 bg-pink-500/10 flex items-center justify-center text-pink-400 text-sm font-bold shadow-inner">⬅️</span>
-                        </button>
-                        <button id="btn-1" class="flex flex-col items-center justify-center py-2 active:bg-blue-500/30 transition-colors cursor-pointer touch-none">
-                            <span class="w-10 h-10 rounded-full border-2 border-blue-400 bg-blue-500/10 flex items-center justify-center text-blue-400 text-sm font-bold shadow-inner">⬆️</span>
-                        </button>
-                        <button id="btn-2" class="flex flex-col items-center justify-center py-2 active:bg-purple-500/30 transition-colors cursor-pointer touch-none">
-                            <span class="w-10 h-10 rounded-full border-2 border-purple-400 bg-purple-500/10 flex items-center justify-center text-purple-400 text-sm font-bold shadow-inner">⬇️</span>
-                        </button>
-                        <button id="btn-3" class="flex flex-col items-center justify-center py-2 active:bg-yellow-500/30 transition-colors cursor-pointer touch-none">
-                            <span class="w-10 h-10 rounded-full border-2 border-yellow-400 bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-sm font-bold shadow-inner">➡️</span>
-                        </button>
-                    </div>
-
-                    <!-- Game Control Menu Overlay -->
-                    <div id="game-menu" class="absolute inset-0 bg-slate-950/90 flex flex-col items-center justify-center p-6 text-center z-30 transition-opacity duration-300">
-                        <div class="text-6xl mb-3 animate-sway">🎮🎧</div>
-                        <h3 class="text-2xl font-bold text-pink-400 lowercase drop-shadow-[2px_2px_0px_#000] mb-2">Beat Hero Arcade</h3>
-                        <p class="text-xs text-gray-400 font-mono-y2k max-w-[280px] mb-6 leading-relaxed">ikuti ketukan nada warna-warni yang jatuh! dapatkan combo tertinggi untuk membuktikan refleks hebatmu!</p>
-                        
-                        <button id="btn-start-game" class="px-8 py-3 bg-gradient-to-r from-pink-400 to-purple-500 border-2 border-white rounded-full font-bold text-white shadow-[0_4px_12px_rgba(236,72,153,0.5)] hover:scale-110 active:scale-95 transition-transform">
-                            mulai game! ✧
-                        </button>
-                    </div>
-                </div>
-
-                <div class="mt-4 flex gap-4 text-xs font-mono-y2k text-purple-300">
-                    <div>🎯 perfect: <span id="count-perfect" class="text-white">0</span></div>
-                    <div>⭐ great: <span id="count-great" class="text-white">0</span></div>
-                    <div>🐾 miss: <span id="count-miss" class="text-white">0</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Tentang Saya (Y2K Window) -->
+        <!-- SECTION: TENTANG SAYA -->
         <section class="reveal y2k-window p-0 overflow-hidden relative">
-            <!-- Window Top Bar -->
             <div class="bg-blue-200 border-b-2 border-white px-4 py-2 flex items-center justify-between">
                 <div class="flex gap-2">
-                    <div class="w-3 h-3 rounded-full bg-pink-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-400 border border-white"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-400 border border-white"></div>
+                    <div class="w-3 h-3 rounded-full bg-pink-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-300"></div>
                 </div>
-                <div class="font-mono-y2k text-sm text-blue-800 font-bold tracking-widest">ABOUT_ME.EXE</div>
+                <div class="font-mono-y2k text-sm text-blue-800 font-bold tracking-widest">ABOUT_ME.TXT</div>
                 <div class="text-white text-xs">🗙</div>
             </div>
-            
-            <div class="p-8 md:p-12">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-blue-500 drop-shadow-[2px_2px_0px_#fff] flex flex-col items-center justify-center gap-1 lowercase animate-sway">
-                    <span>✧ tentang aku ✧</span>
-                    <span class="japanese-text text-lg text-pink-500 tracking-widest mt-1">私について</span>
+
+            <div class="p-8 md:p-10">
+                <h2
+                    class="text-4xl md:text-5xl font-cursive font-bold text-center mb-6 text-blue-500 drop-shadow-[2px_2px_0px_#fff]">
+                    Tentang Aku 🌸
                 </h2>
-                
-                <div class="space-y-6 text-2xl md:text-3xl leading-relaxed text-gray-800 font-bold">
-                    <p class="bg-white/60 p-4 rounded-xl border-l-4 border-blue-300 shadow-sm hover:translate-x-2 transition-transform duration-300">
-                        halo, panggil aja <strong>calista</strong>. hobi utamaku mewarnai di waktu luang. selain main warna, aku juga suka banget <em>binge-watching</em> anime kesukaan. santai aja pokoknya.
+
+                <div
+                    class="space-y-4 text-lg md:text-xl leading-relaxed text-slate-700 font-medium text-center md:text-justify">
+                    <p
+                        class="bg-white/50 p-4 rounded-xl border border-white shadow-sm hover:scale-[1.01] transition-transform">
+                        Halo, perkenalkan nama saya <strong
+                            class="text-blue-500 font-cursive text-2xl">calista</strong>. Saya hobi mewarnai saat waktu
+                        luang. Saya juga suka mengisi waktu luang dengan menonton anime.
                     </p>
-                    <p class="bg-white/60 p-4 rounded-xl border-l-4 border-blue-400 shadow-sm hover:translate-x-2 transition-transform duration-300">
-                        makanan favoritku standar sih, <strong>kentang goreng</strong> sama <strong>nasi goreng</strong>. minumnya? <strong>air putih</strong> aja biar sehat n stay hydrated 💧. oh ya, aku suka banget sama <strong>kucing</strong> karena bulunya yang lebat dan super gemesin! fyi, cita-citaku pengen jadi <strong>pelukis</strong> hebat 🎨.
+                    <p
+                        class="bg-white/50 p-4 rounded-xl border border-white shadow-sm hover:scale-[1.01] transition-transform">
+                        Saya mempunyai makanan kesukaan yaitu <strong>kentang goreng</strong> dan <strong>nasi
+                            goreng</strong>, dan juga saya mempunyai minuman kesukaan yaitu hanya <strong>air
+                            putih</strong> 💧.
                     </p>
-                    <p class="bg-white/60 p-4 rounded-xl border-l-4 border-blue-500 shadow-sm hover:translate-x-2 transition-transform duration-300">
-                        aku lahir di bulan februari, tepatnya <strong>24 Februari</strong>. zodiakku <strong>Pisces</strong> ♓, pantesan mbti-ku <strong>INFP</strong>. <em>fun fact:</em> aku emang keliatan pendiam n nonchalant kalo sama orang baru, tapi kalo udah deket... bisa extrovert & berisik juga kok 🎧✨.
+                    <p
+                        class="bg-white/50 p-4 rounded-xl border border-white shadow-sm hover:scale-[1.01] transition-transform">
+                        Saya memiliki hewan kesukaan yaitu <strong>kucing</strong> 🐈 karena mereka sangat lucu dan
+                        menggemaskan dengan bulu yang lebat dan halus itu. Dan saya mempunyai cita-cita menjadi
+                        <strong>pelukis</strong> 🎨.
+                    </p>
+                    <p
+                        class="bg-white/50 p-4 rounded-xl border border-white shadow-sm hover:scale-[1.01] transition-transform">
+                        Saya lahir pada bulan 2 atau februari pada tanggal <strong>24</strong>, zodiak saya adalah
+                        <strong>Pisces</strong> ♓ dan mbti saya adalah <strong>INFP</strong>. Saya memiliki kepribadian
+                        pendiam saat bersama dengan orang asing atau orang tidak dikenal, namun saat saya bersama orang
+                        yang dekat dengan saya, saya bisa saja menjadi lebih energik/extrovert ✨.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- NEW SECTION: Japan Aesthetic Gallery (polaroid-styled) -->
-        <section class="reveal y2k-window p-0 overflow-hidden relative border-pink-300 shadow-[8px_8px_0px_0px_rgba(244,143,177,0.5)]">
-            <!-- Window Top Bar -->
-            <div class="bg-pink-200 border-b-2 border-white px-4 py-2 flex items-center justify-between">
+        <!-- SECTION: HIGHLIGHT BIODATA (GRID) -->
+        <section class="reveal">
+            <h2
+                class="text-4xl md:text-5xl font-cursive font-bold text-center mb-8 text-blue-500 drop-shadow-[2px_2px_0px_#fff]">
+                Biodata & Favoritku 🦋
+            </h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">🎨</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Hobi</h3>
+                    <p class="font-bold text-slate-600">Mewarnai & Anime</p>
+                </div>
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">🎂</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Lahir</h3>
+                    <p class="font-bold text-slate-600">24 Februari</p>
+                </div>
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">🍟</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Makanan</h3>
+                    <p class="font-bold text-slate-600">Kentang & Nasgor</p>
+                </div>
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">💧</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Minuman</h3>
+                    <p class="font-bold text-slate-600">Air Putih</p>
+                </div>
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">🐈</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Hewan</h3>
+                    <p class="font-bold text-slate-600">Kucing Fluffy</p>
+                </div>
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">🌸</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Tumbuhan</h3>
+                    <p class="font-bold text-slate-600">Bunga</p>
+                </div>
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">👩🏻‍🎨</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Mimpi</h3>
+                    <p class="font-bold text-slate-600">Pelukis</p>
+                </div>
+                <div class="cute-card flex flex-col items-center justify-center text-center p-4">
+                    <div class="text-4xl mb-2 drop-shadow-sm">♓</div>
+                    <h3 class="text-sm font-bold text-blue-400 uppercase tracking-widest font-mono-y2k">Zodiak</h3>
+                    <p class="font-bold text-slate-600">Pisces (INFP)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: MOTTO HIDUP -->
+        <section class="reveal relative my-10 z-20 mx-auto max-w-2xl px-4">
+            <div
+                class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-[2rem] border-4 border-dashed border-blue-300 shadow-md text-center transform hover:scale-[1.02] transition-transform">
+                <span
+                    class="bg-blue-200 text-blue-700 font-bold px-4 py-1 rounded-full text-xs font-mono-y2k uppercase tracking-widest mb-4 inline-block">Motto
+                    & Botoh Hidup</span>
+                <p class="text-2xl text-blue-600 font-bold font-cursive">
+                    "Tetap chill, terus berkarya, warnai dunia dengan caramu sendiri, dan jangan lupa bahagia bersama
+                    orang terdekatmu!" ✨🎨
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION: GAME AYAM JOGET (Y2K Arcade) -->
+        <section
+            class="reveal y2k-window p-0 overflow-hidden relative border-amber-300 shadow-[8px_8px_0px_0px_rgba(252,211,77,0.6)]">
+            <div
+                class="bg-gradient-to-r from-amber-400 to-orange-400 border-b-2 border-white px-4 py-2 flex items-center justify-between">
                 <div class="flex gap-2">
                     <div class="w-3 h-3 rounded-full bg-red-400 border border-white"></div>
                     <div class="w-3 h-3 rounded-full bg-yellow-400 border border-white"></div>
                     <div class="w-3 h-3 rounded-full bg-green-400 border border-white"></div>
                 </div>
-                <div class="font-mono-y2k text-sm text-pink-800 font-bold tracking-widest">GALLERY.EXE 🌸</div>
-                <div class="text-white text-xs cursor-pointer">🗙</div>
+                <div class="font-mono-y2k text-sm text-white font-bold tracking-widest">CHICKEN_DANCE_REVOLUTION.EXE 🐔
+                </div>
+                <div class="text-white text-xs">🗙</div>
             </div>
 
-            <div class="p-8">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-pink-500 drop-shadow-[2px_2px_0px_#fff] flex flex-col items-center justify-center gap-1 lowercase animate-sway">
-                    <span>✧ aesthetic japan vibes ✧</span>
-                    <span class="japanese-text text-lg text-blue-400 tracking-widest mt-1">日本画廊</span>
-                </h2>
+            <div class="p-4 md:p-6 bg-slate-900 text-white flex flex-col items-center rounded-b-2xl">
+                <div class="text-center mb-4">
+                    <h2 class="text-3xl font-cursive font-bold text-yellow-300 drop-shadow-[2px_2px_0px_#000]">Ayam
+                        Joget Extreme!</h2>
+                    <p class="text-xs font-mono-y2k text-amber-200 tracking-wider mt-1">Tekan [SPASI] atau Ketuk Tombol!
+                        Bisa <strong class="bg-pink-500 px-1 rounded">DOUBLE JUMP</strong> 🦘🦘</p>
+                </div>
 
-                <!-- Grid of polaroid-styled photos -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-                    
-                    <!-- Polaroid 1 -->
-                    <div class="polaroid w-64 transform -rotate-2">
-                        <div class="w-full h-48 bg-gray-100 overflow-hidden border border-gray-100">
-                            <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=500&auto=format&fit=crop&q=80" 
-                                 alt="Shibuya Street Sunset" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        <p class="text-center mt-4 text-xl font-bold text-gray-700">tokyo at sunset 🌇</p>
+                <div id="game-arena"
+                    class="w-full max-w-[500px] bg-slate-950 border-4 border-yellow-400 rounded-2xl overflow-hidden relative shadow-[0_0_15px_rgba(252,211,77,0.4)] h-[250px]">
+                    <div
+                        class="absolute inset-0 opacity-10 bg-[linear-gradient(to_bottom,transparent_90%,#fde047_10%)] bg-[length:100%_40px] pointer-events-none">
                     </div>
 
-                    <!-- Polaroid 2 -->
-                    <div class="polaroid w-64 transform rotate-3">
-                        <div class="w-full h-48 bg-gray-100 overflow-hidden border border-gray-100">
-                            <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?w=500&auto=format&fit=crop&q=80" 
-                                 alt="Cherry Blossoms Kyoto" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        <p class="text-center mt-4 text-xl font-bold text-gray-700">cherry blossom 🌸</p>
+                    <div
+                        class="absolute top-3 left-4 right-4 flex justify-between font-mono-y2k text-xs z-20 text-yellow-200 bg-black/50 px-3 py-1 rounded-full">
+                        <div>Score: <span id="chicken-score" class="text-yellow-400 font-bold">0</span></div>
+                        <div>Status: <span id="chicken-status" class="text-green-400 font-bold">CHILLING</span></div>
                     </div>
 
-                    <!-- Polaroid 3 -->
-                    <div class="polaroid w-64 transform -rotate-1">
-                        <div class="w-full h-48 bg-gray-100 overflow-hidden border border-gray-100">
-                            <img src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?w=500&auto=format&fit=crop&q=80" 
-                                 alt="Tokyo Alleyway at Night" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        <p class="text-center mt-4 text-xl font-bold text-gray-700">retro alleyway 🏮</p>
+                    <div id="chicken-player"
+                        class="absolute bottom-[20px] left-[40px] text-5xl z-20 pointer-events-none">
+                        <span id="chicken-sprite" class="dancing-chicken-sprite chicken-idle">🐓</span>
                     </div>
 
-                    <!-- Polaroid 4 -->
-                    <div class="polaroid w-64 transform rotate-2">
-                        <div class="w-full h-48 bg-gray-100 overflow-hidden border border-gray-100">
-                            <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?w=500&auto=format&fit=crop&q=80" 
-                                 alt="Mount Fuji Sakura" 
-                                 class="w-full h-full object-cover">
+                    <div id="obstacle-layer" class="absolute inset-0 z-10 pointer-events-none"></div>
+
+                    <!-- Lantai -->
+                    <div class="absolute bottom-0 left-0 right-0 h-[20px] bg-indigo-900 border-t-2 border-yellow-300">
+                        <div id="moving-floor" class="w-full h-full"
+                            style="background-image: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(253, 224, 71, 0.3) 20px, rgba(253, 224, 71, 0.3) 40px); background-size: 40px 100%;">
                         </div>
-                        <p class="text-center mt-4 text-xl font-bold text-gray-700">fuji mountain 🏔️</p>
                     </div>
 
-                    <!-- Polaroid 5 -->
-                    <div class="polaroid w-64 transform -rotate-3">
-                        <div class="w-full h-48 bg-gray-100 overflow-hidden border border-gray-100">
-                            <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=500&auto=format&fit=crop&q=80" 
-                                 alt="Traditional Kyoto Pagoda" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        <p class="text-center mt-4 text-xl font-bold text-gray-700">kyoto pagoda ⛩️</p>
+                    <!-- Menu Start -->
+                    <div id="chicken-menu"
+                        class="absolute inset-0 bg-slate-900/90 flex flex-col items-center justify-center p-6 text-center z-30">
+                        <div class="text-5xl mb-2 dancing-chicken-sprite chicken-idle">🐓🕺🔥</div>
+                        <h3 id="chicken-menu-title" class="text-xl font-bold text-yellow-400 mb-2">Bantu Si Ayam!</h3>
+                        <p id="chicken-menu-desc" class="text-xs text-gray-300 font-mono-y2k mb-4">Lompati ranjau 💣 dan
+                            ambil kentang 🍟 terbang!</p>
+                        <button id="btn-start-chicken"
+                            class="px-6 py-2 bg-gradient-to-r from-yellow-400 to-orange-500 border-2 border-white rounded-full font-bold text-slate-900 shadow-md hover:scale-105 active:scale-95 transition-transform">
+                            Main Sekarang! ▶
+                        </button>
                     </div>
-
-                    <!-- Polaroid 6 -->
-                    <div class="polaroid w-64 transform rotate-1">
-                        <div class="w-full h-48 bg-gray-100 overflow-hidden border border-gray-100">
-                            <img src="https://images.unsplash.com/photo-1540959733332-eab4deceeaf7?w=500&auto=format&fit=crop&q=80" 
-                                 alt="Cyberpunk Tokyo Night" 
-                                 class="w-full h-full object-cover">
-                        </div>
-                        <p class="text-center mt-4 text-xl font-bold text-gray-700">neon lights 💿</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Biodata Grid -->
-        <section class="reveal">
-            <h2 class="text-4xl md:text-5xl font-bold text-center mb-10 text-blue-600 drop-shadow-[2px_2px_0px_#fff] flex flex-col items-center justify-center gap-1 lowercase animate-sway">
-                <span>⋆ highlight biodata ⋆</span>
-                <span class="japanese-text text-lg text-pink-500 tracking-widest mt-1">ハイライト</span>
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">🎨</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">hobi</h3>
-                    <p class="font-bold text-gray-700 text-xl">mewarnai & anime</p>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">💿</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">tgl lahir</h3>
-                    <p class="font-bold text-gray-700 text-xl">24 februari</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">🍟</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">comfort food</h3>
-                    <p class="font-bold text-gray-700 text-xl">kentang & nasgor</p>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">💧</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">minuman</h3>
-                    <p class="font-bold text-gray-700 text-xl">air putih doang.</p>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">🐈</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">hewan</h3>
-                    <p class="font-bold text-gray-700 text-xl">kucing fluffy</p>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">🌸</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">tumbuhan</h3>
-                    <p class="font-bold text-gray-700 text-xl">bunga (aesthetic)</p>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">👩🏻‍🎨</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">cita-cita</h3>
-                    <p class="font-bold text-gray-700 text-xl">pelukis hebat</p>
-                </div>
-
-                <!-- Card 8 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">♓</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">zodiak</h3>
-                    <p class="font-bold text-gray-700 text-xl">pisces</p>
-                </div>
-
-                <!-- Card 9 -->
-                <div class="cute-card flex flex-col items-center text-center p-6 hover-squash cursor-pointer">
-                    <div class="text-5xl mb-4 drop-shadow-md transition-transform hover:scale-110 hover:rotate-12 duration-300">🦋</div>
-                    <h3 class="text-3xl font-bold text-blue-600 mb-1 lowercase">mbti</h3>
-                    <p class="font-bold text-gray-700 text-xl">infp</p>
+                <div class="w-full max-w-[500px] mt-4">
+                    <button id="btn-jump-chicken"
+                        class="w-full py-4 bg-yellow-400 hover:bg-yellow-300 font-bold text-slate-900 rounded-xl border-2 border-white text-lg shadow-[0_4px_0_#b45309] active:shadow-[0_0px_0_#b45309] active:translate-y-1 transition-all select-none touch-none font-mono-y2k">
+                        LOMPAT! 🦘 (Klik 2x Salto)
+                    </button>
                 </div>
             </div>
         </section>
@@ -793,71 +503,46 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center pb-10 pt-20 mt-10 text-blue-600 font-mono-y2k drop-shadow-[1px_1px_0px_#fff]">
-        <p class="font-semibold text-sm lowercase mb-2">dibuat dengan 🎧 untuk calista © 2026</p>
-        <p class="japanese-text text-xs text-pink-600 font-bold tracking-[0.2em] animate-pulse">ありがとう</p>
+    <footer class="text-center pb-8 pt-10 text-blue-500 font-mono-y2k text-sm drop-shadow-sm">
+        <p>dibuat dengan 🌸 & 🎨 untuk calista © 2026</p>
     </footer>
 
-    <!-- Script untuk Animasi Scroll & Fitur Baru -->
+    <!-- SCRIPT LOGIKA -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            // Scroll Reveal
             const reveals = document.querySelectorAll(".reveal");
-
             const revealOnScroll = () => {
-                const windowHeight = window.innerHeight;
-                const elementVisible = 100;
-
-                reveals.forEach((reveal) => {
-                    const elementTop = reveal.getBoundingClientRect().top;
-                    if (elementTop < windowHeight - elementVisible) {
-                        reveal.classList.add("active");
-                    }
+                reveals.forEach(r => {
+                    if (r.getBoundingClientRect().top < window.innerHeight - 80) r.classList.add("active");
                 });
             };
-
             window.addEventListener("scroll", revealOnScroll);
-            // Panggil sekali saat dimuat
             revealOnScroll();
 
-            // Setup Music Player
+            // Music Player
             const musicToggle = document.getElementById('music-toggle');
             const bgm = document.getElementById('bgm');
             let isPlaying = false;
-
             musicToggle.addEventListener('click', () => {
-                if (isPlaying) {
-                    bgm.pause();
-                    musicToggle.innerHTML = '▶';
-                    musicToggle.classList.replace('bg-blue-400', 'bg-pink-400');
-                    isPlaying = false;
-                } else {
-                    bgm.play().then(() => {
-                        musicToggle.innerHTML = '⏸';
-                        musicToggle.classList.replace('bg-pink-400', 'bg-blue-400');
-                        isPlaying = true;
-                    }).catch((error) => {
-                        console.log("Audio play failed: ", error);
-                    });
-                }
+                if (isPlaying) { bgm.pause(); musicToggle.innerHTML = '▶'; isPlaying = false; }
+                else { bgm.play(); musicToggle.innerHTML = '⏸'; isPlaying = true; }
             });
 
-            // --- ANIMASI INTERAKTIF BARU ---
-            
-            // 1. Sparkle Trail Kursor (Jejak Berkilau di Layar)
-            const sparkles = ['✨', '✦', '🌸', '💖', '⭐', '🎈'];
-            const colors = ['#f472b6', '#60a5fa', '#c084fc', '#facc15', '#34d399'];
+            // Sparkle Cursor Lofi Colors
+            const sparkles = ['✨', '✦', '🌸', '💖'];
+            const colors = ['#60a5fa', '#f472b6', '#c084fc', '#facc15'];
             let lastMousePos = { x: 0, y: 0 };
-            let distanceTraveled = 0;
+            let distTraveled = 0;
 
             window.addEventListener('mousemove', (e) => {
                 const dist = Math.hypot(e.clientX - lastMousePos.x, e.clientY - lastMousePos.y);
-                distanceTraveled += dist;
+                distTraveled += dist;
                 lastMousePos = { x: e.clientX, y: e.clientY };
 
-                // Spawn hanya jika kursor digeser cukup jauh (agar tidak membebani browser)
-                if (distanceTraveled > 24) {
+                if (distTraveled > 30) {
                     createSparkle(e.clientX, e.clientY);
-                    distanceTraveled = 0;
+                    distTraveled = 0;
                 }
             });
 
@@ -865,648 +550,212 @@
                 const el = document.createElement('div');
                 el.className = 'pointer-sparkle';
                 el.innerText = sparkles[Math.floor(Math.random() * sparkles.length)];
-                
-                // Variasi arah terbang terbang acak
-                const xDir = (Math.random() - 0.5) * 120;
-                const yDir = (Math.random() - 0.2) * -150 - 50; // Lebih cenderung melayang ke atas
-                const rot = (Math.random() - 0.5) * 360;
-                
-                el.style.setProperty('--x-dir', `${xDir}px`);
-                el.style.setProperty('--y-dir', `${yDir}px`);
-                el.style.setProperty('--rot', `${rot}deg`);
+                el.style.setProperty('--x-dir', `${(Math.random() - 0.5) * 100}px`);
+                el.style.setProperty('--y-dir', `${(Math.random() - 0.2) * -100 - 30}px`);
+                el.style.setProperty('--rot', `${(Math.random() - 0.5) * 360}deg`);
                 el.style.left = `${x}px`;
                 el.style.top = `${y}px`;
                 el.style.color = colors[Math.floor(Math.random() * colors.length)];
-                el.style.textShadow = '0 0 5px rgba(255, 255, 255, 0.8)';
-
                 document.body.appendChild(el);
-
-                // Hapus element setelah animasi selesai
-                setTimeout(() => {
-                    el.remove();
-                }, 1000);
+                setTimeout(() => el.remove(), 1000);
             }
 
-            // 2. Interaksi Kucing Berjalan dengan Balon Percakapan Menggemaskan
+            // Kucing Dialog
             const catBubble = document.getElementById('cat-bubble');
             const catEl = document.getElementById('walking-cat');
-            
-            const catQuotes = [
-                "meow~ 🐾",
-                "laper.. mau kentang goreng 🍟",
-                "ayo main Beat Hero! 🎹",
-                "hobi mewarnai itu asyik! 🎨",
-                "zodiakku pisces, pantesan imut ♓",
-                "Ado suaranya keren banget! 🎙️💙",
-                "infp chill vibes 🌸",
-                "kucing lebat emang terbaik! 🐈",
-                "jangan lupa minum air putih ya 💧"
-            ];
-
-            let bubbleTimeout;
+            const catQuotes = ["meow~ 🐾", "mau kentang goreng 🍟", "aku kucing fluffy!", "calista the painter 🎨", "infp vibe 🌸"];
 
             function showCatBubble() {
-                if (bubbleTimeout) clearTimeout(bubbleTimeout);
-                
-                // Pilih kutipan acak
                 catBubble.innerText = catQuotes[Math.floor(Math.random() * catQuotes.length)];
                 catBubble.style.opacity = '1';
                 catBubble.style.transform = 'scale(1) translateY(-5px)';
-
-                // Sembunyikan balon setelah 4 detik
-                bubbleTimeout = setTimeout(() => {
+                setTimeout(() => {
                     catBubble.style.opacity = '0';
                     catBubble.style.transform = 'scale(0.75) translateY(0px)';
-                }, 4000);
+                }, 3000);
+            }
+            setInterval(() => { if (Math.random() > 0.5) showCatBubble(); }, 10000);
+            catEl.addEventListener('click', () => { showCatBubble(); });
+
+            // ==================== ENGINE GAME: CHICKEN DANCE REVOLUTION ====================
+            const arena = document.getElementById('game-arena');
+            const player = document.getElementById('chicken-player');
+            const sprite = document.getElementById('chicken-sprite');
+            const obstacleLayer = document.getElementById('obstacle-layer');
+            const movingFloor = document.getElementById('moving-floor');
+
+            const scoreEl = document.getElementById('chicken-score');
+            const statusEl = document.getElementById('chicken-status');
+            const menuEl = document.getElementById('chicken-menu');
+            const btnStartChicken = document.getElementById('btn-start-chicken');
+            const btnJumpChicken = document.getElementById('btn-jump-chicken');
+
+            let score = 0, gameActive = false, chickenY = 0, velocityY = 0;
+            const GRAVITY = 1.6, JUMP_POWER = 20, DOUBLE_JUMP_POWER = 16;
+            let isJumping = false, canDoubleJump = false;
+            let gameSpeed = 6, spawnTimer = 0, nextSpawnInterval = 1000;
+
+            // Animasi Lantai css custom inject
+            const styleSheet = document.createElement("style");
+            styleSheet.innerText = `@keyframes scrollFloorGame { 0% { background-position: 0 0; } 100% { background-position: -40px 0; } } .game-floor-active { animation: scrollFloorGame 0.4s linear infinite; }`;
+            document.head.appendChild(styleSheet);
+
+            function createFloatingText(text, color, x, y) {
+                const el = document.createElement('div');
+                el.className = 'floating-score text-lg';
+                el.style.color = color;
+                el.innerText = text;
+                el.style.left = `${x}px`;
+                el.style.top = `${y}px`;
+                obstacleLayer.appendChild(el);
+                setTimeout(() => el.remove(), 800);
             }
 
-            // Munculkan kutipan secara acak setiap beberapa belas detik
-            setInterval(() => {
-                if (Math.random() > 0.4) {
-                    showCatBubble();
-                }
-            }, 12000);
-
-            // Lompat tinggi ketika kucing diklik!
-            catEl.addEventListener('click', (e) => {
-                e.stopPropagation();
-                catEl.classList.add('cat-jump');
-                showCatBubble();
-                setTimeout(() => {
-                    catEl.classList.remove('cat-jump');
-                }, 600);
-            });
-
-            // 3. INTERAKSI KUCING DIAM (`MY_PET.EXE`) & SPAWNER MAKANAN
-            const foodSpawner = document.getElementById('food-spawner');
-            const catImg = document.getElementById('interactive-cat-img');
-            const feedCountEl = document.getElementById('feed-count');
-            const catMoodEl = document.getElementById('cat-mood');
-            
-            const foodEmojis = ['🍟', '🍛', '🐟', '🥛', '🍦', '🍩', '🍗'];
-            const catMoods = [
-                "chilling.. 💤",
-                "senang! 💖",
-                "kekenyangan! 🤰",
-                "bahagia banget! 🎉",
-                "imut sekali ✨",
-                "purring~ 🥰"
-            ];
-
-            let feedCount = 0;
-
-            foodSpawner.addEventListener('click', (e) => {
-                feedCount++;
-                feedCountEl.innerText = feedCount;
-
-                // Animasi getar/wiggle pada gambar kucing
-                catImg.classList.add('static-cat-active');
-                setTimeout(() => {
-                    catImg.classList.remove('static-cat-active');
-                }, 600);
-
-                // Ubah mood secara acak setelah disuapi
-                if (feedCount % 5 === 0) {
-                    catMoodEl.innerText = catMoods[Math.floor(Math.random() * catMoods.length)];
-                } else if (feedCount === 1) {
-                    catMoodEl.innerText = "nyam nyam! 😋";
-                }
-
-                // Munculkan partikel makanan melayang
-                createFloatingFood(e);
-            });
-
-            function createFloatingFood(e) {
-                const rect = foodSpawner.getBoundingClientRect();
-                
-                // Menghitung posisi klik relatif di dalam kontainer spawner
-                const clickX = e.clientX - rect.left;
-                const clickY = e.clientY - rect.top;
-
-                const particle = document.createElement('div');
-                particle.className = 'floating-food-particle';
-                // Berikan prioritas emoji kentang goreng (🍟) dan nasi goreng (🍛)
-                const rand = Math.random();
-                if (rand < 0.35) {
-                    particle.innerText = '🍟';
-                } else if (rand < 0.7) {
-                    particle.innerText = '🍛';
-                } else {
-                    particle.innerText = foodEmojis[Math.floor(Math.random() * foodEmojis.length)];
-                }
-
-                // Taruh di posisi koordinat klik kursor
-                particle.style.left = `${clickX}px`;
-                particle.style.top = `${clickY}px`;
-
-                foodSpawner.appendChild(particle);
-
-                // Hapus partikel setelah animasi melayang selesai
-                setTimeout(() => {
-                    particle.remove();
-                }, 1200);
-            }
-
-            // ==================== ADVANCED PHYSICS MASCOT (MOCHI) LOGIC ====================
-            const mascot = document.getElementById('desktop-mascot');
-            const pupilL = document.getElementById('eye-pupil-l');
-            const pupilR = document.getElementById('eye-pupil-r');
-            const mascotSvg = document.getElementById('mascot-svg');
-
-            // Posisi, Kecepatan, dan Parameter Fisika 2D
-            let posX = window.innerWidth / 2 - 50;
-            let posY = 150; // Mulai melayang di atas
-            let velX = 0;
-            let velY = 0;
-            const gravity = 0.5;
-            const bounce = 0.65; // Tingkat pantulan kenyal
-            const friction = 0.98; // Gesekan udara
-            
-            let isDragging = false;
-            let dragStartX = 0;
-            let dragStartY = 0;
-            let lastMouseX = 0;
-            let lastMouseY = 0;
-
-            // Inisialisasi posisi awal maskot
-            mascot.style.left = `${posX}px`;
-            mascot.style.top = `${posY}px`;
-
-            // 1. Mouse Eye-Tracking (Pupil mengikuti kursor)
-            window.addEventListener('mousemove', (e) => {
-                if (isDragging) return;
-                
-                const mascotRect = mascot.getBoundingClientRect();
-                const mascotCenterX = mascotRect.left + mascotRect.width / 2;
-                const mascotCenterY = mascotRect.top + mascotRect.height / 2;
-
-                const angle = Math.atan2(e.clientY - mascotCenterY, e.clientX - mascotCenterX);
-                const maxOffset = 1.8; // Batas radius bola mata
-
-                const offsetXPupil = Math.cos(angle) * maxOffset;
-                const offsetYOffset = Math.sin(angle) * maxOffset;
-
-                // Set koordinat pupil SVG secara dinamis
-                pupilL.setAttribute('cx', 38 + offsetXPupil);
-                pupilL.setAttribute('cy', 68 + offsetYOffset);
-                pupilR.setAttribute('cx', 62 + offsetXPupil);
-                pupilR.setAttribute('cy', 68 + offsetYOffset);
-            });
-
-            // 2. Drag & Drop & Toss Physics (Seret & Lempar)
-            mascot.addEventListener('mousedown', (e) => {
-                isDragging = true;
-                velX = 0;
-                velY = 0;
-                dragStartX = e.clientX - posX;
-                dragStartY = e.clientY - posY;
-                lastMouseX = e.clientX;
-                lastMouseY = e.clientY;
-                mascot.style.transform = 'scale(1.1)'; // Efek terangkat
-            });
-
-            window.addEventListener('mousemove', (e) => {
-                if (!isDragging) return;
-
-                posX = e.clientX - dragStartX;
-                posY = e.clientY - dragStartY;
-
-                // Hitung kecepatan instan berdasarkan gerakan kursor terakhir
-                velX = (e.clientX - lastMouseX) * 0.8;
-                velY = (e.clientY - lastMouseY) * 0.8;
-
-                lastMouseX = e.clientX;
-                lastMouseY = e.clientY;
-
-                // Terapkan posisi langsung
-                mascot.style.left = `${posX}px`;
-                mascot.style.top = `${posY}px`;
-            });
-
-            window.addEventListener('mouseup', () => {
-                if (!isDragging) return;
-                isDragging = false;
-                mascot.style.transform = 'scale(1)'; // Selesai terangkat
-            });
-
-            // Support Layar Sentuh / Mobile
-            mascot.addEventListener('touchstart', (e) => {
-                isDragging = true;
-                velX = 0;
-                velY = 0;
-                const touch = e.touches[0];
-                dragStartX = touch.clientX - posX;
-                dragStartY = touch.clientY - posY;
-                lastMouseX = touch.clientX;
-                lastMouseY = touch.clientY;
-                mascot.style.transform = 'scale(1.1)';
-            });
-
-            window.addEventListener('touchmove', (e) => {
-                if (!isDragging) return;
-                const touch = e.touches[0];
-                posX = touch.clientX - dragStartX;
-                posY = touch.clientY - dragStartY;
-
-                velX = (touch.clientX - lastMouseX) * 0.8;
-                velY = (touch.clientY - lastMouseY) * 0.8;
-
-                lastMouseX = touch.clientX;
-                lastMouseY = touch.clientY;
-
-                mascot.style.left = `${posX}px`;
-                mascot.style.top = `${posY}px`;
-            });
-
-            window.addEventListener('touchend', () => {
-                if (!isDragging) return;
-                isDragging = false;
-                mascot.style.transform = 'scale(1)';
-            });
-
-            // 3. Efek Klik: Spin 360 & Spawner Cinta
-            mascot.addEventListener('click', (e) => {
-                // Hindari pemicu klik saat baru selesai melempar jauh
-                if (Math.hypot(velX, velY) > 2) return;
-
-                mascotSvg.classList.add('mascot-spin-active');
-                setTimeout(() => {
-                    mascotSvg.classList.remove('mascot-spin-active');
-                }, 600);
-
-                // Spawner Partikel Hati Melayang
-                for (let i = 0; i < 5; i++) {
-                    setTimeout(() => createMascotSparkle(e.clientX, e.clientY), i * 80);
-                }
-            });
-
-            function createMascotSparkle(x, y) {
-                const sp = document.createElement('div');
-                sp.className = 'pointer-sparkle';
-                sp.innerText = Math.random() > 0.5 ? '💖' : '✨';
-                
-                const xDir = (Math.random() - 0.5) * 150;
-                const yDir = (Math.random() - 0.3) * -180 - 40;
-                const rot = (Math.random() - 0.5) * 360;
-                
-                sp.style.setProperty('--x-dir', `${xDir}px`);
-                sp.style.setProperty('--y-dir', `${yDir}px`);
-                sp.style.setProperty('--rot', `${rot}deg`);
-                sp.style.left = `${x || posX + 50}px`;
-                sp.style.top = `${y || posY + 50}px`;
-                sp.style.fontSize = '1.6rem';
-
-                document.body.appendChild(sp);
-                setTimeout(() => sp.remove(), 1000);
-            }
-
-            // 4. Game Loop Fisika Terintegrasi (Gravitasi & Pantulan Kenyal)
-            function updatePhysics() {
-                if (!isDragging) {
-                    // Terapkan Gravitasi & Hambatan Udara
-                    velY += gravity;
-                    velX *= friction;
-                    velY *= friction;
-
-                    posX += velX;
-                    posY += velY;
-
-                    // Deteksi Batas Layar Horizontal (Kanan & Kiri)
-                    const screenWidth = window.innerWidth;
-                    if (posX < 0) {
-                        posX = 0;
-                        velX = -velX * bounce;
-                        triggerSquash('scaleX(0.7) scaleY(1.3)'); // Menipis elastis saat nabrak samping
-                    } else if (posX > screenWidth - 100) {
-                        posX = screenWidth - 100;
-                        velX = -velX * bounce;
-                        triggerSquash('scaleX(0.7) scaleY(1.3)');
-                    }
-
-                    // Deteksi Batas Layar Vertikal (Atas & Bawah)
-                    const screenHeight = window.innerHeight;
-                    if (posY < 0) {
-                        posY = 0;
-                        velY = -velY * bounce;
-                        triggerSquash('scaleX(1.3) scaleY(0.7)');
-                    } else if (posY > screenHeight - 120) {
-                        posY = screenHeight - 120;
-                        velY = -velY * bounce;
-                        
-                        // Gesekan lantai horizontal jika menyentuh dasar
-                        velX *= 0.9; 
-
-                        // Efek Squash & Stretch elastis saat menghantam dasar lantai
-                        if (Math.abs(velY) > 1.5) {
-                            triggerSquash('scaleX(1.35) scaleY(0.65)');
-                        }
-                    }
-
-                    // Terapkan Posisi Real-time
-                    mascot.style.left = `${posX}px`;
-                    mascot.style.top = `${posY}px`;
-                }
-
-                requestAnimationFrame(updatePhysics);
-            }
-
-            // Fungsi pemicu bentuk membal elastis
-            function triggerSquash(transformStyle) {
-                mascot.style.transform = transformStyle;
-                setTimeout(() => {
-                    if (!isDragging) mascot.style.transform = 'scale(1)';
-                }, 150);
-            }
-
-            // Mulai Loop Fisika Mochi
-            requestAnimationFrame(updatePhysics);
-
-
-            // --- RHYTHM ARCADE GAME LOGIC ---
-            const canvas = document.getElementById('game-canvas');
-            const ctx = canvas.getContext('2d');
-            
-            const btnMenu = document.getElementById('game-menu');
-            const btnStart = document.getElementById('btn-start-game');
-            const scoreEl = document.getElementById('game-score');
-            const comboEl = document.getElementById('game-combo');
-            const maxComboEl = document.getElementById('game-max-combo');
-            const ratingEl = document.getElementById('game-rating');
-            const comboPopupEl = document.getElementById('game-combo-popup');
-
-            const countPerfectEl = document.getElementById('count-perfect');
-            const countGreatEl = document.getElementById('count-great');
-            const countMissEl = document.getElementById('count-miss');
-
-            let score = 0;
-            let combo = 0;
-            let maxCombo = 0;
-            let gameActive = false;
-
-            let countPerfect = 0;
-            let countGreat = 0;
-            let countMiss = 0;
-
-            const lanes = 4;
-            const laneWidth = canvas.width / lanes;
-            const targetY = canvas.height - 60; // Target zone line
-            const noteRadius = 22;
-            let notes = [];
-            let lastSpawnTime = 0;
-            let spawnInterval = 750; // Waktu jeda spawn nada (ms)
-
-            const laneColors = ['#f472b6', '#60a5fa', '#c084fc', '#facc15']; // Pink, Biru, Ungu, Kuning
-            // Diperbarui ke tombol panah (Left, Up, Down, Right)
-            const keyCodes = ['ArrowLeft', 'ArrowUp', 'ArrowDown', 'ArrowRight'];
-            const activeKeys = [false, false, false, false];
-
-            // Setup input listener untuk laptop (Keyboard Panah)
-            window.addEventListener('keydown', (e) => {
+            function chickenJump() {
                 if (!gameActive) return;
-                const idx = keyCodes.indexOf(e.code);
-                if (idx !== -1) {
-                    // Cegah scroll halaman saat bermain game menggunakan tombol panah
-                    e.preventDefault();
-                    activeKeys[idx] = true;
-                    checkHit(idx);
-                }
-            });
-
-            window.addEventListener('keyup', (e) => {
-                const idx = keyCodes.indexOf(e.code);
-                if (idx !== -1) {
-                    activeKeys[idx] = false;
-                }
-            });
-
-            // Setup input listener untuk HP (Touch Buttons)
-            for (let i = 0; i < lanes; i++) {
-                const btn = document.getElementById(`btn-${i}`);
-                
-                // Touch Start / Click
-                const triggerPress = (e) => {
-                    e.preventDefault();
-                    if (!gameActive) return;
-                    activeKeys[i] = true;
-                    checkHit(i);
-                };
-
-                const triggerRelease = () => {
-                    activeKeys[i] = false;
-                };
-
-                btn.addEventListener('touchstart', triggerPress, { passive: false });
-                btn.addEventListener('touchend', triggerRelease);
-                btn.addEventListener('mousedown', triggerPress);
-                btn.addEventListener('mouseup', triggerRelease);
-            }
-
-            // Fungsi Spawn Nada
-            function spawnNote() {
-                const randomLane = Math.floor(Math.random() * lanes);
-                notes.push({
-                    lane: randomLane,
-                    y: -noteRadius,
-                    speed: 4 + Math.random() * 2 // Variasi kecepatan jatuh
-                });
-            }
-
-            // Memeriksa ketepatan ketukan (Hit Collision)
-            function checkHit(laneIdx) {
-                let hitFound = false;
-
-                for (let i = 0; i < notes.length; i++) {
-                    const note = notes[i];
-                    if (note.lane === laneIdx) {
-                        const dist = Math.abs(note.y - targetY);
-                        
-                        // Deteksi jarak nada dengan garis target
-                        if (dist < 50) {
-                            hitFound = true;
-                            let rating = "";
-                            let ratingColor = "";
-                            
-                            if (dist <= 15) {
-                                rating = "perfect! ✧";
-                                ratingColor = "text-pink-400";
-                                score += 100;
-                                combo++;
-                                countPerfect++;
-                            } else if (dist <= 30) {
-                                rating = "great! ⭐";
-                                ratingColor = "text-blue-400";
-                                score += 50;
-                                combo++;
-                                countGreat++;
-                            } else {
-                                rating = "good! 👍";
-                                ratingColor = "text-yellow-400";
-                                score += 20;
-                                combo++;
-                            }
-
-                            showRatingEffect(rating, ratingColor);
-                            notes.splice(i, 1); // Hapus nada yang berhasil dipukul
-                            break;
-                        }
-                    }
-                }
-
-                // Jika mengetuk tanpa ada nada di area target (Miss)
-                if (!hitFound) {
-                    triggerMiss();
+                if (!isJumping) {
+                    velocityY = JUMP_POWER;
+                    isJumping = true; canDoubleJump = true;
+                    statusEl.innerText = "JUMP! 🦘"; statusEl.className = "text-yellow-400 font-bold text-sm";
+                    sprite.classList.remove('chicken-idle');
+                } else if (canDoubleJump) {
+                    velocityY = DOUBLE_JUMP_POWER;
+                    canDoubleJump = false;
+                    statusEl.innerText = "SALTO! 🔄"; statusEl.className = "text-pink-400 font-bold text-sm animate-pulse";
+                    sprite.classList.remove('chicken-flip-anim');
+                    void sprite.offsetWidth;
+                    sprite.classList.add('chicken-flip-anim');
                 }
             }
 
-            function triggerMiss() {
-                combo = 0;
-                countMiss++;
-                showRatingEffect("miss 🐾", "text-red-500");
-            }
+            window.addEventListener('keydown', (e) => { if (e.code === 'Space') { e.preventDefault(); chickenJump(); } });
+            btnJumpChicken.addEventListener('touchstart', (e) => { e.preventDefault(); chickenJump(); });
+            btnJumpChicken.addEventListener('mousedown', (e) => { e.preventDefault(); chickenJump(); });
 
-            // Menampilkan efek tulisan pop-up penilaian
-            function showRatingEffect(text, colorClass) {
-                ratingEl.innerHTML = text;
-                ratingEl.className = `text-4xl font-extrabold uppercase tracking-widest drop-shadow-[2px_2px_0px_#000] scale-110 ${colorClass}`;
-                
-                if (combo > 1) {
-                    comboPopupEl.innerHTML = `${combo} COMBO`;
-                    comboPopupEl.style.opacity = 1;
-                } else {
-                    comboPopupEl.style.opacity = 0;
-                }
+            btnStartChicken.addEventListener('click', () => {
+                menuEl.style.display = 'none';
+                score = 0; gameSpeed = 6; chickenY = 0; velocityY = 0;
+                isJumping = false; canDoubleJump = false;
+                obstacleLayer.innerHTML = '';
+                scoreEl.innerText = score;
+                arena.style.filter = `hue-rotate(0deg)`;
+                movingFloor.classList.add('game-floor-active');
 
-                // Efek animasi pop-up singkat
-                setTimeout(() => {
-                    ratingEl.className = ratingEl.className.replace('scale-110', 'scale-100');
-                }, 100);
-            }
-
-            // Update status score ke layar
-            function updateStats() {
-                scoreEl.innerHTML = score;
-                comboEl.innerHTML = combo;
-                if (combo > maxCombo) {
-                    maxCombo = combo;
-                }
-                maxComboEl.innerHTML = maxCombo;
-
-                countPerfectEl.innerHTML = countPerfect;
-                countGreatEl.innerHTML = countGreat;
-                countMissEl.innerHTML = countMiss;
-            }
-
-            // Memulai game
-            btnStart.addEventListener('click', () => {
-                btnMenu.classList.add('opacity-0');
-                setTimeout(() => {
-                    btnMenu.style.display = 'none';
-                }, 300);
-
-                score = 0;
-                combo = 0;
-                maxCombo = 0;
-                countPerfect = 0;
-                countGreat = 0;
-                countMiss = 0;
-                notes = [];
                 gameActive = true;
-                
-                // Putar musik secara otomatis jika diizinkan browser
-                if (!isPlaying) {
-                    bgm.play().then(() => {
-                        musicToggle.innerHTML = '⏸';
-                        musicToggle.classList.replace('bg-pink-400', 'bg-blue-400');
-                        isPlaying = true;
-                    }).catch(() => {});
-                }
+                statusEl.innerText = "RUNNING.. 🏃"; statusEl.className = "text-green-400 font-bold text-sm";
+                sprite.classList.add('chicken-idle');
 
-                requestAnimationFrame(gameLoop);
+                lastTime = performance.now();
+                requestAnimationFrame(updateGameLoop);
             });
 
-            // Loop utama render game
-            function gameLoop(timestamp) {
+            let lastTime = 0;
+            function updateGameLoop(timestamp) {
                 if (!gameActive) return;
+                let deltaTime = timestamp - lastTime;
+                lastTime = timestamp;
 
-                // Membersihkan Canvas
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-                // Menggambar Garis Pembatas Jalur (Lanes)
-                ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
-                ctx.lineWidth = 2;
-                for (let i = 1; i < lanes; i++) {
-                    ctx.beginPath();
-                    ctx.moveTo(i * laneWidth, 0);
-                    ctx.lineTo(i * laneWidth, canvas.height);
-                    ctx.stroke();
-                }
-
-                // Menggambar Jalur yang Sedang Aktif (Ditekan)
-                for (let i = 0; i < lanes; i++) {
-                    if (activeKeys[i]) {
-                        ctx.fillStyle = `${laneColors[i]}22`; // Warna transparan
-                        ctx.fillRect(i * laneWidth, 0, laneWidth, canvas.height);
+                if (isJumping) {
+                    velocityY -= GRAVITY;
+                    chickenY += velocityY;
+                    if (chickenY <= 0) {
+                        chickenY = 0; velocityY = 0; isJumping = false; canDoubleJump = false;
+                        statusEl.innerText = "RUNNING.. 🏃"; statusEl.className = "text-green-400 font-bold text-sm";
+                        sprite.classList.remove('chicken-flip-anim'); sprite.classList.add('chicken-idle');
                     }
                 }
+                player.style.transform = `translateY(${-chickenY}px)`;
 
-                // Menggambar Garis Target Pukulan
-                ctx.strokeStyle = '#a78bfa';
-                ctx.lineWidth = 4;
-                ctx.beginPath();
-                ctx.moveTo(0, targetY);
-                ctx.lineTo(canvas.width, targetY);
-                ctx.stroke();
-
-                // Menggambar Lingkaran Target di Setiap Lane
-                for (let i = 0; i < lanes; i++) {
-                    ctx.strokeStyle = laneColors[i];
-                    ctx.lineWidth = activeKeys[i] ? 4 : 2;
-                    ctx.fillStyle = activeKeys[i] ? `${laneColors[i]}44` : 'rgba(15, 23, 42, 0.6)';
-                    ctx.beginPath();
-                    ctx.arc(i * laneWidth + laneWidth / 2, targetY, noteRadius + 2, 0, Math.PI * 2);
-                    ctx.fill();
-                    ctx.stroke();
+                spawnTimer += deltaTime;
+                if (spawnTimer >= nextSpawnInterval) {
+                    spawnObject(); spawnTimer = 0;
+                    nextSpawnInterval = Math.max(500, 1500 - (gameSpeed * 50) + Math.random() * 600);
                 }
 
-                // Spawn Nada Baru Berdasarkan Jeda Waktu
-                if (timestamp - lastSpawnTime > spawnInterval) {
-                    spawnNote();
-                    lastSpawnTime = timestamp;
-                    // Tingkatkan tingkat kesulitan perlahan
-                    if (spawnInterval > 400) spawnInterval -= 5;
-                }
+                const obsElements = obstacleLayer.querySelectorAll('.game-object');
+                obsElements.forEach(obs => {
+                    let currentLeft = parseFloat(obs.dataset.x);
+                    currentLeft -= (gameSpeed * (deltaTime / 16));
+                    obs.dataset.x = currentLeft;
+                    obs.style.left = currentLeft + 'px';
 
-                // Update & Render Nada-nada yang Jatuh
-                for (let i = notes.length - 1; i >= 0; i--) {
-                    const note = notes[i];
-                    note.y += note.speed;
+                    const isXOverlap = (currentLeft > 25 && currentLeft < 75);
+                    if (isXOverlap && !obs.dataset.passed) {
+                        const obsType = obs.dataset.type;
+                        const obsY = parseFloat(obs.dataset.y);
+                        const isYOverlap = (chickenY < obsY + 30 && chickenY + 40 > obsY);
 
-                    // Gambar Nada
-                    ctx.fillStyle = laneColors[note.lane];
-                    ctx.beginPath();
-                    ctx.arc(note.lane * laneWidth + laneWidth / 2, note.y, noteRadius, 0, Math.PI * 2);
-                    ctx.fill();
+                        if (isYOverlap) {
+                            if (obsType === 'trap') { gameOver(); return; }
+                            else if (obsType === 'bonus') {
+                                score += 50; scoreEl.innerText = score;
+                                createFloatingText("+50!", "#34d399", 80, 200 - chickenY);
+                                obs.dataset.passed = "true"; obs.remove();
+                            }
+                        }
+                    }
 
-                    // Bagian Tengah Nada
-                    ctx.fillStyle = '#ffffff';
-                    ctx.beginPath();
-                    ctx.arc(note.lane * laneWidth + laneWidth / 2, note.y, 8, 0, Math.PI * 2);
-                    ctx.fill();
+                    if (currentLeft < -50) {
+                        if (obs.dataset.type === 'trap' && !obs.dataset.passed) {
+                            score += 10; scoreEl.innerText = score;
+                            arena.style.filter = `hue-rotate(${score * 1.5}deg)`;
+                        }
+                        obs.remove();
+                        if (score % 50 === 0) {
+                            gameSpeed += 0.5;
+                            movingFloor.style.animationDuration = `${Math.max(0.15, 0.4 - (gameSpeed / 100))}s`;
+                        }
+                    }
+                });
 
-                    // Deteksi jika nada jatuh meleset dari garis terbawah
-                    if (note.y > canvas.height + noteRadius) {
-                        notes.splice(i, 1);
-                        triggerMiss();
+                if (gameActive) requestAnimationFrame(updateGameLoop);
+            }
+
+            function spawnObject() {
+                const obs = document.createElement('div');
+                obs.className = 'game-object absolute text-4xl select-none pointer-events-none z-10';
+                const isBonus = Math.random() < 0.25;
+
+                if (isBonus) {
+                    obs.dataset.type = 'bonus'; obs.innerText = '🍟';
+                    obs.dataset.y = '100'; obs.style.bottom = '120px';
+                    obs.style.animation = 'chickenDance 0.5s infinite alternate';
+                } else {
+                    const isFlying = Math.random() < 0.3;
+                    obs.dataset.type = 'trap';
+                    if (isFlying) {
+                        obs.innerText = '🛸'; obs.dataset.y = '60'; obs.style.bottom = '80px';
+                    } else {
+                        const traps = ['💣', '🔥', '🚧'];
+                        obs.innerText = traps[Math.floor(Math.random() * traps.length)];
+                        obs.dataset.y = '0'; obs.style.bottom = '20px';
                     }
                 }
+                obs.dataset.x = '500'; obs.style.left = '500px';
+                obstacleLayer.appendChild(obs);
+            }
 
-                // Update info score & combo
-                updateStats();
+            function gameOver() {
+                gameActive = false;
+                movingFloor.classList.remove('game-floor-active');
+                sprite.classList.remove('chicken-idle', 'chicken-flip-anim');
+                sprite.innerText = '🍗';
+                player.style.transform = `translateY(${-chickenY}px) scale(1.2) rotate(90deg)`;
 
-                // Panggil kembali frame berikutnya
-                requestAnimationFrame(gameLoop);
+                setTimeout(() => {
+                    menuEl.style.display = 'flex';
+                    document.getElementById('chicken-menu-title').innerText = "Wasted! 🍗";
+                    document.getElementById('chicken-menu-title').classList.replace('text-yellow-400', 'text-red-500');
+                    document.getElementById('chicken-menu-desc').innerHTML = `<span class="text-white bg-red-600 px-2 rounded">Skor Akhir: ${score}</span>`;
+                    btnStartChicken.innerText = "Coba Lagi 🔄";
+                    setTimeout(() => {
+                        sprite.innerText = '🐓';
+                        player.style.transform = 'translateY(0px) rotate(0deg)';
+                    }, 1000);
+                }, 500);
             }
         });
     </script>
 </body>
+
 </html>

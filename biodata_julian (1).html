@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julian</title>
-    
+    <title>Julian Website</title>
+
     <style>
         /* --- Impor Font Keren --- */
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght=700;900&family=Poppins:wght=300;400;600;800&display=swap');
 
         /* --- Reset & Variabel Warna --- */
         * {
@@ -42,7 +43,7 @@
             position: relative;
         }
 
-        /* --- Efek Latar Belakang (Bola Bersinar) --- */
+        /* --- Efek Latar Belakang (Bola Bercahaya) --- */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
@@ -51,12 +52,32 @@
             opacity: 0.4;
             animation: floatOrb 12s infinite alternate ease-in-out;
         }
-        .orb-1 { width: 300px; height: 300px; background: var(--neon-blue); top: -50px; left: -50px; }
-        .orb-2 { width: 450px; height: 450px; background: var(--neon-pink); bottom: -100px; right: -50px; animation-delay: -6s; }
+
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--neon-blue);
+            top: -50px;
+            left: -50px;
+        }
+
+        .orb-2 {
+            width: 450px;
+            height: 450px;
+            background: var(--neon-pink);
+            bottom: -100px;
+            right: -50px;
+            animation-delay: -6s;
+        }
 
         @keyframes floatOrb {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 80px) scale(1.25); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(60px, 80px) scale(1.25);
+            }
         }
 
         /* --- Kotak Nama (Animasi Keren - Glowing Border) --- */
@@ -72,7 +93,8 @@
         .name-container::before {
             content: "";
             position: absolute;
-            inset: -4px; /* Tebal bingkai */
+            inset: -4px;
+            /* Tebal bingkai */
             border-radius: 20px;
             background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-yellow), var(--neon-blue));
             background-size: 300%;
@@ -82,8 +104,13 @@
         }
 
         @keyframes glowingBorder {
-            0% { background-position: 0% 0; }
-            100% { background-position: 300% 0; }
+            0% {
+                background-position: 0% 0;
+            }
+
+            100% {
+                background-position: 300% 0;
+            }
         }
 
         .name-box {
@@ -126,8 +153,15 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
 
         /* --- Kartu Biodata & Moto (Animasi Melayang) --- */
@@ -147,32 +181,48 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             padding: 30px;
-            flex: 1 1 350px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            flex: 1 1 380px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             animation: floatCard 6s ease-in-out infinite;
             transition: all 0.3s ease;
         }
 
         .card:nth-child(2) {
-            animation-delay: 3s; /* Jeda waktu biar melayangnya bergantian */
+            animation-delay: 1.5s;
+        }
+
+        .card:nth-child(3) {
+            animation-delay: 3s;
+        }
+
+        .card:nth-child(4) {
+            animation-delay: 4.5s;
         }
 
         @keyframes floatCard {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Efek Hover Keren */
         .card:hover {
-            transform: translateY(-15px) scale(1.03) !important;
+            transform: translateY(-15px) scale(1.02) !important;
             border-color: var(--neon-blue);
             box-shadow: 0 15px 40px rgba(0, 243, 255, 0.25);
             animation-play-state: paused;
         }
 
         .card h2 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
             display: inline-block;
             border-bottom: 2px solid var(--neon-pink);
@@ -184,12 +234,35 @@
             border-bottom-color: var(--neon-yellow);
         }
 
+        .card:nth-child(3) h2 {
+            border-bottom-color: var(--neon-green);
+        }
+
+        .card:nth-child(4) h2 {
+            border-bottom-color: var(--neon-orange);
+        }
+
+        .card:nth-child(2):hover {
+            border-color: var(--neon-yellow);
+            box-shadow: 0 15px 40px rgba(252, 238, 10, 0.2);
+        }
+
+        .card:nth-child(3):hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 15px 40px rgba(57, 255, 20, 0.2);
+        }
+
+        .card:nth-child(4):hover {
+            border-color: var(--neon-orange);
+            box-shadow: 0 15px 40px rgba(255, 87, 34, 0.2);
+        }
+
         .biodata-list {
             list-style: none;
         }
 
         .biodata-list li {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
@@ -205,31 +278,38 @@
             font-weight: 600;
             color: var(--neon-blue);
             display: inline-block;
-            width: 150px;
+            width: 140px;
         }
 
         .motto-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.7;
             font-style: italic;
             text-align: center;
             color: #e2e8f0;
-            margin-top: 15px;
+            margin-top: 10px;
+        }
+
+        .school-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #e2e8f0;
+            text-align: justify;
         }
 
         .quote-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--neon-yellow);
             line-height: 0;
             vertical-align: bottom;
             opacity: 0.5;
         }
 
-        /* --- Interaksi Kartu Biodata & Modal Anime --- */
-        #biodata-card, #motto-card {
+        /* --- Interaksi Kartu Klik --- */
+        #biodata-card {
             cursor: pointer;
         }
-        
+
         #biodata-card::after {
             content: "Klik untuk melihat Karakter Anime Orang yang akan sukses! ⚡";
             display: block;
@@ -241,141 +321,187 @@
             animation: blink 1.5s infinite;
         }
 
-        #motto-card::after {
-            content: "Klik untuk melihat Kisah Motivasi 2 Karakter! 🎭";
-            display: block;
-            margin-top: 15px;
-            color: var(--neon-yellow);
-            font-size: 0.85rem;
-            text-align: center;
-            font-weight: bold;
-            animation: blink 1.5s infinite;
-        }
-
-        /* --- SECTION RUANG PRESTASI (TROPHY ROOM) --- */
-        .trophy-section {
+        /* --- GAYA UNTUK MINI GAME ZONE --- */
+        .game-section {
             width: 100%;
             max-width: 900px;
-            text-align: center;
             margin-bottom: 50px;
-            position: relative;
+            text-align: center;
         }
 
-        .trophy-section h2.section-title {
+        .game-section h2.section-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 900;
             letter-spacing: 2px;
-            background: linear-gradient(to right, var(--neon-yellow), #ffa726, var(--neon-pink));
+            background: linear-gradient(to right, var(--neon-green), var(--neon-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 35px;
-            text-shadow: 0px 0px 20px rgba(252, 238, 10, 0.2);
+            margin-bottom: 25px;
+            text-shadow: 0px 0px 20px rgba(57, 255, 20, 0.2);
             text-transform: uppercase;
         }
 
-        .trophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 25px;
-            width: 100%;
-        }
-
-        .trophy-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 2px solid rgba(252, 238, 10, 0.15);
+        .game-container {
+            background: rgba(8, 12, 22, 0.85);
+            border: 2px solid var(--neon-green);
             border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(57, 255, 20, 0.15);
+            backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            margin-bottom: 30px;
         }
 
-        .trophy-card:hover {
-            transform: translateY(-12px) scale(1.03);
-            border-color: var(--neon-yellow);
-            box-shadow: 0 15px 35px rgba(252, 238, 10, 0.25);
-        }
-
-        .trophy-card::after {
-            content: "TAP ME ⚡";
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.3);
-            letter-spacing: 1px;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
         }
 
-        .trophy-card:hover::after {
+        .game-header .score-box {
             color: var(--neon-yellow);
-            animation: pulseHint 1s infinite alternate;
         }
 
-        .trophy-card.ff-theme:hover {
-            border-color: var(--neon-orange);
-            box-shadow: 0 15px 35px rgba(255, 87, 34, 0.25);
-        }
-        .trophy-card.ff-theme:hover::after {
-            color: var(--neon-orange);
-        }
-
-        .trophy-card.badge-theme:hover {
-            border-color: var(--neon-blue);
-            box-shadow: 0 15px 35px rgba(0, 243, 255, 0.25);
-        }
-        .trophy-card.badge-theme:hover::after {
+        .game-header .high-score-box {
             color: var(--neon-blue);
         }
 
-        .trophy-svg-container {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 15px auto;
+        .canvas-area {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #a5f3fc;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Overlay Layar Game */
+        .game-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(4, 8, 17, 0.85);
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            transition: transform 0.4s ease;
+            align-items: center;
+            z-index: 10;
+            transition: all 0.3s ease;
         }
 
-        .trophy-card:hover .trophy-svg-container {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .trophy-card h3 {
+        .game-overlay h3 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 1.25rem;
-            color: #ffffff;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
-        .trophy-card p.trophy-title {
+        .game-overlay p {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            max-width: 80%;
+            line-height: 1.5;
+        }
+
+        .game-btn {
+            background: linear-gradient(135deg, var(--neon-green), #00b0ff);
+            border: none;
+            color: #000000;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 900;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
+            transition: all 0.3s ease;
             text-transform: uppercase;
         }
 
-        /* Animasi Mengayun/Melayang Ringan Trophic */
-        .trophy-icon-anim {
-            transform-origin: center bottom;
-            animation: swingTrophy 4s ease-in-out infinite alternate;
+        .game-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.7);
         }
 
-        @keyframes swingTrophy {
-            0% { transform: rotate(-3deg) translateY(0); }
-            100% { transform: rotate(3deg) translateY(-5px); }
+        /* Tombol Kontrol Mobile */
+        .mobile-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
         }
 
-        /* --- BAGIAN GALERI TOKOH SUKSES --- */
+        .jump-btn {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink));
+            border: none;
+            color: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            border-radius: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.3);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .jump-btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 5px rgba(0, 243, 255, 0.2);
+        }
+
+        /* --- GAYA UNTUK GAME TEBAK-TEBAKAN (QUIZ GAME) --- */
+        .quiz-option-btn {
+            background: rgba(13, 20, 38, 0.9);
+            border: 2.5px solid var(--neon-blue);
+            color: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-option-btn:hover {
+            background: var(--neon-blue);
+            color: #000000;
+            box-shadow: 0 0 15px var(--neon-blue);
+            transform: translateY(-2px);
+        }
+
+        .quiz-option-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.85;
+        }
+
+        /* --- BAGIAN GALERI TOKOH SUKSES VERSI CHIBI --- */
         .gallery-section {
             width: 100%;
             max-width: 900px;
@@ -419,7 +545,10 @@
         .gallery-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(180deg, rgba(0, 243, 255, 0.05) 0%, transparent 100%);
             opacity: 0.5;
             pointer-events: none;
@@ -509,12 +638,12 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .modal.show {
             display: flex;
             opacity: 1;
         }
-        
+
         .modal-content {
             background: #080c14;
             border: 2px solid var(--neon-blue);
@@ -533,11 +662,6 @@
             padding: 20px;
         }
 
-        .motto-border {
-            border-color: var(--neon-yellow) !important;
-            box-shadow: 0 0 50px rgba(254, 193, 99, 0.3) !important;
-        }
-        
         .close-btn {
             position: absolute;
             top: 15px;
@@ -549,13 +673,13 @@
             z-index: 100;
             transition: color 0.3s, transform 0.2s;
         }
-        
+
         .close-btn:hover {
             color: var(--text-main);
             transform: scale(1.1);
         }
-        
-        #anime-container, #motto-story-container {
+
+        #anime-container {
             width: 100%;
             height: 100%;
             position: relative;
@@ -611,11 +735,21 @@
         }
 
         @keyframes pulseHint {
-            0%, 100% { opacity: 0.4; transform: scale(0.95); }
-            50% { opacity: 0.9; transform: scale(1.05); color: var(--neon-blue); }
+
+            0%,
+            100% {
+                opacity: 0.4;
+                transform: scale(0.95);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.05);
+                color: var(--neon-blue);
+            }
         }
 
-        /* --- GAYA ILUSTRASI ANIME (SVG) --- */
+        /* --- GAYA UNTUK ILUSTRASI ANIME (SVG) --- */
         .anime-svg {
             width: 85%;
             height: 85%;
@@ -625,36 +759,58 @@
         }
 
         /* Animasi Bernapas Karakter */
-        .anime-body, .char-sad, .char-happy {
+        .anime-body {
             transform-origin: bottom center;
             animation: breathe 4s ease-in-out infinite;
         }
 
         @keyframes breathe {
-            0%, 100% { transform: translateY(0) scaleY(1); }
-            50% { transform: translateY(-4px) scaleY(1.02); }
+
+            0%,
+            100% {
+                transform: translateY(0) scaleY(1);
+            }
+
+            50% {
+                transform: translateY(-4px) scaleY(1.02);
+            }
         }
 
         /* Kedipan Mata Otomatis */
-        .anime-eyes, .char-sad-eyes {
+        .anime-eyes {
             animation: blinkEyes 4s infinite;
             transform-origin: center;
         }
 
         @keyframes blinkEyes {
-            0%, 95%, 100% { transform: scaleY(1); }
-            97% { transform: scaleY(0.1); }
+
+            0%,
+            95%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            97% {
+                transform: scaleY(0.1);
+            }
         }
 
         /* Ayunan Rambut Anime */
-        .anime-hair-front, .char-sad-hair, .char-happy-hair {
+        .anime-hair-front {
             transform-origin: top center;
             animation: hairWave 3s ease-in-out infinite;
         }
 
         @keyframes hairWave {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(1.5deg); }
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(1.5deg);
+            }
         }
 
         /* Memutar HUD Hologram Latar Belakang */
@@ -664,8 +820,13 @@
         }
 
         @keyframes rotateHUD {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Efek Klik Aktif (Kekuatan Bersinar!) */
@@ -693,55 +854,93 @@
             filter: drop-shadow(0 0 8px var(--neon-pink));
         }
 
-        /* --- DESAIN DRAMA KISAH MOTIVASI (SAD & HAPPY) --- */
-        .char-sad {
-            transition: transform 0.5s ease;
-        }
-        
-        .char-happy {
-            opacity: 0;
-            transform: translateX(100px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Animasi Air Mata Mengalir */
-        .tears {
-            animation: dropTears 1.5s infinite linear;
-        }
-
-        @keyframes dropTears {
-            0% { transform: translateY(0); opacity: 1; }
-            80% { opacity: 0.8; }
-            100% { transform: translateY(20px); opacity: 0; }
-        }
-
-        /* Kondisi Perubahan */
-        .char-happy.appear {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .motto-story-glow {
-            opacity: 0;
-            transform: scale(0.9);
-            transform-origin: center;
-            transition: all 0.5s ease;
-        }
-
-        .motto-story-glow.active {
-            opacity: 1;
-            transform: scale(1.15);
-        }
-
         /* --- Desain Tanggap (Responsive Design) --- */
         @media (max-width: 600px) {
-            .name-box h1 { font-size: 2.5rem; }
-            .biodata-list span.label { display: block; width: 100%; margin-bottom: 5px; }
-            .intro-text { font-size: 0.95rem; }
-            .modal-content { height: 75vh; }
+            .name-box h1 {
+                font-size: 2.5rem;
+            }
+
+            .biodata-list span.label {
+                display: block;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .intro-text {
+                font-size: 0.95rem;
+            }
+
+            .modal-content {
+                height: 75vh;
+            }
+
+            .game-section h2.section-title {
+                font-size: 1.6rem;
+            }
+
+            .quiz-option-btn {
+                font-size: 0.85rem;
+                padding: 12px;
+            }
+        }
+
+        .music-player-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+        }
+
+        .music-toggle-btn {
+            background: rgba(8, 12, 22, 0.95);
+            border: 2px solid var(--neon-blue);
+            border-radius: 30px;
+            padding: 12px 24px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 900;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.35);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .music-toggle-btn:hover {
+            transform: scale(1.08) translateY(-3px);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.5);
+        }
+
+        .music-toggle-btn.playing {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+        }
+
+        .music-icon {
+            font-size: 1.2rem;
+            display: inline-block;
+        }
+
+        .music-toggle-btn.playing .music-icon {
+            animation: spinIcon 2.5s linear infinite;
+        }
+
+        @keyframes spinIcon {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Latar Belakang Bola Bersinar -->
@@ -758,10 +957,18 @@
         </div>
     </div>
 
+    <!-- === FLOATING RETRO MUSIC WIDGET === -->
+    <div class="music-player-widget" id="music-widget">
+        <button class="music-toggle-btn" id="music-toggle-btn" title="Mainkan Suara Alam Tenang">
+            <span class="music-icon" id="music-icon">🎵</span>
+            <span class="music-text" id="music-text">PLAY NATURE BGM 🐦</span>
+        </button>
+    </div>
+
     <!-- Konten Biodata & Moto -->
     <div class="content-wrapper">
-        
-        <!-- Kartu 1: Biodata Diri (NAMA TETAP JULIAN) -->
+
+        <!-- Kartu 1: Biodata Diri -->
         <div class="card" id="biodata-card">
             <h2>Biodata Diri</h2>
             <ul class="biodata-list">
@@ -769,7 +976,7 @@
                 <li><span class="label">Tanggal Lahir</span> : 19 Juli 2014</li>
                 <li><span class="label">Hobi</span> : Menjadi orang sukses 🚀</li>
                 <li><span class="label">Makanan Favorit</span> : Telur dadar dan nasi goreng 🍳</li>
-                <li><span class="label">Game Favorit</span> : Free Fire 🔫</li>
+                <li><span class="label">Game Favorit</span> : Roblox 🧱</li>
             </ul>
         </div>
 
@@ -783,107 +990,126 @@
             </p>
         </div>
 
+        <!-- Kartu 3: Kesan dan Pesan Selama Kelas 5 -->
+        <div class="card" id="kesan-card">
+            <h2>Pesan & Kesan Kelas 5</h2>
+            <p class="school-text">
+                Saya dan teman-teman saya merasa betah selama kelas 5 dan kadang tidak merasa bosan. Terutama saat
+                istirahat di jam istirahat adalah hal paling hebohnya makanya seru! ✨
+            </p>
+        </div>
+
+        <!-- Kartu 4: Harapan Kelas 6 -->
+        <div class="card" id="harapan-card">
+            <h2>Harapan Kelas 6</h2>
+            <p class="school-text">
+                Saya harap nanti saat kelas 6 saya berharap di kelas 6 nanti saya dapat mendapatkan nilai yang sangat
+                memuaskan dan di atas KKM dan lulus dengan sukses! 🎓⭐
+            </p>
+        </div>
+
     </div>
 
-    <!-- --- SECTION RUANG PRESTASI (TROPHY ROOM) --- -->
-    <div class="trophy-section">
-        <h2 class="section-title">Ruang Prestasi Orang yang akan sukses</h2>
-        <div class="trophy-grid">
-            
-            <!-- Trophy 1: Piala Emas Kesuksesan -->
-            <div class="trophy-card" onclick="tunjukkanApresiasi('piala')">
-                <div class="trophy-svg-container">
-                    <svg viewBox="0 0 100 100" width="100%" height="100%" class="trophy-icon-anim">
-                        <defs>
-                            <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#fff176" />
-                                <stop offset="50%" stop-color="#fcee0a" />
-                                <stop offset="100%" stop-color="#f57c00" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Glow Aura Backing -->
-                        <circle cx="50" cy="45" r="28" fill="none" stroke="var(--neon-yellow)" stroke-width="1.5" stroke-dasharray="3, 3" opacity="0.6"/>
-                        <!-- Stand/Base of Trophy -->
-                        <rect x="35" y="72" width="30" height="8" rx="2" fill="#374151" stroke="#fcee0a" stroke-width="1.5"/>
-                        <path d="M42 72 L45 60 L55 60 L58 72 Z" fill="url(#gold-grad)"/>
-                        <!-- Cup Stem -->
-                        <rect x="47" y="52" width="6" height="12" fill="url(#gold-grad)"/>
-                        <!-- Cup Handles -->
-                        <path d="M30 35 C20 35, 20 50, 32 50" fill="none" stroke="url(#gold-grad)" stroke-width="4.5" stroke-linecap="round"/>
-                        <path d="M70 35 C80 35, 80 50, 68 50" fill="none" stroke="url(#gold-grad)" stroke-width="4.5" stroke-linecap="round"/>
-                        <!-- Main Cup Body -->
-                        <path d="M30 30 C30 52, 40 55, 50 55 C60 55, 70 52, 70 30 Z" fill="url(#gold-grad)"/>
-                        <rect x="28" y="26" width="44" height="5" rx="1.5" fill="url(#gold-grad)"/>
-                        <!-- Star Symbol on Cup -->
-                        <polygon points="50,33 53,40 60,40 55,44 57,51 50,47 43,51 45,44 40,40 47,40" fill="#ffffff"/>
-                    </svg>
-                </div>
-                <h3>Piala Kesuksesan</h3>
-                <p class="trophy-title">Mimpi Utama</p>
+    <!-- ==========================================
+                 MINI GAMES ZONE SECTION
+         ========================================== -->
+    <div class="game-section">
+        <h2 class="section-title">Game 1: Roblox Runner 🧱</h2>
+
+        <div class="game-container">
+            <div class="game-header">
+                <span class="score-box">SKOR: <span id="game-score">0</span></span>
+                <span class="high-score-box">REKOR: <span id="game-high-score">0</span></span>
             </div>
 
-            <!-- Trophy 2: Medali Kejuaraan Berlomba -->
-            <div class="trophy-card ff-theme" onclick="tunjukkanApresiasi('medali')">
-                <div class="trophy-svg-container">
-                    <svg viewBox="0 0 100 100" width="100%" height="100%" class="trophy-icon-anim">
-                        <defs>
-                            <linearGradient id="medal-gold-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#ffb300" />
-                                <stop offset="100%" stop-color="#e65100" />
-                            </linearGradient>
-                            <linearGradient id="ribbon-red-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#d50000" />
-                                <stop offset="100%" stop-color="#ff6d00" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Glow Aura Backing -->
-                        <circle cx="50" cy="58" r="24" fill="none" stroke="var(--neon-orange)" stroke-width="1.5" stroke-dasharray="4, 4" opacity="0.6"/>
-                        <!-- Ribbons hanging down -->
-                        <polygon points="40,20 32,55 45,50" fill="url(#ribbon-red-grad)"/>
-                        <polygon points="60,20 68,55 55,50" fill="url(#ribbon-red-grad)"/>
-                        <!-- Ribbon Loop top -->
-                        <path d="M40 20 Q50 5 60 20" fill="none" stroke="url(#ribbon-red-grad)" stroke-width="10"/>
-                        <!-- Medal Body Circle -->
-                        <circle cx="50" cy="58" r="22" fill="url(#medal-gold-grad)" stroke="#ffffff" stroke-width="2"/>
-                        <!-- Victory Laurel Wreath internally -->
-                        <path d="M35 55 C33 58 35 65 42 66 M65 55 C67 58 65 65 58 66" stroke="#ffffff" stroke-width="2" fill="none"/>
-                        <!-- Bold Championship "1" in the center -->
-                        <path d="M46 66 V48 H52 V66" fill="#ffffff" stroke="#ffffff" stroke-width="1"/>
-                        <path d="M42 52 L47 48" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-                        <line x1="42" y1="66" x2="58" y2="66" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
+            <div class="canvas-area" id="canvas-area">
+                <!-- Layar Mulai Game -->
+                <div class="game-overlay" id="start-overlay">
+                    <h3 style="color: var(--neon-green);">ROBLOX RUNNER</h3>
+                    <p>Bantu Bacon Hair melompati rintangan Malas, Bosan, dan KKM serta kumpulkan Nilai A+ untuk sukses!
+                    </p>
+                    <button class="game-btn" id="start-btn">Mulai Main 🎮</button>
                 </div>
-                <h3>Medali Juara</h3>
-                <p class="trophy-title">Kejuaraan Berlomba</p>
+
+                <!-- Layar Game Over -->
+                <div class="game-overlay" id="gameover-overlay" style="display: none;">
+                    <h3 style="color: var(--neon-pink);">GAME OVER</h3>
+                    <p>Kamu terhenti sebelum mencapai impianmu! Jangan menyerah, ayo bangkit!</p>
+                    <p style="font-size: 1.1rem; color: #fff;">Skor Kamu: <span id="final-score"
+                            style="color: var(--neon-yellow); font-weight: bold;">0</span></p>
+                    <button class="game-btn" id="restart-btn"
+                        style="background: linear-gradient(135deg, var(--neon-pink), var(--neon-orange));">Coba Lagi
+                        🔄</button>
+                </div>
+
+                <canvas id="gameCanvas"></canvas>
             </div>
 
-            <!-- Trophy 3: Lencana Pantang Menyerah -->
-            <div class="trophy-card badge-theme" onclick="tunjukkanApresiasi('lencana')">
-                <div class="trophy-svg-container">
-                    <svg viewBox="0 0 100 100" width="100%" height="100%" class="trophy-icon-anim">
-                        <defs>
-                            <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" stop-color="#00f3ff" />
-                                <stop offset="50%" stop-color="#d946ef" />
-                                <stop offset="100%" stop-color="#ff007f" />
-                            </linearGradient>
-                        </defs>
-                        <!-- Backing Star Points -->
-                        <polygon points="50,14 59,32 78,32 64,46 70,66 50,56 30,66 36,46 22,32 41,32" fill="none" stroke="var(--neon-blue)" stroke-width="2" />
-                        <!-- Outer Shield -->
-                        <path d="M32 30 C32 30 50 20 50 20 C50 20 68 30 68 30 C68 45 62 70 50 82 C38 70 32 45 32 30 Z" fill="url(#badge-grad)" stroke="#ffffff" stroke-width="1.5"/>
-                        <!-- Inner Shield Border -->
-                        <path d="M37 34 C37 34 50 25 50 25 C50 25 63 34 63 34 C63 46 58 66 50 76 C42 66 37 46 37 34 Z" fill="#090d16" stroke="var(--neon-blue)" stroke-width="1.5"/>
-                        <!-- Wings details -->
-                        <path d="M40 44 H60 M42 50 H58 M45 56 H55" stroke="var(--neon-blue)" stroke-width="2" stroke-linecap="round"/>
-                        <!-- Bold Glowing Thunder -->
-                        <path d="M52 35 L44 48 H50 L47 62 L56 46 H50 Z" fill="var(--neon-yellow)"/>
-                    </svg>
-                </div>
-                <h3>Lencana Tekad</h3>
-                <p class="trophy-title">Pantang Menyerah</p>
+            <!-- Tombol Kontrol Mobile -->
+            <div class="mobile-controls">
+                <button class="jump-btn" id="canvas-jump-btn">
+                    <span>LOMPAT (TAP/SPACE)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+                  GAME 2: TEBAK-TEBAKAN PINTAR
+         ========================================== -->
+    <div class="game-section" style="margin-top: 30px;">
+        <h2 class="section-title">Game 2: Tebak-Tebakan Pintar! 🧠</h2>
+
+        <div class="game-container"
+            style="background: rgba(13, 20, 38, 0.9); border-color: var(--neon-blue); box-shadow: 0 10px 40px rgba(0, 243, 255, 0.15);">
+            <div class="game-header">
+                <span id="quiz-category-badge" style="color: var(--neon-blue); font-weight: bold;">ASAH OTAK</span>
+                <span id="quiz-counter-badge" class="score-box" style="color: var(--neon-pink);">SOAL: 1/25</span>
+                <span class="high-score-box">TOTAL SKOR: <span id="quiz-score"
+                        style="color: var(--neon-green);">0</span></span>
             </div>
 
+            <!-- Layar Mulai Kuis -->
+            <div id="quiz-intro" style="padding: 40px 10px;">
+                <h3
+                    style="font-family: 'Orbitron', sans-serif; font-size: 1.6rem; margin-bottom: 15px; color: var(--neon-blue);">
+                    TEBAK-TEBAKAN PINTAR</h3>
+                <p style="color: var(--text-muted); margin-bottom: 30px; line-height: 1.6;">Uji wawasanmu dalam 25
+                    pertanyaan seru tentang Sejarah, Bumi, Negara, Presiden, dan Senjata Tradisional!</p>
+                <button class="game-btn" id="start-quiz-btn"
+                    style="background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink)); color: #fff; box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);">Mulai
+                    Asah Otak 🧠</button>
+            </div>
+
+            <!-- Layar Soal Kuis -->
+            <div id="quiz-play-area" style="display: none; padding: 20px 10px;">
+                <p id="quiz-question-text"
+                    style="font-size: 1.15rem; font-weight: 600; line-height: 1.7; margin-bottom: 25px; text-align: left;">
+                </p>
+                <div class="gallery-grid" id="quiz-options-grid"
+                    style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <!-- Diisi Dinamis oleh JS -->
+                </div>
+                <p id="quiz-feedback"
+                    style="margin-top: 20px; font-weight: bold; font-family: 'Orbitron', sans-serif; font-size: 1.1rem; min-height: 25px;">
+                </p>
+            </div>
+
+            <!-- Layar Hasil Akhir Kuis -->
+            <div id="quiz-result-area" style="display: none; padding: 30px 10px;">
+                <h3
+                    style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 10px; color: var(--neon-yellow);">
+                    HASIL EVALUASI</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 15px;">Skor Akhir Anda:</p>
+                <div style="font-family: 'Orbitron', sans-serif; font-size: 3rem; font-weight: 900; color: var(--neon-green); margin-bottom: 20px; text-shadow: 0 0 20px rgba(57, 255, 20, 0.4);"
+                    id="quiz-final-score">0</div>
+                <p id="quiz-eval-text"
+                    style="color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; max-width: 85%; margin-left: auto; margin-right: auto;">
+                </p>
+                <button class="game-btn" id="restart-quiz-btn"
+                    style="background: linear-gradient(135deg, var(--neon-green), var(--neon-blue)); color: #000; box-shadow: 0 0 15px rgba(57, 255, 20, 0.4);">Main
+                    Lagi 🔄</button>
+            </div>
         </div>
     </div>
 
@@ -891,37 +1117,42 @@
     <div class="gallery-section">
         <h2 class="section-title">Inspirasi Tokoh Sukses</h2>
         <div class="gallery-grid">
-            
+
             <!-- Tokoh 1: Chibi Elon Musk -->
             <div class="gallery-card" onclick="tunjukkanTips('elon')">
                 <div class="avatar-svg-container">
                     <svg viewBox="0 0 100 100" width="100%" height="100%">
-                        <!-- Chibi Elon Musk -->
                         <defs>
                             <linearGradient id="elon-hair" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" stop-color="#5a3d28" />
                                 <stop offset="100%" stop-color="#2c1a0e" />
                             </linearGradient>
                         </defs>
-                        <circle cx="50" cy="55" r="42" fill="none" stroke="var(--neon-blue)" stroke-width="1.5" stroke-dasharray="3, 3"/>
-                        <path d="M30 45 Q20 35 32 30 Q40 22 55 25 Q70 25 72 38" fill="url(#elon-hair)"/>
-                        <ellipse cx="50" cy="55" rx="22" ry="19" fill="#ffd3b6"/>
-                        <ellipse cx="41" cy="54" rx="3.5" ry="5.5" fill="#111111"/>
-                        <circle cx="42.5" cy="52" r="1.5" fill="#ffffff"/>
-                        <ellipse cx="59" cy="54" rx="3.5" ry="5.5" fill="#111111"/>
-                        <circle cx="60.5" cy="52" r="1.5" fill="#ffffff"/>
-                        <path d="M36 47 Q41 45 45 48" stroke="#2c1a0e" stroke-width="1.5" fill="none"/>
-                        <path d="M64 47 Q59 45 55 48" stroke="#2c1a0e" stroke-width="1.5" fill="none"/>
-                        <path d="M47 62 Q50 65 53 62" fill="none" stroke="#2c1a0e" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M28 42 L34 32 L40 38 L48 28 L54 36 L62 29 L68 38 L71 44 L66 45 L58 40 L50 45 L42 38 L34 45 Z" fill="url(#elon-hair)"/>
-                        <path d="M46 72 L54 72 L58 84 L42 84 Z" fill="#222831" stroke="var(--neon-pink)" stroke-width="1.5"/>
-                        <path d="M42 84 L58 84 L55 96 L45 96 Z" fill="#393e46"/>
-                        <path d="M49 86 L51 86 L50 81 Z" fill="var(--neon-blue)"/>
+                        <circle cx="50" cy="55" r="42" fill="none" stroke="var(--neon-blue)" stroke-width="1.5"
+                            stroke-dasharray="3, 3" />
+                        <path d="M30 45 Q20 35 32 30 Q40 22 55 25 Q70 25 72 38" fill="url(#elon-hair)" />
+                        <ellipse cx="50" cy="55" rx="22" ry="19" fill="#ffd3b6" />
+                        <ellipse cx="41" cy="54" rx="3.5" ry="5.5" fill="#111111" />
+                        <circle cx="42.5" cy="52" r="1.5" fill="#ffffff" />
+                        <ellipse cx="59" cy="54" rx="3.5" ry="5.5" fill="#111111" />
+                        <circle cx="60.5" cy="52" r="1.5" fill="#ffffff" />
+                        <path d="M36 47 Q41 45 45 48" stroke="#2c1a0e" stroke-width="1.5" fill="none" />
+                        <path d="M64 47 Q59 45 55 48" stroke="#2c1a0e" stroke-width="1.5" fill="none" />
+                        <path d="M47 62 Q50 65 53 62" fill="none" stroke="#2c1a0e" stroke-width="2"
+                            stroke-linecap="round" />
+                        <path
+                            d="M28 42 L34 32 L40 38 L48 28 L54 36 L62 29 L68 38 L71 44 L66 45 L58 40 L50 45 L42 38 L34 45 Z"
+                            fill="url(#elon-hair)" />
+                        <path d="M46 72 L54 72 L58 84 L42 84 Z" fill="#222831" stroke="var(--neon-pink)"
+                            stroke-width="1.5" />
+                        <path d="M42 84 L58 84 L55 96 L45 96 Z" fill="#393e46" />
+                        <path d="M49 86 L51 86 L50 81 Z" fill="var(--neon-blue)" />
                     </svg>
                 </div>
                 <h3>Elon Musk</h3>
                 <p class="achievement">Visioner Antariksa</p>
-                <p class="desc">Pendiri SpaceX dan Tesla. Mengubah dunia dengan teknologi mobil listrik dan mimpi besar tinggal di Mars!</p>
+                <p class="desc">Pendiri SpaceX dan Tesla. Mengubah dunia dengan teknologi mobil listrik dan mimpi besar
+                    tinggal di Mars!</p>
                 <button class="gallery-btn">KUNCI SUKSES 💡</button>
             </div>
 
@@ -929,25 +1160,28 @@
             <div class="gallery-card" onclick="tunjukkanTips('steve')">
                 <div class="avatar-svg-container">
                     <svg viewBox="0 0 100 100" width="100%" height="100%">
-                        <!-- Chibi Steve Jobs -->
-                        <circle cx="50" cy="55" r="42" fill="none" stroke="var(--neon-blue)" stroke-width="1.5" stroke-dasharray="3, 3"/>
-                        <ellipse cx="50" cy="52" rx="22" ry="19" fill="#ffd3b6"/>
-                        <path d="M28 48 C28 35, 72 35, 72 48" stroke="#4a4a4a" stroke-width="3" fill="none"/>
-                        <circle cx="39" cy="52" r="8" fill="none" stroke="#222" stroke-width="2.5"/>
-                        <circle cx="61" cy="52" r="8" fill="none" stroke="#222" stroke-width="2.5"/>
-                        <path d="M47 52 H53" stroke="#222" stroke-width="2.5"/>
-                        <circle cx="39" cy="52" r="2.5" fill="#111111"/>
-                        <circle cx="61" cy="52" r="2.5" fill="#111111"/>
-                        <path d="M49 59 Q50 60 51 59" fill="none" stroke="#2c1a0e" stroke-width="1.5"/>
-                        <path d="M46 64 Q50 67 54 64" fill="none" stroke="#2c1a0e" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M34 58 Q50 76 66 58" fill="none" stroke="#888" stroke-width="3" stroke-linecap="round" stroke-dasharray="2, 2"/>
-                        <path d="M44 70 L56 70 L56 78 L44 78 Z" fill="#111111"/>
-                        <path d="M38 78 L62 78 L66 98 L34 98 Z" fill="#1e1e1e"/>
+                        <circle cx="50" cy="55" r="42" fill="none" stroke="var(--neon-blue)" stroke-width="1.5"
+                            stroke-dasharray="3, 3" />
+                        <ellipse cx="50" cy="52" rx="22" ry="19" fill="#ffd3b6" />
+                        <path d="M28 48 C28 35, 72 35, 72 48" stroke="#4a4a4a" stroke-width="3" fill="none" />
+                        <circle cx="39" cy="52" r="8" fill="none" stroke="#222" stroke-width="2.5" />
+                        <circle cx="61" cy="52" r="8" fill="none" stroke="#222" stroke-width="2.5" />
+                        <path d="M47 52 H53" stroke="#222" stroke-width="2.5" />
+                        <circle cx="39" cy="52" r="2.5" fill="#111111" />
+                        <circle cx="61" cy="52" r="2.5" fill="#111111" />
+                        <path d="M49 59 Q50 60 51 59" fill="none" stroke="#2c1a0e" stroke-width="1.5" />
+                        <path d="M46 64 Q50 67 54 64" fill="none" stroke="#2c1a0e" stroke-width="2"
+                            stroke-linecap="round" />
+                        <path d="M34 58 Q50 76 66 58" fill="none" stroke="#888" stroke-width="3" stroke-linecap="round"
+                            stroke-dasharray="2, 2" />
+                        <path d="M44 70 L56 70 L56 78 L44 78 Z" fill="#111111" />
+                        <path d="M38 78 L62 78 L66 98 L34 98 Z" fill="#1e1e1e" />
                     </svg>
                 </div>
                 <h3>Steve Jobs</h3>
                 <p class="achievement">Inovator Teknologi</p>
-                <p class="desc">Pendiri Apple Inc. Menciptakan iPhone dan iPad yang mengubah cara manusia berkomunikasi saat ini!</p>
+                <p class="desc">Pendiri Apple Inc. Menciptakan iPhone dan iPad yang mengubah cara manusia berkomunikasi
+                    saat ini!</p>
                 <button class="gallery-btn">KUNCI SUKSES 💡</button>
             </div>
 
@@ -955,23 +1189,28 @@
             <div class="gallery-card" onclick="tunjukkanTips('einstein')">
                 <div class="avatar-svg-container">
                     <svg viewBox="0 0 100 100" width="100%" height="100%">
-                        <!-- Chibi Albert Einstein -->
-                        <circle cx="50" cy="55" r="42" fill="none" stroke="var(--neon-blue)" stroke-width="1.5" stroke-dasharray="3, 3"/>
-                        <path d="M24 50 C12 40, 16 15, 36 22 C42 10, 58 10, 64 22 C84 15, 88 40, 76 50 C85 65, 75 80, 68 75 C60 85, 40 85, 32 75 C25 80, 15 65, 24 50 Z" fill="#eef2f7" stroke="#cbd5e1" stroke-width="1.5"/>
-                        <ellipse cx="50" cy="54" rx="20" ry="18" fill="#ffdfc4"/>
-                        <path d="M38 48 Q43 44 45 50" fill="none" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
-                        <path d="M62 48 Q57 44 55 50" fill="none" stroke="#222" stroke-width="2.5" stroke-linecap="round"/>
-                        <path d="M36 58 Q50 52 64 58 Q50 66 36 58 Z" fill="#eef2f7" stroke="#cbd5e1" stroke-width="1"/>
-                        <path d="M47 62 H53 V67 Q50 71 47 67 Z" fill="#ff007f"/>
-                        <line x1="50" y1="62" x2="50" y2="67" stroke="#ffffff" stroke-width="1"/>
-                        <path d="M45 72 L55 72 L58 82 L42 82 Z" fill="#eef2f7" stroke="#94a3b8" stroke-width="1"/>
-                        <path d="M40 82 L60 82 L64 96 L36 96 Z" fill="#64748b"/>
-                        <path d="M47 82 L50 88 L53 82 Z" fill="#e11d48"/>
+                        <circle cx="50" cy="55" r="42" fill="none" stroke="var(--neon-blue)" stroke-width="1.5"
+                            stroke-dasharray="3, 3" />
+                        <path
+                            d="M24 50 C12 40, 16 15, 36 22 C42 10, 58 10, 64 22 C84 15, 88 40, 76 50 C85 65, 75 80, 68 75 C60 85, 40 85, 32 75 C25 80, 15 65, 24 50 Z"
+                            fill="#eef2f7" stroke="#cbd5e1" stroke-width="1.5" />
+                        <ellipse cx="50" cy="54" rx="20" ry="18" fill="#ffdfc4" />
+                        <path d="M38 48 Q43 44 45 50" fill="none" stroke="#222" stroke-width="2.5"
+                            stroke-linecap="round" />
+                        <path d="M62 48 Q57 44 55 50" fill="none" stroke="#222" stroke-width="2.5"
+                            stroke-linecap="round" />
+                        <path d="M36 58 Q50 52 64 58 Q50 66 36 58 Z" fill="#eef2f7" stroke="#cbd5e1" stroke-width="1" />
+                        <path d="M47 62 H53 V67 Q50 71 47 67 Z" fill="#ff007f" />
+                        <line x1="50" y1="62" x2="50" y2="67" stroke="#ffffff" stroke-width="1" />
+                        <path d="M45 72 L55 72 L58 82 L42 82 Z" fill="#eef2f7" stroke="#94a3b8" stroke-width="1" />
+                        <path d="M40 82 L60 82 L64 96 L36 96 Z" fill="#64748b" />
+                        <path d="M47 82 L50 88 L53 82 Z" fill="#e11d48" />
                     </svg>
                 </div>
                 <h3>Albert Einstein</h3>
                 <p class="achievement">Ilmuwan Terhebat</p>
-                <p class="desc">Fisikawan jenius penemu Teori Relativitas ($E=mc^2$). Membuktikan bahwa rasa penasaran dan imajinasi itu tanpa batas!</p>
+                <p class="desc">Fisikawan jenius penemu Teori Relativitas ($E=mc^2$). Membuktikan bahwa rasa penasaran
+                    dan imajinasi itu tanpa batas!</p>
                 <button class="gallery-btn">KUNCI SUKSES 💡</button>
             </div>
 
@@ -983,10 +1222,10 @@
         <div class="modal-content">
             <span class="close-btn" id="close-modal">&times;</span>
             <div id="motivation-bubble" class="motivation-bubble"></div>
-            
+
             <div id="anime-container">
                 <div class="tap-hint">TAP SAYA! ⚡</div>
-                
+
                 <!-- === 1. JULIAN ORIGINAL ANIME === -->
                 <svg id="svg-julian" class="anime-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -1005,24 +1244,34 @@
                     </defs>
 
                     <g class="power-aura">
-                        <circle cx="200" cy="200" r="140" fill="none" stroke="#ff007f" stroke-width="2" stroke-dasharray="10, 15" />
-                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#00f3ff" transform="rotate(45 200 200)"/>
-                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#ff007f" transform="rotate(135 200 200)"/>
-                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#fcee0a" transform="rotate(225 200 200)"/>
-                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#00f3ff" transform="rotate(315 200 200)"/>
+                        <circle cx="200" cy="200" r="140" fill="none" stroke="#ff007f" stroke-width="2"
+                            stroke-dasharray="10, 15" />
+                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#00f3ff" transform="rotate(45 200 200)" />
+                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#ff007f"
+                            transform="rotate(135 200 200)" />
+                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#fcee0a"
+                            transform="rotate(225 200 200)" />
+                        <path d="M 200 40 L 210 70 L 200 65 L 190 70 Z" fill="#00f3ff"
+                            transform="rotate(315 200 200)" />
                     </g>
 
                     <g class="cyber-hud">
-                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3" stroke-dasharray="15, 8" />
-                        <circle cx="200" cy="200" r="110" fill="none" stroke="#00f3ff" stroke-width="1.5" stroke-opacity="0.3" />
-                        <path d="M 200 70 A 130 130 0 0 1 330 200" fill="none" stroke="#ff007f" stroke-width="4" stroke-linecap="round" />
-                        <path d="M 200 330 A 130 130 0 0 1 70 200" fill="none" stroke="#00f3ff" stroke-width="4" stroke-linecap="round" />
+                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3"
+                            stroke-dasharray="15, 8" />
+                        <circle cx="200" cy="200" r="110" fill="none" stroke="#00f3ff" stroke-width="1.5"
+                            stroke-opacity="0.3" />
+                        <path d="M 200 70 A 130 130 0 0 1 330 200" fill="none" stroke="#ff007f" stroke-width="4"
+                            stroke-linecap="round" />
+                        <path d="M 200 330 A 130 130 0 0 1 70 200" fill="none" stroke="#00f3ff" stroke-width="4"
+                            stroke-linecap="round" />
                     </g>
 
                     <g class="anime-body">
                         <path d="M 180 250 L 220 250 L 215 285 L 185 285 Z" fill="#e0b194" />
                         <path d="M 180 250 L 220 250 L 210 265 L 190 265 Z" fill="#c39174" />
-                        <path d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z" fill="url(#jacket-grad)" />
+                        <path
+                            d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z"
+                            fill="url(#jacket-grad)" />
                         <path d="M 170 265 L 165 315 L 180 315 L 185 265 Z" fill="#ff007f" />
                         <path d="M 230 265 L 235 315 L 220 315 L 215 265 Z" fill="#ff007f" />
                         <path d="M 185 265 L 180 330 L 220 330 L 215 265 Z" fill="#151b26" />
@@ -1030,18 +1279,23 @@
                         <path d="M 135 295 L 115 340" stroke="#00f3ff" stroke-width="4" stroke-linecap="round" />
                         <path d="M 265 295 L 285 340" stroke="#00f3ff" stroke-width="4" stroke-linecap="round" />
 
-                        <path d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z" fill="#ffd3b6" />
+                        <path
+                            d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z"
+                            fill="#ffd3b6" />
                         <path d="M 135 175 C 130 175 130 190 138 190 Z" fill="#ffd3b6" />
                         <path d="M 265 175 C 270 175 270 190 262 190 Z" fill="#ffd3b6" />
 
-                        <path d="M 135 160 C 130 160 120 170 125 195 C 130 220 140 215 140 195 Z" fill="#090d16" stroke="#ff007f" stroke-width="2" />
+                        <path d="M 135 160 C 130 160 120 170 125 195 C 130 220 140 215 140 195 Z" fill="#090d16"
+                            stroke="#ff007f" stroke-width="2" />
                         <circle cx="132" cy="190" r="8" fill="#ff007f" />
-                        <path d="M 265 160 C 270 160 280 170 275 195 C 270 220 260 215 260 195 Z" fill="#090d16" stroke="#ff007f" stroke-width="2" />
+                        <path d="M 265 160 C 270 160 280 170 275 195 C 270 220 260 215 260 195 Z" fill="#090d16"
+                            stroke="#ff007f" stroke-width="2" />
                         <circle cx="268" cy="190" r="8" fill="#ff007f" />
                         <path d="M 135 160 C 150 135 250 135 265 160" fill="none" stroke="#151b26" stroke-width="6" />
 
                         <path d="M 200 202 L 197 212 L 203 212 Z" fill="#c39174" />
-                        <path d="M 188 225 Q 200 235 212 225" fill="none" stroke="#222" stroke-width="3" stroke-linecap="round" />
+                        <path d="M 188 225 Q 200 235 212 225" fill="none" stroke="#222" stroke-width="3"
+                            stroke-linecap="round" />
 
                         <g class="anime-eyes">
                             <ellipse cx="175" cy="188" rx="14" ry="7" fill="#ffffff" />
@@ -1052,23 +1306,31 @@
                             <circle class="anime-eyes-glow" cx="225" cy="188" r="6" fill="#00f3ff" />
                             <circle cx="178" cy="185" r="2.5" fill="#ffffff" />
                             <circle cx="228" cy="185" r="2.5" fill="#ffffff" />
-                            <path d="M 158 184 Q 175 178 191 185" fill="none" stroke="#090d16" stroke-width="3.5" stroke-linecap="round" />
-                            <path d="M 242 184 Q 225 178 209 185" fill="none" stroke="#090d16" stroke-width="3.5" stroke-linecap="round" />
+                            <path d="M 158 184 Q 175 178 191 185" fill="none" stroke="#090d16" stroke-width="3.5"
+                                stroke-linecap="round" />
+                            <path d="M 242 184 Q 225 178 209 185" fill="none" stroke="#090d16" stroke-width="3.5"
+                                stroke-linecap="round" />
                             <path d="M 158 172 L 188 175" stroke="#090d16" stroke-width="3" stroke-linecap="round" />
                             <path d="M 242 172 L 212 175" stroke="#090d16" stroke-width="3" stroke-linecap="round" />
                         </g>
 
-                        <path d="M 135 160 L 115 140 L 135 130 L 125 110 L 155 105 L 165 75 L 190 90 L 200 65 L 210 90 L 235 75 L 245 105 L 275 110 L 265 130 L 285 140 L 265 160 Z" fill="url(#hair-grad)" />
+                        <path
+                            d="M 135 160 L 115 140 L 135 130 L 125 110 L 155 105 L 165 75 L 190 90 L 200 65 L 210 90 L 235 75 L 245 105 L 275 110 L 265 130 L 285 140 L 265 160 Z"
+                            fill="url(#hair-grad)" />
 
                         <g class="anime-hair-front">
-                            <path d="M 135 155 L 148 185 L 155 160 L 165 195 L 175 155 L 190 205 L 200 155 L 210 205 L 225 155 L 235 195 L 245 160 L 252 185 L 265 155 Z" fill="url(#hair-grad)" />
-                            <path d="M 150 145 C 170 150 230 150 250 145 C 230 142 170 142 150 145 Z" fill="#ffffff" opacity="0.6" />
+                            <path
+                                d="M 135 155 L 148 185 L 155 160 L 165 195 L 175 155 L 190 205 L 200 155 L 210 205 L 225 155 L 235 195 L 245 160 L 252 185 L 265 155 Z"
+                                fill="url(#hair-grad)" />
+                            <path d="M 150 145 C 170 150 230 150 250 145 C 230 142 170 142 150 145 Z" fill="#ffffff"
+                                opacity="0.6" />
                         </g>
                     </g>
                 </svg>
 
                 <!-- === 2. ELON MUSK CHIBI === -->
-                <svg id="svg-elon" class="anime-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                <svg id="svg-elon" class="anime-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"
+                    style="display:none;">
                     <defs>
                         <linearGradient id="elon-hair-grad" x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" stop-color="#5a3d28" />
@@ -1080,46 +1342,66 @@
                         </linearGradient>
                     </defs>
                     <g class="power-aura">
-                        <circle cx="200" cy="200" r="140" fill="none" stroke="#ff007f" stroke-width="2" stroke-dasharray="10, 15" />
+                        <circle cx="200" cy="200" r="140" fill="none" stroke="#ff007f" stroke-width="2"
+                            stroke-dasharray="10, 15" />
                     </g>
                     <g class="cyber-hud">
-                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3" stroke-dasharray="15, 8" />
-                        <circle cx="200" cy="200" r="110" fill="none" stroke="#00f3ff" stroke-width="1.5" stroke-opacity="0.3" />
+                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3"
+                            stroke-dasharray="15, 8" />
+                        <circle cx="200" cy="200" r="110" fill="none" stroke="#00f3ff" stroke-width="1.5"
+                            stroke-opacity="0.3" />
                     </g>
                     <g class="anime-body">
                         <path d="M 180 250 L 220 250 L 215 285 L 185 285 Z" fill="#ffd3b6" />
-                        <path d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z" fill="url(#elon-suit-grad)" stroke="var(--neon-pink)" stroke-width="2" />
+                        <path
+                            d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z"
+                            fill="url(#elon-suit-grad)" stroke="var(--neon-pink)" stroke-width="2" />
                         <path d="M 170 265 L 165 315 L 180 315 L 185 265 Z" fill="#ff007f" />
                         <path d="M 230 265 L 235 315 L 220 315 L 215 265 Z" fill="#ff007f" />
                         <circle cx="200" cy="310" r="8" fill="var(--neon-blue)" />
-                        <path d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z" fill="#ffd3b6" />
+                        <path
+                            d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z"
+                            fill="#ffd3b6" />
                         <g class="anime-eyes">
                             <ellipse cx="172" cy="188" rx="11" ry="15" fill="#111111" />
                             <circle cx="175" cy="182" r="3.5" fill="#ffffff" />
                             <ellipse cx="228" cy="188" rx="11" ry="15" fill="#111111" />
                             <circle cx="231" cy="182" r="3.5" fill="#ffffff" />
                         </g>
-                        <path d="M 188 220 Q 200 230 212 220" fill="none" stroke="#2c1a0e" stroke-width="3" stroke-linecap="round" />
-                        <path d="M 135 160 L 115 140 L 135 130 L 125 110 L 155 105 L 165 75 L 190 90 L 200 65 L 210 90 L 235 75 L 245 105 L 275 110 L 265 130 L 285 140 L 265 160 Z" fill="url(#elon-hair-grad)" />
+                        <path d="M 188 220 Q 200 230 212 220" fill="none" stroke="#2c1a0e" stroke-width="3"
+                            stroke-linecap="round" />
+                        <path
+                            d="M 135 160 L 115 140 L 135 130 L 125 110 L 155 105 L 165 75 L 190 90 L 200 65 L 210 90 L 235 75 L 245 105 L 275 110 L 265 130 L 285 140 L 265 160 Z"
+                            fill="url(#elon-hair-grad)" />
                         <g class="anime-hair-front">
-                            <path d="M 135 155 L 148 185 L 155 160 L 165 195 L 175 155 L 190 205 L 200 155 L 210 205 L 225 155 L 235 195 L 245 160 L 252 185 L 265 155 Z" fill="url(#elon-hair-grad)" />
+                            <path
+                                d="M 135 155 L 148 185 L 155 160 L 165 195 L 175 155 L 190 205 L 200 155 L 210 205 L 225 155 L 235 195 L 245 160 L 252 185 L 265 155 Z"
+                                fill="url(#elon-hair-grad)" />
                         </g>
                     </g>
                 </svg>
 
                 <!-- === 3. STEVE JOBS CHIBI === -->
-                <svg id="svg-steve" class="anime-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                <svg id="svg-steve" class="anime-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"
+                    style="display:none;">
                     <g class="power-aura">
-                        <circle cx="200" cy="200" r="140" fill="none" stroke="#00f3ff" stroke-width="2" stroke-dasharray="10, 15" />
+                        <circle cx="200" cy="200" r="140" fill="none" stroke="#00f3ff" stroke-width="2"
+                            stroke-dasharray="10, 15" />
                     </g>
                     <g class="cyber-hud">
-                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3" stroke-dasharray="15, 8" />
-                        <circle cx="200" cy="200" r="110" fill="none" stroke="#ff007f" stroke-width="1.5" stroke-opacity="0.3" />
+                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3"
+                            stroke-dasharray="15, 8" />
+                        <circle cx="200" cy="200" r="110" fill="none" stroke="#ff007f" stroke-width="1.5"
+                            stroke-opacity="0.3" />
                     </g>
                     <g class="anime-body">
                         <path d="M 180 250 L 220 250 L 220 285 L 180 285 Z" fill="#111111" />
-                        <path d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z" fill="#1e1e1e" stroke="var(--neon-blue)" stroke-width="1.5" />
-                        <path d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z" fill="#ffd3b6" />
+                        <path
+                            d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z"
+                            fill="#1e1e1e" stroke="var(--neon-blue)" stroke-width="1.5" />
+                        <path
+                            d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z"
+                            fill="#ffd3b6" />
                         <g class="anime-eyes">
                             <circle cx="168" cy="188" r="22" fill="none" stroke="#222" stroke-width="4" />
                             <circle cx="232" cy="188" r="22" fill="none" stroke="#222" stroke-width="4" />
@@ -1127,139 +1409,58 @@
                             <circle cx="168" cy="188" r="4" fill="#111111" />
                             <circle cx="232" cy="188" r="4" fill="#111111" />
                         </g>
-                        <path d="M 188 222 Q 200 230 212 222" fill="none" stroke="#2c1a0e" stroke-width="3" stroke-linecap="round" />
-                        <path d="M 145 200 Q 200 270 255 200" fill="none" stroke="#888888" stroke-width="4" stroke-linecap="round" stroke-dasharray="3, 3" />
-                        <path d="M 140 155 C 140 120, 260 120, 260 155" stroke="#4a4a4a" stroke-width="12" fill="none" />
+                        <path d="M 188 222 Q 200 230 212 222" fill="none" stroke="#2c1a0e" stroke-width="3"
+                            stroke-linecap="round" />
+                        <path d="M 145 200 Q 200 270 255 200" fill="none" stroke="#888888" stroke-width="4"
+                            stroke-linecap="round" stroke-dasharray="3, 3" />
+                        <path d="M 140 155 C 140 120, 260 120, 260 155" stroke="#4a4a4a" stroke-width="12"
+                            fill="none" />
                     </g>
                 </svg>
 
                 <!-- === 4. ALBERT EINSTEIN CHIBI === -->
-                <svg id="svg-einstein" class="anime-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+                <svg id="svg-einstein" class="anime-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"
+                    style="display:none;">
                     <g class="power-aura">
-                        <circle cx="200" cy="200" r="140" fill="none" stroke="#fcee0a" stroke-width="2" stroke-dasharray="10, 15" />
+                        <circle cx="200" cy="200" r="140" fill="none" stroke="#fcee0a" stroke-width="2"
+                            stroke-dasharray="10, 15" />
                     </g>
                     <g class="cyber-hud">
-                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3" stroke-dasharray="15, 8" />
-                        <circle cx="200" cy="200" r="110" fill="none" stroke="#00f3ff" stroke-width="1.5" stroke-opacity="0.3" />
+                        <circle cx="200" cy="200" r="120" fill="none" stroke="url(#hud-grad)" stroke-width="3"
+                            stroke-dasharray="15, 8" />
+                        <circle cx="200" cy="200" r="110" fill="none" stroke="#00f3ff" stroke-width="1.5"
+                            stroke-opacity="0.3" />
                     </g>
                     <g class="anime-body">
                         <path d="M 180 250 L 220 250 L 215 285 L 185 285 Z" fill="#ffd3b6" />
-                        <path d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z" fill="#64748b" />
+                        <path
+                            d="M 130 280 C 130 280 150 265 170 265 L 230 265 C 250 265 270 280 270 280 L 290 380 L 110 380 Z"
+                            fill="#64748b" />
                         <path d="M 175 265 L 165 340 L 235 340 L 225 265 Z" fill="#eef2f7" />
                         <path d="M 195 265 L 200 290 L 205 265 Z" fill="#e11d48" />
-                        <path d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z" fill="#ffdfc4" />
+                        <path
+                            d="M 140 180 C 140 230 160 255 200 255 C 240 255 260 230 260 180 C 260 150 240 135 200 135 C 160 135 140 150 140 180 Z"
+                            fill="#ffdfc4" />
                         <g class="anime-eyes">
-                            <path d="M 158 185 Q 175 172 190 185" fill="none" stroke="#222" stroke-width="4.5" stroke-linecap="round" />
-                            <path d="M 210 185 Q 225 172 242 185" fill="none" stroke="#222" stroke-width="4.5" stroke-linecap="round" />
+                            <path d="M 158 185 Q 175 172 190 185" fill="none" stroke="#222" stroke-width="4.5"
+                                stroke-linecap="round" />
+                            <path d="M 210 185 Q 225 172 242 185" fill="none" stroke="#222" stroke-width="4.5"
+                                stroke-linecap="round" />
                         </g>
-                        <path d="M 160 215 Q 200 195 240 215 Q 200 235 160 215 Z" fill="#eef2f7" stroke="#cbd5e1" stroke-width="2" />
+                        <path d="M 160 215 Q 200 195 240 215 Q 200 235 160 215 Z" fill="#eef2f7" stroke="#cbd5e1"
+                            stroke-width="2" />
                         <!-- Pose Ikonik Melet Chibi -->
                         <path d="M 190 220 H 210 V 238 Q 200 250 190 238 Z" fill="#ff007f" />
                         <line x1="200" y1="220" x2="200" y2="236" stroke="#ffffff" stroke-width="2" />
-                        <path d="M 130 180 C 100 140, 110 50, 155 70 C 170 30, 230 30, 245 70 C 290 50, 300 140, 270 180 C 295 220, 275 270, 255 250 C 230 280, 170 280, 145 250 C 125 270, 105 220, 130 180 Z" fill="#eef2f7" stroke="#cbd5e1" stroke-width="2" />
+                        <path
+                            d="M 130 180 C 100 140, 110 50, 155 70 C 170 30, 230 30, 245 70 C 290 50, 300 140, 270 180 C 295 220, 275 270, 255 250 C 230 280, 170 280, 145 250 C 125 270, 105 220, 130 180 Z"
+                            fill="#eef2f7" stroke="#cbd5e1" stroke-width="2" />
                     </g>
                 </svg>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: Kisah Motivasi (Motto Hidup - 2 Karakter Anime) -->
-    <div id="modal-motto" class="modal">
-        <div class="modal-content motto-border">
-            <span class="close-btn" id="close-motto">&times;</span>
-            <div id="story-bubble" class="motivation-bubble"></div>
-            
-            <div id="motto-story-container">
-                <div class="tap-hint" id="story-hint">TAP UNTUK LANJUTKAN KISAH! ⚡</div>
-                
-                <svg class="anime-svg" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="max-width: 550px;">
-                    <defs>
-                        <!-- Gradients -->
-                        <linearGradient id="hair-sad-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#2a3d66" />
-                            <stop offset="100%" stop-color="#101827" />
-                        </linearGradient>
-                        <linearGradient id="hair-happy-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#ffd54f" />
-                            <stop offset="100%" stop-color="#ff8f00" />
-                        </linearGradient>
-                        <linearGradient id="glow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#fcee0a" />
-                            <stop offset="100%" stop-color="#ff007f" />
-                        </linearGradient>
-                    </defs>
-
-                    <!-- Aura Emas Kesuksesan (Muncul di Akhir) -->
-                    <g class="motto-story-glow" id="story-power-glow">
-                        <circle cx="300" cy="200" r="160" fill="none" stroke="url(#glow-grad)" stroke-width="4" stroke-dasharray="10, 8" />
-                        <circle cx="300" cy="200" r="140" fill="none" stroke="#fcee0a" stroke-opacity="0.3" />
-                    </g>
-
-                    <!-- KARAKTER 1: Julian (Sedang Sedih/Menyerah) -->
-                    <g class="char-sad" id="character-sad" transform="translate(140, 40)">
-                        <path d="M 100 240 C 100 240 115 220 130 220 L 170 220 C 185 220 200 240 200 240 L 210 340 L 90 340 Z" fill="#1e293b" />
-                        <path d="M 130 220 L 135 270 L 165 270 L 170 220 Z" fill="#0d1527" />
-                        <path d="M 140 220 L 140 250 L 160 250 L 160 220 Z" fill="#3b82f6" />
-
-                        <path d="M 135 210 L 165 210 L 160 230 L 140 230 Z" fill="#d97706" opacity="0.8" />
-
-                        <path d="M 110 150 C 110 190 125 215 150 215 C 175 215 190 190 190 150 C 190 125 175 115 150 115 C 125 115 110 125 110 150 Z" fill="#ffd3b6" />
-
-                        <g class="tears" id="sad-tears">
-                            <circle cx="132" cy="178" r="4" fill="#00f3ff" />
-                            <path d="M 132 178 Q 130 190 132 195" stroke="#00f3ff" stroke-width="2" fill="none" />
-                            <circle cx="168" cy="178" r="4" fill="#00f3ff" />
-                            <path d="M 168 178 Q 170 190 168 195" stroke="#00f3ff" stroke-width="2" fill="none" />
-                        </g>
-
-                        <g class="char-sad-eyes">
-                            <path d="M 125 168 Q 135 178 142 168" fill="none" stroke="#1e293b" stroke-width="3" stroke-linecap="round" />
-                            <path d="M 175 168 Q 165 178 158 168" fill="none" stroke="#1e293b" stroke-width="3" stroke-linecap="round" />
-                        </g>
-
-                        <path id="sad-mouth" d="M 142 198 Q 150 188 158 198" fill="none" stroke="#1e293b" stroke-width="3" stroke-linecap="round" />
-                        <path id="happy-mouth" d="M 142 192 Q 150 205 158 192" fill="none" stroke="#1e293b" stroke-width="3" stroke-linecap="round" style="display:none;" />
-
-                        <path d="M 105 135 L 85 115 L 105 105 L 115 85 L 135 90 L 150 65 L 165 90 L 185 85 L 195 105 L 215 115 L 195 135 Z" fill="url(#hair-sad-grad)" />
-                        <g class="char-sad-hair">
-                            <path d="M 110 130 L 120 165 L 128 140 L 138 175 L 148 135 L 152 175 L 162 140 L 172 165 L 180 130 Z" fill="url(#hair-sad-grad)" />
-                        </g>
-                    </g>
-
-                    <!-- KARAKTER 2: Motivasi (Paraga Motivator / Sing Menehi Semangat) -->
-                    <g class="char-happy" id="character-happy" transform="translate(300, 40)">
-                        <path d="M 100 240 C 100 240 120 215 140 215 L 180 215 C 200 215 220 240 220 240 L 230 340 L 90 340 Z" fill="#475569" />
-                        <path d="M 140 215 L 135 265 L 185 265 L 180 215 Z" fill="#f97316" />
-                        <path d="M 148 215 L 145 270 L 175 270 L 172 215 Z" fill="#00f3ff" />
-
-                        <path d="M 145 205 L 175 205 L 170 225 L 150 225 Z" fill="#ffd3b6" />
-
-                        <path d="M 120 145 C 120 185 135 210 160 210 C 185 210 200 185 200 145 C 200 120 185 110 160 110 C 135 110 120 120 120 145 Z" fill="#ffd3b6" />
-
-                        <g class="char-happy-eyes">
-                            <ellipse cx="145" cy="158" rx="10" ry="5" fill="#ffffff" />
-                            <ellipse cx="175" cy="158" rx="10" ry="5" fill="#ffffff" />
-                            <circle cx="145" cy="158" r="6" fill="#fcee0a" />
-                            <circle cx="175" cy="158" r="6" fill="#fcee0a" />
-                            <circle cx="147" cy="155" r="2" fill="#ffffff" />
-                            <circle cx="177" cy="155" r="2" fill="#ffffff" />
-                            <path d="M 132 154 Q 145 148 158 155" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round" />
-                            <path d="M 188 154 Q 175 148 162 155" fill="none" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round" />
-                        </g>
-
-                        <path d="M 148 180 Q 160 195 172 180" fill="none" stroke="#1e293b" stroke-width="3" stroke-linecap="round" />
-
-                        <path d="M 115 130 L 95 110 L 115 100 L 125 80 L 145 85 L 160 60 L 175 85 L 195 80 L 205 100 L 225 110 L 205 130 Z" fill="url(#hair-happy-grad)" />
-                        <g class="char-happy-hair">
-                            <path d="M 120 125 L 132 155 L 140 135 L 150 165 L 160 130 L 170 165 L 178 135 L 190 125 Z" fill="url(#hair-happy-grad)" />
-                        </g>
-                    </g>
-                </svg>
-            </div>
-        </div>
-    </div>
-
-    <!-- Skrip Animasi Ngetik & Interaksi -->
     <script>
         const textToType = "Halo! Kenalin, aku Orang yang akan sukses. Calon orang hebat di masa depan.";
         const typeWriterElement = document.getElementById("typing-text");
@@ -1274,53 +1475,60 @@
             }
         }
 
-        // --- Interaksi Kartu Biodata & Modal 1 (Karakter Tunggal) ---
+        // --- Interaksi Kartu Biodata & Modal ---
         const modal3d = document.getElementById('modal-3d');
         const btnBiodata = document.getElementById('biodata-card');
         const spanClose = document.getElementById('close-modal');
         const animeContainer = document.getElementById('anime-container');
         const bubble = document.getElementById('motivation-bubble');
-        
+
         let timeoutMotivasi;
 
-        btnBiodata.addEventListener('click', () => {
-            modal3d.style.display = 'flex';
-            setTimeout(() => {
-                modal3d.classList.add('show');
-                
-                // Tampilkan Julian SVG, sembunyikan yang lain
-                document.getElementById('svg-julian').style.display = 'block';
-                document.getElementById('svg-elon').style.display = 'none';
-                document.getElementById('svg-steve').style.display = 'none';
-                document.getElementById('svg-einstein').style.display = 'none';
-                
-                tampilkanMotivasi();
-            }, 10);
-        });
+        // Bind click event only if elements exist to prevent Null Error
+        if (btnBiodata) {
+            btnBiodata.addEventListener('click', () => {
+                modal3d.style.display = 'flex';
+                setTimeout(() => {
+                    modal3d.classList.add('show');
 
-        spanClose.addEventListener('click', () => {
-            modal3d.classList.remove('show');
-            setTimeout(() => { modal3d.style.display = 'none'; }, 300);
-        });
+                    // Tampilkan Julian SVG, sembunyikan yang lain
+                    document.getElementById('svg-julian').style.display = 'block';
+                    document.getElementById('svg-elon').style.display = 'none';
+                    document.getElementById('svg-steve').style.display = 'none';
+                    document.getElementById('svg-einstein').style.display = 'none';
 
-        animeContainer.addEventListener('click', () => {
-            animeContainer.classList.add('active');
-            
-            // Periksa karakter mana yang sedang aktif di modal untuk memicu ucapan kembali
-            if (document.getElementById('svg-julian').style.display === 'block') {
-                tampilkanMotivasi();
-            } else if (document.getElementById('svg-elon').style.display === 'block') {
-                tunjukkanTips('elon');
-            } else if (document.getElementById('svg-steve').style.display === 'block') {
-                tunjukkanTips('steve');
-            } else if (document.getElementById('svg-einstein').style.display === 'block') {
-                tunjukkanTips('einstein');
-            }
-            
-            setTimeout(() => {
-                animeContainer.classList.remove('active');
-            }, 1000);
-        });
+                    tampilkanMotivasi();
+                }, 10);
+            });
+        }
+
+        if (spanClose) {
+            spanClose.addEventListener('click', () => {
+                modal3d.classList.remove('show');
+                setTimeout(() => { modal3d.style.display = 'none'; }, 300);
+            });
+        }
+
+        if (animeContainer) {
+            animeContainer.addEventListener('click', () => {
+                animeContainer.classList.add('active');
+
+                // Periksa karakter mana yang aktif di modal
+                if (document.getElementById('svg-julian').style.display === 'block') {
+                    tampilkanMotivasi();
+                } else if (document.getElementById('svg-elon').style.display === 'block') {
+                    tunjukkanTips('elon');
+                } else if (document.getElementById('svg-steve').style.display === 'block') {
+                    tunjukkanTips('steve');
+                } else if (document.getElementById('svg-einstein').style.display === 'block') {
+                    tunjukkanTips('einstein');
+                }
+
+                setTimeout(() => {
+                    animeContainer.classList.remove('active');
+                }, 1000);
+            });
+        }
 
         function tampilkanMotivasi() {
             const kataMotivasi = [
@@ -1331,149 +1539,77 @@
                 "Fokus pada prosesmu. Hari ini harus lebih baik dan lebih kuat dari hari kemarin! 🌟",
                 "Raih mimpi besarmu dengan aksi nyata. Ayo melangkah tanpa ragu-ragu! 🏁"
             ];
-            
+
             const colors = ['var(--neon-pink)', 'var(--neon-blue)', 'var(--neon-yellow)'];
             bubble.style.borderColor = colors[Math.floor(Math.random() * colors.length)];
             bubble.innerText = kataMotivasi[Math.floor(Math.random() * colors.length)];
             bubble.classList.add('show');
-            
+
             clearTimeout(timeoutMotivasi);
             timeoutMotivasi = setTimeout(() => {
                 bubble.classList.remove('show');
             }, 5000);
         }
 
-        // --- INTERAKSI KISAH CRITA 2 PARAGA (MODAL 2) ---
-        const modalMotto = document.getElementById('modal-motto');
-        const btnMotto = document.getElementById('motto-card');
-        const spanCloseMotto = document.getElementById('close-motto');
-        const mottoStoryContainer = document.getElementById('motto-story-container');
-        const storyBubble = document.getElementById('story-bubble');
-        const storyHint = document.getElementById('story-hint');
-        
-        const charSad = document.getElementById('character-sad');
-        const charHappy = document.getElementById('character-happy');
-        const sadTears = document.getElementById('sad-tears');
-        const sadMouth = document.getElementById('sad-mouth');
-        const happyMouth = document.getElementById('happy-mouth');
-        const storyPowerGlow = document.getElementById('story-power-glow');
-
-        let storyStep = 0;
-
-        btnMotto.addEventListener('click', () => {
-            modalMotto.style.display = 'flex';
-            setTimeout(() => {
-                modalMotto.classList.add('show');
-                resetStory();
-            }, 10);
-        });
-
-        spanCloseMotto.addEventListener('click', () => {
-            modalMotto.classList.remove('show');
-            setTimeout(() => { modalMotto.style.display = 'none'; }, 300);
-        });
-
-        mottoStoryContainer.addEventListener('click', () => {
-            storyStep++;
-            jalankanCerita();
-        });
-
-        function resetStory() {
-            storyStep = 0;
-            charSad.style.transform = 'translate(140px, 40px)';
-            charHappy.classList.remove('appear');
-            sadTears.style.display = 'block';
-            sadMouth.style.display = 'block';
-            happyMouth.style.display = 'none';
-            storyPowerGlow.classList.remove('active');
-            
-            storyBubble.style.borderColor = 'var(--neon-blue)';
-            storyBubble.innerText = "Aduh, Orang yang akan sukses terlihat sangat sedih... Ketuk karakter untuk bertanya kenapa 😢";
-            storyBubble.classList.add('show');
-            storyHint.innerText = "TAP KARAKTER UNTUK MEMULAI KISAH!";
+        // --- INTERAKSI KUNCI SUKSES TOKOH TOKOH CHIBI ---
+        function tununjukkanTips(tokoh) {
+            tunjukkanTips(tokoh);
         }
 
-        function jalankanCerita() {
-            if (storyStep === 1) {
-                storyBubble.style.borderColor = 'var(--neon-blue)';
-                storyBubble.innerText = "Orang yang akan sukses: \"Aku menyerah... Jalannya terlalu sulit. Aku tidak punya bakat untuk sukses... Hidupku rasanya sia-sia 😭\"";
-                storyHint.innerText = "TAP UNTUK MEMANGGIL MOTIVASI! ⚡";
-            } 
-            else if (storyStep === 2) {
-                charSad.style.transform = 'translate(70px, 40px)';
-                charHappy.classList.add('appear');
-                
-                storyBubble.style.borderColor = 'var(--neon-pink)';
-                storyBubble.innerText = "Motivasi: \"Hei kawan! Kenapa kamu sedih dan berbicara seperti itu? Menyerah sebelum sukses bukanlah dirimu yang sebenarnya!\"";
-                storyHint.innerText = "TAP UNTUK MENDENGAR MOTIVASI LEBIH LANJUT! 🔥";
-            }
-            else if (storyStep === 3) {
-                storyBubble.style.borderColor = 'var(--neon-yellow)';
-                storyBubble.innerText = "Motivasi: \"Jangan pernah takut bermimpi besar, Orang yang akan sukses! Setiap kegagalan hari ini adalah bahan bakar untuk kesuksesanmu di masa depan. Ayo bangkit!\"";
-                storyHint.innerText = "TAP UNTUK MELIHAT TEKAD BARU! ✨";
-            }
-            else if (storyStep === 4) {
-                sadTears.style.display = 'none';
-                sadMouth.style.display = 'none';
-                happyMouth.style.display = 'block';
-                storyPowerGlow.classList.add('active');
-                
-                storyBubble.style.borderColor = 'var(--neon-green)';
-                storyBubble.innerText = "Orang yang akan sukses: \"Kamu benar! Aku tidak boleh menyerah sekarang. Aku akan terus berusaha demi meraih mimpiku! Terima kasih, Motivasi! 🔥🚀\"";
-                storyHint.innerText = "TAP UNTUK KATA MOTIVASI EMAS AKHIR! 🏆";
-            }
-            else if (storyStep === 5) {
-                storyBubble.style.borderColor = 'var(--neon-yellow)';
-                storyBubble.innerText = "🏆 PESAN UNTUK ORANG YANG AKAN SUKSES:\n\"Kesuksesan sejati tidak diukur dari berapa kali kita jatuh, melainkan seberapa kokoh kita bangkit setiap kali terjatuh. Teruskan perjuanganmu, jadilah sang juara di kehidupan nyatamu maupun di medan pertempuran Free Fire! Booyah!\" 🌟⚡";
-                storyHint.innerText = "TAP UNTUK MENGULANGI KISAH KEMBALI 🔄";
-            }
-            else {
-                resetStory();
-            }
+        function tununjukkanApresiasi(jenis) {
+            // Sisa fungsi piala kosong karena modul dicopot
         }
 
-        // --- INTERAKSI KUNCI SUKSES TOKOH (Tampilkan Chibi Asli Tokoh & Motivasi Acak) ---
-        function tunjukkanTips(tokoh) {
+        function tunjukanTips(tokoh) {
+            // backup alias function
+            tunjukkanTips(tokoh);
+        }
+
+        function tunbangkanTips(tokoh) {
+            tunjukkanTips(tokoh);
+        }
+
+        function tunbunganTips(tokoh) {
+            tunjukkanTips(tokoh);
+        }
+
+        function tununjukkanTips(tokoh) {
             modal3d.style.display = 'flex';
             setTimeout(() => {
                 modal3d.classList.add('show');
                 const bubble = document.getElementById('motivation-bubble');
-                
-                // Sembunyikan semua SVG terlebih dahulu
+
                 document.getElementById('svg-julian').style.display = 'none';
                 document.getElementById('svg-elon').style.display = 'none';
                 document.getElementById('svg-steve').style.display = 'none';
                 document.getElementById('svg-einstein').style.display = 'none';
-                
+
                 if (tokoh === 'elon') {
                     document.getElementById('svg-elon').style.display = 'block';
                     bubble.style.borderColor = 'var(--neon-pink)';
-                    
-                    // Motivasi bervariasi untuk Elon Musk
+
                     const elonQuotes = [
                         "🚀 TIPS SUKSES ELON MUSK:\n\"Jika sesuatu hal itu sangat penting bagi hidupmu, kamu harus tetap melakukannya meskipun segala kemungkinan tidak berpihak padamu! Jangan pernah menyerah!\"",
                         "🚀 TIPS SUKSES ELON MUSK:\n\"Kegagalan adalah sebuah pilihan di sini. Jika segala hal belum pernah gagal, berarti kamu belum cukup berinovasi!\"",
                         "🚀 TIPS SUKSES ELON MUSK:\n\"Langkah pertama adalah menetapkan bahwa sesuatu itu mungkin terjadi; baru kemudian probabilitas akan muncul!\""
                     ];
                     bubble.innerText = elonQuotes[Math.floor(Math.random() * elonQuotes.length)];
-                    
+
                 } else if (tokoh === 'steve') {
                     document.getElementById('svg-steve').style.display = 'block';
                     bubble.style.borderColor = 'var(--neon-blue)';
-                    
-                    // Motivasi bervariasi untuk Steve Jobs
+
                     const steveQuotes = [
                         " TIPS SUKSES STEVE JOBS:\n\"Satu-satunya cara untuk melakukan pekerjaan yang hebat adalah dengan mencintai apa yang kamu lakukan terlebih dahulu. Tetaplah lapar, tetaplah bodoh untuk terus belajar!\"",
                         " TIPS SUKSES STEVE JOBS:\n\"Waktumu terbatas, jadi jangan sia-siakan dengan menjalani hidup orang lain. Miliki keberanian untuk mengikuti kata hati dan intuisimu!\"",
                         " TIPS SUKSES STEVE JOBS:\n\"Inovasi adalah hal yang membedakan antara seorang pemimpin dan pengikut.\""
                     ];
                     bubble.innerText = steveQuotes[Math.floor(Math.random() * steveQuotes.length)];
-                    
+
                 } else if (tokoh === 'einstein') {
                     document.getElementById('svg-einstein').style.display = 'block';
                     bubble.style.borderColor = 'var(--neon-yellow)';
-                    
-                    // Motivasi bervariasi untuk Albert Einstein
+
                     const einsteinQuotes = [
                         "⚛️ TIPS SUKSES ALBERT EINSTEIN:\n\"Aku bukanlah orang yang sangat cerdas, aku hanya bertahan dengan rasa penasaranku jauh lebih lama daripada orang lain. Jangan berhenti bertanya!\"",
                         "⚛️ TIPS SUKSES ALBERT EINSTEIN:\n\"Seseorang yang tidak pernah melakukan kesalahan tidak pernah mencoba sesuatu yang baru.\"",
@@ -1481,56 +1617,1266 @@
                     ];
                     bubble.innerText = einsteinQuotes[Math.floor(Math.random() * einsteinQuotes.length)];
                 }
-                
+
                 bubble.classList.add('show');
             }, 10);
         }
 
-        // --- INTERAKSI SHOW TROPHY/MEDAL APPRECIATION ---
-        function tunjukkanApresiasi(jenis) {
-            modal3d.style.display = 'flex';
-            setTimeout(() => {
-                modal3d.classList.add('show');
-                const bubble = document.getElementById('motivation-bubble');
-                
-                // Sembunyikan semua SVG tokoh, tampilkan Julian sebagai perwakilan tuan rumah
-                document.getElementById('svg-julian').style.display = 'block';
-                document.getElementById('svg-elon').style.display = 'none';
-                document.getElementById('svg-steve').style.display = 'none';
-                document.getElementById('svg-einstein').style.display = 'none';
-                
-                if (jenis === 'piala') {
-                    bubble.style.borderColor = 'var(--neon-yellow)';
-                    bubble.innerText = "🏆 PIALA EMAS KESUKSESAN:\n\"Piala agung ini adalah simbol dari impian besar Orang yang akan sukses! Teruslah konsisten belajar, berpetualang, dan berinovasi. Kamu pasti akan menggenggam kesuksesan sejati di masa depan!\"";
-                } else if (jenis === 'medali') {
-                    bubble.style.borderColor = 'var(--neon-orange)';
-                    bubble.innerText = "🥇 MEDALI KEJUARAAN BERLOMBA:\n\"Selamat! Medali kejuaraan yang megah ini dianugerahkan atas semangat juang, kecepatan, dan kerja kerasmu untuk selalu menjadi yang terbaik dalam setiap perlombaan hidup! Teruslah melaju kencang tanpa batas!\"";
-                } else if (jenis === 'lencana') {
-                    bubble.style.borderColor = 'var(--neon-blue)';
-                    bubble.innerText = "⚡ LENCANA TEKAD BAJA:\n\"Lencana pelindung bintang delapan ini adalah bukti bahwa Orang yang akan sukses tidak pernah tunduk pada keputusasaan. Kegagalan hanyalah batu loncatan bagimu!\"";
-                }
-                
-                bubble.classList.add('show');
-            }, 10);
-        }
-
-        // Menutup modal saat mengeklik area luar modal-content
         window.addEventListener('click', (event) => {
             if (event.target == modal3d) {
                 modal3d.classList.remove('show');
                 setTimeout(() => { modal3d.style.display = 'none'; }, 300);
             }
-            if (event.target == modalMotto) {
-                modalMotto.classList.remove('show');
-                setTimeout(() => { modalMotto.style.display = 'none'; }, 300);
-            }
         });
 
-        // Mengetik kalimat saat halaman dimuat
         window.addEventListener("load", () => {
             setTimeout(typeWriter, 500);
         });
+
+        // ==========================================
+        //         ROBLOX ENDLESS RUNNER GAME
+        // ==========================================
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const canvasArea = document.getElementById("canvas-area");
+
+        const startOverlay = document.getElementById("start-overlay");
+        const gameoverOverlay = document.getElementById("gameover-overlay");
+        const startBtn = document.getElementById("start-btn");
+        const restartBtn = document.getElementById("restart-btn");
+        const jumpBtn = document.getElementById("canvas-jump-btn");
+
+        const scoreElement = document.getElementById("game-score");
+        const highScoreElement = document.getElementById("game-high-score");
+        const finalScoreElement = document.getElementById("final-score");
+
+        // Set High Score dari LocalStorage
+        let highScore = localStorage.getItem("julian_high_score") || 0;
+        if (highScoreElement) highScoreElement.innerText = highScore;
+
+        // Dimensi Logika Game
+        let baseWidth = 800;
+        let baseHeight = 250;
+        let scaleX = 1;
+        let scaleY = 1;
+
+        function resizeGame() {
+            if (!canvas || !canvasArea) return;
+            canvas.width = canvasArea.clientWidth;
+            canvas.height = 250;
+            scaleX = canvas.width / baseWidth;
+            scaleY = canvas.height / baseHeight;
+        }
+        resizeGame();
+        window.addEventListener("resize", resizeGame);
+
+        // Status Game
+        let isPlaying = false;
+        let gameScore = 0;
+        let spawnTimer = 0;
+        let backgroundScroll = 0;
+
+        // Entitas Game
+        let player = {};
+        let obstacles = [];
+        let platforms = [];
+        let collectibles = [];
+        let particles = [];
+        let floatTexts = [];
+
+        function initGame() {
+            gameScore = 0;
+            if (scoreElement) scoreElement.innerText = "0";
+            obstacles = [];
+            platforms = [];
+            collectibles = [];
+            particles = [];
+            floatTexts = [];
+            spawnTimer = 0;
+
+            // Inisialisasi Player (Bacon Hair Roblox)
+            player = {
+                x: 80,
+                y: 160,
+                width: 32,
+                height: 42,
+                vy: 0,
+                gravity: 0.6,
+                jumpForce: -11.5,
+                isGrounded: false,
+                doubleJumpAvailable: true,
+                rotation: 0
+            };
+
+            isPlaying = true;
+            if (startOverlay) startOverlay.style.display = "none";
+            if (gameoverOverlay) gameoverOverlay.style.display = "none";
+        }
+
+        // Aksi Melompat
+        function jump() {
+            if (!isPlaying) return;
+
+            if (player.isGrounded) {
+                player.vy = player.jumpForce;
+                player.isGrounded = false;
+                player.doubleJumpAvailable = true;
+                createJumpParticles(player.x + player.width / 2, player.y + player.height);
+            } else if (player.doubleJumpAvailable) {
+                player.vy = player.jumpForce * 0.9;
+                player.doubleJumpAvailable = false;
+                player.rotation = -Math.PI * 2;
+                createJumpParticles(player.x + player.width / 2, player.y + player.height / 2, "var(--neon-pink)");
+            }
+        }
+
+        // Event Listener Masukan/Input
+        window.addEventListener("keydown", (e) => {
+            if (e.code === "Space") {
+                e.preventDefault();
+                if (!isPlaying) {
+                    if ((gameoverOverlay && gameoverOverlay.style.display === "flex") || (startOverlay && startOverlay.style.display === "flex")) {
+                        initGame();
+                    }
+                } else {
+                    jump();
+                }
+            }
+        });
+
+        if (startBtn) startBtn.addEventListener("click", initGame);
+        if (restartBtn) restartBtn.addEventListener("click", initGame);
+        if (jumpBtn) {
+            jumpBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                jump();
+            });
+
+            // Cegah zoom di mobile saat tap ganda tombol lompat
+            jumpBtn.addEventListener("touchstart", (e) => {
+                e.preventDefault();
+                jump();
+            });
+        }
+
+        // Fungsi Membuat Tangga Blok ala Mario Bros
+        function spawnStaircase() {
+            let startX = baseWidth;
+            let stepW = 35;
+            let stepH = 20;
+            let groundY = baseHeight - 40;
+            let steps = 4;
+
+            // 1. Tangga Naik
+            for (let k = 0; k < steps; k++) {
+                platforms.push({
+                    x: startX + k * stepW,
+                    y: groundY - (k + 1) * stepH,
+                    width: stepW,
+                    height: (k + 1) * stepH
+                });
+            }
+
+            // 2. Platform Paling Atas (Flat Top)
+            let topX = startX + steps * stepW;
+            platforms.push({
+                x: topX,
+                y: groundY - steps * stepH,
+                width: stepW,
+                height: steps * stepH
+            });
+
+            // Bintang Nilai A+ tepat di atas platform tertinggi
+            collectibles.push({
+                x: topX + 8,
+                y: groundY - steps * stepH - 30,
+                width: 18,
+                height: 18,
+                pulse: 0
+            });
+
+            // 3. Tangga Turun
+            for (let k = 0; k < steps; k++) {
+                let currentStepIndex = steps - 1 - k;
+                platforms.push({
+                    x: topX + stepW + k * stepW,
+                    y: groundY - (currentStepIndex + 1) * stepH,
+                    width: stepW,
+                    height: (currentStepIndex + 1) * stepH
+                });
+            }
+        }
+
+        // Partikel Efek
+        function createJumpParticles(x, y, color = "var(--neon-blue)") {
+            for (let k = 0; k < 8; k++) {
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: (Math.random() - 0.5) * 3 - 1,
+                    radius: Math.random() * 3 + 1,
+                    alpha: 1,
+                    color: color,
+                    decay: Math.random() * 0.03 + 0.02
+                });
+            }
+        }
+
+        function createCollectionParticles(x, y) {
+            for (let k = 0; k < 12; k++) {
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 6,
+                    vy: (Math.random() - 0.5) * 6,
+                    radius: Math.random() * 4 + 1.5,
+                    alpha: 1,
+                    color: "var(--neon-yellow)",
+                    decay: Math.random() * 0.02 + 0.01
+                });
+            }
+        }
+
+        // Floating Score Text
+        function createFloatText(x, y, text, color) {
+            floatTexts.push({
+                x: x,
+                y: y,
+                vy: -1.5,
+                text: text,
+                alpha: 1,
+                color: color
+            });
+        }
+
+        // Loop Game Utama
+        function gameLoop() {
+            if (!canvas || !ctx) {
+                requestAnimationFrame(gameLoop);
+                return;
+            }
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Skala adaptif
+            ctx.save();
+            ctx.scale(scaleX, 1);
+
+            // 1. Gambar Latar Belakang & Lingkungan Parallax Roblox
+            backgroundScroll -= isPlaying ? 3 : 0.5;
+            if (backgroundScroll <= -600) backgroundScroll = 0;
+
+            // --- LANGIT ROBLOX ---
+            let skyGrad = ctx.createLinearGradient(0, 0, 0, baseHeight);
+            skyGrad.addColorStop(0, "#4fa8ff");
+            skyGrad.addColorStop(1, "#cce6ff");
+            ctx.fillStyle = skyGrad;
+            ctx.fillRect(0, 0, baseWidth, baseHeight);
+
+            // --- MATAHARI KOTAK ROBLOX ---
+            ctx.fillStyle = "#fffae0";
+            ctx.fillRect(baseWidth - 140, 20, 45, 45);
+            ctx.fillStyle = "#fff176";
+            ctx.fillRect(baseWidth - 135, 25, 35, 35);
+
+            // --- AWAN BLOK ROBLOX (Parallax Sangat Lambat) ---
+            let cloudScroll = backgroundScroll * 0.1;
+            for (let cx = cloudScroll - 100; cx < baseWidth + 300; cx += 350) {
+                ctx.fillStyle = "rgba(255, 255, 255, 0.75)";
+                ctx.fillRect(cx, 40, 100, 25);
+                ctx.fillRect(cx + 20, 25, 60, 15);
+                ctx.fillRect(cx - 15, 45, 30, 12);
+            }
+
+            // --- BUKIT HIJAU BLOK (Parallax Lambat) ---
+            let hillScroll = backgroundScroll * 0.3;
+            for (let hx = hillScroll - 200; hx < baseWidth + 200; hx += 250) {
+                ctx.fillStyle = "#2e7d32";
+                ctx.fillRect(hx, baseHeight - 90, 140, 50);
+                ctx.fillRect(hx + 20, baseHeight - 115, 100, 25);
+                ctx.fillRect(hx + 45, baseHeight - 130, 50, 15);
+            }
+
+            // --- POHON HIJAU BLOK ROBLOX (Parallax Sedang) ---
+            let treeScroll = backgroundScroll * 0.6;
+            for (let tx = treeScroll - 100; tx < baseWidth + 150; tx += 180) {
+                ctx.fillStyle = "#5d4037";
+                ctx.fillRect(tx + 22, baseHeight - 75, 12, 35);
+
+                ctx.fillStyle = "#4caf50";
+                ctx.fillRect(tx, baseHeight - 110, 56, 35);
+                ctx.fillStyle = "#81c784";
+                ctx.fillRect(tx + 8, baseHeight - 125, 40, 15);
+                ctx.fillRect(tx + 18, baseHeight - 135, 20, 10);
+            }
+
+            // --- TANAH RUMPUT & DIRT ROBLOX (Ground Level) ---
+            ctx.fillStyle = "#795548";
+            ctx.fillRect(0, baseHeight - 40, baseWidth, 40);
+
+            ctx.fillStyle = "#4caf50";
+            ctx.fillRect(0, baseHeight - 40, baseWidth, 12);
+
+            // Detail Lego Studs di atas Rumput
+            let studScroll = backgroundScroll % 25;
+            ctx.fillStyle = "#388e3c";
+            for (let sx = studScroll; sx < baseWidth + 25; sx += 25) {
+                ctx.fillRect(sx, baseHeight - 43, 12, 3);
+            }
+
+            // Garis pembatas neon adaptif
+            ctx.strokeStyle = "rgba(0, 243, 255, 0.4)";
+            ctx.lineWidth = 2.5;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = "var(--neon-blue)";
+            ctx.beginPath();
+            ctx.moveTo(0, baseHeight - 40);
+            ctx.lineTo(baseWidth, baseHeight - 40);
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            // 2. Logika Player
+            if (isPlaying) {
+                player.vy += player.gravity;
+                player.y += player.vy;
+
+                player.isGrounded = false;
+
+                // Batas Tanah Asli
+                let groundY = baseHeight - 40 - player.height;
+                if (player.y >= groundY) {
+                    player.y = groundY;
+                    player.vy = 0;
+                    player.isGrounded = true;
+                    player.doubleJumpAvailable = true;
+                    if (player.rotation < 0) {
+                        player.rotation += 0.2;
+                        if (player.rotation > 0) player.rotation = 0;
+                    }
+                }
+
+                if (player.x < 80) {
+                    player.x += (80 - player.x) * 0.05;
+                }
+
+                if (Math.random() < 0.15) {
+                    gameScore++;
+                    if (scoreElement) scoreElement.innerText = gameScore;
+                }
+            }
+
+            // Gambar Player (Roblox Bacon Hair Chibi)
+            ctx.save();
+            ctx.translate(player.x + player.width / 2, player.y + player.height / 2);
+            if (player.rotation < 0) {
+                ctx.rotate(player.rotation);
+            }
+
+            let walkCycle = isPlaying ? Math.sin(Date.now() * 0.015) * 10 : 0;
+
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = "var(--neon-blue)";
+
+            // Gambar Badan Blocky (Bacon Motorbike Jacket)
+            ctx.fillStyle = "#1e3a8a";
+            ctx.strokeStyle = "#00f3ff";
+            ctx.lineWidth = 1.5;
+            ctx.fillRect(-12, -10, 24, 25);
+            ctx.strokeRect(-12, -10, 24, 25);
+
+            // T-shirt Putih di dalam Jaket
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(-4, -10, 8, 25);
+
+            ctx.fillStyle = "#ff007f";
+            ctx.fillRect(-2, -2, 4, 4);
+
+            // Kepala Kotak
+            ctx.fillStyle = "#ffd3b6";
+            ctx.strokeStyle = "#00f3ff";
+            ctx.fillRect(-10, -28, 20, 18);
+            ctx.strokeRect(-10, -28, 20, 18);
+
+            // Wajah Smiley Roblox Klasik
+            ctx.fillStyle = "#111111";
+            ctx.fillRect(-5, -22, 2, 3.5);
+            ctx.fillRect(3, -22, 2, 3.5);
+
+            ctx.beginPath();
+            ctx.strokeStyle = "#111111";
+            ctx.lineWidth = 2;
+            ctx.arc(0, -16, 4, 0.1 * Math.PI, 0.9 * Math.PI, false);
+            ctx.stroke();
+
+            // Rambut Bacon Ikonik
+            ctx.fillStyle = "#5c3d2e";
+            ctx.fillRect(-12, -30, 24, 5);
+            ctx.fillRect(-11, -36, 4, 7);
+            ctx.fillRect(-6, -39, 4, 10);
+            ctx.fillRect(-1, -41, 4, 12);
+            ctx.fillRect(4, -38, 4, 9);
+            ctx.fillRect(8, -34, 4, 5);
+
+            ctx.fillStyle = "#8b5a2b";
+            ctx.fillRect(-10, -33, 2, 3);
+            ctx.fillRect(-5, -36, 2, 6);
+            ctx.fillRect(0, -38, 2, 8);
+            ctx.fillRect(5, -35, 2, 5);
+
+            // Kaki Kiri & Kanan
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "#374151";
+            ctx.beginPath();
+            ctx.moveTo(-6, 15);
+            ctx.lineTo(-6 + walkCycle / 2, 22);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(6, 15);
+            ctx.lineTo(6 - walkCycle / 2, 22);
+            ctx.stroke();
+
+            ctx.restore();
+            ctx.shadowBlur = 0;
+
+            // 3. Update & Gambar Tangga Platform (Mario Style)
+            let scrollSpeed = 5 + Math.floor(gameScore * 0.01);
+
+            for (let m = platforms.length - 1; m >= 0; m--) {
+                let p = platforms[m];
+                if (isPlaying) p.x -= scrollSpeed;
+
+                ctx.save();
+                ctx.fillStyle = "#e65100";
+                ctx.strokeStyle = "var(--neon-yellow)";
+                ctx.lineWidth = 2.5;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "var(--neon-yellow)";
+
+                ctx.fillRect(p.x, p.y, p.width, p.height);
+                ctx.strokeRect(p.x, p.y, p.width, p.height);
+
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.35)";
+                ctx.lineWidth = 1;
+                ctx.shadowBlur = 0;
+
+                let brickH = 10;
+                for (let bh = p.y + brickH; bh < p.y + p.height; bh += brickH) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, bh);
+                    ctx.lineTo(p.x + p.width, bh);
+                    ctx.stroke();
+                }
+
+                let brickW = 12;
+                let rCount = 0;
+                for (let bh = p.y; bh < p.y + p.height; bh += brickH) {
+                    let offset = (rCount % 2) * (brickW / 2);
+                    for (let bx = p.x + offset; bx < p.x + p.width; bx += brickW) {
+                        ctx.beginPath();
+                        ctx.moveTo(bx, bh);
+                        ctx.lineTo(bx, bh + brickH);
+                        ctx.stroke();
+                    }
+                    rCount++;
+                }
+                ctx.restore();
+
+                // Deteksi Pijakan & Tabrakan Tangga
+                if (isPlaying) {
+                    if (player.x + player.width - 6 > p.x && player.x + 6 < p.x + p.width) {
+                        let pBottom = player.y + player.height;
+                        let prevPBottom = pBottom - player.vy;
+
+                        if (player.vy >= 0 && pBottom >= p.y && prevPBottom <= p.y + 8) {
+                            player.y = p.y - player.height;
+                            player.vy = 0;
+                            player.isGrounded = true;
+                            player.doubleJumpAvailable = true;
+                        }
+                        else if (pBottom > p.y + 4) {
+                            if (player.x + player.width > p.x && player.x < p.x) {
+                                player.x = p.x - player.width;
+                                if (player.x < 10) {
+                                    gameOver();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (p.x + p.width < 0) {
+                    platforms.splice(m, 1);
+                }
+            }
+
+            // 4. Spawn Obstacles (Malas, Bosan, di bawah KKM)
+            if (isPlaying) {
+                spawnTimer++;
+
+                let isPlatformActive = platforms.some(p => p.x > 300);
+                let spawnInterval = Math.max(65, 130 - Math.floor(gameScore * 0.05));
+
+                if (spawnTimer >= spawnInterval) {
+                    spawnTimer = 0;
+
+                    if (Math.random() < 0.3 && !isPlatformActive && obstacles.every(o => o.x < 500)) {
+                        spawnStaircase();
+                        spawnTimer = -150;
+                    } else if (!isPlatformActive) {
+                        let typeRand = Math.random();
+                        let obsType = "malas";
+                        let obsY = baseHeight - 40 - 25;
+                        let obsHeight = 25;
+                        let obsWidth = 20;
+
+                        if (typeRand > 0.7) {
+                            obsType = "kkm";
+                            obsY = baseHeight - 40 - 65;
+                            obsHeight = 20;
+                            obsWidth = 35;
+                        } else if (typeRand > 0.45) {
+                            obsType = "bosan";
+                            obsHeight = 35;
+                            obsWidth = 25;
+                            obsY = baseHeight - 40 - obsHeight;
+                        }
+
+                        obstacles.push({
+                            x: baseWidth,
+                            y: obsY,
+                            width: obsWidth,
+                            height: obsHeight,
+                            type: obsType,
+                            speed: scrollSpeed
+                        });
+                    }
+                }
+            }
+
+            // Update & Gambar Rintangan
+            for (let m = obstacles.length - 1; m >= 0; m--) {
+                let obs = obstacles[m];
+                if (isPlaying) obs.x -= obs.speed;
+
+                ctx.save();
+                ctx.shadowBlur = 25;
+                ctx.shadowColor = "#ff003c";
+                ctx.fillStyle = "#ff003c";
+                ctx.strokeStyle = "#ffffff";
+                ctx.lineWidth = 3;
+
+                if (obs.type === "malas") {
+                    ctx.beginPath();
+                    ctx.moveTo(obs.x, obs.y + obs.height);
+                    ctx.lineTo(obs.x + obs.width / 2, obs.y);
+                    ctx.lineTo(obs.x + obs.width, obs.y + obs.height);
+                    ctx.closePath();
+                    ctx.fill();
+                    ctx.stroke();
+
+                    ctx.fillStyle = "#ffffff";
+                    ctx.fillRect(obs.x + obs.width / 2 - 1.5, obs.y + obs.height - 13, 3, 6);
+                    ctx.fillRect(obs.x + obs.width / 2 - 1.5, obs.y + obs.height - 5, 3, 2.5);
+                } else if (obs.type === "bosan") {
+                    ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+                    ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
+
+                    ctx.strokeStyle = "#ffffff";
+                    ctx.lineWidth = 2.5;
+                    ctx.beginPath();
+                    ctx.moveTo(obs.x, obs.y);
+                    ctx.lineTo(obs.x + obs.width, obs.y + obs.height);
+                    ctx.moveTo(obs.x + obs.width, obs.y);
+                    ctx.lineTo(obs.x, obs.y + obs.height);
+                    ctx.stroke();
+                } else {
+                    ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+                    ctx.strokeRect(obs.x, obs.y, obs.width, obs.height);
+
+                    ctx.fillStyle = "#ffffff";
+                    ctx.font = "bold 10px 'Orbitron'";
+                    ctx.fillText("KKM", obs.x + 4, obs.y + 13);
+                }
+                ctx.restore();
+
+                if (isPlaying) {
+                    if (
+                        player.x < obs.x + obs.width &&
+                        player.x + player.width > obs.x &&
+                        player.y < obs.y + obs.height &&
+                        player.y + player.height > obs.y
+                    ) {
+                        gameOver();
+                    }
+                }
+
+                if (obs.x + obs.width < 0) {
+                    obstacles.splice(m, 1);
+                }
+            }
+
+            // 5. Spawn Collectibles Cadangan
+            if (isPlaying && platforms.length === 0) {
+                if (Math.random() < 0.01) {
+                    collectibles.push({
+                        x: baseWidth,
+                        y: baseHeight - 40 - 55 - Math.random() * 50,
+                        width: 18,
+                        height: 18,
+                        pulse: 0
+                    });
+                }
+            }
+
+            // Update & Gambar Nilai Sukses (Bintang Emas A+)
+            for (let c = collectibles.length - 1; c >= 0; c--) {
+                let coin = collectibles[c];
+                if (isPlaying) coin.x -= scrollSpeed;
+
+                coin.pulse += 0.15;
+                let bounceOffset = Math.sin(coin.pulse) * 4;
+
+                ctx.save();
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = "var(--neon-yellow)";
+                ctx.fillStyle = "var(--neon-yellow)";
+
+                ctx.beginPath();
+                let spikes = 5;
+                let outerRadius = 10;
+                let innerRadius = 5;
+                let rot = Math.PI / 2 * 3;
+                let x = coin.x + coin.width / 2;
+                let y = coin.y + coin.height / 2 + bounceOffset;
+                let step = Math.PI / spikes;
+
+                ctx.beginPath();
+                ctx.moveTo(x, y - outerRadius);
+                for (let s = 0; s < spikes; s++) {
+                    ctx.lineTo(Math.cos(rot) * outerRadius + x, Math.sin(rot) * outerRadius + y);
+                    rot += step;
+                    ctx.lineTo(Math.cos(rot) * innerRadius + x, Math.sin(rot) * innerRadius + y);
+                    rot += step;
+                }
+                ctx.lineTo(x, y - outerRadius);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+
+                if (isPlaying) {
+                    if (
+                        player.x < coin.x + coin.width &&
+                        player.x + player.width > coin.x &&
+                        player.y < coin.y + coin.height &&
+                        player.y + player.height > coin.y
+                    ) {
+                        gameScore += 150;
+                        if (scoreElement) scoreElement.innerText = gameScore;
+                        createCollectionParticles(coin.x + coin.width / 2, coin.y + coin.height / 2);
+                        createFloatText(coin.x, coin.y - 10, "+150 A+!", "var(--neon-yellow)");
+                        collectibles.splice(c, 1);
+                        continue;
+                    }
+                }
+
+                if (coin.x + coin.width < 0) {
+                    collectibles.splice(c, 1);
+                }
+            }
+
+            // 6. Update & Gambar Partikel
+            for (let p = particles.length - 1; p >= 0; p--) {
+                let part = particles[p];
+                part.x += part.vx;
+                part.y += part.vy;
+                part.alpha -= part.decay;
+
+                if (part.alpha <= 0) {
+                    particles.splice(p, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.shadowBlur = 6;
+                ctx.shadowColor = part.color;
+                ctx.fillStyle = part.color;
+                ctx.globalAlpha = part.alpha;
+                ctx.beginPath();
+                ctx.arc(part.x, part.y, part.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+
+            // 7. Update & Gambar Teks Mengambang (+150)
+            for (let t = floatTexts.length - 1; t >= 0; t--) {
+                let text = floatTexts[t];
+                text.y += text.vy;
+                text.alpha -= 0.02;
+
+                if (text.alpha <= 0) {
+                    floatTexts.splice(t, 1);
+                    continue;
+                }
+
+                ctx.save();
+                ctx.globalAlpha = text.alpha;
+                ctx.fillStyle = text.color;
+                ctx.font = "bold 12px 'Orbitron'";
+                ctx.fillText(text.text, text.x, text.y);
+                ctx.restore();
+            }
+
+            ctx.restore();
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        requestAnimationFrame(gameLoop);
+
+        function gameOver() {
+            isPlaying = false;
+            if (finalScoreElement) finalScoreElement.innerText = gameScore;
+            if (gameoverOverlay) gameoverOverlay.style.display = "flex";
+
+            if (gameScore > highScore) {
+                highScore = gameScore;
+                localStorage.setItem("julian_high_score", highScore);
+                if (highScoreElement) highScoreElement.innerText = highScore;
+                createFloatText(baseWidth / 2 - 50, baseHeight / 2 - 20, "REKOR BARU! 🏆", "var(--neon-green)");
+            }
+        }
+
+
+        // ==========================================
+        //        MINI GAME 2: TEBAK-TEBAKAN PINTAR
+        // ==========================================
+        const quizQuestions = [
+            // --- SEJARAH (5 SOAL) ---
+            {
+                category: "SEJARAH",
+                question: "Candi Buddha terbesar di Indonesia yang dibangun pada masa dinasti Syailendra adalah...",
+                options: ["Candi Borobudur", "Candi Prambanan", "Candi Mendut", "Candi Cangkuang"],
+                answer: 0,
+                hint: "Satu dari keajaiban dunia di Magelang, Jawa Tengah."
+            },
+            {
+                category: "SEJARAH",
+                question: "Kerajaan bercorak Hindu tertua di Indonesia yang terletak di Kalimantan Timur adalah...",
+                options: ["Kerajaan Tarumanegara", "Kerajaan Kutai Martadipura", "Kerajaan Majapahit", "Kerajaan Sriwijaya"],
+                answer: 1,
+                hint: "Terkenal dengan peninggalan berupa tugu batu bernama Yupa."
+            },
+            {
+                category: "SEJARAH",
+                question: "Peristiwa penculikan Ir. Soekarno dan Moh. Hatta oleh para pemuda ke luar kota menjelang Proklamasi disebut...",
+                options: ["Peristiwa Rengasdengklok", "Pertempuran Ambarawa", "Peristiwa G30S/PKI", "Bandung Lautan Api"],
+                answer: 0,
+                hint: "Terjadi pada tanggal 16 Agustus 1945 dini hari."
+            },
+            {
+                category: "SEJARAH",
+                question: "Siapakah tokoh pahlawan wanita yang menjahit Bendera Pusaka Merah Putih pertama kali?",
+                options: ["R.A. Kartini", "Cut Nyak Dhien", "Fatmawati", "Dewi Sartika"],
+                answer: 2,
+                hint: "Beliau merupakan istri dari Presiden Pertama Indonesia, Ir. Soekarno."
+            },
+            {
+                category: "SEJARAH",
+                question: "Kerajaan Islam pertama di pulau Jawa yang didirikan oleh Raden Patah adalah...",
+                options: ["Kesultanan Cirebon", "Kesultanan Banten", "Kesultanan Demak", "Kesultanan Mataram"],
+                answer: 2,
+                hint: "Sangat erat kaitannya dengan sejarah penyebaran Islam oleh Wali Songo."
+            },
+
+            // --- BUMI (5 SOAL) ---
+            {
+                category: "BUMI",
+                question: "Apakah nama samudra terluas dan terdalam di planet Bumi?",
+                options: ["Samudra Atlantik", "Samudra Hindia", "Samudra Arktik", "Samudra Pasifik"],
+                answer: 3,
+                hint: "Samudra ini menutupi sepertiga dari total permukaan bumi."
+            },
+            {
+                category: "BUMI",
+                question: "Gunung tertinggi di dunia yang puncaknya merupakan batas negara Nepal dan Tiongkok adalah...",
+                options: ["Gunung Kilimanjaro", "Gunung Everest", "Gunung Jayawijaya", "Gunung Fuji"],
+                answer: 1,
+                hint: "Puncaknya mencapai ketinggian 8.848 meter di atas permukaan laut."
+            },
+            {
+                category: "BUMI",
+                question: "Gurun pasir terpanas dan terluas di dunia yang terletak di Benua Afrika bagian utara adalah...",
+                options: ["Gurun Gobi", "Gurun Sahara", "Gurun Kalahari", "Gurun Arab"],
+                answer: 1,
+                hint: "Memiliki luas yang hampir setara dengan seluruh wilayah Amerika Serikat."
+            },
+            {
+                category: "BUMI",
+                question: "Sungai terpanjang di dunia yang mengalir melintasi benua Afrika dan bermuara di Laut Tengah adalah...",
+                options: ["Sungai Amazon", "Sungai Nil", "Sungai Yangtze", "Sungai Mississippi"],
+                answer: 1,
+                hint: "Sungai ini sangat bersejarah bagi peradaban Mesir Kuno."
+            },
+            {
+                category: "BUMI",
+                question: "Negara kepulauan terbesar di dunia yang memiliki belasan ribu pulau adalah...",
+                options: ["Filipina", "Jepang", "Indonesia", "Maladewa"],
+                answer: 2,
+                hint: "Tanah air tercinta tempat kita semua menetap!"
+            },
+
+            // --- NEGARA (5 SOAL) ---
+            {
+                category: "NEGARA",
+                question: "Negara mana yang mendapatkan julukan indah sebagai 'Negeri Matahari Terbit'?",
+                options: ["Korea Selatan", "Jepang", "Tiongkok", "Thailand"],
+                answer: 1,
+                hint: "Dalam bahasa lokal, namanya adalah 'Nihon/Nippon' yang berarti asal matahari."
+            },
+            {
+                category: "NEGARA",
+                question: "Sering salah sangka dengan Sydney, apakah nama Ibu Kota resmi dari negara Australia?",
+                options: ["Melbourne", "Sydney", "Canberra", "Brisbane"],
+                answer: 2,
+                hint: "Sebuah kota modern yang sengaja dirancang khusus sebagai pusat pemerintahan."
+            },
+            {
+                category: "NEGARA",
+                question: "Negara terkecil di dunia berdasarkan luas wilayah dan jumlah penduduknya adalah...",
+                options: ["Monako", "Vatikan", "San Marino", "Nauru"],
+                answer: 1,
+                hint: "Wilayah negara berdaulat ini terletak sepenuhnya di dalam kota Roma, Italia."
+            },
+            {
+                category: "NEGARA",
+                question: "Negara Tirai Bambu yang terkenal dengan ikon Tembok Raksasa sepanjang ribuan kilometer adalah...",
+                options: ["Jepang", "Korea Utara", "Tiongkok", "Mongolia"],
+                answer: 2,
+                hint: "Negara ini merupakan salah satu pemilik peradaban tertua di duna."
+            },
+            {
+                category: "NEGARA",
+                question: "Apakah nama ibu kota dari negara tetangga terdekat kita, Malaysia?",
+                options: ["Kuala Lumpur", "Putrajaya", "Johor Bahru", "George Town"],
+                answer: 0,
+                hint: "Kota tempat berdirinya gedung pencakar langit kembar Petronas Towers."
+            },
+
+            // --- PRESIDEN (5 SOAL) ---
+            {
+                category: "PRESIDEN",
+                question: "Siapakah Presiden Republik Indonesia ke-3 yang sangat jenius dalam merakit pesawat terbang?",
+                options: ["B.J. Habibie", "Abdurrahman Wahid", "Megawati Soekarnoputri", "Soeharto"],
+                answer: 0,
+                hint: "Beliau membuat pesawat N-250 Gatotkaca pertama karya anak bangsa."
+            },
+            {
+                category: "PRESIDEN",
+                question: "Siapakah nama Presiden Pertama Republik Indonesia yang membacakan teks Proklamasi?",
+                options: ["Drs. Moh. Hatta", "Ir. Soekarno", "KH. Abdurrahman Wahid", "Jenderal Soeharto"],
+                answer: 1,
+                hint: "Beliau juga dijuluki sebagai 'Bung Karno'."
+            },
+            {
+                category: "PRESIDEN",
+                question: "Siapakah sosok Presiden ke-4 Indonesia yang akrab disapa dengan panggilan 'Gus Dur'?",
+                options: ["Abdurrahman Wahid", "Megawati Soekarnoputri", "B.J. Habibie", "Joko Widodo"],
+                answer: 0,
+                hint: "Dikenal luas sebagai Bapak Pluralisme karena toleransi beragama yang tinggi."
+            },
+            {
+                category: "PRESIDEN",
+                question: "Siapakah nama Presiden Republik Indonesia ke-8 yang mulai menjabat sejak Oktober 2024?",
+                options: ["Prabowo Subianto", "Joko Widodo", "Susilo Bambang Yudhoyono", "Gibran Rakabuming"],
+                answer: 0,
+                hint: "Beliau sebelumnya menjabat sebagai Menteri Pertahanan RI."
+            },
+            {
+                category: "PRESIDEN",
+                question: "Presiden wanita pertama di Indonesia yang juga putri dari proklamator Ir. Soekarno adalah...",
+                options: ["Megawati Soekarnoputri", "Puan Maharani", "Susi Pudjiastuti", "Tri Rismaharini"],
+                answer: 0,
+                hint: "Beliau menjabat sebagai Presiden ke-5 Republik Indonesia."
+            },
+
+            // --- SENJATA TRADISIONAL (5 SOAL) ---
+            {
+                category: "SENJATA TRADISIONAL",
+                question: "Senjata tradisional melengkung unik dan magis yang berasal dari daerah Jawa Barat adalah...",
+                options: ["Kujang", "Keris", "Rencong", "Mandau"],
+                answer: 0,
+                hint: "Bentuknya melengkung indah mirip burung dan bermotif lubang-lubang suci."
+            },
+            {
+                category: "SENJATA TRADISIONAL",
+                question: "Senjata tradisional khas Minangkabau berbentuk kuku harimau yang sangat mematikan di dunia adalah...",
+                options: ["Clurit", "Kerambit", "Badik", "Kelewang"],
+                answer: 1,
+                hint: "Sering digunakan sebagai senjata andalan jarak dekat dalam olahraga Pencak Silat."
+            },
+            {
+                category: "SENJATA TRADISIONAL",
+                question: "Senjata tradisional khas suku Dayak di Kalimantan Timur yang bilahnya dihiasi ukiran indah adalah...",
+                options: ["Kujang", "Mandau", "Rencong", "Badik"],
+                answer: 1,
+                hint: "Sering disandingkan dengan sumpit beracun bernama Sumpitan."
+            },
+            {
+                category: "SENJATA TRADISIONAL",
+                question: "Senjata tradisional Jawa yang bilahnya berlekuk-lekuk tidak rata dan diselimuti pamor besi adalah...",
+                options: ["Kujang", "Keris", "Clurit", "Kelewang"],
+                answer: 1,
+                hint: "Sering diselipkan di bagian belakang sabuk (punggung) busana beskap."
+            },
+            {
+                category: "SENJATA TRADISIONAL",
+                question: "Senjata tradisional melengkung menyerupai arit atau bulan sabit yang berasal dari suku Madura adalah...",
+                options: ["Clurit", "Kujang", "Keris", "Mandau"],
+                answer: 0,
+                hint: "Sangat erat kaitannya dengan legenda ketokohan Sakera."
+            }
+        ];
+
+        let currentQuizIndex = 0;
+        let quizScore = 0;
+        let shuffledQuestions = [];
+
+        const startQuizBtn = document.getElementById("start-quiz-btn");
+        const restartQuizBtn = document.getElementById("restart-quiz-btn");
+        const quizIntro = document.getElementById("quiz-intro");
+        const quizPlayArea = document.getElementById("quiz-play-area");
+        const quizResultArea = document.getElementById("quiz-result-area");
+        const quizCategoryBadge = document.getElementById("quiz-category-badge");
+        const quizCounterBadge = document.getElementById("quiz-counter-badge");
+        const quizQuestionText = document.getElementById("quiz-question-text");
+        const quizOptionsGrid = document.getElementById("quiz-options-grid");
+        const quizScoreElement = document.getElementById("quiz-score");
+        const quizFinalScoreElement = document.getElementById("quiz-final-score");
+        const quizEvalText = document.getElementById("quiz-eval-text");
+        const quizFeedback = document.getElementById("quiz-feedback");
+
+        if (startQuizBtn) startQuizBtn.addEventListener("click", startQuiz);
+        if (restartQuizBtn) restartQuizBtn.addEventListener("click", startQuiz);
+
+        // Fungsi Memulai Audio feedback Retro
+        function playSynthBeep(frequency, duration) {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const audioCtx = new AudioContext();
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                oscillator.type = "sine";
+                oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                oscillator.start();
+                oscillator.stop(audioCtx.currentTime + duration);
+            } catch (err) {
+                // Abaikan jika browser memblokir audio autoplay
+            }
+        }
+
+        function playCorrectSound() {
+            playSynthBeep(880, 0.15); // Suara tinggi ceria
+        }
+
+        function playWrongSound() {
+            playSynthBeep(220, 0.35); // Suara rendah berdengung
+        }
+
+        function playWinSound() {
+            const notes = [523.25, 659.25, 783.99, 1046.50]; // Nada C5, E5, G5, C6 (Arpeggio gembira)
+            notes.forEach((noteFreq, idx) => {
+                setTimeout(() => {
+                    playSynthBeep(noteFreq, 0.2);
+                }, idx * 120);
+            });
+        }
+
+        function startQuiz() {
+            quizScore = 0;
+            currentQuizIndex = 0;
+            if (quizScoreElement) quizScoreElement.innerText = "0";
+            if (quizFeedback) quizFeedback.innerText = "";
+
+            // Acak pertanyaan dan mainkan seluruh 25 soal secara lengkap
+            shuffledQuestions = [...quizQuestions].sort(() => Math.random() - 0.5).slice(0, 25);
+
+            if (quizIntro) quizIntro.style.display = "none";
+            if (quizResultArea) quizResultArea.style.display = "none";
+            if (quizPlayArea) quizPlayArea.style.display = "block";
+
+            showQuizQuestion();
+        }
+
+        function showQuizQuestion() {
+            if (quizFeedback) quizFeedback.innerText = "";
+            const currentQuestion = shuffledQuestions[currentQuizIndex];
+            if (!currentQuestion) return;
+
+            // Perbarui visual Lencana Kategori dan Penghitung Progress Soal
+            if (quizCategoryBadge) quizCategoryBadge.innerText = currentQuestion.category;
+            if (quizCounterBadge) quizCounterBadge.innerText = `SOAL: ${currentQuizIndex + 1}/25`;
+
+            if (quizQuestionText) {
+                quizQuestionText.innerHTML = `${currentQuestion.question}<br><span style="color: var(--neon-yellow); font-size: 0.85rem; font-weight: normal; font-style: italic; display: block; margin-top: 10px;">💡 Petunjuk: ${currentQuestion.hint}</span>`;
+            }
+
+            if (quizOptionsGrid) {
+                quizOptionsGrid.innerHTML = "";
+                currentQuestion.options.forEach((optionText, index) => {
+                    const optButton = document.createElement("button");
+                    optButton.className = "quiz-option-btn";
+                    optButton.innerText = optionText;
+                    optButton.addEventListener("click", () => selectQuizOption(index, optButton));
+                    quizOptionsGrid.appendChild(optButton);
+                });
+            }
+        }
+
+        function selectQuizOption(selectedIndex, clickedBtn) {
+            const currentQuestion = shuffledQuestions[currentQuizIndex];
+            if (!currentQuestion) return;
+            const allOptionButtons = quizOptionsGrid.querySelectorAll("button");
+
+            // Nonaktifkan semua tombol agar tidak bisa diklik ganda
+            allOptionButtons.forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === currentQuestion.answer) {
+                // Jawaban Benar
+                clickedBtn.style.background = "var(--neon-green)";
+                clickedBtn.style.borderColor = "var(--neon-green)";
+                clickedBtn.style.color = "#000000";
+                clickedBtn.style.boxShadow = "0 0 20px var(--neon-green)";
+
+                quizScore += 100;
+                if (quizScoreElement) quizScoreElement.innerText = quizScore;
+
+                if (quizFeedback) {
+                    quizFeedback.innerText = "BENAR! LUAR BIASA! 🌟 (+100 Poin)";
+                    quizFeedback.style.color = "var(--neon-green)";
+                }
+                playCorrectSound();
+            } else {
+                // Jawaban Salah
+                clickedBtn.style.background = "var(--neon-pink)";
+                clickedBtn.style.borderColor = "var(--neon-pink)";
+                clickedBtn.style.boxShadow = "0 0 20px var(--neon-pink)";
+
+                // Beri highlight hijau pada jawaban yang benar
+                if (allOptionButtons[currentQuestion.answer]) {
+                    allOptionButtons[currentQuestion.answer].style.background = "var(--neon-green)";
+                    allOptionButtons[currentQuestion.answer].style.borderColor = "var(--neon-green)";
+                    allOptionButtons[currentQuestion.answer].style.color = "#000000";
+                }
+
+                if (quizFeedback) {
+                    quizFeedback.innerText = "YAH, SALAH! ❌ Tetap Semangat!";
+                    quizFeedback.style.color = "var(--neon-pink)";
+                }
+                playWrongSound();
+            }
+
+            // Lanjut ke soal berikutnya setelah jeda 1.5 detik (Selalu berjalan sampai 25 soal)
+            setTimeout(() => {
+                currentQuizIndex++;
+                if (currentQuizIndex < shuffledQuestions.length) {
+                    showQuizQuestion();
+                } else {
+                    showQuizResult();
+                }
+            }, 1500);
+        }
+
+        function showQuizResult() {
+            if (quizPlayArea) quizPlayArea.style.display = "none";
+            if (quizResultArea) quizResultArea.style.display = "block";
+            if (quizFinalScoreElement) quizFinalScoreElement.innerText = quizScore;
+
+            if (!quizEvalText) return;
+            if (quizScore === 2500) {
+                quizEvalText.innerText = "NILAI SEMPURNA 2500! Kamu benar-benar luar biasa jenius! Wawasan sejarah, bumi, negara, presiden, dan senjata tradisionalmu 100% sempurna! 🏆🔥";
+                playWinSound();
+            } else if (quizScore >= 1800) {
+                quizEvalText.innerText = "SANGAT HEBAT! Kamu berhasil menjawab sebagian besar dari 25 soal dengan benar. Kamu benar-benar calon orang yang akan sukses! ⭐🚀";
+                playWinSound();
+            } else if (quizScore >= 1200) {
+                quizEvalText.innerText = "BAGUS! Pengetahuanmu cukup luas. Ayo coba main lagi untuk meningkatkan fokusmu dan meraih skor sempurna 2500! 📚💪";
+            } else {
+                quizEvalText.innerText = "Teruslah berlatih! Menjawab 25 soal adalah proses belajar yang keren. Cobalah lagi dan buktikan kamu bisa jauh lebih baik! 🌟📚";
+            }
+        }
+
+        // ==========================================
+        //    GENERATE CALM NATURE BGM (WEB AUDIO)
+        // ==========================================
+        let audioCtxBGM = null;
+        let bgmIsPlaying = false;
+        let bgmIntervalId = null;
+
+        let nextChordTime = 0;
+        let nextChirpTime = 0;
+        let currentChordIndex = 0;
+
+        // Akor ambient yang sangat menenangkan (Cmaj7 - Fmaj7 - Am7 - G6)
+        const ambientChords = [
+            [130.81, 164.81, 196.00, 246.94], // Cmaj7 (C3, E3, G3, B3)
+            [174.61, 220.00, 261.63, 329.63], // Fmaj7 (F3, A3, C4, E4)
+            [110.00, 130.81, 164.81, 196.00], // Am7   (A2, C3, E3, G3)
+            [98.00, 123.47, 146.83, 164.81]   // G6    (G2, B2, D3, E3)
+        ];
+
+        const musicToggleBtn = document.getElementById("music-toggle-btn");
+        const musicIcon = document.getElementById("music-icon");
+        const musicText = document.getElementById("music-text");
+
+        if (musicToggleBtn) {
+            musicToggleBtn.addEventListener("click", () => {
+                if (!bgmIsPlaying) {
+                    startRetroBGM();
+                    musicToggleBtn.classList.add("playing");
+                    if (musicIcon) musicIcon.innerText = "🐦";
+                    if (musicText) musicText.innerText = "STOP NATURE BGM";
+                } else {
+                    stopRetroBGM();
+                    musicToggleBtn.classList.remove("playing");
+                    if (musicIcon) musicIcon.innerText = "🎵";
+                    if (musicText) musicText.innerText = "PLAY NATURE BGM 🐦";
+                }
+            });
+        }
+
+        function startRetroBGM() {
+            if (!audioCtxBGM) {
+                audioCtxBGM = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtxBGM.state === 'suspended') {
+                audioCtxBGM.resume();
+            }
+
+            bgmIsPlaying = true;
+
+            // Jadwalkan instan untuk chord pertama dan kicauan pertama
+            const now = audioCtxBGM.currentTime;
+            nextChordTime = now;
+            nextChirpTime = now + 1.0;
+            currentChordIndex = 0;
+
+            function playScheduler() {
+                if (!bgmIsPlaying) return;
+                const schedulerNow = audioCtxBGM.currentTime;
+
+                // 1. Jadwalkan Akor Pad Ambient Setiap 5 Detik
+                if (schedulerNow >= nextChordTime - 0.2) {
+                    triggerAmbientChord(ambientChords[currentChordIndex], nextChordTime, 5.0);
+                    currentChordIndex = (currentChordIndex + 1) % ambientChords.length;
+                    nextChordTime += 5.0;
+                }
+
+                // 2. Jadwalkan Kicauan Burung Secara Acak Antara 3 - 7 Detik
+                if (schedulerNow >= nextChirpTime - 0.2) {
+                    playBirdChirp(nextChirpTime);
+                    nextChirpTime += 3.0 + Math.random() * 4.0;
+                }
+
+                bgmIntervalId = setTimeout(playScheduler, 100);
+            }
+            playScheduler();
+        }
+
+        // Fungsi Memutar Pad Akor yang Menenangkan
+        function triggerAmbientChord(notes, startTime, duration) {
+            if (!audioCtxBGM) return;
+
+            const attack = 1.5;   // Durasi suara mengembang perlahan
+            const release = 2.0;  // Durasi suara memudar perlahan
+
+            notes.forEach(freq => {
+                const osc = audioCtxBGM.createOscillator();
+                const gain = audioCtxBGM.createGain();
+
+                // Gunakan gelombang segitiga agar suara terdengar halus, tenang, dan hangat
+                osc.type = "triangle";
+                osc.frequency.setValueAtTime(freq, startTime);
+
+                // Sedikit detune acak agar suara akor terdengar lebih tebal dan megah
+                osc.detune.setValueAtTime((Math.random() - 0.5) * 8, startTime);
+
+                // Envelope volume pad
+                gain.gain.setValueAtTime(0, startTime);
+
+                // Naik perlahan (Attack) - volume diatur agar cukup kuat tapi tetap lembut
+                gain.gain.linearRampToValueAtTime(0.45, startTime + attack);
+
+                // Bertahan di volume puncak hingga mendekati akhir
+                gain.gain.setValueAtTime(0.45, startTime + duration - release);
+
+                // Turun perlahan hingga senyap (Release)
+                gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+
+                // Filter Lowpass agar frekuensi tinggi diredam (membuat suara makin hangat)
+                const lowpass = audioCtxBGM.createBiquadFilter();
+                lowpass.type = "lowpass";
+                lowpass.frequency.setValueAtTime(500, startTime);
+
+                osc.connect(lowpass);
+                lowpass.connect(gain);
+                gain.connect(audioCtxBGM.destination);
+
+                osc.start(startTime);
+                osc.stop(startTime + duration);
+            });
+        }
+
+        // Fungsi Sintesis Suara Kicauan Burung Alami (Bird Chirp)
+        function playBirdChirp(startTime) {
+            if (!audioCtxBGM) return;
+
+            // "Tweet-tweet": burung biasanya berkicau 2 atau 3 kali dalam satu rangkaian cepat
+            const chirpCount = Math.floor(Math.random() * 2) + 2;
+            let delay = 0;
+
+            for (let i = 0; i < chirpCount; i++) {
+                const chirpTime = startTime + delay;
+                const osc = audioCtxBGM.createOscillator();
+                const gain = audioCtxBGM.createGain();
+
+                osc.type = "sine"; // Gelombang sine murni sangat cocok untuk siulan burung
+
+                // Frekuensi siulan burung yang tinggi (antara 2000Hz - 3400Hz)
+                const baseFreq = 2000 + Math.random() * 1400;
+                const sweepFreq = baseFreq + 800 + Math.random() * 500; // Menyapu naik dengan cepat
+
+                osc.frequency.setValueAtTime(baseFreq, chirpTime);
+                // Ramp eksponensial secepat kilat (0.08 detik) untuk efek siulan sweep khas burung
+                osc.frequency.exponentialRampToValueAtTime(sweepFreq, chirpTime + 0.08);
+
+                // Envelope volume kicauan cepat
+                gain.gain.setValueAtTime(0, chirpTime);
+                gain.gain.linearRampToValueAtTime(0.28, chirpTime + 0.02); // siulan nyaring (volume dinaikkan)
+                gain.gain.exponentialRampToValueAtTime(0.001, chirpTime + 0.1);
+
+                osc.connect(gain);
+                gain.connect(audioCtxBGM.destination);
+
+                osc.start(chirpTime);
+                osc.stop(chirpTime + 0.11);
+
+                delay += 0.14; // Jeda waktu antara siulan pertama dan berikutnya
+            }
+        }
+
+        function stopRetroBGM() {
+            bgmIsPlaying = false;
+            clearTimeout(bgmIntervalId);
+        }
     </script>
 
 </body>
+
 </html>

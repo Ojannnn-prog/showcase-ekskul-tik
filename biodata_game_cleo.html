@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata & Game Cleo 🎨✨</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #f472b6; /* Soft pink */
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fff5f8;
+            background-image: radial-gradient(#ffdde1 20%, transparent 20%), radial-gradient(#ffdde1 20%, transparent 20%);
+            background-position: 0 0, 25px 25px;
+            background-size: 50px 50px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-cute {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .font-game {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Cute Custom Scrollbar */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #fff0f5; }
+        ::-webkit-scrollbar-thumb { background: #ffb3ba; border-radius: 10px; border: 3px solid #fff0f5; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff9eb5; }
+
+        /* General Animations */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .animate-float { animation: float 4s ease-in-out infinite; }
+        .animate-float-delayed { animation: float 5s ease-in-out infinite 1s; }
+        .hover-wiggle:hover { animation: wiggle 0.5s ease-in-out infinite; }
+
+        /* Colorful Cute Cards */
+        .cute-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-width: 3px;
+            border-style: solid;
+            border-radius: 24px;
+            background-color: white;
+        }
+        .cute-card:hover { transform: translateY(-8px) scale(1.02); }
+        .card-pink { border-color: #ffb3ba; box-shadow: 6px 6px 0px #ffb3ba; }
+        .card-pink:hover { box-shadow: 10px 10px 0px #ffb3ba; }
+        .card-blue { border-color: #bae1ff; box-shadow: 6px 6px 0px #bae1ff; }
+        .card-blue:hover { box-shadow: 10px 10px 0px #bae1ff; }
+        .card-yellow { border-color: #ffdfba; box-shadow: 6px 6px 0px #ffdfba; }
+        .card-yellow:hover { box-shadow: 10px 10px 0px #ffdfba; }
+        .card-green { border-color: #baffc9; box-shadow: 6px 6px 0px #baffc9; }
+        .card-green:hover { box-shadow: 10px 10px 0px #baffc9; }
+        .card-purple { border-color: #e2cbff; box-shadow: 6px 6px 0px #e2cbff; }
+        .card-purple:hover { box-shadow: 10px 10px 0px #e2cbff; }
+
+        /* Blob Shape for Avatar */
+        .blob-shape {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            animation: morph 8s ease-in-out infinite;
+            background: linear-gradient(135deg, #ffb3ba 0%, #ffdfba 100%);
+            box-shadow: inset -10px -10px 0px rgba(0,0,0,0.1);
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+            34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+            67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================= GAME CSS ================= */
+        #game-container {
+            width: 100%;
+            height: 600px; /* Fixed height for embedded game */
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 0 10px rgba(244, 114, 182, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+
+        #scene-visual {
+            flex-grow: 1;
+            background-color: #e0f2fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transition: background-color 1s ease;
+            overflow: hidden;
+        }
+
+        .emoji-character {
+            font-size: 120px;
+            position: relative;
+            z-index: 10;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
+            transition: all 0.5s ease;
+        }
+
+        #dialog-box {
+            height: 250px;
+            background: linear-gradient(to bottom, #ffffff, #fdf2f8);
+            border-top: 4px solid var(--primary-color);
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 20;
+            box-shadow: 0 -10px 20px rgba(0,0,0,0.05);
+        }
+
+        #stage-badge {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(244, 114, 182, 0.4);
+            border: 3px solid white;
+        }
+
+        .typing-effect {
+            border-right: .15em solid var(--primary-color);
+            white-space: pre-wrap;
+            overflow: hidden;
+            animation: blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color); }
+        }
+
+        .choice-btn {
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0 var(--primary-color);
+            flex: 1;
+            min-width: 150px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .choice-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 var(--primary-color);
+        }
+
+        .choice-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 var(--primary-color);
+        }
+
+        .bg-element {
+            position: absolute;
+            opacity: 0.6;
+            z-index: 1;
+        }
+
+        #continue-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #db2777;
+            transition: all 0.2s;
+            animation: pulse-soft 2s infinite;
+        }
+
+        #continue-btn:hover {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #db2777;
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    </style>
+</head>
+<body class="text-gray-700 antialiased selection:bg-pink-300 selection:text-white pt-24">
+
+    <!-- FLOATING NAVBAR -->
+    <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-white/80 backdrop-blur-md border-2 border-pink-200 shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-full px-4 md:px-6 py-3 flex gap-2 md:gap-4 overflow-x-auto w-[90%] md:w-auto text-sm md:text-base font-cute text-gray-600">
+        <a href="#beranda" class="px-4 py-2 rounded-full hover:bg-pink-100 hover:text-pink-500 whitespace-nowrap transition-colors">Beranda</a>
+        <a href="#tentang" class="px-4 py-2 rounded-full hover:bg-pink-100 hover:text-pink-500 whitespace-nowrap transition-colors">Tentang</a>
+        <a href="#roadmap" class="px-4 py-2 rounded-full hover:bg-pink-100 hover:text-pink-500 whitespace-nowrap transition-colors">Mimpiku</a>
+        <a href="#game" class="px-4 py-2 rounded-full bg-pink-100 text-pink-500 hover:bg-pink-200 hover:text-pink-600 whitespace-nowrap transition-colors font-bold flex items-center gap-2">🎮 Main Game!</a>
+        <a href="#motto" class="px-4 py-2 rounded-full hover:bg-pink-100 hover:text-pink-500 whitespace-nowrap transition-colors">Motto</a>
+    </nav>
+
+    <!-- HEADER / BERANDA -->
+    <header id="beranda" class="min-h-[80vh] flex flex-col items-center justify-center relative px-6 pt-10 pb-20">
+        <div class="absolute top-10 left-10 text-5xl animate-float opacity-70">☁️</div>
+        <div class="absolute top-32 right-20 text-4xl animate-float-delayed opacity-70">✨</div>
+        <div class="absolute bottom-20 left-20 text-4xl animate-float-delayed opacity-70">🎨</div>
+        <div class="absolute bottom-40 right-10 text-5xl animate-float opacity-70">💖</div>
+
+        <div class="relative w-48 h-48 md:w-64 md:h-64 mb-8">
+            <div class="blob-shape w-full h-full flex items-center justify-center animate-float">
+                <span class="text-7xl md:text-8xl hover-wiggle cursor-pointer" title="Ini Cleo!">👧🏻</span>
+            </div>
+            <div class="absolute -top-4 -right-4 text-3xl animate-spin" style="animation-duration: 4s;">⭐</div>
+            <div class="absolute -bottom-2 -left-4 text-2xl animate-bounce">🎀</div>
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400 mb-4 text-center reveal">
+            Halo, Aku Cleo!
+        </h1>
+        <p class="text-xl md:text-2xl font-semibold text-gray-500 text-center max-w-lg mb-8 reveal" style="transition-delay: 0.1s;">
+            Anak bungsu si pendiam yang energik, pecinta hewan 🐶, dan calon pelukis hebat! 🎨
+        </p>
+
+        <a href="#tentang" class="reveal bg-white border-4 border-pink-400 text-pink-500 font-cute text-xl py-3 px-8 rounded-full shadow-[0_5px_0_#f472b6] hover:shadow-[0_2px_0_#f472b6] hover:translate-y-1 transition-all duration-200">
+            Kenalan Yuk! 👇
+        </a>
+    </header>
+
+    <!-- TENTANG AKU -->
+    <section id="tentang" class="max-w-4xl mx-auto px-6 py-16 reveal">
+        <div class="cute-card card-pink p-8 md:p-12 relative overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-32 h-32 bg-pink-200 rounded-full opacity-50"></div>
+            
+            <h2 class="text-3xl md:text-4xl font-bold text-pink-500 mb-6 flex items-center gap-3">
+                <span>📖</span> Tentang Aku
+            </h2>
+            
+            <div class="space-y-4 text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
+                <p>
+                    Halo, perkenalkan nama saya <span class="font-bold text-pink-500">Cleo</span>, saya hobi menggambar saat waktu luang. Oh ya, di keluargaku, aku adalah <strong>anak bungsu dari 3 bersaudara</strong> lho! 👨‍👩‍👧‍👦
+                </p>
+                <p>
+                    Saya juga mempunyai makanan kesukaan yaitu <strong>Indomie ayam udang</strong> 🍜🍤, dan juga minuman kesukaan yaitu <strong>air putih</strong> 💧. Saya memiliki hewan kesukaan yaitu <strong>kucing dan anjing</strong> 🐶🐱, karena mereka sangat imut bagi saya. Dan saya memiliki cita-cita yaitu menjadi <strong>pelukis / desainer</strong> 👩‍🎨.
+                </p>
+                <p>
+                    Saya lahir pada bulan 7 atau <span class="font-bold text-blue-400">Juli pada tanggal 6</span>, zodiak saya adalah <strong>Cancer</strong> ♋. Saya memiliki kepribadian pendiam saat bersama orang asing atau orang baru, namun saya akan berubah menjadi sangat energik dengan orang-orang terdekatku! ✨
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP IMPIAN -->
+    <section id="roadmap" class="max-w-4xl mx-auto px-6 py-16">
+        <h2 class="text-4xl font-bold text-center text-gray-700 mb-12 reveal">
+            🚀 <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">Peta Perjalanan Mimpiku</span> 🗺️
+        </h2>
+
+        <div class="relative border-l-4 border-pink-300 ml-4 md:ml-8 space-y-10">
+            <div class="relative pl-8 md:pl-12 reveal">
+                <div class="absolute -left-5 top-0 bg-yellow-300 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center text-xl shadow-md">🎒</div>
+                <div class="cute-card card-yellow p-6">
+                    <h3 class="text-2xl font-bold text-yellow-600 mb-2">Fokus Kelas 6</h3>
+                    <p class="text-gray-600 font-medium">Saat ini aku di kelas 6. Harapanku, aku bisa belajar dengan giat untuk meraih ilmu dan prestasi sebanyak-banyaknya! 📚✨</p>
+                </div>
+            </div>
+
+            <div class="relative pl-8 md:pl-12 reveal" style="transition-delay: 0.1s;">
+                <div class="absolute -left-5 top-0 bg-blue-300 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center text-xl shadow-md">🏫</div>
+                <div class="cute-card card-blue p-6">
+                    <h3 class="text-2xl font-bold text-blue-600 mb-2">Lulus SD & Masuk SMP</h3>
+                    <p class="text-gray-600 font-medium">Setelah lulus, aku ingin masuk ke <strong>SMPN 53 Bandung</strong>. Di sana, aku berencana untuk mengikuti ekstrakurikuler <strong>PASUS (Pasukan Khusus)</strong> untuk melatih kedisiplinanku. 💂‍♀️🎯</p>
+                </div>
+            </div>
+
+            <div class="relative pl-8 md:pl-12 reveal" style="transition-delay: 0.2s;">
+                <div class="absolute -left-5 top-0 bg-green-300 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center text-xl shadow-md">🖌️</div>
+                <div class="cute-card card-green p-6">
+                    <h3 class="text-2xl font-bold text-green-600 mb-2">Lanjut ke SMK</h3>
+                    <p class="text-gray-600 font-medium">Saat aku selesai SMP, aku mau melanjutkan ke SMK dan mengambil <strong>Jurusan Seni</strong> agar aku bisa lebih fokus mengasah bakatku! 🎨✨</p>
+                </div>
+            </div>
+
+            <div class="relative pl-8 md:pl-12 reveal" style="transition-delay: 0.3s;">
+                <div class="absolute -left-5 top-0 bg-purple-300 w-10 h-10 rounded-full border-4 border-white flex items-center justify-center text-xl shadow-md">🎓</div>
+                <div class="cute-card card-purple p-6">
+                    <h3 class="text-2xl font-bold text-purple-600 mb-2">Dunia Perkuliahan</h3>
+                    <p class="text-gray-600 font-medium">Mimpi terbesarku adalah masuk kuliah mengambil jurusan seni yang sesuai dengan hobi dan passion-ku. Menuju pelukis & desainer hebat! 👩‍🎨🌟</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAKTA SERU -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+        <h2 class="text-4xl font-bold text-center text-gray-700 mb-12 reveal">
+            ✨ <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Fakta Seru Cleo</span> ✨
+        </h2>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div class="cute-card card-blue p-4 md:p-6 flex flex-col items-center text-center reveal">
+                <div class="text-4xl md:text-6xl mb-4 hover-wiggle">🏐</div>
+                <h3 class="text-lg md:text-xl font-bold text-blue-500 mb-2">Hobi</h3>
+                <p class="text-gray-600 font-semibold text-xs md:text-sm">Menggambar & Main Voli</p>
+            </div>
+
+            <div class="cute-card card-purple p-4 md:p-6 flex flex-col items-center text-center reveal" style="transition-delay: 0.1s;">
+                <div class="text-4xl md:text-6xl mb-4 hover-wiggle">♋</div>
+                <h3 class="text-lg md:text-xl font-bold text-purple-500 mb-2">Lahir & Zodiak</h3>
+                <p class="text-gray-600 font-semibold text-xs md:text-sm">6 Juli<br>Zodiak: Cancer</p>
+            </div>
+
+            <div class="cute-card card-yellow p-4 md:p-6 flex flex-col items-center text-center reveal" style="transition-delay: 0.2s;">
+                <div class="text-4xl md:text-6xl mb-4 hover-wiggle">🎨</div>
+                <h3 class="text-lg md:text-xl font-bold text-yellow-500 mb-2">Cita-Cita</h3>
+                <p class="text-gray-600 font-semibold text-xs md:text-sm">Pelukis / Desainer</p>
+            </div>
+
+            <div class="cute-card card-green p-4 md:p-6 flex flex-col items-center text-center reveal" style="transition-delay: 0.3s;">
+                <div class="text-4xl md:text-6xl mb-4 hover-wiggle">👨‍👩‍👧‍👦</div>
+                <h3 class="text-lg md:text-xl font-bold text-green-500 mb-2">Keluarga</h3>
+                <p class="text-gray-600 font-semibold text-xs md:text-sm">Anak bungsu dari<br>3 bersaudara</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW MERGED SECTION: GAME SIMULASI -->
+    <section id="game" class="max-w-5xl mx-auto px-6 py-16 reveal">
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-bold text-gray-700 mb-4">
+                🎮 <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-orange-400">Mainkan Simulasi Hidupku!</span> 🕹️
+            </h2>
+            <p class="text-gray-500 font-medium">Bantu aku memilih jalan hidupku dari bayi sampai sukses!</p>
+        </div>
+
+        <!-- The Game Container (Embedded) -->
+        <div id="game-container">
+            <div id="scene-visual">
+                <div id="scene-decorations"></div>
+                <div id="main-character" class="emoji-character animate-float">✨</div>
+            </div>
+
+            <div id="dialog-box" class="relative">
+                <div id="stage-badge" class="font-cute font-game">Fase Hidup</div>
+                <p id="story-text" class="text-gray-700 font-medium font-game text-lg mt-3 flex-grow"></p>
+                
+                <div id="interaction-area" class="w-full flex justify-end pb-2">
+                    <button id="continue-btn" class="hidden font-game">Lanjut ▸</button>
+                    <div id="choices-container" class="hidden w-full flex gap-3 justify-center flex-wrap"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOTTO -->
+    <section id="motto" class="max-w-4xl mx-auto px-6 py-16 reveal">
+        <div class="bg-gradient-to-r from-purple-200 via-pink-200 to-orange-200 p-2 rounded-[32px] shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-300 mb-8">
+            <div class="bg-white rounded-[28px] p-8 md:p-12 text-center border-4 border-white border-dashed">
+                <div class="text-4xl mb-4">🌟</div>
+                <h2 class="text-3xl md:text-4xl font-bold text-pink-500 mb-4">Motto Hidup</h2>
+                <p class="text-2xl md:text-3xl font-cute text-gray-700 italic">
+                    "Teruslah menggambar mimpimu, meraih ilmu, sampai dunia melihat warna-warni karyamu!"
+                </p>
+            </div>
+        </div>
+
+        <!-- PESAN MORAL -->
+        <div class="bg-gradient-to-l from-blue-200 via-green-200 to-yellow-200 p-2 rounded-[32px] shadow-lg transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+            <div class="bg-white rounded-[28px] p-8 md:p-10 text-center border-4 border-white border-dashed">
+                <div class="text-4xl mb-4">🌱</div>
+                <h2 class="text-2xl md:text-3xl font-bold text-green-500 mb-4">Pesan Moral</h2>
+                <p class="text-lg md:text-xl font-medium text-gray-600 leading-relaxed">
+                    Jangan pernah takut untuk bermimpi besar dan mengejar apa yang kamu sukai. Setiap coretan kanvas kecil yang kamu buat hari ini, bisa menjadi sebuah mahakarya besar di masa depan. Konsisten dan teruslah berlatih, karena usaha tidak akan pernah mengkhianati hasil! ✨
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-10 mt-10 text-gray-500 font-semibold border-t-2 border-pink-100">
+        <p class="animate-bounce inline-block">💖</p>
+        <p>Dibuat dengan ceria untuk Cleo | © 2024</p>
+    </footer>
+
+    <!-- JAVASCRIPT FOR SCROLL REVEAL & GAME ENGINE -->
+    <script>
+        // --- 1. SCROLL REVEAL LOGIC ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // --- 2. GAME LOGIC ---
+        const storyData = {
+            bayi: {
+                title: "Masa Bayi", bgColor: "#fce7f3", emoji: "👶🍼",
+                decorations: ["🧸", "✨", "💕"],
+                narrative: "Pertama kali matamu terbuka, cahaya hangat menyambutmu. Di depan pandanganmu, terlihat kedua orang tuamu tersenyum penuh kasih sayang. Mereka menatapmu seolah kamu adalah keajaiban termanis yang pernah ada di dunia.",
+                choices: [
+                    { text: "Tersenyum dan tertawa kecil", nextScene: "tk_pagi" },
+                    { text: "Menangis pelan (haus)", nextScene: "tk_pagi" }
+                ]
+            },
+            tk_pagi: {
+                title: "Taman Kanak-Kanak", bgColor: "#fef08a", emoji: "🌅👦",
+                decorations: ["☀️", "🎒", "🍞"],
+                narrative: "Waktu berlalu cepat. Kamu sudah masuk TK! Pagi ini bunda membangunkanmu dengan lembut, memandikanmu, dan memakaikan seragam mungilmu. Setelah sarapan, kamu berangkat ke TK dibonceng oleh ayah.",
+                choices: [{ text: "Lanjut perjalanan", nextScene: "tk_gerbang" }]
+            },
+            tk_gerbang: {
+                title: "Gerbang TK", bgColor: "#e2e8f0", emoji: "😭🏫",
+                decorations: ["🏫", "🛴", "🍂"],
+                narrative: "Sampai di gerbang sekolah, tiba-tiba rasa takut muncul. Kamu merengek keras, menggenggam erat tangan ayah karena tak mau ditinggalkan. Setelah beberapa bujukan lembut dari ayah dan ibu guru...",
+                choices: [{ text: "Akhirnya melepaskan tangan ayah", nextScene: "tk_belajar" }]
+            },
+            tk_belajar: {
+                title: "Bermain di TK", bgColor: "#d9f99d", emoji: "🎨🧸",
+                decorations: ["🖍️", "🧩", "🎈"],
+                narrative: "Kamu masuk ke dalam kelas. Ternyata di dalam sangat menyenangkan! Kamu mulai belajar menggambar, menyanyi, dan bermain bersama anak-anak lain yang sudah sibuk dengan mainan mereka.",
+                choices: [{ text: "Tumbuh besar...", nextScene: "sd_awal" }]
+            },
+            sd_awal: {
+                title: "Masa SD", bgColor: "#fee2e2", emoji: "👧🎒",
+                decorations: ["📚", "✏️", "🏫"],
+                narrative: "Hari pertama Sekolah Dasar! Kamu memakai seragam merah putih yang rapi dan wangi. Kamu berjalan masuk ke gerbang sekolah yang terlihat jauh lebih besar dari TK.",
+                choices: [{ text: "Masuk kelas baru", nextScene: "sd_kelas" }]
+            },
+            sd_kelas: {
+                title: "Kelas SD", bgColor: "#fff7ed", emoji: "🙋‍♀️📖",
+                decorations: ["🍎", "📝", "⚽"],
+                narrative: "Di SD kamu belajar banyak hal baru. Pelajaran mulai susah, tapi kamu punya banyak teman untuk bermain bola dan lompat tali saat jam istirahat. Masa kecil yang indah!",
+                choices: [{ text: "Lulus SD...", nextScene: "smp_awal" }]
+            },
+            smp_awal: {
+                title: "Masa SMP", bgColor: "#bfdbfe", emoji: "👩‍🎓📘",
+                decorations: ["🎒", "📱", "🔬"],
+                narrative: "Seragam putih biru kini melekat di badanmu. Masa SMP 53 dimulai! Kamu masuk ekskul PASUS, merasakan masa pubertas, tugas yang lebih banyak, dan persahabatan yang lebih erat.",
+                choices: [{ text: "Eksplorasi minat", nextScene: "smp_hobi" }]
+            },
+            smp_hobi: {
+                title: "Pencarian Jati Diri", bgColor: "#ddd6fe", emoji: "🎨🎧",
+                decorations: ["🎸", "🖌️", "🏀"],
+                narrative: "Di SMP, kamu mulai menyadari apa yang kamu sukai. Kamu mulai serius dengan hobimu menggambar dan mendesain. Kamu memikirkan langkah selanjutnya setelah lulus nanti.",
+                choices: [
+                    { text: "Pilih lanjut ke SMA", nextScene: "sma_awal" },
+                    { text: "Pilih lanjut ke SMK (Seni)", nextScene: "smk_awal" }
+                ]
+            },
+            sma_awal: {
+                title: "Masa SMA", bgColor: "#e5e7eb", emoji: "👩‍🔬🎒",
+                decorations: ["📚", "🏫", "🎓"],
+                narrative: "Kamu memilih SMA. Seragam putih abu-abu kini jadi kebanggaan. Hari-hari diisi dengan belajar intensif, persiapan ujian, dan momen-momen manis masa remaja yang tak terlupakan.",
+                choices: [{ text: "Lulus dan Kuliah Seni", nextScene: "kuliah_awal" }]
+            },
+            smk_awal: {
+                title: "Masa SMK Seni", bgColor: "#fef08a", emoji: "👩‍🎨📐",
+                decorations: ["⚙️", "💻", "🎨"],
+                narrative: "Kamu memilih SMK jurusan Seni sesuai impianmu! Kamu fokus belajar menggambar, mendesain, dan membuat karya hebat. Banyak praktek dan kamu merasa bakatmu semakin terasah tajam.",
+                choices: [
+                    { text: "Lulus dan Kuliah Seni", nextScene: "kuliah_awal" },
+                    { text: "Langsung Kerja", nextScene: "kerja_awal" }
+                ]
+            },
+            kuliah_awal: {
+                title: "Kuliah Seni", bgColor: "#ccfbf1", emoji: "👩‍🎓🏛️",
+                decorations: ["☕", "💻", "📚"],
+                narrative: "Selamat datang di dunia kampus! Kamu mengambil jurusan Seni murni/desain yang kamu impikan. Tugas numpuk, bergadang ngerjain karya, tapi kamu merasa sangat bahagia karena ini passion-mu.",
+                choices: [{ text: "Wisuda!", nextScene: "ending_wisuda" }]
+            },
+            ending_wisuda: {
+                title: "Lulus Kuliah!", bgColor: "#ffd6e8", emoji: "🎓✨",
+                decorations: ["🎉", "💐", "📜"],
+                narrative: "Toga dikenakan, namamu dipanggil. Kamu berhasil menjadi Sarjana Seni! Perjalanan dari bayi hingga sekarang telah membentukmu menjadi pribadi yang kreatif.",
+                choices: [
+                    { text: "Mulai Melukis Kanvas", nextScene: "mulai_melukis" },
+                    { text: "Kerja di Agensi Desain", nextScene: "kerja_awal" }
+                ]
+            },
+            kerja_awal: {
+                title: "Dunia Profesional", bgColor: "#d1fae5", emoji: "💼🌟",
+                decorations: ["💰", "🏢", "🚀"],
+                narrative: "Kamu mulai bekerja di dunia profesional sebagai desainer. Hari-harimu sibuk dengan pekerjaan kantoran, tapi di sela-sela waktu luang, kamu teringat akan mimpimu menjadi pelukis.",
+                choices: [
+                    { text: "Mulai melukis di kanvas", nextScene: "mulai_melukis" },
+                    { text: "Fokus kerja kantoran", nextScene: "ending_karyawan" }
+                ]
+            },
+            mulai_melukis: {
+                title: "Mulai Menggambar", bgColor: "#fbcfe8", emoji: "🎨🖌️",
+                decorations: ["🖼️", "💸", "💖"],
+                narrative: "Kamu mulai rajin menggambar di kanvas dan membuat karya seni digital. Kamu memberanikan diri mempostingnya ke internet dan membuka 'Open Commission'.",
+                choices: [{ text: "Tunggu Pesanan Datang...", nextScene: "commission_sukses" }]
+            },
+            commission_sukses: {
+                title: "Karya Terjual Laris!", bgColor: "#fde047", emoji: "🤩📈",
+                decorations: ["💌", "🌟", "💵"],
+                narrative: "Kejutan! Banyak sekali orang yang menyukai art kamu dan membelinya. Pesanan commission mengalir deras setiap hari. Gaya lukisanmu mulai dikenal luas!",
+                choices: [{ text: "Buat Pameran Seni Besar", nextScene: "ending_pelukis" }]
+            },
+            ending_pelukis: {
+                title: "Pelukis Terkenal", bgColor: "#c4b5fd", emoji: "👩‍🎨👑",
+                decorations: ["🏆", "✨", "🖼️"],
+                narrative: "Mimpimu terwujud! Kamu berhasil menggelar pameran seni besar dan karyamu diakui banyak orang. Kamu resmi menjadi Pelukis Terkenal yang hebat! Usaha tidak mengkhianati hasil.",
+                choices: [{ text: "Main Lagi dari Awal", nextScene: "bayi" }]
+            },
+            ending_karyawan: {
+                title: "Desainer Sukses", bgColor: "#bae6fd", emoji: "👩‍💻💼",
+                decorations: ["📈", "💰", "🏢"],
+                narrative: "Kamu memilih fokus berkarir. Kamu menjadi desainer profesional yang sangat sukses dan berpenghasilan besar. Walau jarang melukis murni lagi, kamu tetap bahagia dengan jalan hidupmu!",
+                choices: [{ text: "Main Lagi dari Awal", nextScene: "bayi" }]
+            }
+        };
+
+        const stageBadge = document.getElementById('stage-badge');
+        const storyText = document.getElementById('story-text');
+        const mainCharacter = document.getElementById('main-character');
+        const sceneVisual = document.getElementById('scene-visual');
+        const sceneDecorations = document.getElementById('scene-decorations');
+        const choicesContainer = document.getElementById('choices-container');
+        const continueBtn = document.getElementById('continue-btn');
+
+        let currentTypingInterval;
+        let isTyping = false;
+
+        function loadScene(sceneKey) {
+            const scene = storyData[sceneKey];
+            if (!scene) return;
+
+            choicesContainer.innerHTML = '';
+            choicesContainer.classList.add('hidden');
+            continueBtn.classList.add('hidden');
+            sceneDecorations.innerHTML = '';
+
+            stageBadge.textContent = scene.title;
+            sceneVisual.style.backgroundColor = scene.bgColor;
+            
+            mainCharacter.style.opacity = '0';
+            mainCharacter.style.transform = 'scale(0.8)';
+            
+            setTimeout(() => {
+                mainCharacter.textContent = scene.emoji;
+                mainCharacter.style.opacity = '1';
+                mainCharacter.style.transform = 'scale(1)';
+            }, 300);
+
+            scene.decorations.forEach((deco, index) => {
+                const el = document.createElement('div');
+                el.className = 'bg-element text-4xl sm:text-6xl absolute';
+                el.textContent = deco;
+                const xPos = 10 + Math.random() * 80;
+                const yPos = 10 + Math.random() * 80;
+                el.style.left = `${xPos}%`;
+                el.style.top = `${yPos}%`;
+                el.style.animation = `float ${2 + Math.random() * 3}s ease-in-out infinite`;
+                el.style.animationDelay = `${Math.random()}s`;
+                sceneDecorations.appendChild(el);
+            });
+
+            typeWriterEffect(scene.narrative, () => {
+                showChoices(scene.choices);
+            });
+        }
+
+        function typeWriterEffect(text, callback) {
+            clearInterval(currentTypingInterval);
+            isTyping = true;
+            storyText.innerHTML = '';
+            storyText.classList.add('typing-effect');
+
+            let i = 0;
+            currentTypingInterval = setInterval(() => {
+                if (i < text.length) {
+                    storyText.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(currentTypingInterval);
+                    storyText.classList.remove('typing-effect');
+                    isTyping = false;
+                    if (callback) callback();
+                }
+            }, 30);
+        }
+
+        function showChoices(choices) {
+            if (!choices || choices.length === 0) return;
+
+            if (choices.length === 1 && choices[0].text.includes("Lanjut")) {
+                continueBtn.textContent = choices[0].text;
+                continueBtn.classList.remove('hidden');
+                continueBtn.classList.add('fade-in');
+                continueBtn.onclick = () => {
+                    continueBtn.classList.add('hidden');
+                    loadScene(choices[0].nextScene);
+                };
+            } else {
+                choicesContainer.classList.remove('hidden');
+                choices.forEach(choice => {
+                    const btn = document.createElement('button');
+                    btn.className = 'choice-btn font-game fade-in';
+                    btn.textContent = choice.text;
+                    btn.onclick = () => {
+                        choicesContainer.classList.add('hidden');
+                        loadScene(choice.nextScene);
+                    };
+                    choicesContainer.appendChild(btn);
+                });
+            }
+        }
+
+        document.getElementById('dialog-box').addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') return;
+            
+            if (isTyping) {
+                clearInterval(currentTypingInterval);
+                storyText.classList.remove('typing-effect');
+                isTyping = false;
+                
+                const currentTitle = stageBadge.textContent;
+                let currentSceneKey = null;
+                for (const [key, data] of Object.entries(storyData)) {
+                    if (data.title === currentTitle) {
+                        currentSceneKey = key;
+                        break;
+                    }
+                }
+                
+                if (currentSceneKey) {
+                    storyText.innerHTML = storyData[currentSceneKey].narrative;
+                    showChoices(storyData[currentSceneKey].choices);
+                }
+            }
+        });
+
+        // Initialize Everything
+        window.onload = () => {
+            reveal(); // Trigger scroll animations on load
+            setTimeout(() => {
+                loadScene('bayi'); // Start the game inside the container
+            }, 500);
+        };
+    </script>
+</body>
+</html>

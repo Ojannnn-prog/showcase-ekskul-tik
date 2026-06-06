@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata | MH. Aryasatya Rayyan</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b; /* Zinc 950 */
+            color: #f4f4f5; /* Zinc 50 */
+            overflow-x: hidden;
+        }
+
+        .font-gaming {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Animasi Kustom untuk Scroll */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in-up.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efek Glow ala Gamer */
+        .glow-card {
+            background-color: #18181b; /* Zinc 900 */
+            border: 1px solid #27272a; /* Zinc 800 */
+            transition: all 0.3s ease;
+        }
+
+        .glow-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px -10px rgba(220, 38, 38, 0.6); /* Glow Merah */
+            border-color: #dc2626; /* Red 600 */
+        }
+
+        /* Background Pattern */
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, #27272a 1px, transparent 1px),
+                              linear-gradient(to bottom, #27272a 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
+        }
+
+        /* Animasi Ketik (Typing) */
+        .typewriter h1 {
+            overflow: hidden; 
+            border-right: .15em solid #dc2626; 
+            white-space: nowrap; 
+            margin: 0 auto; 
+            letter-spacing: .05em; 
+            animation: 
+                typing 2.5s steps(30, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #dc2626; }
+        }
+
+        /* Pulse glow red background */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+            animation: pulse-blob 6s infinite alternate;
+        }
+        @keyframes pulse-blob {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0.6; }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-600 selection:text-white relative">
+
+    <!-- Latar Belakang Garis & Cahaya -->
+    <div class="fixed inset-0 bg-grid-pattern z-[-2]"></div>
+    <div class="fixed top-20 left-10 w-64 h-64 bg-red-700 rounded-full blob"></div>
+    <div class="fixed bottom-20 right-10 w-80 h-80 bg-red-900 rounded-full blob" style="animation-delay: -3s;"></div>
+
+    <!-- Header / Hero Section -->
+    <section class="min-h-screen flex flex-col items-center justify-center relative px-6 py-20">
+        <div class="z-10 text-center max-w-4xl mx-auto w-full">
+            <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-700 text-gray-300 text-sm font-semibold tracking-wider uppercase fade-in-up">
+                <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                Player Ready
+            </div>
+            
+            <div class="typewriter inline-block max-w-full">
+                <h1 class="text-3xl sm:text-5xl md:text-7xl font-black mb-2 text-white font-gaming tracking-wider uppercase">
+                    MH. Aryasatya
+                </h1>
+            </div>
+            <h2 class="text-3xl sm:text-5xl md:text-7xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-800 font-gaming tracking-wider uppercase fade-in-up" style="transition-delay: 200ms;">
+                Rayyan
+            </h2>
+
+            <p class="text-zinc-400 text-lg md:text-xl mt-6 mb-12 max-w-2xl mx-auto fade-in-up" style="transition-delay: 400ms;">
+                Selamat datang di profil saya. Seorang pelajar yang suka bermain game dan pantang menyerah dalam menghadapi tantangan!
+            </p>
+
+            <a href="#biodata" class="fade-in-up inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 px-8 rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(220,38,38,0.4)] hover:shadow-[0_0_25px_rgba(220,38,38,0.8)] font-gaming tracking-widest text-lg" style="transition-delay: 600ms;">
+                START GAME <i class="fa-solid fa-play text-sm"></i>
+            </a>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-zinc-500">
+            <i class="fa-solid fa-angles-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Biodata / Player Stats Section -->
+    <section id="biodata" class="py-24 px-6 relative z-10 bg-zinc-950/80 backdrop-blur-md border-y border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-gaming text-white uppercase tracking-wider">
+                    Player <span class="text-red-600">Stats</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card Hobby -->
+                <div class="glow-card rounded-2xl p-8 text-center fade-in-up relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mx-auto bg-zinc-800 rounded-xl flex items-center justify-center mb-5 text-red-500 text-3xl shadow-inner group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2">Hobi Utama</h3>
+                    <p class="text-2xl font-black text-white font-gaming tracking-wide">Gaming</p>
+                </div>
+
+                <!-- Card Game -->
+                <div class="glow-card rounded-2xl p-8 text-center fade-in-up relative overflow-hidden group" style="transition-delay: 150ms;">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mx-auto bg-zinc-800 rounded-xl flex items-center justify-center mb-5 text-red-500 text-3xl shadow-inner group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2">Game Favorit</h3>
+                    <p class="text-2xl font-black text-white font-gaming tracking-wide">Mobile Legend</p>
+                </div>
+
+                <!-- Card Makanan -->
+                <div class="glow-card rounded-2xl p-8 text-center fade-in-up relative overflow-hidden group" style="transition-delay: 300ms;">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mx-auto bg-zinc-800 rounded-xl flex items-center justify-center mb-5 text-red-500 text-3xl shadow-inner group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-burger"></i>
+                    </div>
+                    <h3 class="text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2">Makanan Kesukaan</h3>
+                    <p class="text-2xl font-black text-white font-gaming tracking-wide">Burger</p>
+                </div>
+
+                <!-- Card Warna -->
+                <div class="glow-card rounded-2xl p-8 text-center fade-in-up relative overflow-hidden group" style="transition-delay: 450ms;">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="w-16 h-16 mx-auto bg-zinc-800 rounded-xl flex items-center justify-center mb-5 text-red-500 text-3xl shadow-inner group-hover:scale-110 transition-transform duration-300">
+                        <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <h3 class="text-zinc-400 text-xs font-bold uppercase tracking-widest mb-2">Warna Kesukaan</h3>
+                    <p class="text-2xl font-black text-red-500 font-gaming tracking-wide">Merah</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes & Messages Section -->
+    <section class="py-24 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto space-y-12">
+            
+            <!-- Moto Hidup -->
+            <div class="bg-gradient-to-br from-red-900/40 to-zinc-900/80 border border-red-900/50 rounded-3xl p-8 md:p-14 text-center fade-in-up relative overflow-hidden shadow-2xl backdrop-blur-sm">
+                <div class="absolute -right-10 -top-10 text-zinc-800/50 text-[150px] leading-none pointer-events-none">
+                    <i class="fa-solid fa-quote-right"></i>
+                </div>
+                <h3 class="text-red-500 font-bold uppercase tracking-widest mb-6 text-sm flex items-center justify-center gap-3">
+                    <span class="w-8 h-[1px] bg-red-500"></span>
+                    Moto Hidup
+                    <span class="w-8 h-[1px] bg-red-500"></span>
+                </h3>
+                <p class="text-2xl md:text-4xl font-gaming text-white leading-relaxed z-10 relative">
+                    "Terus maju pantang mundur, hadapi tantangan sekeras apapun seperti push rank menuju Mythic!"
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Pesan VC -->
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-8 fade-in-up hover:border-zinc-600 transition-colors relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-zinc-800 rounded-bl-full opacity-50"></div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 bg-zinc-800 border border-zinc-700 rounded-xl flex items-center justify-center text-red-500 text-xl shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white font-gaming tracking-wide">Pesan Kelas VC</h3>
+                            <p class="text-xs text-zinc-500">Kenangan Sekolah</p>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-950/50 p-5 rounded-xl border border-zinc-800/50 relative z-10">
+                        <p class="text-zinc-300 italic leading-relaxed text-sm md:text-base">
+                            <i class="fa-solid fa-quote-left text-zinc-600 mr-2"></i>
+                            Aku senang aku banyak teman walupun gk ada yang mau main sama aku, tapi aku tetap senang ada yang ganggu.
+                            <i class="fa-solid fa-quote-right text-zinc-600 ml-2"></i>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Harapan Kelas 6 -->
+                <div class="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-8 fade-in-up hover:border-zinc-600 transition-colors relative overflow-hidden" style="transition-delay: 200ms;">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-zinc-800 rounded-bl-full opacity-50"></div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 bg-zinc-800 border border-zinc-700 rounded-xl flex items-center justify-center text-red-500 text-xl shadow-[0_0_10px_rgba(0,0,0,0.5)]">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white font-gaming tracking-wide">Harapan di Kelas 6</h3>
+                            <p class="text-xs text-zinc-500">Target Kedepan</p>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-950/50 p-5 rounded-xl border border-zinc-800/50 relative z-10 h-[calc(100%-80px)] flex items-center justify-center">
+                        <p class="text-white font-bold text-2xl text-center uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white to-zinc-400">
+                            "Lulus & Senang" <span class="text-red-500 ml-2"><i class="fa-solid fa-fire"></i></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Galeri Kucing Section -->
+    <section id="galeri-kucing" class="py-24 px-6 relative z-10 bg-zinc-950/80 backdrop-blur-md border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-gaming text-white uppercase tracking-wider">
+                    Galeri <span class="text-red-600">Kucing</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
+                <p class="text-zinc-400 mt-4 text-sm md:text-base font-medium">Koleksi foto makhluk imut peneman push rank.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Kucing 1 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kucing 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                        <span class="text-white font-gaming tracking-wider font-bold">#Cat1</span>
+                    </div>
+                </div>
+                
+                <!-- Kucing 2 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 150ms;">
+                    <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kucing Keren" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                        <span class="text-white font-gaming tracking-wider font-bold">#GamerCat</span>
+                    </div>
+                </div>
+
+                <!-- Kucing 3 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 300ms;">
+                    <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kucing 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                        <span class="text-white font-gaming tracking-wider font-bold">#Cat3</span>
+                    </div>
+                </div>
+
+                <!-- Kucing 4 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kucing 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                        <span class="text-white font-gaming tracking-wider font-bold">#Cat4</span>
+                    </div>
+                </div>
+
+                <!-- Kucing 5 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 150ms;">
+                    <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kucing 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                        <span class="text-white font-gaming tracking-wider font-bold">#Cat5</span>
+                    </div>
+                </div>
+
+                <!-- Kucing 6 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 300ms;">
+                    <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kucing 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex items-end p-4">
+                        <span class="text-white font-gaming tracking-wider font-bold">#OrangeCat</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Stickman Section -->
+    <section id="galeri-stickman" class="py-24 px-6 relative z-10 bg-zinc-900/50 backdrop-blur-md border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-gaming text-white uppercase tracking-wider">
+                    Galeri Game <span class="text-red-600">Stickman</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
+                <p class="text-zinc-400 mt-4 text-sm md:text-base font-medium">Kumpulan game stickman seru untuk menemani waktu luang.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Stickman 1 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=Stick+War+Legacy" alt="Stick War Legacy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Stick War: Legacy</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-chess text-xs mr-1"></i> Strategy</span>
+                    </div>
+                </div>
+                
+                <!-- Stickman 2 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 150ms;">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=Anger+of+Stick+5" alt="Anger of Stick 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Anger of Stick 5</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-hand-fist text-xs mr-1"></i> Action / Beat 'em up</span>
+                    </div>
+                </div>
+
+                <!-- Stickman 3 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 300ms;">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=Stickman+Party" alt="Stickman Party" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Stickman Party</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-users text-xs mr-1"></i> Arcade / Multiplayer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri FNAF Section -->
+    <section id="galeri-fnaf" class="py-24 px-6 relative z-10 bg-zinc-950/80 backdrop-blur-md border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-gaming text-white uppercase tracking-wider">
+                    Galeri Game <span class="text-red-600">FNAF</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
+                <p class="text-zinc-400 mt-4 text-sm md:text-base font-medium">Koleksi game horor survival yang menegangkan dan seru.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- FNAF 1 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800">
+                    <img src="https://placehold.co/800x600/09090b/dc2626?text=FNAF+1" alt="Five Nights at Freddy's 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">FNAF 1</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-video text-xs mr-1"></i> Classic Survival Horror</span>
+                    </div>
+                </div>
+                
+                <!-- FNAF Security Breach -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 150ms;">
+                    <img src="https://placehold.co/800x600/09090b/dc2626?text=FNAF+Security+Breach" alt="FNAF Security Breach" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Security Breach</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-bolt text-xs mr-1"></i> Free Roam Horror</span>
+                    </div>
+                </div>
+
+                <!-- FNAF 4 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 300ms;">
+                    <img src="https://placehold.co/800x600/09090b/dc2626?text=FNAF+4" alt="FNAF 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">FNAF 4</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-door-open text-xs mr-1"></i> Nightmare Survival</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Springtrap Section -->
+    <section id="galeri-springtrap" class="py-24 px-6 relative z-10 bg-zinc-900/50 backdrop-blur-md border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-gaming text-white uppercase tracking-wider">
+                    Galeri <span class="text-red-600">Springtrap</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
+                <p class="text-zinc-400 mt-4 text-sm md:text-base font-medium">"I always come back." - Koleksi sang animatronik legendaris.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Springtrap 1 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=Springtrap" alt="Springtrap" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Springtrap</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-ghost text-xs mr-1"></i> The Attraction</span>
+                    </div>
+                </div>
+                
+                <!-- Springtrap 2 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 150ms;">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=William+Afton" alt="William Afton" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">William Afton</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-skull text-xs mr-1"></i> The Man Behind The Slaughter</span>
+                    </div>
+                </div>
+
+                <!-- Springtrap 3 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 300ms;">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=Scraptrap" alt="Scraptrap" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Scraptrap</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-biohazard text-xs mr-1"></i> Pizzeria Simulator</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Layangan Section -->
+    <section id="galeri-layangan" class="py-24 px-6 relative z-10 bg-zinc-950/80 backdrop-blur-md border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-gaming text-white uppercase tracking-wider">
+                    Galeri <span class="text-red-600">Layangan</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
+                <p class="text-zinc-400 mt-4 text-sm md:text-base font-medium">Hobi sore hari, adu ketangkasan dan menguasai langit dengan layangan andalan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Layangan 1 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800">
+                    <img src="https://images.unsplash.com/photo-1517409255675-9e6b4f7a1fdb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Layangan Aduan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Layangan Aduan</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-fire text-xs mr-1"></i> Tipe Seot / Sukhoi</span>
+                    </div>
+                </div>
+                
+                <!-- Layangan 2 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 150ms;">
+                    <img src="https://images.unsplash.com/photo-1588621458925-502844bbda46?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Layangan Hias" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Layangan Hias</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-star text-xs mr-1"></i> Bintang di Langit</span>
+                    </div>
+                </div>
+
+                <!-- Layangan 3 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 300ms;">
+                    <img src="https://images.unsplash.com/photo-1533221946059-4b68421c6ba4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Benang Gelasan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Benang Gelasan</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-compact-disc text-xs mr-1"></i> Senjata Utama (Bladu)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Dinosaurus Section -->
+    <section id="galeri-dinosaurus" class="py-24 px-6 relative z-10 bg-zinc-900/50 backdrop-blur-md border-t border-zinc-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-5xl font-gaming text-white uppercase tracking-wider">
+                    Galeri <span class="text-red-600">Dinosaurus</span>
+                </h2>
+                <div class="w-24 h-1.5 bg-red-600 mx-auto mt-4 rounded-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"></div>
+                <p class="text-zinc-400 mt-4 text-sm md:text-base font-medium">Penguasa bumi di zaman purba, buas dan penuh kekuatan mematikan.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Dinosaurus 1 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=T-Rex" alt="T-Rex" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Tyrannosaurus Rex</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-dragon text-xs mr-1"></i> The Apex Predator</span>
+                    </div>
+                </div>
+                
+                <!-- Dinosaurus 2 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 150ms;">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=Velociraptor" alt="Velociraptor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Velociraptor</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-paw text-xs mr-1"></i> Fast & Deadly Hunter</span>
+                    </div>
+                </div>
+
+                <!-- Dinosaurus 3 -->
+                <div class="glow-card rounded-2xl overflow-hidden fade-in-up group relative h-64 border border-zinc-800" style="transition-delay: 300ms;">
+                    <img src="https://placehold.co/800x600/18181b/dc2626?text=Spinosaurus" alt="Spinosaurus" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 via-zinc-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none flex flex-col justify-end p-6">
+                        <span class="text-white font-gaming tracking-wider font-bold text-xl uppercase">Spinosaurus</span>
+                        <span class="text-red-400 text-xs font-semibold tracking-widest mt-1"><i class="fa-solid fa-water text-xs mr-1"></i> The River Monster</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-zinc-900 text-center relative z-10">
+        <p class="text-zinc-500 text-sm font-medium">
+            &copy; 2024 MH. Aryasatya Rayyan. <br>
+            <span class="text-xs mt-2 inline-block font-gaming tracking-widest text-zinc-600">GGWP • GOOD GAME WELL PLAYED</span>
+        </p>
+    </footer>
+
+    <!-- JavaScript for scroll animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faders = document.querySelectorAll('.fade-in-up');
+            
+            const appearOptions = {
+                threshold: 0.15, // Elemen muncul ketika 15% bagiannya terlihat di layar
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('appear');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>

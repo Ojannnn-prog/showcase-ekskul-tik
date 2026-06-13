@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata Putri yang Lucu</title>
+    
+    <!-- Memuat Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Memuat Google Fonts (Fredoka dan Nunito) agar teks terlihat bulat dan imut -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Mengatur font default */
+        body {
+            font-family: 'Nunito', sans-serif;
+            /* Background gradien pastel yang bergerak */
+            background: linear-gradient(-45deg, #ffc3a0, #ffafbd, #a1c4fd, #c2e9fb);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            overflow-x: hidden;
+        }
+        
+        .font-fredoka {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Animasi Background Gradien */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animasi Muncul Memantul (Bounce In) */
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            60% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-bounce-in {
+            animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        /* Animasi Goyang (Wiggle) saat kursor diarahkan ke kartu */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+        }
+        .hover-wiggle:hover {
+            animation: wiggle 0.4s ease-in-out;
+        }
+
+        /* Animasi Ikon Melayang di Background */
+        .floating-icon {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-10vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex items-center justify-center p-4 sm:p-8">
+
+    <!-- Ikon-ikon lucu yang melayang di belakang layar -->
+    <div class="floating-icon" style="left: 10%; animation-duration: 12s; animation-delay: 0s;">🌸</div>
+    <div class="floating-icon" style="left: 30%; animation-duration: 15s; animation-delay: 2s;">✨</div>
+    <div class="floating-icon" style="left: 50%; animation-duration: 10s; animation-delay: 4s;">🎨</div>
+    <div class="floating-icon" style="left: 70%; animation-duration: 18s; animation-delay: 1s;">🍦</div>
+    <div class="floating-icon" style="left: 90%; animation-duration: 14s; animation-delay: 3s;">⭐</div>
+    <div class="floating-icon" style="left: 20%; animation-duration: 16s; animation-delay: 5s;">🎀</div>
+    <div class="floating-icon" style="left: 80%; animation-duration: 11s; animation-delay: 6s;">🦋</div>
+
+    <!-- Kontainer Utama -->
+    <div class="bg-white/80 backdrop-blur-md max-w-4xl w-full rounded-[3rem] shadow-2xl overflow-hidden animate-bounce-in relative z-10 border-4 border-white/50">
+        
+        <!-- Header / Profil -->
+        <div class="bg-gradient-to-r from-pink-200 to-purple-200 p-8 sm:p-12 text-center rounded-t-[2.75rem] relative">
+            <!-- Hiasan lengkungan di bawah header -->
+            <div class="absolute -bottom-1 left-0 w-full overflow-hidden leading-none">
+                <svg class="relative block w-full h-12" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,115.34,189.92,106.18,244.54,97.71,284.14,64.21,321.39,56.44Z" class="fill-white/80 backdrop-blur-md"></path>
+                </svg>
+            </div>
+
+            <!-- Avatar -->
+            <div class="relative inline-block mb-4">
+                <div class="w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-full p-2 shadow-lg mx-auto transform transition hover:scale-110 hover:rotate-6 duration-300">
+                    <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Putri&backgroundColor=ffdfbf" alt="Avatar Putri" class="w-full h-full object-cover rounded-full">
+                </div>
+                <!-- Badge Mahkota -->
+                <div class="absolute -top-4 -right-2 text-4xl animate-bounce">👑</div>
+            </div>
+
+            <h1 class="font-fredoka text-4xl sm:text-5xl font-bold text-pink-500 mb-2 drop-shadow-sm">Hai, Aku Putri! ✨</h1>
+            
+            <!-- Motto Hidup -->
+            <div class="inline-block bg-white/60 px-6 py-2 rounded-full mt-2 shadow-sm border border-pink-100">
+                <p class="text-pink-600 font-bold italic">"Tetap tersenyum dan selalu ceria setiap hari!" 🌸</p>
+            </div>
+        </div>
+
+        <!-- Bagian Tentang -->
+        <div class="px-8 pt-8 pb-4 text-center">
+            <h2 class="font-fredoka text-2xl text-purple-600 font-bold mb-3 flex items-center justify-center gap-2">
+                <span>📖</span> Tentang Aku
+            </h2>
+            <p class="text-gray-700 text-lg max-w-2xl mx-auto bg-purple-50 p-4 rounded-3xl border-2 border-purple-100 shadow-inner">
+                Halo semuanya! Aku suka menggambar dan mengeksplorasi hal-hal baru yang menyenangkan. 
+                Di halaman ini, kalian bisa melihat kumpulan benda, makanan, dan kegiatan favoritku. 
+                Senang bisa berbagi ceritaku dengan kalian! 💕
+            </p>
+        </div>
+
+        <!-- Grid Biodata & Kesukaan -->
+        <div class="p-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                
+                <!-- Card 1: Hobi -->
+                <div class="bg-pink-100 hover:bg-pink-200 border-2 border-pink-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🎨✏️</div>
+                    <h3 class="font-fredoka text-pink-700 text-lg">Hobi</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Menggambar</p>
+                </div>
+
+                <!-- Card 2: Ulang Tahun -->
+                <div class="bg-yellow-100 hover:bg-yellow-200 border-2 border-yellow-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🎂🎉</div>
+                    <h3 class="font-fredoka text-yellow-700 text-lg">Hari Lahir</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">15 Juni</p>
+                </div>
+
+                <!-- Card 3: Cita-cita -->
+                <div class="bg-indigo-100 hover:bg-indigo-200 border-2 border-indigo-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">✨👩‍🎨</div>
+                    <h3 class="font-fredoka text-indigo-700 text-lg">Cita-cita</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Seniman / Desainer</p>
+                </div>
+
+                <!-- Card 4: Hewan -->
+                <div class="bg-orange-100 hover:bg-orange-200 border-2 border-orange-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🐱🐰</div>
+                    <h3 class="font-fredoka text-orange-700 text-lg">Hewan Kesukaan</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Kucing & Kelinci</p>
+                </div>
+
+                <!-- Card 5: Tumbuhan -->
+                <div class="bg-green-100 hover:bg-green-200 border-2 border-green-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🌷🌻</div>
+                    <h3 class="font-fredoka text-green-700 text-lg">Tumbuhan</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Bunga</p>
+                </div>
+
+                <!-- Card 6: Makanan -->
+                <div class="bg-red-100 hover:bg-red-200 border-2 border-red-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🍗🍟</div>
+                    <h3 class="font-fredoka text-red-700 text-lg">Makanan</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Ayam & Kentang</p>
+                </div>
+
+                <!-- Card 7: Minuman -->
+                <div class="bg-blue-100 hover:bg-blue-200 border-2 border-blue-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🥛🍼</div>
+                    <h3 class="font-fredoka text-blue-700 text-lg">Minuman</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Susu</p>
+                </div>
+
+                <!-- Card 8: Jajanan -->
+                <div class="bg-teal-100 hover:bg-teal-200 border-2 border-teal-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🍦🍧</div>
+                    <h3 class="font-fredoka text-teal-700 text-lg">Jajanan</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Ice Cream</p>
+                </div>
+
+                <!-- Card 9: Olahraga -->
+                <div class="bg-fuchsia-100 hover:bg-fuchsia-200 border-2 border-fuchsia-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🏃‍♀️🏊‍♀️</div>
+                    <h3 class="font-fredoka text-fuchsia-700 text-lg">Olahraga</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Lari & Berenang</p>
+                </div>
+
+                <!-- Card 10: Tempat -->
+                <div class="bg-lime-100 hover:bg-lime-200 border-2 border-lime-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🌳🌷</div>
+                    <h3 class="font-fredoka text-lime-700 text-lg">Tempat Favorit</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Taman</p>
+                </div>
+
+                <!-- Card 11: Film -->
+                <div class="bg-sky-100 hover:bg-sky-200 border-2 border-sky-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🎬🐱</div>
+                    <h3 class="font-fredoka text-sky-700 text-lg">Film Favorit</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Doraemon</p>
+                </div>
+
+                <!-- Card 12: Warna -->
+                <div class="bg-cyan-100 hover:bg-cyan-200 border-2 border-cyan-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle">
+                    <div class="text-4xl mb-2 flex gap-1">🔵🟢</div>
+                    <h3 class="font-fredoka text-cyan-700 text-lg">Warna Favorit</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Biru & Hijau</p>
+                </div>
+
+                <!-- Card 13: Makanan Manis (Span 2 kolom di HP agar rapi) -->
+                <div class="bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 rounded-3xl p-5 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 shadow-sm hover:shadow-md hover-wiggle col-span-2 sm:col-span-1 lg:col-span-2 xl:col-span-1 mx-auto w-full">
+                    <div class="text-4xl mb-2 flex gap-1">🍬🍫</div>
+                    <h3 class="font-fredoka text-amber-700 text-lg">Camilan Manis</h3>
+                    <p class="font-bold text-gray-800 text-base leading-tight">Yupi & Coklat</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-50 border-t-2 border-gray-100 p-6 text-center">
+            <p class="text-gray-500 font-semibold flex items-center justify-center gap-2">
+                Dibuat dengan penuh cinta oleh Putri <span>💖</span>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

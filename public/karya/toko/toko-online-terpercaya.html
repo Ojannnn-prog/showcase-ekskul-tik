@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Online Terpercaya | Serba Ada & Terlengkap</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        shopee: {
+                            DEFAULT: '#ee4d2d',
+                            dark: '#d73211',
+                            light: '#fff5f1',
+                            orange: '#ff5722',
+                            yellow: '#faca15',
+                            bg: '#f5f5f5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ee4d2d;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .shopee-gradient {
+            background: linear-gradient(-180deg, #f53d2d, #f63);
+        }
+        .ad-gradient {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb, #4f46e5);
+        }
+        .ad-card-gradient {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+        }
+        .badge-discount {
+            background-color: rgba(255,212,36,.9);
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.95; transform: scale(1.02); }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s infinite ease-in-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-[#f5f5f5] text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Top Announcement Bar / Mini Header -->
+    <header class="sticky top-0 z-40 w-full shopee-gradient text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 text-xs">
+            <div class="flex justify-between items-center py-1.5 border-b border-white/20">
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="hover:text-gray-200">Seller Centre</a>
+                    <span class="text-white/40">|</span>
+                    <!-- Seller Ad Manager Modal Trigger Button -->
+                    <button onclick="openSellerAdsModal()" class="bg-yellow-400 text-red-900 font-extrabold px-2.5 py-0.5 rounded hover:bg-yellow-300 transition flex items-center space-x-1 shadow-sm">
+                        <i class="fas fa-bullhorn text-[11px] animate-bounce"></i>
+                        <span>Shopee Ads Seller Centre</span>
+                        <span id="header-ad-balance" class="bg-red-700 text-yellow-300 text-[10px] px-1.5 py-0.2 rounded ml-1 font-mono">Rp250.000</span>
+                    </button>
+                    <span class="text-white/40">|</span>
+                    <a href="#" class="hover:text-gray-200">Download Aplikasi</a>
+                    <span class="text-white/40">|</span>
+                    <span class="hidden md:inline text-white/90">Ikuti kami di</span>
+                    <div class="hidden md:flex space-x-2">
+                        <a href="#" class="hover:text-gray-200"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-gray-200"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="hover:text-gray-200"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleNotifications()" class="relative flex items-center hover:text-gray-200 focus:outline-none">
+                        <i class="far fa-bell text-sm mr-1"></i> Notifikasi
+                        <span id="notif-badge" class="absolute -top-1 -right-2 bg-yellow-400 text-red-700 font-bold rounded-full text-[10px] w-4 h-4 flex items-center justify-center">3</span>
+                    </button>
+                    <a href="#" class="flex items-center hover:text-gray-200"><i class="far fa-question-circle text-sm mr-1"></i> Bantuan</a>
+                    <div class="flex items-center space-x-1 cursor-pointer">
+                        <i class="fas fa-globe text-sm"></i>
+                        <span>Bahasa Indonesia</span>
+                    </div>
+                    <div class="flex items-center space-x-2 border-l border-white/20 pl-3">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" class="w-5 h-5 rounded-full object-cover border border-white" alt="User Avatar">
+                        <span class="font-semibold hidden sm:inline">Budi Santoso</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Search & Cart Header -->
+            <div class="py-3 flex items-center justify-between gap-4">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-2 flex-shrink-0">
+                    <div class="bg-white text-shopee rounded-lg p-2 font-black text-xl sm:text-2xl tracking-wider shadow-inner flex items-center">
+                        <i class="fas fa-shopping-bag mr-1.5 text-shopee"></i> Toko Online Terpercaya
+                    </div>
+                </a>
+
+                <!-- Search Box -->
+                <div class="flex-1 max-w-2xl relative">
+                    <div class="flex bg-white rounded-sm overflow-hidden p-1 shadow-md">
+                        <input type="text" id="search-input" onkeyup="handleSearch()" placeholder="Cari barang, merek sponsor, atau produk beriklan..." class="w-full px-3 py-1.5 text-gray-800 text-sm focus:outline-none">
+                        <button onclick="triggerSearch()" class="bg-shopee hover:bg-shopee-dark text-white px-6 py-1.5 rounded-sm font-medium transition duration-150 flex items-center justify-center">
+                            <i class="fas fa-search text-sm"></i>
+                        </button>
+                    </div>
+                    <!-- Quick Keywords Suggestions -->
+                    <div class="hidden sm:flex space-x-3 text-[11px] text-white/90 mt-1 overflow-x-auto whitespace-nowrap">
+                        <button onclick="quickSearch('Kemeja Pria')" class="hover:underline">Kemeja Pria</button>
+                        <button onclick="quickSearch('Earbuds')" class="hover:underline font-bold text-yellow-300">Earbuds Bluetooth [Iklan Sponsor]</button>
+                        <button onclick="quickSearch('Skincare')" class="hover:underline">Skincare Korea</button>
+                        <button onclick="quickSearch('Smartwatch')" class="hover:underline">Smartwatch Promo</button>
+                        <button onclick="quickSearch('Air Fryer')" class="hover:underline">Air Fryer Digital</button>
+                    </div>
+                </div>
+
+                <!-- Shopping Cart Icon -->
+                <div class="relative flex-shrink-0">
+                    <button onclick="toggleCartDrawer()" class="relative p-2 text-white hover:opacity-90 focus:outline-none">
+                        <i class="fas fa-shopping-cart text-2xl sm:text-3xl"></i>
+                        <span id="cart-count" class="absolute top-0 right-0 bg-yellow-400 text-red-700 font-extrabold text-xs rounded-full w-5 h-5 flex items-center justify-center border border-white shadow">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification Drawer Dropdown -->
+    <div id="notif-modal" class="hidden absolute right-4 top-12 z-50 w-80 bg-white rounded-lg shadow-2xl border border-gray-200 text-xs overflow-hidden">
+        <div class="bg-gray-50 px-4 py-2 border-b font-bold text-gray-700 flex justify-between items-center">
+            <span>Notifikasi Terbaru</span>
+            <button onclick="toggleNotifications()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="max-h-64 overflow-y-auto divide-y divide-gray-100">
+            <div class="p-3 bg-blue-50 hover:bg-blue-100 transition cursor-pointer flex gap-3" onclick="openSellerAdsModal()">
+                <i class="fas fa-chart-line text-blue-600 text-lg mt-1"></i>
+                <div>
+                    <p class="font-semibold text-gray-800">Laporan Shopee Ads Hari Ini</p>
+                    <p class="text-gray-600">Iklan Anda menghasilkan 1.450 klik baru & 12 transaksi hari ini!</p>
+                    <span class="text-[10px] text-blue-500 font-bold">5 menit yang lalu</span>
+                </div>
+            </div>
+            <div class="p-3 bg-orange-50 hover:bg-orange-100 transition cursor-pointer flex gap-3">
+                <i class="fas fa-truck-fast text-shopee text-lg mt-1"></i>
+                <div>
+                    <p class="font-semibold text-gray-800">Pesanan Dalam Pengiriman</p>
+                    <p class="text-gray-600">Paket Sepatu Sneakers Pria sedang dibawa oleh kurir J&T.</p>
+                    <span class="text-[10px] text-gray-400">10 menit yang lalu</span>
+                </div>
+            </div>
+            <div class="p-3 hover:bg-gray-50 transition cursor-pointer flex gap-3" onclick="openPromoAdModal()">
+                <i class="fas fa-bullhorn text-yellow-600 text-lg mt-1"></i>
+                <div>
+                    <p class="font-semibold text-gray-800">Voucher Iklan Sponsor Baru!</p>
+                    <p class="text-gray-600">Klaim Voucher Diskon Rp25.000 untuk Produk Beriklan.</p>
+                    <span class="text-[10px] text-gray-400">30 menit yang lalu</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-2 sm:px-4 py-4 w-full flex-grow space-y-4">
+
+        <!-- SECTION 1: HERO CAROUSEL & BANNERS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3">
+            <!-- Main Banner Carousel (2 cols) -->
+            <div class="md:col-span-2 relative rounded-md overflow-hidden shadow group min-h-[200px] sm:min-h-[250px] bg-slate-800">
+                <div id="carousel-images" class="w-full h-full relative cursor-pointer" onclick="openPromoAdModal()">
+                    <img id="banner-img" src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover transition-opacity duration-500" alt="Promo Carousel Banner">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 text-white">
+                        <span class="bg-red-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded w-max uppercase tracking-wider mb-1 shadow">PROMO SPONSOR REKASAMI</span>
+                        <h2 id="banner-title" class="text-xl sm:text-2xl font-black">DISKON HINGGA 90% + GRATIS ONGKIR XTRA</h2>
+                        <p id="banner-sub" class="text-xs sm:text-sm opacity-90">Klik banner ini untuk klaim voucher iklan sponsor terbatas!</p>
+                    </div>
+                </div>
+                <!-- Carousel Navigation -->
+                <button onclick="prevBanner()" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="nextBanner()" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/70 transition"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <!-- Side Small Banners / Sponsor Ads (1 col) -->
+            <div class="hidden md:flex flex-col justify-between gap-2">
+                <div onclick="openPromoAdModal()" class="relative rounded-md overflow-hidden shadow flex-1 bg-purple-900 group cursor-pointer border border-yellow-300/40">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="Side Banner 1">
+                    <div class="absolute top-2 right-2 bg-black/60 text-yellow-300 text-[9px] px-1.5 py-0.5 rounded uppercase font-bold tracking-wider">IKLAN</div>
+                    <div class="absolute inset-0 bg-black/30 p-3 flex flex-col justify-between text-white">
+                        <span class="bg-yellow-400 text-black text-[10px] font-bold px-1.5 py-0.5 rounded w-max">GADGET SPONSOR</span>
+                        <div>
+                            <p class="font-bold text-sm">Smartwatch & Audio HIFI</p>
+                            <p class="text-[11px] text-yellow-300">Cashback s/d 500rb - Klik Sekarang</p>
+                        </div>
+                    </div>
+                </div>
+                <div onclick="openSellerAdsModal()" class="relative rounded-md overflow-hidden shadow flex-1 bg-blue-900 group cursor-pointer border border-blue-400">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-indigo-800 p-3 flex flex-col justify-between text-white">
+                        <div class="flex justify-between items-start">
+                            <span class="bg-white text-blue-700 text-[10px] font-extrabold px-1.5 py-0.5 rounded">SHOPEE ADS FOR SELLER</span>
+                            <span class="text-[9px] bg-blue-900/80 px-1 rounded text-blue-200">Mitra Toko</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-sm text-yellow-300"><i class="fas fa-chart-line mr-1"></i> Ingin Produkmu Paling Atas?</p>
+                            <p class="text-[11px] text-blue-100">Pasang Iklan Toko mulai Rp10.000/hari & tingkatkan omzet!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Access Feature Icons -->
+        <div class="bg-white rounded-md p-3 sm:p-4 shadow-sm border border-gray-100 grid grid-cols-5 sm:grid-cols-10 gap-2 text-center text-xs">
+            <div onclick="filterCategory('Semua')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-red-50 text-shopee flex items-center justify-center text-lg shadow-sm border border-red-100 group-hover:scale-110 transition"><i class="fas fa-border-all"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Semua</span>
+            </div>
+            <div onclick="filterCategory('Elektronik')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg shadow-sm border border-blue-100 group-hover:scale-110 transition"><i class="fas fa-laptop"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Elektronik</span>
+            </div>
+            <div onclick="filterCategory('Fashion Pria')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-lg shadow-sm border border-amber-100 group-hover:scale-110 transition"><i class="fas fa-tshirt"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Fashion Pria</span>
+            </div>
+            <div onclick="filterCategory('Fashion Wanita')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center text-lg shadow-sm border border-pink-100 group-hover:scale-110 transition"><i class="fas fa-female"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Fashion Wanita</span>
+            </div>
+            <div onclick="filterCategory('Kecantikan')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg shadow-sm border border-purple-100 group-hover:scale-110 transition"><i class="fas fa-sparkles"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Kecantikan</span>
+            </div>
+            <div onclick="filterCategory('Handphone')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg shadow-sm border border-emerald-100 group-hover:scale-110 transition"><i class="fas fa-mobile-screen-button"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Handphone</span>
+            </div>
+            <div onclick="filterCategory('Sepatu & Tas')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-lg shadow-sm border border-indigo-100 group-hover:scale-110 transition"><i class="fas fa-shoe-prints"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Sepatu & Tas</span>
+            </div>
+            <div onclick="filterCategory('Makanan')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center text-lg shadow-sm border border-orange-100 group-hover:scale-110 transition"><i class="fas fa-burger"></i></div>
+                <span class="text-[11px] font-medium group-hover:text-shopee">Makanan</span>
+            </div>
+            <div onclick="setTab('iklan')" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg shadow-sm border border-blue-200 group-hover:scale-110 transition relative">
+                    <i class="fas fa-rectangle-ad"></i>
+                    <span class="absolute -top-1 -right-1 bg-yellow-400 text-[8px] font-extrabold px-1 rounded-full text-black">ADS</span>
+                </div>
+                <span class="text-[11px] font-bold text-blue-700">Produk Iklan</span>
+            </div>
+            <div onclick="showFlashSale()" class="flex flex-col items-center gap-1.5 cursor-pointer group">
+                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center text-lg shadow-sm border border-red-200 group-hover:scale-110 transition animate-pulse"><i class="fas fa-bolt"></i></div>
+                <span class="text-[11px] font-bold text-shopee">Flash Sale</span>
+            </div>
+        </div>
+
+        <!-- SECTION 2: FLASH SALE WIDGET -->
+        <div id="flash-sale-section" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden">
+            <!-- Flash Sale Header -->
+            <div class="p-3 sm:p-4 bg-gradient-to-r from-red-50 via-orange-50 to-white border-b flex flex-wrap items-center justify-between gap-2">
+                <div class="flex items-center space-x-3">
+                    <span class="font-black text-xl italic tracking-wider text-shopee flex items-center">
+                        <i class="fas fa-bolt text-yellow-400 mr-1 animate-bounce"></i> FLASH SALE
+                    </span>
+                    <!-- Countdown Timer -->
+                    <div class="flex items-center space-x-1 text-xs font-bold text-white">
+                        <span id="timer-hours" class="bg-black px-1.5 py-1 rounded">02</span> :
+                        <span id="timer-minutes" class="bg-black px-1.5 py-1 rounded">45</span> :
+                        <span id="timer-seconds" class="bg-black px-1.5 py-1 rounded">18</span>
+                    </div>
+                </div>
+                <a href="#products-grid" class="text-xs text-shopee font-semibold hover:underline flex items-center">
+                    Lihat Semua <i class="fas fa-chevron-right text-[10px] ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Horizontal Scrollable Flash Sale Items -->
+            <div id="flash-sale-container" class="p-3 flex space-x-3 overflow-x-auto hide-scrollbar">
+                <!-- Dynamic injection via Javascript -->
+            </div>
+        </div>
+
+        <!-- SPONSORED FEATURE BANNER (In-Feed Interactive Ad) -->
+        <div class="bg-gradient-to-r from-indigo-900 via-blue-800 to-indigo-950 rounded-lg p-4 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-4 border border-blue-400/30">
+            <div class="flex items-center space-x-4">
+                <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-yellow-300 text-3xl flex-shrink-0 border border-white/20">
+                    <i class="fas fa-award"></i>
+                </div>
+                <div>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-yellow-400 text-black text-[10px] font-black px-1.5 py-0.5 rounded uppercase tracking-wider">IKLAN SPONSOR BRAND</span>
+                        <span class="text-xs text-blue-200">Verified Official Store</span>
+                    </div>
+                    <h3 class="font-extrabold text-base sm:text-lg text-white">Diskon Spesial Mitra Resmi Toko Online</h3>
+                    <p class="text-xs text-blue-100">Dapatkan Ekstra Cashback 50% & Vouchernya Sekarang!</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-2 flex-shrink-0 w-full md:w-auto">
+                <button onclick="openPromoAdModal()" class="w-full md:w-auto bg-yellow-400 hover:bg-yellow-300 text-slate-900 font-extrabold px-5 py-2.5 rounded text-xs transition shadow flex items-center justify-center space-x-2">
+                    <i class="fas fa-ticket"></i>
+                    <span>Klaim Promo Iklan</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- SECTION 3: REKOMENDASI UTAMA & PRODUCTS GRID -->
+        <div id="products-grid" class="bg-white rounded-md shadow-sm border border-gray-100 overflow-hidden">
+            <!-- Tabs Bar -->
+            <div class="border-b bg-gray-50 flex overflow-x-auto text-sm font-semibold">
+                <button onclick="setTab('all')" id="tab-all" class="px-5 py-3 border-b-2 border-shopee text-shopee bg-white whitespace-nowrap focus:outline-none">REKOMENDASI</button>
+                <button onclick="setTab('iklan')" id="tab-iklan" class="px-5 py-3 border-b-2 border-transparent text-gray-600 hover:text-shopee whitespace-nowrap focus:outline-none flex items-center">
+                    <i class="fas fa-bullhorn text-xs text-blue-600 mr-1.5"></i> PRODUK BERIKLAN
+                </button>
+                <button onclick="setTab('mall')" id="tab-mall" class="px-5 py-3 border-b-2 border-transparent text-gray-600 hover:text-shopee whitespace-nowrap focus:outline-none">SHOPEE MALL</button>
+                <button onclick="setTab('diskon')" id="tab-diskon" class="px-5 py-3 border-b-2 border-transparent text-gray-600 hover:text-shopee whitespace-nowrap focus:outline-none">DISKON BIKIN NAGIH</button>
+                <button onclick="setTab('terlaris')" id="tab-terlaris" class="px-5 py-3 border-b-2 border-transparent text-gray-600 hover:text-shopee whitespace-nowrap focus:outline-none">SERBA TERLARIS</button>
+            </div>
+
+            <!-- Sorting & Filter Control Bar -->
+            <div class="p-3 bg-gray-50 border-b flex flex-wrap justify-between items-center text-xs gap-2">
+                <div class="flex items-center space-x-2 flex-wrap gap-y-2">
+                    <span class="text-gray-500 font-medium">Urutkan:</span>
+                    <button onclick="sortProducts('terkait')" id="sort-terkait" class="px-3 py-1.5 rounded bg-shopee text-white font-medium sort-btn shadow-sm">Terkait</button>
+                    <button onclick="sortProducts('terbaru')" id="sort-terbaru" class="px-3 py-1.5 rounded bg-white text-gray-700 border hover:bg-gray-100 sort-btn">Terbaru</button>
+                    <button onclick="sortProducts('terjual')" id="sort-terjual" class="px-3 py-1.5 rounded bg-white text-gray-700 border hover:bg-gray-100 sort-btn">Terlaris</button>
+                    <select id="price-sort" onchange="sortProducts(this.value)" class="px-3 py-1.5 rounded bg-white border text-gray-700 focus:outline-none">
+                        <option value="">Harga</option>
+                        <option value="low-high">Harga: Rendah ke Tinggi</option>
+                        <option value="high-low">Harga: Tinggi ke Rendah</option>
+                    </select>
+                </div>
+                <div class="text-gray-500 text-xs">
+                    Menampilkan <span id="product-count" class="font-bold text-gray-800">0</span> produk
+                </div>
+            </div>
+
+            <!-- Products Grid Container -->
+            <div id="main-products-container" class="p-2 sm:p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 min-h-[400px]">
+                <!-- Dynamic injection via Javascript -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FLOATING SPONSORED VIDEO BANNER AD (NEW FEATURE) -->
+    <div id="floating-ad-banner" class="fixed bottom-4 left-4 z-40 max-w-xs sm:max-w-sm w-full bg-slate-900 text-white rounded-xl shadow-2xl border-2 border-yellow-400 overflow-hidden animate-slide-up transition-all">
+        <div class="bg-gradient-to-r from-yellow-500 to-amber-600 p-2 text-slate-950 font-black text-xs flex justify-between items-center">
+            <span class="flex items-center space-x-1 uppercase tracking-wider">
+                <i class="fas fa-play-circle text-sm animate-pulse"></i>
+                <span>Iklan Sponsor Pilihan</span>
+            </span>
+            <button onclick="closeFloatingAd()" class="text-slate-900 hover:text-red-900 font-bold text-sm bg-white/40 hover:bg-white px-1.5 py-0.5 rounded">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-3 flex items-center space-x-3">
+            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=300" class="w-16 h-16 object-cover rounded-lg border border-yellow-400 flex-shrink-0" alt="Sponsor Ad">
+            <div class="text-xs space-y-1">
+                <span class="bg-yellow-400 text-slate-950 text-[9px] font-black px-1 rounded uppercase">SPONSORED BRAND</span>
+                <p class="font-bold text-white line-clamp-1">Wireless Earbuds TWS HiFi Stereo</p>
+                <p class="text-yellow-300 font-extrabold">Rp129.000 <span class="line-through text-gray-400 font-normal text-[10px]">Rp350.000</span></p>
+                <div class="flex items-center space-x-2 pt-1">
+                    <button onclick="openProductModal(2); trackAdClick('Floating Ad Banner');" class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black px-2.5 py-1 rounded text-[10px] shadow uppercase">
+                        Beli Sekarang
+                    </button>
+                    <span class="text-[9px] text-gray-400">Garansi Reseller</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART DRAWER / MODAL -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 flex justify-end">
+        <div id="cart-drawer-content" class="w-full max-w-md bg-white h-full shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+            <!-- Header -->
+            <div class="p-4 shopee-gradient text-white flex justify-between items-center shadow">
+                <h3 class="font-bold text-lg flex items-center"><i class="fas fa-shopping-cart mr-2"></i> Keranjang Belanja</h3>
+                <button onclick="toggleCartDrawer()" class="text-white hover:text-gray-200 text-xl font-bold"><i class="fas fa-times"></i></button>
+            </div>
+
+            <!-- Cart Items List -->
+            <div id="cart-items-list" class="flex-1 overflow-y-auto p-4 space-y-3 divide-y divide-gray-100">
+                <!-- Dynamic injection -->
+            </div>
+
+            <!-- Voucher Box inside Cart -->
+            <div class="p-3 bg-orange-50 border-t border-b border-orange-200 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-2 text-shopee font-semibold">
+                    <i class="fas fa-ticket-simple text-base"></i>
+                    <span>Voucher Shopee / Promo Iklan Applied</span>
+                </div>
+                <span class="bg-red-500 text-white font-bold px-2 py-0.5 rounded text-[10px]">Gratis Ongkir Xtra</span>
+            </div>
+
+            <!-- Footer Summary -->
+            <div class="p-4 bg-gray-50 border-t space-y-3">
+                <div class="space-y-1 text-xs">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal Produk:</span>
+                        <span id="cart-subtotal" class="font-semibold text-gray-800">Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Diskon Voucher Iklan:</span>
+                        <span id="cart-discount" class="font-semibold text-green-600">-Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-bold text-gray-900 pt-2 border-t">
+                        <span>Total Pembayaran:</span>
+                        <span id="cart-total" class="text-shopee text-lg">Rp0</span>
+                    </div>
+                </div>
+                <button onclick="proceedToCheckout()" class="w-full bg-shopee hover:bg-shopee-dark text-white font-bold py-3 rounded text-sm uppercase tracking-wider shadow-md transition">
+                    Checkout Sekarang
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="product-modal" class="fixed inset-0 z-50 bg-black/60 hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-lg max-w-3xl w-full overflow-hidden shadow-2xl relative my-8 max-h-[90vh] flex flex-col">
+            <button onclick="closeProductModal()" class="absolute top-3 right-3 z-10 bg-gray-800/50 hover:bg-gray-800 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="overflow-y-auto p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Product Gallery -->
+                <div class="space-y-3">
+                    <div class="aspect-square rounded-lg overflow-hidden border bg-gray-100 relative">
+                        <img id="modal-img" src="" class="w-full h-full object-cover" alt="Detail Gambar Produk">
+                        <span id="modal-ad-tag" class="hidden absolute top-2 left-2 bg-yellow-400 text-slate-900 text-[10px] font-black px-2 py-0.5 rounded shadow uppercase">Produk Beriklan Sponsor</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <span class="bg-red-100 text-shopee text-xs font-bold px-2 py-1 rounded"><i class="fas fa-shield-halved mr-1"></i> Garansi 100% Ori</span>
+                        <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded"><i class="fas fa-truck-fast mr-1"></i> Bebas Ongkir</span>
+                    </div>
+                </div>
+
+                <!-- Product Info & Action -->
+                <div class="flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span id="modal-badge" class="bg-shopee text-white text-[10px] font-bold px-1.5 py-0.5 rounded">Star+</span>
+                            <span id="modal-category" class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Elektronik</span>
+                        </div>
+                        <h2 id="modal-title" class="text-lg sm:text-xl font-bold text-gray-800 line-clamp-2 mb-2">Nama Produk</h2>
+                        
+                        <div class="flex items-center space-x-3 text-xs mb-3">
+                            <div class="flex items-center text-yellow-500">
+                                <span id="modal-rating" class="font-bold mr-1">4.8</span>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star text-xs"></i>
+                                <i class="fas fa-star-half-alt text-xs"></i>
+                            </div>
+                            <span class="text-gray-300">|</span>
+                            <span class="text-gray-600"><span id="modal-sold" class="font-semibold">1.2rb</span> Terjual</span>
+                        </div>
+
+                        <!-- Price Box -->
+                        <div class="bg-orange-50 p-3 rounded-lg mb-4 flex items-baseline space-x-3">
+                            <span id="modal-price" class="text-2xl sm:text-3xl font-extrabold text-shopee">Rp0</span>
+                            <span id="modal-oldprice" class="text-xs text-gray-400 line-through">Rp0</span>
+                            <span id="modal-discount" class="bg-shopee text-white text-[10px] font-bold px-1 rounded">-0%</span>
+                        </div>
+
+                        <!-- Description -->
+                        <p id="modal-desc" class="text-xs text-gray-600 leading-relaxed mb-4">
+                            Deskripsi singkat produk akan ditampilkan di sini. Kualitas terjamin original dengan garansi resmi.
+                        </p>
+
+                        <!-- Quantity Selector -->
+                        <div class="flex items-center space-x-4 mb-6">
+                            <span class="text-xs font-bold text-gray-600">Kuantitas:</span>
+                            <div class="flex items-center border rounded">
+                                <button onclick="updateModalQty(-1)" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold">-</button>
+                                <span id="modal-qty" class="px-4 py-1 text-xs font-bold">1</span>
+                                <button onclick="updateModalQty(1)" class="px-3 py-1 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold">+</button>
+                            </div>
+                            <span class="text-[11px] text-gray-400">Stok Ready</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="grid grid-cols-2 gap-3 pt-3 border-t">
+                        <button onclick="addCurrentModalToCart()" class="bg-orange-100 border border-shopee text-shopee hover:bg-orange-200 font-bold py-2.5 rounded text-xs flex items-center justify-center space-x-2 transition">
+                            <i class="fas fa-cart-plus"></i>
+                            <span>Masukkan Keranjang</span>
+                        </button>
+                        <button onclick="buyNowModal()" class="bg-shopee hover:bg-shopee-dark text-white font-bold py-2.5 rounded text-xs shadow transition">
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 bg-black/60 hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-lg max-w-2xl w-full overflow-hidden shadow-2xl relative my-6">
+            <div class="shopee-gradient text-white p-4 flex justify-between items-center">
+                <h3 class="font-bold text-base sm:text-lg flex items-center"><i class="fas fa-file-invoice-dollar mr-2"></i> Pengiriman & Pembayaran</h3>
+                <button onclick="closeCheckoutModal()" class="text-white hover:text-gray-200 font-bold text-lg"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="p-4 sm:p-6 space-y-4 max-h-[85vh] overflow-y-auto text-xs">
+                <!-- Address Box -->
+                <div class="p-3 bg-amber-50 border border-amber-200 rounded-md">
+                    <div class="flex justify-between font-bold text-gray-800 mb-1">
+                        <span class="flex items-center text-shopee"><i class="fas fa-location-dot mr-1.5"></i> Alamat Pengiriman</span>
+                        <button class="text-blue-600 hover:underline">Ubah</button>
+                    </div>
+                    <p class="font-semibold text-gray-800">Budi Santoso (+62 812-3456-7890)</p>
+                    <p class="text-gray-600">Jl. Telekomunikasi No. 1, Sukapura, Kec. Dayeuhkolot, Kabupaten Bandung, Jawa Barat 40257</p>
+                </div>
+
+                <!-- Shipping Method Box -->
+                <div class="p-3 border rounded-md bg-gray-50 space-y-2">
+                    <span class="font-bold text-gray-700 block">Opsi Pengiriman:</span>
+                    <label class="flex items-center justify-between p-2 bg-white rounded border cursor-pointer">
+                        <div class="flex items-center space-x-2">
+                            <input type="radio" name="shipping" checked class="accent-shopee">
+                            <div>
+                                <span class="font-bold">Reguler (J&T Express / Shopee Express)</span>
+                                <p class="text-gray-500 text-[10px]">Estimasi tiba 1 - 3 hari lagi</p>
+                            </div>
+                        </div>
+                        <span class="font-bold text-shopee">Rp10.000 <span class="line-through text-gray-400 font-normal">Rp20.000</span></span>
+                    </label>
+                </div>
+
+                <!-- Payment Options -->
+                <div class="space-y-2">
+                    <span class="font-bold text-gray-700 block">Metode Pembayaran:</span>
+                    <div class="grid grid-cols-2 gap-2">
+                        <label class="p-2 border rounded flex items-center space-x-2 cursor-pointer hover:border-shopee bg-white">
+                            <input type="radio" name="payment" value="ShopeePay" checked class="accent-shopee">
+                            <span class="font-semibold"><i class="fas fa-wallet text-shopee mr-1"></i> ShopeePay</span>
+                        </label>
+                        <label class="p-2 border rounded flex items-center space-x-2 cursor-pointer hover:border-shopee bg-white">
+                            <input type="radio" name="payment" value="Transfer Bank BCA" class="accent-shopee">
+                            <span class="font-semibold"><i class="fas fa-building-columns text-blue-600 mr-1"></i> Transfer BCA</span>
+                        </label>
+                        <label class="p-2 border rounded flex items-center space-x-2 cursor-pointer hover:border-shopee bg-white">
+                            <input type="radio" name="payment" value="COD (Bayar di Tempat)" class="accent-shopee">
+                            <span class="font-semibold"><i class="fas fa-hand-holding-dollar text-green-600 mr-1"></i> COD (Bayar di Tempat)</span>
+                        </label>
+                        <label class="p-2 border rounded flex items-center space-x-2 cursor-pointer hover:border-shopee bg-white">
+                            <input type="radio" name="payment" value="Indomaret / Alfamart" class="accent-shopee">
+                            <span class="font-semibold"><i class="fas fa-store text-red-600 mr-1"></i> Minimarket</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Rincian Pesanan -->
+                <div class="p-3 bg-gray-50 rounded-md border space-y-1.5">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Total Harga Barang:</span>
+                        <span id="checkout-subtotal" class="font-semibold">Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Total Ongkos Kirim:</span>
+                        <span class="font-semibold">Rp10.000</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Diskon Voucher Ongkir:</span>
+                        <span class="font-semibold text-green-600">-Rp10.000</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-extrabold text-gray-900 pt-2 border-t">
+                        <span>Total Pesanan:</span>
+                        <span id="checkout-total" class="text-shopee text-base">Rp0</span>
+                    </div>
+                </div>
+
+                <button onclick="placeOrder()" class="w-full bg-shopee hover:bg-shopee-dark text-white font-bold py-3 rounded uppercase text-sm shadow-lg transition">
+                    Buat Pesanan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORDER SUCCESS & TRACKING MODAL -->
+    <div id="order-success-modal" class="fixed inset-0 z-50 bg-black/70 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-lg max-w-md w-full p-6 text-center space-y-4 shadow-2xl relative">
+            <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl shadow">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Pesanan Berhasil Dibuat!</h3>
+            <p class="text-xs text-gray-600">Terima kasih telah berbelanja di Toko Online Terpercaya. Pesanan Anda sedang diproses oleh penjual.</p>
+            
+            <div class="bg-gray-50 p-3 rounded text-left text-xs space-y-2 border">
+                <div class="flex justify-between">
+                    <span class="text-gray-500">No. Pesanan:</span>
+                    <span class="font-mono font-bold text-shopee">TOT-2026-98741</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">Metode Pembayaran:</span>
+                    <span id="order-payment-method" class="font-semibold">ShopeePay</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">Status Pengiriman:</span>
+                    <span class="font-bold text-green-600"><i class="fas fa-box-archive mr-1"></i> Dikemas Penjual</span>
+                </div>
+            </div>
+
+            <button onclick="closeOrderSuccess()" class="w-full bg-shopee text-white font-bold py-2.5 rounded text-xs shadow hover:bg-shopee-dark transition">
+                Kembali Berbelanja
+            </button>
+        </div>
+    </div>
+
+    <!-- FITUR IKLAN 1: POP-UP PROMO IKLAN ADVERTISER MODAL -->
+    <div id="promo-ad-modal" class="fixed inset-0 z-50 bg-black/75 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl relative animate-pulse-subtle border-4 border-yellow-400">
+            <button onclick="closePromoAdModal()" class="absolute top-3 right-3 z-10 bg-black/60 hover:bg-black text-white rounded-full w-8 h-8 flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Ad Header Image -->
+            <div class="relative h-48 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 flex items-center justify-center text-white overflow-hidden p-6">
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div class="relative z-10 text-center space-y-1">
+                    <span class="bg-black/60 text-yellow-300 font-extrabold text-[10px] px-2 py-0.5 rounded tracking-widest uppercase">SPONSORED CAMPAIGN</span>
+                    <h2 class="text-2xl font-black tracking-tight text-white drop-shadow">MEGA BRAND SALE 2026</h2>
+                    <p class="text-xs text-yellow-100 font-semibold">Diskon Mitra Toko Hingga 90% + Voucher Ekstra!</p>
+                </div>
+            </div>
+
+            <!-- Ad Body -->
+            <div class="p-5 text-center space-y-4">
+                <div class="bg-orange-50 border border-dashed border-orange-300 p-3 rounded-xl flex items-center justify-between text-xs">
+                    <div class="text-left">
+                        <p class="font-bold text-shopee text-sm">VOUCHERIKLAN90</p>
+                        <p class="text-gray-500 text-[10px]">Potongan langsung Rp25.000 tanpa min. belanja</p>
+                    </div>
+                    <button onclick="claimAdVoucher()" id="claim-btn" class="bg-shopee hover:bg-shopee-dark text-white font-extrabold px-3 py-1.5 rounded-lg text-xs shadow">
+                        Klaim
+                    </button>
+                </div>
+
+                <p class="text-xs text-gray-500">Berlaku untuk semua produk bersponsor & Shopee Mall official store.</p>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="setTab('iklan'); closePromoAdModal();" class="w-full bg-slate-900 hover:bg-black text-white font-bold py-2.5 rounded-xl text-xs transition">
+                        Lihat Produk Iklan
+                    </button>
+                    <button onclick="closePromoAdModal()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2.5 rounded-xl text-xs transition">
+                        Nanti Saja
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FITUR IKLAN 2: SELLER ADS MANAGER MODAL (COMPLETE ADVERTISING DASHBOARD & TOP-UP) -->
+    <div id="seller-ads-modal" class="fixed inset-0 z-50 bg-black/70 hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+        <div class="bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl relative my-6 text-xs">
+            <!-- Modal Header -->
+            <div class="ad-gradient text-white p-4 flex justify-between items-center shadow">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-yellow-300 text-xl border border-white/20">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-black text-base tracking-wide">Shopee Ads Manager (Pusat Iklan Penjual)</h3>
+                        <p class="text-[11px] text-blue-200">Kelola kampanye iklan toko, kata kunci, & performa penjualan</p>
+                    </div>
+                </div>
+                <button onclick="closeSellerAdsModal()" class="text-white hover:text-gray-200 text-lg font-bold"><i class="fas fa-times"></i></button>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="p-4 sm:p-6 space-y-5 max-h-[80vh] overflow-y-auto">
+
+                <!-- Saldo Iklan & Top Up Box -->
+                <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-xl p-4 text-white shadow flex flex-col sm:flex-row items-center justify-between gap-4 border border-indigo-500/30">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-12 h-12 bg-yellow-400 text-slate-950 rounded-xl flex items-center justify-center text-2xl font-black">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div>
+                            <span class="text-gray-400 text-[10px] font-bold uppercase tracking-wider block">Saldo Iklan Toko Anda</span>
+                            <span id="seller-ad-balance-text" class="text-2xl font-black text-yellow-300">Rp250.000</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 w-full sm:w-auto">
+                        <button onclick="openTopUpModal()" class="w-full sm:w-auto bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-black px-4 py-2 rounded-lg text-xs transition shadow flex items-center justify-center space-x-1.5">
+                            <i class="fas fa-circle-plus"></i>
+                            <span>Isi Saldo Iklan</span>
+                        </button>
+                        <button onclick="simulateAdTraffic()" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold px-3 py-2 rounded-lg text-xs transition shadow flex items-center justify-center space-x-1">
+                            <i class="fas fa-bolt text-yellow-300"></i>
+                            <span>Simulasi Trafik</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Real-Time Ad Performance Metrics Analytics -->
+                <div>
+                    <h4 class="font-extrabold text-gray-800 text-xs mb-2 uppercase tracking-wider flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 mr-1.5"></i> Performa Iklan Berjalan (30 Hari Terakhir)
+                    </h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-center">
+                        <div class="bg-gray-50 border rounded-lg p-2.5">
+                            <span class="text-gray-500 text-[10px] block font-medium">Total Impresi</span>
+                            <span id="ad-stat-impressions" class="font-black text-base text-gray-800">48.250</span>
+                            <span class="text-[9px] text-green-600 font-bold block">↑ +18% minggu ini</span>
+                        </div>
+                        <div class="bg-gray-50 border rounded-lg p-2.5">
+                            <span class="text-gray-500 text-[10px] block font-medium">Total Klik</span>
+                            <span id="ad-stat-clicks" class="font-black text-base text-blue-600">3.410</span>
+                            <span class="text-[9px] text-blue-500 font-bold block">Avg. CPC Rp350</span>
+                        </div>
+                        <div class="bg-gray-50 border rounded-lg p-2.5">
+                            <span class="text-gray-500 text-[10px] block font-medium">CTR (Rasio Klik)</span>
+                            <span id="ad-stat-ctr" class="font-black text-base text-amber-600">7.07%</span>
+                            <span class="text-[9px] text-amber-600 font-bold block">Tinggi (Sangat Baik)</span>
+                        </div>
+                        <div class="bg-gray-50 border rounded-lg p-2.5">
+                            <span class="text-gray-500 text-[10px] block font-medium">Omzet dari Iklan</span>
+                            <span id="ad-stat-sales" class="font-black text-base text-shopee">Rp14.850.000</span>
+                            <span class="text-[9px] text-green-600 font-bold block">ROAS 12.5x</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Buat Kampanye Iklan Baru -->
+                <div class="border rounded-xl p-4 bg-gray-50 space-y-3">
+                    <h4 class="font-extrabold text-gray-800 text-sm flex items-center">
+                        <i class="fas fa-rocket text-blue-600 mr-2"></i> Buat Kampanye Iklan Baru
+                    </h4>
+
+                    <!-- Select Ad Type -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="font-extrabold text-gray-700 block mb-1">Tipe Iklan:</label>
+                            <select id="ad-type-select" class="w-full p-2 border rounded-lg bg-white font-semibold">
+                                <option value="Pencarian">Iklan Pencarian Kata Kunci</option>
+                                <option value="Produk Serupa">Iklan Produk Serupa (Rekomendasi)</option>
+                                <option value="Banner Halaman Utama">Iklan Banner High Impression</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="font-extrabold text-gray-700 block mb-1">Pilih Produk:</label>
+                            <select id="ad-product-select" class="w-full p-2 border rounded-lg bg-white font-semibold">
+                                <option value="1">Kemeja Polos Pria Lengan Panjang Premium</option>
+                                <option value="2">Wireless Earbuds TWS Bluetooth 5.3</option>
+                                <option value="3">Sepatu Sneaker Pria Sport Casual</option>
+                                <option value="6">Tas Ransel BackPack Canvas Laptop</option>
+                                <option value="10">Jam Tangan Pria Chronograph Quartz</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Budget & Bidding Config -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="font-bold text-gray-700 block mb-1">Anggaran Harian:</label>
+                            <select id="ad-budget" class="w-full p-2 border rounded bg-white font-semibold">
+                                <option value="10000">Rp10.000 / hari</option>
+                                <option value="25000" selected>Rp25.000 / hari (Rekomendasi)</option>
+                                <option value="50000">Rp50.000 / hari</option>
+                                <option value="100000">Rp100.000 / hari</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="font-bold text-gray-700 block mb-1">Mode Bidding CPC:</label>
+                            <select id="ad-bidding-mode" class="w-full p-2 border rounded bg-white font-semibold">
+                                <option value="Otomatis">Otomatis (Optimal)</option>
+                                <option value="Manual">Manual Bid (Maks Rp500/klik)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="font-bold text-gray-700 block mb-1">Target Kata Kunci:</label>
+                            <input type="text" id="ad-keywords" value="fashion pria, earbuds, promo" placeholder="Pisahkan dengan koma..." class="w-full p-2 border rounded bg-white">
+                        </div>
+                    </div>
+
+                    <button onclick="createAdCampaign()" class="w-full ad-gradient hover:opacity-95 text-white font-extrabold py-3 rounded-lg text-sm shadow-lg transition uppercase tracking-wider flex items-center justify-center space-x-2">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Aktifkan Kampanye Iklan Sekarang</span>
+                    </button>
+                </div>
+
+                <!-- Active Campaigns List -->
+                <div class="border rounded-xl p-3 bg-white space-y-2 shadow-sm">
+                    <span class="font-extrabold text-gray-800 block flex items-center justify-between">
+                        <span><i class="fas fa-list-check mr-1 text-blue-600"></i> Kampanye Iklan Aktif Toko Anda</span>
+                        <span id="active-ads-count" class="text-[10px] bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded">3 Kampanye Berjalan</span>
+                    </span>
+                    <div id="active-ads-list" class="space-y-1.5 text-[11px]">
+                        <!-- Dynamic list populated by JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP UP SALDO MODAL FOR SELLER -->
+    <div id="topup-ad-modal" class="fixed inset-0 z-50 bg-black/75 hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-xl max-w-sm w-full p-5 space-y-4 shadow-2xl relative">
+            <div class="flex justify-between items-center border-b pb-2">
+                <h3 class="font-extrabold text-sm text-gray-800 flex items-center">
+                    <i class="fas fa-coins text-yellow-500 mr-2"></i> Isi Saldo Iklan Toko
+                </h3>
+                <button onclick="closeTopUpModal()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="space-y-2">
+                <label class="font-bold text-xs text-gray-700 block">Pilih Nominal Saldo:</label>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <button onclick="selectTopUpAmount(50000)" class="topup-opt p-2.5 border rounded-lg font-extrabold hover:border-shopee hover:bg-orange-50 text-gray-800">Rp50.000</button>
+                    <button onclick="selectTopUpAmount(100000)" class="topup-opt p-2.5 border rounded-lg font-extrabold hover:border-shopee hover:bg-orange-50 text-gray-800">Rp100.000</button>
+                    <button onclick="selectTopUpAmount(250000)" class="topup-opt p-2.5 border border-shopee bg-orange-50 font-extrabold text-shopee">Rp250.000</button>
+                    <button onclick="selectTopUpAmount(500000)" class="topup-opt p-2.5 border rounded-lg font-extrabold hover:border-shopee hover:bg-orange-50 text-gray-800">Rp500.000</button>
+                </div>
+            </div>
+
+            <div class="space-y-1">
+                <label class="font-bold text-xs text-gray-700 block">Metode Pembayaran:</label>
+                <select id="topup-payment-method" class="w-full p-2 border rounded text-xs bg-gray-50 font-semibold">
+                    <option value="ShopeePay">ShopeePay Saldo Toko</option>
+                    <option value="Transfer BCA">Transfer BCA Virtual Account</option>
+                    <option value="Kartu Kredit">Kartu Kredit / Debit</option>
+                </select>
+            </div>
+
+            <button onclick="processTopUpAdSaldo()" class="w-full bg-shopee hover:bg-shopee-dark text-white font-black py-2.5 rounded-lg text-xs uppercase shadow transition">
+                Bayar Sekarang
+            </button>
+        </div>
+    </div>
+
+    <!-- FLOATING LIVE CHAT SELLER WIDGET -->
+    <div class="fixed bottom-4 right-4 z-40">
+        <button onclick="toggleChatWidget()" class="bg-shopee text-white p-3.5 rounded-full shadow-2xl hover:scale-105 transition flex items-center space-x-2">
+            <i class="fas fa-comments text-xl"></i>
+            <span class="font-bold text-xs hidden sm:inline">Chat Penjual</span>
+        </button>
+
+        <div id="chat-widget" class="hidden absolute bottom-14 right-0 w-80 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden flex flex-col h-96">
+            <div class="shopee-gradient text-white p-3 font-bold text-xs flex justify-between items-center">
+                <span class="flex items-center"><i class="fas fa-store mr-2"></i> CS Toko Online Terpercaya</span>
+                <button onclick="toggleChatWidget()" class="hover:text-gray-200"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-2 text-xs bg-gray-50">
+                <div class="bg-white p-2.5 rounded-lg border max-w-[80%] shadow-sm">
+                    Halo Kak! Selamat datang di Toko Online Terpercaya. Ada yang bisa kami bantu mengenai produk atau promo iklan hari ini?
+                </div>
+            </div>
+            <div class="p-2 bg-white border-t flex space-x-2">
+                <input type="text" id="chat-input" onkeypress="if(event.key==='Enter') sendChatMessage()" placeholder="Ketik pesan..." class="flex-1 border rounded px-2 py-1 text-xs focus:outline-none">
+                <button onclick="sendChatMessage()" class="bg-shopee text-white px-3 py-1 rounded text-xs font-bold hover:bg-shopee-dark"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast-container" class="fixed top-20 right-4 z-50 space-y-2 pointer-events-none"></div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-gray-200 text-xs text-gray-600 mt-10">
+        <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+                <h4 class="font-bold text-gray-800 mb-3 uppercase tracking-wider">Layanan Pelanggan</h4>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="hover:text-shopee">Bantuan</a></li>
+                    <li><a href="#" class="hover:text-shopee">Metode Pembayaran</a></li>
+                    <li><a href="#" class="hover:text-shopee">ShopeePay</a></li>
+                    <li><a href="#" class="hover:text-shopee">Lacak Pesanan Pembeli</a></li>
+                    <li><a href="#" class="hover:text-shopee">Garansi Toko Online</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-3 uppercase tracking-wider">Jelajahi Toko</h4>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="hover:text-shopee">Tentang Kami</a></li>
+                    <li><a href="#" onclick="openSellerAdsModal(); return false;" class="text-blue-600 font-bold hover:underline">Shopee Ads (Iklan Toko)</a></li>
+                    <li><a href="#" class="hover:text-shopee">Kebijakan Privasi</a></li>
+                    <li><a href="#" class="hover:text-shopee">Blog Promosi</a></li>
+                    <li><a href="#" class="hover:text-shopee">Flash Sale Hari Ini</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-3 uppercase tracking-wider">Pembayaran & Logistik</h4>
+                <div class="flex flex-wrap gap-2 text-xl text-gray-500">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fas fa-building-columns"></i>
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-gray-800 mb-3 uppercase tracking-wider">Download Aplikasi</h4>
+                <p class="text-gray-500 mb-2">Scan untuk unduh di PlayStore & AppStore</p>
+                <div class="flex items-center space-x-2">
+                    <div class="w-16 h-16 bg-gray-200 rounded p-1 flex items-center justify-center font-bold text-[10px] text-center border">
+                        QR CODE
+                    </div>
+                    <div class="space-y-1">
+                        <span class="block px-2 py-1 bg-gray-100 rounded text-[10px] font-semibold"><i class="fab fa-apple mr-1"></i> App Store</span>
+                        <span class="block px-2 py-1 bg-gray-100 rounded text-[10px] font-semibold"><i class="fab fa-google-play mr-1"></i> Google Play</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-100 py-4 text-center text-gray-500 text-[11px] border-t">
+            <p>&copy; 2026 Toko Online Terpercaya. Hak Cipta Dilindungi Undang-Undang.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // PRODUCTS DATASET (INCLUDING SPONSORED ADS DATA)
+        const products = [
+            {
+                id: 1,
+                name: "Kemeja Polos Pria Lengan Panjang Premium Material Cotton",
+                category: "Fashion Pria",
+                price: 79000,
+                oldPrice: 150000,
+                rating: 4.9,
+                sold: "2.4rb",
+                image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&q=80&w=500",
+                badge: "Star+",
+                isMall: false,
+                isFlashSale: true,
+                isSponsored: true,
+                flashSaleSoldPercent: 75,
+                location: "Kab. Bandung",
+                desc: "Kemeja casual formal dengan bahan cotton super adem, tidak mudah kusut, dan sangat nyaman dipakai sehari-hari."
+            },
+            {
+                id: 2,
+                name: "Wireless Earbuds TWS Bluetooth 5.3 Bass HIFI Stereo Touch Control",
+                category: "Elektronik",
+                price: 129000,
+                oldPrice: 350000,
+                rating: 4.8,
+                sold: "10.1rb",
+                image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=500",
+                badge: "Mall",
+                isMall: true,
+                isFlashSale: true,
+                isSponsored: true,
+                flashSaleSoldPercent: 92,
+                location: "Jakarta Barat",
+                desc: "Audio bass super dalam, tahan baterai hingga 24 jam dengan charging case. Anti air IPX5."
+            },
+            {
+                id: 3,
+                name: "Sepatu Sneaker Pria Sport Casual Ringan Anti Slip Running",
+                category: "Sepatu & Tas",
+                price: 185000,
+                oldPrice: 320000,
+                rating: 4.7,
+                sold: "5.8rb",
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=500",
+                badge: "Star+",
+                isMall: false,
+                isFlashSale: true,
+                isSponsored: false,
+                flashSaleSoldPercent: 60,
+                location: "Kota Tangerang",
+                desc: "Sneakers olahraga desain modern eropa. Sangat ringan dan empuk untuk jogging maupun gaya sehari-hari."
+            },
+            {
+                id: 4,
+                name: "Serum Wajah Hydrating & Brightening Glow Skin Care 30ml",
+                category: "Kecantikan",
+                price: 65000,
+                oldPrice: 110000,
+                rating: 4.9,
+                sold: "15.3rb",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=500",
+                badge: "Mall",
+                isMall: true,
+                isFlashSale: true,
+                isSponsored: true,
+                flashSaleSoldPercent: 88,
+                location: "Jakarta Selatan",
+                desc: "Formula Niacinamide & Hyaluronic Acid murni untuk mencerahkan flek dan melembabkan kulit seketika."
+            },
+            {
+                id: 5,
+                name: "Smartphone Android 5G Curved Display 256GB Camera 108MP",
+                category: "Handphone",
+                price: 2499000,
+                oldPrice: 3200000,
+                rating: 4.9,
+                sold: "850",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=500",
+                badge: "Mall",
+                isMall: true,
+                isFlashSale: false,
+                isSponsored: false,
+                location: "Jakarta Pusat",
+                desc: "Layar AMOLED 120Hz, Fast Charging 67W, Processor Snapdragon kencang untuk bermain game berat."
+            },
+            {
+                id: 6,
+                name: "Tas Ransel BackPack Canvas Water Resistant Laptop 15.6 Inch",
+                category: "Sepatu & Tas",
+                price: 145000,
+                oldPrice: 250000,
+                rating: 4.8,
+                sold: "3.2rb",
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&q=80&w=500",
+                badge: "Star+",
+                isMall: false,
+                isFlashSale: false,
+                isSponsored: false,
+                location: "Kota Surabaya",
+                desc: "Kapasitas luas dilengkapi slot khusus laptop dengan bantalan busa tebal dan USB port charger."
+            },
+            {
+                id: 7,
+                name: "Gaun Casual Dress Wanita Korean Style Vintage Flower Motif",
+                category: "Fashion Wanita",
+                price: 115000,
+                oldPrice: 199000,
+                rating: 4.7,
+                sold: "1.9rb",
+                image: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&q=80&w=500",
+                badge: "Star+",
+                isMall: false,
+                isFlashSale: false,
+                isSponsored: true,
+                location: "Kab. Sleman",
+                desc: "Outfit wanita elegan bermotif bunga kekinian. Bahan chiffon jatuh dan adem."
+            },
+            {
+                id: 8,
+                name: "Camilan Keripik Pedas Jeletot Daun Jeruk 250gr Super Renyah",
+                category: "Makanan",
+                price: 18000,
+                oldPrice: 30000,
+                rating: 4.9,
+                sold: "25.1rb",
+                image: "https://images.unsplash.com/photo-1566478989037-eec170784d0b?auto=format&fit=crop&q=80&w=500",
+                badge: "Star+",
+                isMall: false,
+                isFlashSale: true,
+                isSponsored: false,
+                flashSaleSoldPercent: 98,
+                location: "Kab. Garut",
+                desc: "Sensasi gurih renyah bumbu melimpah dengan aroma segar daun jeruk asli."
+            },
+            {
+                id: 9,
+                name: "Air Fryer Digital Touchscreen Low Watt 4.5 Liter Stainless",
+                category: "Elektronik",
+                price: 499000,
+                oldPrice: 899000,
+                rating: 4.9,
+                sold: "4.3rb",
+                image: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&fit=crop&q=80&w=500",
+                badge: "Mall",
+                isMall: true,
+                isFlashSale: true,
+                isSponsored: true,
+                flashSaleSoldPercent: 82,
+                location: "Jakarta Barat",
+                desc: "Menggoreng tanpa minyak, lebih sehat dengan teknologi sirkulasi udara panas 360 derajat. Hemat listrik."
+            },
+            {
+                id: 10,
+                name: "Jam Tangan Pria Chronograph Quartz Leather Strap Analog Luxury",
+                category: "Fashion Pria",
+                price: 215000,
+                oldPrice: 450000,
+                rating: 4.8,
+                sold: "3.7rb",
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=500",
+                badge: "Star+",
+                isMall: false,
+                isFlashSale: false,
+                isSponsored: true,
+                location: "Kota Medan",
+                desc: "Desain mewah elegan cocok untuk acara formal dan kasual. Tahan air 30M dan kaca anti gores."
+            }
+        ];
+
+        // GLOBAL APP STATE & SELLER ADS METRICS STATE
+        let cart = [];
+        let currentCategory = 'Semua';
+        let currentTab = 'all';
+        let currentSort = 'terkait';
+        let searchQuery = '';
+        let modalQty = 1;
+        let currentModalProduct = null;
+        let bannerIndex = 0;
+        let isAdVoucherClaimed = false;
+        let selectedTopUpAmount = 250000;
+
+        // Seller Ads State
+        let sellerAdBalance = 250000;
+        let adMetrics = {
+            impressions: 48250,
+            clicks: 3410,
+            sales: 14850000
+        };
+
+        let activeAdCampaigns = [
+            { id: 101, name: "Kemeja Polos Pria Premium", type: "Iklan Pencarian", budget: 25000, clicks: 1420, status: "Aktif" },
+            { id: 102, name: "Wireless Earbuds TWS Bluetooth", type: "Produk Serupa", budget: 50000, clicks: 3850, status: "Aktif" },
+            { id: 103, name: "Serum Wajah Brightening Glow", type: "Banner Utama", budget: 100000, clicks: 890, status: "Aktif" }
+        ];
+
+        const banners = [
+            {
+                title: "DISKON SPONSORED HINGGA 90% + GRATIS ONGKIR",
+                sub: "Klik banner ini untuk klaim voucher iklan sponsor terbatas!",
+                img: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&q=80&w=1200"
+            },
+            {
+                title: "SHOPEE ADS MEGA BRAND SALE 2026",
+                sub: "Promo produk pilihan dari Official Stores Terpercaya!",
+                img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=1200"
+            }
+        ];
+
+        // INITIALIZATION
+        window.onload = function() {
+            renderFlashSale();
+            renderProducts();
+            renderActiveAdCampaigns();
+            startCountdownTimer();
+            startBannerCarousel();
+            
+            // Auto open promo ad popup after 2 seconds
+            setTimeout(() => {
+                openPromoAdModal();
+            }, 2000);
+        };
+
+        // RENDER PRODUCTS GRID WITH AD SPONSOR BADGES
+        function renderProducts() {
+            const container = document.getElementById('main-products-container');
+            if (!container) return;
+
+            let filtered = products.filter(p => {
+                const matchCategory = currentCategory === 'Semua' || p.category === currentCategory;
+                const matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                    p.category.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                let matchTab = true;
+                if (currentTab === 'iklan') matchTab = p.isSponsored;
+                else if (currentTab === 'mall') matchTab = p.isMall;
+                else if (currentTab === 'diskon') matchTab = (p.oldPrice && p.price < p.oldPrice);
+                else if (currentTab === 'terlaris') matchTab = parseInt(p.sold) > 2;
+
+                return matchCategory && matchSearch && matchTab;
+            });
+
+            // Sorting Logic
+            if (currentSort === 'terbaru') {
+                filtered.sort((a, b) => b.id - a.id);
+            } else if (currentSort === 'terjual') {
+                filtered.sort((a, b) => parseFloat(b.sold) - parseFloat(a.sold));
+            } else if (currentSort === 'low-high') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (currentSort === 'high-low') {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            document.getElementById('product-count').innerText = filtered.length;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-gray-500">
+                        <i class="fas fa-box-open text-5xl mb-3 text-gray-300"></i>
+                        <p class="font-bold text-sm">Produk tidak ditemukan</p>
+                        <p class="text-xs">Coba kata kunci atau kategori pencarian lain.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map((p, idx) => {
+                const discount = p.oldPrice ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+                
+                // Inject an In-Feed Advertisement Banner after 3rd item
+                const showInFeedAd = idx === 3 && currentTab === 'all';
+
+                return `
+                    ${showInFeedAd ? `
+                        <div onclick="openSellerAdsModal()" class="col-span-2 sm:col-span-3 md:col-span-4 lg:col-span-6 ad-card-gradient text-white rounded-xl p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-3 border border-yellow-400/50 cursor-pointer my-1">
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-yellow-400 text-slate-950 font-black text-xs p-3 rounded-xl shadow"><i class="fas fa-bullhorn text-xl"></i></div>
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <span class="bg-yellow-400 text-slate-900 text-[9px] font-black px-1.5 py-0.5 rounded uppercase">IKLAN SPONSOR SELLER</span>
+                                        <span class="text-xs text-blue-200">Shopee Ads Merchant</span>
+                                    </div>
+                                    <p class="font-black text-base text-yellow-300">Ingin Produk Tokomu Tampil di Posisi Teratas?</p>
+                                    <p class="text-xs text-gray-200">Tingkatkan omzet penjualan hingga 300% dengan Iklan Kata Kunci Shopee Ads.</p>
+                                </div>
+                            </div>
+                            <span class="bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-extrabold px-4 py-2.5 rounded-lg text-xs transition shadow flex-shrink-0 uppercase tracking-wider">
+                                Pasang Iklan Sekarang
+                            </span>
+                        </div>
+                    ` : ''}
+
+                    <div onclick="openProductModal(${p.id}); trackAdClick('${p.name}');" class="bg-white rounded-md border border-gray-100 hover:border-shopee hover:shadow-md transition duration-200 flex flex-col justify-between overflow-hidden cursor-pointer group relative">
+                        <div>
+                            <!-- Product Image Container -->
+                            <div class="relative aspect-square overflow-hidden bg-gray-50">
+                                <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" alt="${p.name}">
+                                
+                                <!-- Sponsored Ad Badge -->
+                                ${p.isSponsored ? `
+                                    <div class="absolute top-1.5 left-1.5 bg-black/75 backdrop-blur-sm text-yellow-300 text-[9px] font-black px-1.5 py-0.5 rounded flex items-center space-x-1 shadow border border-yellow-400/30">
+                                        <i class="fas fa-ad text-[8px]"></i>
+                                        <span>Iklan</span>
+                                    </div>
+                                ` : ''}
+
+                                <!-- Discount Badge -->
+                                ${discount > 0 ? `
+                                    <div class="absolute top-0 right-0 badge-discount text-red-700 font-extrabold text-[10px] px-1.5 py-1 text-center shadow-sm rounded-bl">
+                                        <div>${discount}%</div>
+                                        <div class="text-[8px] uppercase tracking-tighter">OFF</div>
+                                    </div>
+                                ` : ''}
+                            </div>
+
+                            <!-- Info -->
+                            <div class="p-2 space-y-1.5">
+                                <div class="flex items-center space-x-1">
+                                    <span class="bg-shopee text-white text-[9px] font-bold px-1 rounded">${p.badge}</span>
+                                    <span class="text-[10px] text-gray-500 font-medium truncate">${p.location}</span>
+                                </div>
+                                <h3 class="text-xs text-gray-800 line-clamp-2 leading-snug group-hover:text-shopee">${p.name}</h3>
+                            </div>
+                        </div>
+
+                        <div class="p-2 pt-0 space-y-1">
+                            <div class="flex items-baseline space-x-1">
+                                <span class="text-xs font-bold text-shopee">Rp${p.price.toLocaleString('id-ID')}</span>
+                            </div>
+                            <div class="flex items-center justify-between text-[10px] text-gray-500">
+                                <div class="flex items-center text-yellow-500">
+                                    <i class="fas fa-star text-[9px]"></i>
+                                    <span class="ml-0.5 text-gray-600 font-semibold">${p.rating}</span>
+                                </div>
+                                <span>${p.sold} terjual</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // RENDER FLASH SALE ITEMS
+        function renderFlashSale() {
+            const container = document.getElementById('flash-sale-container');
+            if (!container) return;
+
+            const flashItems = products.filter(p => p.isFlashSale);
+            container.innerHTML = flashItems.map(p => {
+                const discount = p.oldPrice ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+                return `
+                    <div onclick="openProductModal(${p.id}); trackAdClick('${p.name}');" class="flex-shrink-0 w-36 bg-white border border-gray-100 rounded-md overflow-hidden hover:shadow-md transition cursor-pointer group relative">
+                        <div class="relative aspect-square bg-gray-50">
+                            <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-105 transition" alt="${p.name}">
+                            ${p.isSponsored ? '<span class="absolute top-1 left-1 bg-black/70 text-yellow-300 text-[8px] font-black px-1 rounded">Iklan</span>' : ''}
+                            <span class="absolute top-0 right-0 badge-discount text-red-700 font-black text-[10px] px-1 py-0.5 rounded-bl">-${discount}%</span>
+                        </div>
+                        <div class="p-2 text-center space-y-1">
+                            <p class="text-xs font-extrabold text-shopee">Rp${p.price.toLocaleString('id-ID')}</p>
+                            <div class="w-full bg-red-100 rounded-full h-3 relative overflow-hidden">
+                                <div class="bg-shopee h-full rounded-full" style="width: ${p.flashSaleSoldPercent}%"></div>
+                                <span class="absolute inset-0 text-[8px] font-bold text-white flex items-center justify-center uppercase tracking-tighter">TERJUAL ${p.flashSaleSoldPercent}%</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // TRACK AD CLICKS & COST PER CLICK (CPC)
+        function trackAdClick(productName) {
+            if (sellerAdBalance >= 350) {
+                sellerAdBalance -= 350;
+                adMetrics.clicks += 1;
+                adMetrics.impressions += 12;
+                updateAdUI();
+            }
+        }
+
+        function updateAdUI() {
+            const formattedBalance = `Rp${sellerAdBalance.toLocaleString('id-ID')}`;
+            document.getElementById('header-ad-balance').innerText = formattedBalance;
+            document.getElementById('seller-ad-balance-text').innerText = formattedBalance;
+
+            document.getElementById('ad-stat-impressions').innerText = adMetrics.impressions.toLocaleString('id-ID');
+            document.getElementById('ad-stat-clicks').innerText = adMetrics.clicks.toLocaleString('id-ID');
+            
+            const ctr = ((adMetrics.clicks / adMetrics.impressions) * 100).toFixed(2);
+            document.getElementById('ad-stat-ctr').innerText = `${ctr}%`;
+        }
+
+        function simulateAdTraffic() {
+            adMetrics.impressions += Math.floor(Math.random() * 500) + 200;
+            adMetrics.clicks += Math.floor(Math.random() * 45) + 10;
+            adMetrics.sales += Math.floor(Math.random() * 300000) + 100000;
+            if (sellerAdBalance >= 2000) sellerAdBalance -= 1750;
+            
+            updateAdUI();
+            showToast('Simulasi Trafik Iklan Berhasil! Impresi +450 & Klik +32', 'success');
+        }
+
+        function openTopUpModal() {
+            document.getElementById('topup-ad-modal').classList.remove('hidden');
+        }
+
+        function closeTopUpModal() {
+            document.getElementById('topup-ad-modal').classList.add('hidden');
+        }
+
+        function selectTopUpAmount(amount) {
+            selectedTopUpAmount = amount;
+            document.querySelectorAll('.topup-opt').forEach(btn => {
+                btn.className = "topup-opt p-2.5 border rounded-lg font-extrabold hover:border-shopee hover:bg-orange-50 text-gray-800";
+            });
+            event.target.className = "topup-opt p-2.5 border border-shopee bg-orange-50 font-extrabold text-shopee";
+        }
+
+        function processTopUpAdSaldo() {
+            sellerAdBalance += selectedTopUpAmount;
+            updateAdUI();
+            closeTopUpModal();
+            showToast(`Top Up Saldo Iklan Rp${selectedTopUpAmount.toLocaleString('id-ID')} Berhasil!`, 'success');
+        }
+
+        function setTab(tabName) {
+            currentTab = tabName;
+            ['all', 'iklan', 'mall', 'diskon', 'terlaris'].forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (btn) {
+                    if (t === tabName) {
+                        btn.className = "px-5 py-3 border-b-2 border-shopee text-shopee bg-white whitespace-nowrap focus:outline-none flex items-center font-bold";
+                    } else {
+                        btn.className = "px-5 py-3 border-b-2 border-transparent text-gray-600 hover:text-shopee whitespace-nowrap focus:outline-none flex items-center";
+                    }
+                }
+            });
+            renderProducts();
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            showToast(`Menampilkan kategori: ${category}`, 'info');
+            renderProducts();
+        }
+
+        function sortProducts(sortType) {
+            currentSort = sortType;
+            ['terkait', 'terbaru', 'terjual'].forEach(s => {
+                const btn = document.getElementById(`sort-${s}`);
+                if (btn) {
+                    if (s === sortType) {
+                        btn.className = "px-3 py-1.5 rounded bg-shopee text-white font-medium sort-btn shadow-sm";
+                    } else {
+                        btn.className = "px-3 py-1.5 rounded bg-white text-gray-700 border hover:bg-gray-100 sort-btn";
+                    }
+                }
+            });
+            renderProducts();
+        }
+
+        function handleSearch() {
+            searchQuery = document.getElementById('search-input').value;
+            renderProducts();
+        }
+
+        function triggerSearch() {
+            searchQuery = document.getElementById('search-input').value;
+            renderProducts();
+            showToast(`Mencari: ${searchQuery}`, 'info');
+        }
+
+        function quickSearch(keyword) {
+            document.getElementById('search-input').value = keyword;
+            searchQuery = keyword;
+            renderProducts();
+        }
+
+        function openProductModal(productId) {
+            const p = products.find(prod => prod.id === productId);
+            if (!p) return;
+
+            currentModalProduct = p;
+            modalQty = 1;
+
+            document.getElementById('modal-img').src = p.image;
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-category').innerText = p.category;
+            document.getElementById('modal-badge').innerText = p.badge;
+            document.getElementById('modal-rating').innerText = p.rating;
+            document.getElementById('modal-sold').innerText = p.sold;
+            document.getElementById('modal-price').innerText = `Rp${p.price.toLocaleString('id-ID')}`;
+            document.getElementById('modal-oldprice').innerText = p.oldPrice ? `Rp${p.oldPrice.toLocaleString('id-ID')}` : '';
+            document.getElementById('modal-desc').innerText = p.desc;
+            document.getElementById('modal-qty').innerText = modalQty;
+
+            const adTag = document.getElementById('modal-ad-tag');
+            if (p.isSponsored) {
+                adTag.classList.remove('hidden');
+            } else {
+                adTag.classList.add('hidden');
+            }
+
+            const discount = p.oldPrice ? Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100) : 0;
+            document.getElementById('modal-discount').innerText = `-${discount}%`;
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function updateModalQty(change) {
+            modalQty = Math.max(1, modalQty + change);
+            document.getElementById('modal-qty').innerText = modalQty;
+        }
+
+        function addCurrentModalToCart() {
+            if (!currentModalProduct) return;
+            addToCart(currentModalProduct.id, modalQty);
+            closeProductModal();
+        }
+
+        function buyNowModal() {
+            if (!currentModalProduct) return;
+            addToCart(currentModalProduct.id, modalQty);
+            closeProductModal();
+            toggleCartDrawer();
+        }
+
+        function addToCart(productId, qty = 1) {
+            const p = products.find(item => item.id === productId);
+            if (!p) return;
+
+            const existingIndex = cart.findIndex(item => item.id === productId);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += qty;
+            } else {
+                cart.push({ ...p, qty });
+            }
+
+            updateCartUI();
+            showToast(`${p.name.substring(0, 20)}... ditambahkan ke keranjang!`, 'success');
+        }
+
+        function updateCartQuantity(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const discount = isAdVoucherClaimed ? 25000 : 0;
+            const finalTotal = Math.max(0, subtotal - discount);
+
+            document.getElementById('cart-count').innerText = totalCount;
+            document.getElementById('cart-subtotal').innerText = `Rp${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('cart-discount').innerText = `-Rp${discount.toLocaleString('id-ID')}`;
+            document.getElementById('cart-total').innerText = `Rp${finalTotal.toLocaleString('id-ID')}`;
+
+            const list = document.getElementById('cart-items-list');
+            if (!list) return;
+
+            if (cart.length === 0) {
+                list.innerHTML = `
+                    <div class="py-12 text-center text-gray-400">
+                        <i class="fas fa-shopping-basket text-4xl mb-2"></i>
+                        <p class="text-xs">Keranjang belanja Anda masih kosong</p>
+                    </div>
+                `;
+                return;
+            }
+
+            list.innerHTML = cart.map((item, index) => `
+                <div class="pt-3 first:pt-0 flex gap-3 items-center">
+                    <img src="${item.image}" class="w-14 h-14 object-cover rounded border" alt="${item.name}">
+                    <div class="flex-1 text-xs space-y-1">
+                        <p class="font-semibold text-gray-800 line-clamp-1">${item.name}</p>
+                        <p class="font-bold text-shopee">Rp${item.price.toLocaleString('id-ID')}</p>
+                        <div class="flex items-center space-x-2">
+                            <div class="flex items-center border rounded">
+                                <button onclick="updateCartQuantity(${index}, -1)" class="px-2 py-0.5 bg-gray-100 font-bold text-gray-600">-</button>
+                                <span class="px-2 py-0.5 text-[11px] font-bold">${item.qty}</span>
+                                <button onclick="updateCartQuantity(${index}, 1)" class="px-2 py-0.5 bg-gray-100 font-bold text-gray-600">+</button>
+                            </div>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:underline text-[10px]"><i class="fas fa-trash"></i> Hapus</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const content = document.getElementById('cart-drawer-content');
+            if (drawer.classList.contains('pointer-events-none')) {
+                drawer.classList.remove('opacity-0', 'pointer-events-none');
+                content.classList.remove('translate-x-full');
+            } else {
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+                content.classList.add('translate-x-full');
+            }
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                showToast('Keranjang belanja Anda masih kosong!', 'error');
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const discount = isAdVoucherClaimed ? 25000 : 0;
+            const finalTotal = Math.max(0, subtotal - discount);
+
+            document.getElementById('checkout-subtotal').innerText = `Rp${subtotal.toLocaleString('id-ID')}`;
+            document.getElementById('checkout-total').innerText = `Rp${finalTotal.toLocaleString('id-ID')}`;
+
+            toggleCartDrawer();
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function placeOrder() {
+            const selectedPayment = document.querySelector('input[name="payment"]:checked')?.value || 'ShopeePay';
+            document.getElementById('order-payment-method').innerText = selectedPayment;
+            
+            closeCheckoutModal();
+            cart = [];
+            updateCartUI();
+
+            document.getElementById('order-success-modal').classList.remove('hidden');
+        }
+
+        function closeOrderSuccess() {
+            document.getElementById('order-success-modal').classList.add('hidden');
+        }
+
+        function openPromoAdModal() {
+            document.getElementById('promo-ad-modal').classList.remove('hidden');
+        }
+
+        function closePromoAdModal() {
+            document.getElementById('promo-ad-modal').classList.add('hidden');
+        }
+
+        function closeFloatingAd() {
+            document.getElementById('floating-ad-banner').classList.add('hidden');
+        }
+
+        function claimAdVoucher() {
+            isAdVoucherClaimed = true;
+            const btn = document.getElementById('claim-btn');
+            if (btn) {
+                btn.innerText = "Terklaim ✔";
+                btn.className = "bg-green-600 text-white font-extrabold px-3 py-1.5 rounded-lg text-xs shadow cursor-default";
+            }
+            updateCartUI();
+            showToast('Voucher Promo Iklan Rp25.000 berhasil diklaim!', 'success');
+        }
+
+        function openSellerAdsModal() {
+            document.getElementById('seller-ads-modal').classList.remove('hidden');
+        }
+
+        function closeSellerAdsModal() {
+            document.getElementById('seller-ads-modal').classList.add('hidden');
+        }
+
+        function renderActiveAdCampaigns() {
+            const list = document.getElementById('active-ads-list');
+            if (!list) return;
+
+            document.getElementById('active-ads-count').innerText = `${activeAdCampaigns.length} Kampanye Berjalan`;
+
+            list.innerHTML = activeAdCampaigns.map(ad => `
+                <div class="bg-white p-2.5 rounded-lg border flex justify-between items-center shadow-sm">
+                    <div>
+                        <p class="font-extrabold text-gray-800 text-xs">${ad.name}</p>
+                        <p class="text-gray-500 text-[10px]">${ad.type} • Budget: Rp${ad.budget.toLocaleString('id-ID')}/hr</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-green-600 font-black text-xs block">Aktif</span>
+                        <span class="text-[10px] text-gray-400 font-bold">${ad.clicks.toLocaleString('id-ID')} Klik</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function createAdCampaign() {
+            const type = document.getElementById('ad-type-select').value;
+            const prodId = parseInt(document.getElementById('ad-product-select').value);
+            const budget = parseInt(document.getElementById('ad-budget').value);
+            const selectedProd = products.find(p => p.id === prodId);
+
+            if (selectedProd) {
+                selectedProd.isSponsored = true;
+                
+                activeAdCampaigns.unshift({
+                    id: Date.now(),
+                    name: selectedProd.name.substring(0, 30) + "...",
+                    type: `Iklan ${type}`,
+                    budget: budget,
+                    clicks: 0,
+                    status: "Aktif"
+                });
+
+                renderActiveAdCampaigns();
+                renderProducts();
+
+                showToast(`Kampanye Iklan Berhasil Dibuat! Budget: Rp${budget.toLocaleString('id-ID')}/hari.`, 'success');
+            }
+        }
+
+        function startBannerCarousel() {
+            setInterval(() => {
+                nextBanner();
+            }, 5000);
+        }
+
+        function nextBanner() {
+            bannerIndex = (bannerIndex + 1) % banners.length;
+            updateBannerUI();
+        }
+
+        function prevBanner() {
+            bannerIndex = (bannerIndex - 1 + banners.length) % banners.length;
+            updateBannerUI();
+        }
+
+        function updateBannerUI() {
+            const img = document.getElementById('banner-img');
+            const title = document.getElementById('banner-title');
+            const sub = document.getElementById('banner-sub');
+            if (img && title && sub) {
+                img.src = banners[bannerIndex].img;
+                title.innerText = banners[bannerIndex].title;
+                sub.innerText = banners[bannerIndex].sub;
+            }
+        }
+
+        function startCountdownTimer() {
+            let hours = 2, minutes = 45, seconds = 18;
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) { seconds = 59; minutes--; }
+                if (minutes < 0) { minutes = 59; hours--; }
+                if (hours < 0) { hours = 24; }
+
+                document.getElementById('timer-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('timer-minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('timer-seconds').innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        function toggleNotifications() {
+            const modal = document.getElementById('notif-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function toggleChatWidget() {
+            const widget = document.getElementById('chat-widget');
+            widget.classList.toggle('hidden');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML += `
+                <div class="bg-shopee text-white p-2.5 rounded-lg border max-w-[80%] ml-auto shadow-sm">
+                    ${text}
+                </div>
+            `;
+            input.value = '';
+
+            setTimeout(() => {
+                chatMessages.innerHTML += `
+                    <div class="bg-white p-2.5 rounded-lg border max-w-[80%] shadow-sm">
+                        Terima kasih atas pesannya! Tim Customer Service kami siap melayani Anda secepatnya.
+                    </div>
+                `;
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showFlashSale() {
+            const sec = document.getElementById('flash-sale-section');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-slate-800';
+
+            toast.className = `${bgColor} text-white text-xs px-4 py-2.5 rounded-lg shadow-xl flex items-center space-x-2 transition-all duration-300 transform translate-y-2 pointer-events-auto`;
+            toast.innerHTML = `<i class="fas fa-circle-info text-sm"></i> <span>${message}</span>`;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', '-translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

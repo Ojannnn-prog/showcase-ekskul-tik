@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Beauty - Belanja Makeup & Kecantikan Lengkap</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        shopee: {
+                            orange: '#EE4D2D',
+                            darkorange: '#D73211',
+                            pink: '#FF4D8D',
+                            softpink: '#FFF0F5',
+                            gold: '#FFB800',
+                            bg: '#F5F5F5'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f48a9c;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ee4d2d;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .product-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(238, 77, 45, 0.15);
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.02); }
+        }
+        .flash-badge {
+            animation: pulse-glow 1.8s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-[#F5F5F5] font-sans text-gray-800 antialiased pb-20 md:pb-8">
+
+    <div class="bg-gradient-to-r from-shopee-orange via-pink-500 to-rose-600 text-white text-xs py-1.5 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="hidden sm:flex gap-4 items-center font-medium">
+                <span><i class="fa-solid fa-store mr-1 text-yellow-300"></i> Mall Resmi Shopee Beauty</span>
+                <span><i class="fa-solid fa-circle-check mr-1 text-yellow-300"></i> 100% Produk Original</span>
+                <span><i class="fa-solid fa-rotate-left mr-1 text-yellow-300"></i> Bebas Pengembalian 15 Hari</span>
+            </div>
+            <div class="mx-auto sm:mx-0 flex items-center gap-3">
+                <span class="font-semibold"><i class="fa-solid fa-truck-fast mr-1"></i> Gratis Ongkir Rp0 Seluruh Indonesia!</span>
+                <button onclick="copyVoucher('BEAUTY00')" class="bg-yellow-400 text-red-900 font-extrabold px-2.5 py-0.5 rounded-full text-[10px] hover:bg-yellow-300 transition shadow">
+                    KLAIM VOUCHER
+                </button>
+            </div>
+            <div class="hidden md:flex gap-4 text-[11px] font-medium opacity-90">
+                <a href="#" class="hover:underline">Pusat Bantuan</a>
+                <a href="#" class="hover:underline">Daftar Toko Beauty</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-white shadow-md border-b border-rose-100">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-3 md:gap-6">
+            <!-- Brand Logo -->
+            <a href="#" onclick="filterByCategory('all'); return false;" class="flex items-center gap-2.5 group flex-shrink-0">
+                <div class="bg-gradient-to-tr from-shopee-orange to-pink-500 text-white p-2.5 rounded-2xl shadow-md group-hover:scale-105 transition-transform">
+                    <i class="fa-solid fa-bag-shopping text-xl md:text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl md:text-2xl font-black tracking-tight text-gray-800">Shopee<span class="text-shopee-orange">Beauty</span></span>
+                    <span class="block text-[10px] font-bold tracking-wider text-pink-500 -mt-1 uppercase">Pusat Makeup & Cosmetics</span>
+                </div>
+            </a>
+
+            <!-- Search Bar -->
+            <div class="flex-1 max-w-2xl relative">
+                <div class="relative flex items-center">
+                    <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Cari bedak, pensil alis, mascara, eyeshadow, eyeliner, blush, lipstik..." 
+                           class="w-full bg-gray-100 border border-transparent focus:border-shopee-orange focus:bg-white rounded-full py-2.5 pl-4 pr-12 text-xs md:text-sm focus:outline-none transition-all shadow-inner">
+                    <button onclick="handleSearch()" class="absolute right-1.5 bg-shopee-orange hover:bg-shopee-darkorange text-white w-9 h-9 rounded-full flex items-center justify-center transition-all shadow">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-2 md:gap-4 flex-shrink-0">
+                <!-- Virtual Try-On Button -->
+                <button onclick="openTryOnModal()" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white text-xs font-bold px-3.5 py-2 rounded-full shadow transition transform hover:scale-105">
+                    <i class="fa-solid fa-wand-magic-sparkles text-yellow-300"></i>
+                    <span>Coba Makeup Virtual</span>
+                </button>
+
+                <!-- Wishlist Icon -->
+                <button onclick="toggleWishlistModal()" class="relative p-2 text-gray-600 hover:text-shopee-orange transition" title="Favorit">
+                    <i class="fa-regular fa-heart text-xl md:text-2xl"></i>
+                    <span id="wishlistBadge" class="hidden absolute -top-1 -right-1 bg-pink-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                </button>
+
+                <!-- Cart Icon -->
+                <button onclick="openCartModal()" class="relative p-2 text-gray-600 hover:text-shopee-orange transition" title="Keranjang">
+                    <i class="fa-solid fa-cart-shopping text-xl md:text-2xl"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-shopee-orange text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-rose-50/80 border-t border-rose-100/80 px-4 py-2">
+            <div class="max-w-7xl mx-auto flex items-center gap-2 overflow-x-auto hide-scrollbar text-xs font-medium text-gray-700">
+                <span class="text-rose-500 flex items-center gap-1 flex-shrink-0 font-bold pr-1"><i class="fa-solid fa-fire text-shopee-orange"></i> Trendy Now:</span>
+                <button onclick="filterByCategory('bedak')" class="bg-white hover:bg-rose-100 text-gray-700 px-3 py-1 rounded-full border border-rose-200 flex-shrink-0 transition"># Bedak & Cushion</button>
+                <button onclick="filterByCategory('alis')" class="bg-white hover:bg-rose-100 text-gray-700 px-3 py-1 rounded-full border border-rose-200 flex-shrink-0 transition"># Pensil Alis Presisi</button>
+                <button onclick="filterByCategory('mascara')" class="bg-white hover:bg-rose-100 text-gray-700 px-3 py-1 rounded-full border border-rose-200 flex-shrink-0 transition"># Mascara Waterproof</button>
+                <button onclick="filterByCategory('eyeshadow')" class="bg-white hover:bg-rose-100 text-gray-700 px-3 py-1 rounded-full border border-rose-200 flex-shrink-0 transition"># Eyeshadow Palette</button>
+                <button onclick="filterByCategory('eyeliner')" class="bg-white hover:bg-rose-100 text-gray-700 px-3 py-1 rounded-full border border-rose-200 flex-shrink-0 transition"># Eyeliner Waterproof</button>
+                <button onclick="filterByCategory('blush')" class="bg-white hover:bg-rose-100 text-gray-700 px-3 py-1 rounded-full border border-rose-200 flex-shrink-0 transition"># Blush On Cream & Powder</button>
+                <button onclick="filterByCategory('lipstik')" class="bg-white hover:bg-rose-100 text-gray-700 px-3 py-1 rounded-full border border-rose-200 flex-shrink-0 transition"># Lip Tint & Lipstik Velvet</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-3 md:px-6 py-4 space-y-6">
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            <!-- Main Banner Carousel Display -->
+            <div class="lg:col-span-2 relative rounded-3xl overflow-hidden shadow-xl bg-gradient-to-r from-rose-500 via-pink-500 to-purple-600 text-white p-6 md:p-8 flex flex-col justify-between min-h-[230px] md:min-h-[260px]">
+                <div class="absolute -right-8 -bottom-12 opacity-20 text-[200px] pointer-events-none">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="relative z-10 max-w-lg">
+                    <span class="bg-yellow-300 text-red-900 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow">Pesta Promo Shopee Beauty Deals</span>
+                    <h1 class="text-2xl md:text-4xl font-black mt-3 leading-tight drop-shadow-md">Koleksi Makeup Cantik Diskon Hingga 70%</h1>
+                    <p class="text-xs md:text-sm text-pink-100 mt-2 font-medium">Lengkapi kebutuhan Bedak, Pensil Alis, Mascara, Eyeshadow, Eyeliner, Blush On & Lipstik favoritmu!</p>
+                </div>
+                <div class="relative z-10 mt-5 flex items-center gap-3">
+                    <button onclick="filterByCategory('all')" class="bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-extrabold text-xs md:text-sm px-5 py-2.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+                        Belanja Sekarang <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                    <button onclick="openTryOnModal()" class="bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-full transition border border-white/40">
+                        <i class="fa-solid fa-camera mr-1 text-yellow-300"></i> Virtual Try-On
+                    </button>
+                </div>
+            </div>
+
+            <!-- Promo Side Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
+                <div class="bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl p-4 text-white shadow flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] bg-black/20 px-2 py-0.5 rounded font-bold uppercase">Voucher Hari Ini</span>
+                        <h3 class="font-black text-sm md:text-base mt-1">Diskon Rp50.000</h3>
+                        <p class="text-[11px] opacity-90">Kode: <strong class="underline font-mono">MAKEUPCANTIK</strong></p>
+                    </div>
+                    <i class="fa-solid fa-ticket text-3xl opacity-80"></i>
+                </div>
+                <div class="bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl p-4 text-white shadow flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] bg-black/20 px-2 py-0.5 rounded font-bold uppercase">Bebas Ongkir</span>
+                        <h3 class="font-black text-sm md:text-base mt-1">Min. Belanja Rp0</h3>
+                        <p class="text-[11px] opacity-90">Berlaku Semua Kurir & Metode</p>
+                    </div>
+                    <i class="fa-solid fa-truck-fast text-3xl opacity-80"></i>
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-white p-4 md:p-5 rounded-3xl shadow-sm border border-gray-100">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-extrabold text-gray-800 text-sm md:text-base flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-shopee-orange"></i> Kategori Makeup Lengkap
+                </h2>
+                <span class="text-xs text-gray-400 font-medium">Klik untuk memfilter produk</span>
+            </div>
+            
+            <div class="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-2.5 text-center">
+                <!-- All -->
+                <button onclick="filterByCategory('all')" class="category-btn active border-2 border-shopee-orange bg-orange-50 p-2.5 rounded-2xl hover:shadow-md transition flex flex-col items-center group" data-cat="all">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-orange-100 text-shopee-orange rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-border-all"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-800">Semua</span>
+                </button>
+
+                <!-- 1. Bedak -->
+                <button onclick="filterByCategory('bedak')" class="category-btn border border-gray-100 bg-gray-50/70 p-2.5 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition flex flex-col items-center group" data-cat="bedak">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-pink-100 text-pink-600 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-compact-disc"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-700">Bedak</span>
+                </button>
+
+                <!-- 2. Alis -->
+                <button onclick="filterByCategory('alis')" class="category-btn border border-gray-100 bg-gray-50/70 p-2.5 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition flex flex-col items-center group" data-cat="alis">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-700">Pensil Alis</span>
+                </button>
+
+                <!-- 3. Mascara -->
+                <button onclick="filterByCategory('mascara')" class="category-btn border border-gray-100 bg-gray-50/70 p-2.5 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition flex flex-col items-center group" data-cat="mascara">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-700">Mascara</span>
+                </button>
+
+                <!-- 4. Eyeshadow -->
+                <button onclick="filterByCategory('eyeshadow')" class="category-btn border border-gray-100 bg-gray-50/70 p-2.5 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition flex flex-col items-center group" data-cat="eyeshadow">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-700">Eyeshadow</span>
+                </button>
+
+                <!-- 5. Eyeliner -->
+                <button onclick="filterByCategory('eyeliner')" class="category-btn border border-gray-100 bg-gray-50/70 p-2.5 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition flex flex-col items-center group" data-cat="eyeliner">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-teal-100 text-teal-600 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-feather-pointed"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-700">Eyeliner</span>
+                </button>
+
+                <!-- 6. Blush On -->
+                <button onclick="filterByCategory('blush')" class="category-btn border border-gray-100 bg-gray-50/70 p-2.5 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition flex flex-col items-center group" data-cat="blush">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-rose-100 text-rose-500 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-700">Blush On</span>
+                </button>
+
+                <!-- 7. Lipstik -->
+                <button onclick="filterByCategory('lipstik')" class="category-btn border border-gray-100 bg-gray-50/70 p-2.5 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition flex flex-col items-center group" data-cat="lipstik">
+                    <div class="w-11 h-11 md:w-12 md:h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center text-lg group-hover:scale-110 transition shadow-sm">
+                        <i class="fa-solid fa-kiss-beam"></i>
+                    </div>
+                    <span class="text-[11px] font-bold mt-2 text-gray-700">Lipstik</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="bg-gradient-to-r from-red-600 via-rose-600 to-pink-600 rounded-3xl p-4 md:p-5 text-white shadow-lg">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-1.5 font-black text-xl tracking-wider text-yellow-300 uppercase">
+                        <i class="fa-solid fa-bolt text-yellow-300 animate-bounce"></i> Flash Sale
+                    </div>
+                    <div id="countdown" class="bg-black/30 text-white font-mono font-black text-xs px-3 py-1 rounded-lg border border-white/20">
+                        02 : 14 : 59
+                    </div>
+                </div>
+                <span class="text-xs text-rose-100 font-semibold">Diskon Produk Kecantikan Terbatas!</span>
+            </div>
+
+            <!-- Flash Sale Horizontal Scroll Container -->
+            <div id="flashSaleContainer" class="flex gap-3 overflow-x-auto pb-2 hide-scrollbar">
+                <!-- Dynamically populated flash sale items -->
+            </div>
+        </section>
+
+        <div class="bg-white p-3.5 rounded-2xl border border-gray-100 flex flex-wrap items-center justify-between gap-3 text-xs md:text-sm shadow-sm">
+            <div class="flex items-center gap-2 overflow-x-auto hide-scrollbar py-0.5">
+                <span class="font-extrabold text-gray-500 mr-1 flex-shrink-0">Urutkan:</span>
+                <button onclick="sortProducts('popular')" id="sortPopular" class="sort-btn bg-shopee-orange text-white px-3.5 py-1.5 rounded-xl font-bold transition flex-shrink-0">Terpopuler</button>
+                <button onclick="sortProducts('cheapest')" id="sortCheapest" class="sort-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-3.5 py-1.5 rounded-xl font-medium transition flex-shrink-0">Harga Terendah</button>
+                <button onclick="sortProducts('highest')" id="sortHighest" class="sort-btn bg-gray-100 text-gray-700 hover:bg-gray-200 px-3.5 py-1.5 rounded-xl font-medium transition flex-shrink-0">Harga Tertinggi</button>
+            </div>
+            <div class="text-gray-500 font-semibold text-xs">
+                Menampilkan <span id="productCount" class="font-extrabold text-shopee-orange">0</span> produk pilihan
+            </div>
+        </div>
+
+        <section id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
+            <!-- Dynamic product cards will be rendered here -->
+        </section>
+
+        <!-- Empty Search Result State -->
+        <div id="noResults" class="hidden bg-white p-10 text-center rounded-3xl border border-dashed border-gray-300">
+            <i class="fa-solid fa-magnifying-glass-minus text-5xl text-rose-300 mb-3"></i>
+            <h3 class="font-bold text-gray-700 text-base">Produk Tidak Ditemukan</h3>
+            <p class="text-xs text-gray-500 mt-1">Coba kata kunci lain seperti "Bedak Padat", "Lip Tint", "Mascara", atau "Eyeliner".</p>
+            <button onclick="filterByCategory('all')" class="mt-4 bg-shopee-orange text-white text-xs font-bold px-5 py-2.5 rounded-full shadow hover:bg-shopee-darkorange transition">Tampilkan Semua Produk</button>
+        </div>
+    </main>
+
+    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-30 flex justify-around py-2 shadow-2xl text-center text-[10px]">
+        <button onclick="filterByCategory('all')" class="flex flex-col items-center text-shopee-orange font-bold">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="mt-0.5">Beranda</span>
+        </button>
+        <button onclick="openTryOnModal()" class="flex flex-col items-center text-gray-500 hover:text-pink-500 font-semibold">
+            <i class="fa-solid fa-wand-magic-sparkles text-lg"></i>
+            <span class="mt-0.5">Try-On</span>
+        </button>
+        <button onclick="toggleWishlistModal()" class="flex flex-col items-center text-gray-500 hover:text-shopee-orange font-semibold">
+            <i class="fa-regular fa-heart text-lg"></i>
+            <span class="mt-0.5">Favorit</span>
+        </button>
+        <button onclick="openCartModal()" class="flex flex-col items-center text-gray-500 hover:text-shopee-orange font-semibold relative">
+            <i class="fa-solid fa-cart-shopping text-lg"></i>
+            <span class="mt-0.5">Keranjang</span>
+        </button>
+    </nav>
+
+    <div id="productModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 md:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative transform transition-all my-8 border border-gray-100">
+            <button onclick="closeProductModal()" class="absolute top-3 right-3 bg-white/90 hover:bg-gray-100 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center z-10 shadow">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="productModalContent">
+                <!-- Dynamically populated product modal -->
+            </div>
+        </div>
+    </div>
+
+    <div id="cartModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full flex flex-col justify-between shadow-2xl transform transition-transform duration-300">
+            <!-- Cart Header -->
+            <div class="p-4 bg-rose-50 border-b border-rose-100 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cart-shopping text-shopee-orange text-lg"></i>
+                    <h2 class="font-extrabold text-gray-800 text-base">Keranjang Belanja Makeup</h2>
+                </div>
+                <button onclick="closeCartModal()" class="text-gray-400 hover:text-gray-600 p-1">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items List -->
+            <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 space-y-3">
+                <!-- Dynamic cart content -->
+            </div>
+
+            <!-- Cart Footer Summary & Checkout -->
+            <div class="p-4 bg-white border-t border-gray-100 space-y-3 shadow-lg">
+                <!-- Voucher Input -->
+                <div class="flex gap-2">
+                    <input type="text" id="voucherCode" placeholder="Masukkan Kode Voucher (cth: MAKEUPCANTIK)" class="flex-1 border rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-shopee-orange">
+                    <button onclick="applyVoucher()" class="bg-rose-500 hover:bg-rose-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold transition">Gunakan</button>
+                </div>
+                <div id="voucherMsg" class="text-[11px] font-semibold hidden"></div>
+
+                <div class="space-y-1.5 text-xs text-gray-600">
+                    <div class="flex justify-between">
+                        <span>Subtotal Produk</span>
+                        <span id="cartSubtotal" class="font-bold text-gray-800">Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-green-600">
+                        <span>Diskon Voucher</span>
+                        <span id="cartDiscount" class="font-bold">-Rp0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Ongkos Kirim</span>
+                        <span class="text-green-600 font-bold">GRATIS</span>
+                    </div>
+                    <div class="flex justify-between text-base font-black text-gray-900 border-t pt-2">
+                        <span>Total Pembayaran</span>
+                        <span id="cartTotal" class="text-shopee-orange">Rp0</span>
+                    </div>
+                </div>
+
+                <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-shopee-orange to-pink-500 hover:from-shopee-darkorange hover:to-pink-600 text-white font-extrabold py-3 rounded-2xl shadow-lg transition text-center flex items-center justify-center gap-2">
+                    <span>Checkout Sekarang</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="tryOnModal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-md hidden flex items-center justify-center p-3">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-5 relative shadow-2xl overflow-hidden border border-rose-100">
+            <button onclick="closeTryOnModal()" class="absolute top-3 right-3 bg-gray-100 hover:bg-gray-200 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-3">
+                <span class="bg-pink-100 text-pink-600 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Simulasi Riasan Real-time</span>
+                <h3 class="text-lg font-black text-gray-800 mt-1">Virtual Makeup Try-On</h3>
+                <p class="text-xs text-gray-500">Uji coba warna Lipstik, Blush On, & Eyeshadow secara langsung!</p>
+            </div>
+
+            <!-- Face Avatar Canvas Preview -->
+            <div class="relative bg-rose-50/80 rounded-2xl p-4 flex flex-col items-center justify-center min-h-[210px] border border-pink-100 overflow-hidden shadow-inner">
+                <!-- SVG Face Simulator -->
+                <svg width="190" height="190" viewBox="0 0 200 200" class="drop-shadow-md">
+                    <!-- Face Base -->
+                    <path d="M50 80 Q50 160 100 170 Q150 160 150 80 Q150 30 100 30 Q50 30 50 80 Z" fill="#FFE0BD" stroke="#F1C27D" stroke-width="2"/>
+                    <!-- Eyeshadow Left & Right -->
+                    <ellipse id="tryOnEyeshadowLeft" cx="75" cy="74" rx="14" ry="7" fill="#E29578" opacity="0.6"/>
+                    <ellipse id="tryOnEyeshadowRight" cx="125" cy="74" rx="14" ry="7" fill="#E29578" opacity="0.6"/>
+                    <!-- Eyes -->
+                    <ellipse cx="75" cy="80" rx="8" ry="5" fill="#333"/>
+                    <ellipse cx="125" cy="80" rx="8" ry="5" fill="#333"/>
+                    <!-- Eyebrows -->
+                    <path d="M60 70 Q75 65 90 70" stroke="#3D2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M110 70 Q125 65 140 70" stroke="#3D2314" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <!-- Eyeliner -->
+                    <path id="tryOnEyelinerLeft" d="M63 77 Q75 72 87 77" stroke="#1A1A1A" stroke-width="2.5" fill="none"/>
+                    <path id="tryOnEyelinerRight" d="M113 77 Q125 72 137 77" stroke="#1A1A1A" stroke-width="2.5" fill="none"/>
+                    <!-- Nose -->
+                    <path d="M100 85 L97 105 L103 105" stroke="#E0AC69" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <!-- Cheek Blush Left & Right -->
+                    <ellipse id="tryOnBlushLeft" cx="70" cy="115" rx="15" ry="9" fill="#FFB6C1" opacity="0.65"/>
+                    <ellipse id="tryOnBlushRight" cx="130" cy="115" rx="15" ry="9" fill="#FFB6C1" opacity="0.65"/>
+                    <!-- Lips -->
+                    <path id="tryOnLips" d="M82 135 Q100 128 118 135 Q100 152 82 135 Z" fill="#E63946" opacity="0.95"/>
+                </svg>
+            </div>
+
+            <!-- Controls: Makeup Customizer -->
+            <div class="mt-3 space-y-2.5 text-xs">
+                <!-- Lipstik -->
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Shade Lipstik:</label>
+                    <div class="flex gap-2 justify-center">
+                        <button onclick="changeLipColor('#E63946')" class="w-7 h-7 rounded-full bg-[#E63946] border-2 border-white shadow hover:scale-110 transition" title="Red Velvet"></button>
+                        <button onclick="changeLipColor('#C77DFF')" class="w-7 h-7 rounded-full bg-[#C77DFF] border-2 border-white shadow hover:scale-110 transition" title="Berry Mauve"></button>
+                        <button onclick="changeLipColor('#FFB5A7')" class="w-7 h-7 rounded-full bg-[#FFB5A7] border-2 border-white shadow hover:scale-110 transition" title="Nude Coral"></button>
+                        <button onclick="changeLipColor('#9D0208')" class="w-7 h-7 rounded-full bg-[#9D0208] border-2 border-white shadow hover:scale-110 transition" title="Deep Cherry"></button>
+                        <button onclick="changeLipColor('#F4A261')" class="w-7 h-7 rounded-full bg-[#F4A261] border-2 border-white shadow hover:scale-110 transition" title="Peach Nude"></button>
+                    </div>
+                </div>
+
+                <!-- Blush On -->
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Shade Blush On:</label>
+                    <div class="flex gap-2 justify-center">
+                        <button onclick="changeBlushColor('#FFB6C1', '0.65')" class="w-7 h-7 rounded-full bg-[#FFB6C1] border-2 border-white shadow hover:scale-110 transition" title="Soft Pink"></button>
+                        <button onclick="changeBlushColor('#FF70A6', '0.75')" class="w-7 h-7 rounded-full bg-[#FF70A6] border-2 border-white shadow hover:scale-110 transition" title="Bright Rose"></button>
+                        <button onclick="changeBlushColor('#FF9F1C', '0.6')" class="w-7 h-7 rounded-full bg-[#FF9F1C] border-2 border-white shadow hover:scale-110 transition" title="Warm Coral"></button>
+                        <button onclick="changeBlushColor('transparent', '0')" class="w-7 h-7 rounded-full bg-gray-200 border-2 border-white shadow hover:scale-110 transition font-extrabold text-[10px] flex items-center justify-center">X</button>
+                    </div>
+                </div>
+
+                <!-- Eyeshadow -->
+                <div>
+                    <label class="block font-bold text-gray-700 mb-1">Eyeshadow Tone:</label>
+                    <div class="flex gap-2 justify-center">
+                        <button onclick="changeEyeshadowColor('#E29578', '0.65')" class="w-7 h-7 rounded-full bg-[#E29578] border-2 border-white shadow hover:scale-110 transition" title="Warm Nude"></button>
+                        <button onclick="changeEyeshadowColor('#9B5DE5', '0.65')" class="w-7 h-7 rounded-full bg-[#9B5DE5] border-2 border-white shadow hover:scale-110 transition" title="Smokey Plum"></button>
+                        <button onclick="changeEyeshadowColor('#F15BB5', '0.65')" class="w-7 h-7 rounded-full bg-[#F15BB5] border-2 border-white shadow hover:scale-110 transition" title="Glam Pink"></button>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeTryOnModal()" class="w-full mt-4 bg-gray-900 hover:bg-black text-white font-bold py-2.5 rounded-xl text-xs transition">Selesai Mencoba</button>
+        </div>
+    </div>
+
+    <!-- Upgraded Multi-step Checkout & Payment Simulation Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-3 md:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-5 md:p-6 shadow-2xl relative border border-gray-100 my-auto">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-500 rounded-full w-8 h-8 flex items-center justify-center text-sm transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- STEP 1: SELECT PAYMENT & SHIPPING -->
+            <div id="checkoutStep1" class="space-y-4">
+                <div class="border-b pb-3">
+                    <span class="bg-orange-100 text-shopee-orange text-[10px] font-black px-2.5 py-1 rounded-full uppercase">Langkah 1 dari 2</span>
+                    <h3 class="text-lg font-black text-gray-800 mt-1 flex items-center gap-2">
+                        <i class="fa-solid fa-credit-card text-shopee-orange"></i> Pembayaran & Pengiriman
+                    </h3>
+                </div>
+
+                <!-- Shipping Address -->
+                <div class="bg-rose-50/70 p-3.5 rounded-2xl border border-rose-100">
+                    <div class="flex justify-between items-center mb-1">
+                        <span class="text-xs font-bold text-gray-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-shopee-orange"></i> Alamat Pengiriman
+                        </span>
+                        <span class="text-[10px] bg-shopee-orange text-white font-bold px-1.5 py-0.5 rounded">Utama</span>
+                    </div>
+                    <p class="text-xs font-semibold text-gray-800">Siti Nurhaliza (+62 812-3456-7890)</p>
+                    <p class="text-[11px] text-gray-500 mt-0.5">Jl. Mawar Cantik No. 88, Kemang, Jakarta Selatan, DKI Jakarta (12730)</p>
+                </div>
+
+                <!-- Shipping Courier Choice -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1.5">Pilih Opsi Pengiriman:</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label onclick="selectCourier('reguler', 0)" class="courier-option cursor-pointer p-2.5 rounded-xl border-2 border-shopee-orange bg-orange-50 flex items-center justify-between">
+                            <div>
+                                <div class="font-bold text-gray-800 text-[11px]">Reguler (1-2 Hari)</div>
+                                <div class="text-[10px] text-green-600 font-extrabold">GRATIS ONGKIR</div>
+                            </div>
+                            <input type="radio" name="courier" checked class="accent-shopee-orange">
+                        </label>
+                        <label onclick="selectCourier('instant', 15000)" class="courier-option cursor-pointer p-2.5 rounded-xl border border-gray-200 hover:border-orange-300 flex items-center justify-between">
+                            <div>
+                                <div class="font-bold text-gray-800 text-[11px]">Instant (2 Jam)</div>
+                                <div class="text-[10px] text-shopee-orange font-bold">+Rp15.000</div>
+                            </div>
+                            <input type="radio" name="courier" class="accent-shopee-orange">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1.5">Metode Pembayaran:</label>
+                    <div class="space-y-2 text-xs">
+                        <!-- ShopeePay -->
+                        <div onclick="selectPaymentMethod('shopeepay')" id="pay-shopeepay" class="pay-method-btn cursor-pointer border-2 border-shopee-orange bg-orange-50 p-3 rounded-2xl flex items-center justify-between transition">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 bg-shopee-orange text-white rounded-xl flex items-center justify-center font-black text-sm shadow">
+                                    <i class="fa-solid fa-wallet"></i>
+                                </div>
+                                <div>
+                                    <div class="font-extrabold text-gray-800">ShopeePay</div>
+                                    <div class="text-[10px] text-gray-500">Saldo: <strong class="text-gray-800">Rp500.000</strong> (Cukup)</div>
+                                </div>
+                            </div>
+                            <span class="text-xs text-shopee-orange"><i class="fa-solid fa-circle-check"></i></span>
+                        </div>
+
+                        <!-- Virtual Account -->
+                        <div onclick="selectPaymentMethod('va_bca')" id="pay-va_bca" class="pay-method-btn cursor-pointer border border-gray-200 hover:border-orange-300 p-3 rounded-2xl flex items-center justify-between transition">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 bg-blue-600 text-white rounded-xl flex items-center justify-center font-black text-xs shadow">
+                                    BCA
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-800">BCA Virtual Account</div>
+                                    <div class="text-[10px] text-gray-400">Verifikasi Otomatis</div>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-300"><i class="fa-regular fa-circle"></i></span>
+                        </div>
+
+                        <!-- QRIS -->
+                        <div onclick="selectPaymentMethod('qris')" id="pay-qris" class="pay-method-btn cursor-pointer border border-gray-200 hover:border-orange-300 p-3 rounded-2xl flex items-center justify-between transition">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 bg-purple-600 text-white rounded-xl flex items-center justify-center font-black text-xs shadow">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-800">QRIS (Scan Barcode)</div>
+                                    <div class="text-[10px] text-gray-400">Bisa GoPay, OVO, Dana, LinkAja</div>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-300"><i class="fa-regular fa-circle"></i></span>
+                        </div>
+
+                        <!-- COD -->
+                        <div onclick="selectPaymentMethod('cod')" id="pay-cod" class="pay-method-btn cursor-pointer border border-gray-200 hover:border-orange-300 p-3 rounded-2xl flex items-center justify-between transition">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 bg-emerald-600 text-white rounded-xl flex items-center justify-center font-black text-xs shadow">
+                                    COD
+                                </div>
+                                <div>
+                                    <div class="font-bold text-gray-800">COD (Bayar di Tempat)</div>
+                                    <div class="text-[10px] text-gray-400">Bayar ke kurir saat barang sampai</div>
+                                </div>
+                            </div>
+                            <span class="text-xs text-gray-300"><i class="fa-regular fa-circle"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Summary -->
+                <div class="bg-gray-50 p-3 rounded-2xl space-y-1 text-xs text-gray-600 border">
+                    <div class="flex justify-between">
+                        <span>Subtotal Produk</span>
+                        <span id="checkoutSubtotal" class="font-bold text-gray-800">Rp0</span>
+                    </div>
+                    <div class="flex justify-between text-green-600">
+                        <span>Diskon Voucher</span>
+                        <span id="checkoutDiscount">-Rp0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Ongkos Kirim</span>
+                        <span id="checkoutShipping" class="font-bold text-green-600">GRATIS</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-black text-gray-900 border-t pt-1.5 mt-1">
+                        <span>Total Tagihan</span>
+                        <span id="checkoutTotal" class="text-shopee-orange text-base">Rp0</span>
+                    </div>
+                </div>
+
+                <button onclick="goToPaymentStep2()" class="w-full bg-gradient-to-r from-shopee-orange to-pink-500 hover:from-shopee-darkorange hover:to-pink-600 text-white font-extrabold py-3.5 rounded-2xl shadow-lg transition text-xs flex items-center justify-center gap-2">
+                    <span>Lanjutkan Pembayaran</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- STEP 2: PAYMENT VERIFICATION / QR / SIMULATION -->
+            <div id="checkoutStep2" class="hidden space-y-4">
+                <div class="border-b pb-3 flex items-center justify-between">
+                    <div>
+                        <span class="bg-pink-100 text-pink-600 text-[10px] font-black px-2.5 py-1 rounded-full uppercase">Langkah 2 dari 2</span>
+                        <h3 class="text-lg font-black text-gray-800 mt-1">Konfirmasi Pembayaran</h3>
+                    </div>
+                    <button onclick="backToStep1()" class="text-xs text-gray-500 hover:text-shopee-orange font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-left"></i> Ubah
+                    </button>
+                </div>
+
+                <!-- Dynamic Payment Method Display Box -->
+                <div id="paymentDetailsBox" class="bg-orange-50/70 border border-orange-200 p-4 rounded-2xl text-center space-y-3">
+                    <!-- Populated dynamically via JS -->
+                </div>
+
+                <div class="bg-yellow-50 border border-yellow-200 p-3 rounded-xl text-[11px] text-yellow-800 flex items-center gap-2">
+                    <i class="fa-solid fa-lightbulb text-yellow-600 text-base flex-shrink-0"></i>
+                    <span>Ini adalah <strong>Simulasi Pembayaran Interaktif</strong>. Klik tombol bayar di bawah untuk memproses transaksi secara gratis.</span>
+                </div>
+
+                <!-- Submit / Simulate Button -->
+                <button id="btnPayNow" onclick="processSimulatedPayment()" class="w-full bg-shopee-orange hover:bg-shopee-darkorange text-white font-extrabold py-3.5 rounded-2xl shadow-lg transition text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span id="btnPayText">Bayar Sekarang (Simulasi)</span>
+                </button>
+            </div>
+
+            <!-- STEP 3: SUCCESS RECEIPT -->
+            <div id="checkoutStep3" class="hidden text-center space-y-4 py-2">
+                <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-3xl mx-auto shadow-md animate-bounce">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <span class="bg-green-100 text-green-700 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wide">Pembayaran Berhasil!</span>
+                    <h3 class="text-xl font-black text-gray-800 mt-2">Pesanan Dalam Proses</h3>
+                    <p class="text-xs text-gray-500 mt-1">Terima kasih! Produk kecantikanmu sedang disiapkan & dikemas rapi.</p>
+                </div>
+
+                <!-- Digital Receipt Box -->
+                <div class="bg-gray-50 p-4 rounded-2xl text-left text-xs space-y-2 border border-gray-200 font-sans shadow-inner">
+                    <div class="flex justify-between items-center border-b pb-2">
+                        <span class="text-gray-400 font-bold text-[10px] uppercase">Struk Pembayaran Shopee Beauty</span>
+                        <span id="receiptDate" class="text-[10px] font-mono text-gray-500">15/08/2026 10:00</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">No. Transaksi:</span>
+                        <span id="receiptNo" class="font-mono font-bold text-gray-800">SB-8829104</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">Metode Bayar:</span>
+                        <span id="receiptMethod" class="font-bold text-gray-800">ShopeePay</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-gray-500">Total Dibayar:</span>
+                        <span id="receiptTotal" class="font-black text-shopee-orange">Rp0</span>
+                    </div>
+                    <div class="flex justify-between border-t pt-2">
+                        <span class="text-gray-500">Estimasi Pengiriman:</span>
+                        <span class="font-bold text-green-600">Besok (1-2 Hari Kerja)</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-2">
+                    <button onclick="downloadReceiptMock()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-3 rounded-2xl text-xs transition">
+                        <i class="fa-solid fa-download mr-1"></i> Simpan Struk
+                    </button>
+                    <button onclick="finishCheckout()" class="flex-1 bg-shopee-orange hover:bg-shopee-darkorange text-white font-extrabold py-3 rounded-2xl text-xs transition shadow-md">
+                        Belanja Lagi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="wishlistModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-5 relative shadow-2xl max-h-[80vh] flex flex-col border border-rose-100">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-black text-gray-800 text-base flex items-center gap-2">
+                    <i class="fa-solid fa-heart text-pink-500"></i> Makeup Favorit Saya
+                </h3>
+                <button onclick="toggleWishlistModal()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div id="wishlistContainer" class="flex-1 overflow-y-auto space-y-3 py-2">
+                <!-- Dynamically populated wishlist -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Comprehensive Product Database with realistic Indonesian Beauty & Makeup items in ALL 7 requested categories
+        const PRODUCTS = [
+            // 1. BEDAK (Powder & Cushion)
+            {
+                id: 1,
+                name: "Wardah Colorfit Velvet Matte Cushion SPF 30 PA+++",
+                category: "bedak",
+                price: 105000,
+                originalPrice: 135000,
+                rating: 4.9,
+                sold: "18.4rb",
+                image: "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=500&auto=format&fit=crop&q=80",
+                shades: ["22N Light Ivory", "23W Warm Ivory", "32N Neutral Beige", "43W Golden Sand"],
+                description: "Cushion matte ringan dengan formula High Coverage & Soft Focus effect. Menyamarkan pori-pori dan tahan hingga 12 jam.",
+                flashSale: true
+            },
+            {
+                id: 2,
+                name: "Maybelline Fit Me Matte + Poreless Compact Powder",
+                category: "bedak",
+                price: 79000,
+                originalPrice: 99000,
+                rating: 4.8,
+                sold: "32.1rb",
+                image: "https://images.unsplash.com/photo-1590156206619-c703e1e21b06?w=500&auto=format&fit=crop&q=80",
+                shades: ["118 Light Beige", "128 Warm Nude", "220 Natural Beige"],
+                description: "Bedak padat dengan bebas kilap 16 jam. Formulasi Micro-Powder menyerap minyak berlebih untuk tampilan natural.",
+                flashSale: false
+            },
+            {
+                id: 3,
+                name: "Make Over Silky Smooth Translucent Loose Powder",
+                category: "bedak",
+                price: 125000,
+                originalPrice: 155000,
+                rating: 4.9,
+                sold: "14.2rb",
+                image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Porcelain", "02 Rosy", "03 Champagne", "05 Snow"],
+                description: "Bedak tabur sangat halus yang mengunci makeup seharian tanpa terasa berat. Hasil akhir mulus dan segar.",
+                flashSale: true
+            },
+            {
+                id: 17,
+                name: "Pixy UV Whitening Two Way Cake Perfect Fit",
+                category: "bedak",
+                price: 42000,
+                originalPrice: 55000,
+                rating: 4.8,
+                sold: "45.1rb",
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Natural White", "02 Yellow Beige", "03 Tropical Beige"],
+                description: "Bedak padat dengan formula 2-Way Cake menutupi noda hitam dan menyerap minyak berlebih.",
+                flashSale: false
+            },
+            {
+                id: 18,
+                name: "Instaperfect Skincover Air Cushion SPF 50 PA++++",
+                category: "bedak",
+                price: 159000,
+                originalPrice: 189000,
+                rating: 4.9,
+                sold: "9.8rb",
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format&fit=crop&q=80",
+                shades: ["11 Fair Pink", "22 Light Ivory", "32 True Beige", "43 Warm Sand"],
+                description: "Cushion premium dengan Real Skin Build-Up Formula & transferproof untuk tampilan mulus natural.",
+                flashSale: true
+            },
+            {
+                id: 19,
+                name: "Barenbliss Bloomatte Fine to Refine Compact Powder",
+                category: "bedak",
+                price: 94000,
+                originalPrice: 119000,
+                rating: 4.8,
+                sold: "38.5rb",
+                image: "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Fair Light", "02 Natural Beige", "03 Warm Beige"],
+                description: "Bedak padat ultra halus yang menyamarkan pori-pori dan memberikan hasil akhir matte lembut tahan 24 jam.",
+                flashSale: false
+            },
+
+            // 2. PENSIL ALIS (Eyebrow Pencil)
+            {
+                id: 4,
+                name: "Somethinc Brow Wiz Micro Eyebrow Pencil Waterproof",
+                category: "alis",
+                price: 55000,
+                originalPrice: 75000,
+                rating: 4.8,
+                sold: "29.8rb",
+                image: "https://images.unsplash.com/photo-1597225244660-1cd128c64284?w=500&auto=format&fit=crop&q=80",
+                shades: ["Dark Brown", "Medium Brown", "Grey Brown", "Dark Charcoal"],
+                description: "Pensil alis ultra presisi 0.5mm anti geser dan waterproof. Sangat mudah membingkai bingkai alis alami.",
+                flashSale: true
+            },
+            {
+                id: 5,
+                name: "Viva Eyebrow Pencil Original Legend Brown",
+                category: "alis",
+                price: 32000,
+                originalPrice: 40000,
+                rating: 4.9,
+                sold: "100rb+",
+                image: "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=500&auto=format&fit=crop&q=80",
+                shades: ["Brown", "Black", "Dark Brown"],
+                description: "Pensil alis legendaris favorit MUA profesional Indonesia. Tekstur tegas, tidak gampang patah, dan tahan lama.",
+                flashSale: false
+            },
+            {
+                id: 6,
+                name: "Luxcrime Micro Brow Precision Pencil",
+                category: "alis",
+                price: 68000,
+                originalPrice: 89000,
+                rating: 4.8,
+                sold: "15.6rb",
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=80",
+                shades: ["Ash Grey", "Brown", "Dark Brown"],
+                description: "Ujung mikro mikro yang mudah digunakan untuk mengisi celah alis dengan serat presisi seperti rambut asli.",
+                flashSale: false
+            },
+            {
+                id: 20,
+                name: "Fanbo Eyebrow Pencil Black & Brown Classic",
+                category: "alis",
+                price: 18000,
+                originalPrice: 24000,
+                rating: 4.7,
+                sold: "88.3rb",
+                image: "https://images.unsplash.com/photo-1597225244660-1cd128c64284?w=500&auto=format&fit=crop&q=80",
+                shades: ["Black", "Brown"],
+                description: "Pensil alis legendaris lembut dan pigmented, tahan keringat dan tidak mudah gumpal.",
+                flashSale: false
+            },
+            {
+                id: 21,
+                name: "Implora Express Eyebrow Pencil + Spoolie Brush",
+                category: "alis",
+                price: 9500,
+                originalPrice: 15000,
+                rating: 4.6,
+                sold: "120rb+",
+                image: "https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Black", "02 Dark Brown", "03 Silver"],
+                description: "Pensil alis ekonomis lengkap dengan sikat spoolie dan rautan, praktis dibawa sehari-hari.",
+                flashSale: true
+            },
+            {
+                id: 22,
+                name: "Rosé All Day Brow Fix Gel & Micro Pencil Duo",
+                category: "alis",
+                price: 89000,
+                originalPrice: 109000,
+                rating: 4.9,
+                sold: "16.4rb",
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=80",
+                shades: ["Clear Gel", "Clear Brown", "Dark Brown"],
+                description: "Dua fungsi dalam satu kemasan: mengisi alis dan menata arah alis presisi tegak alami.",
+                flashSale: false
+            },
+
+            // 3. MASCARA
+            {
+                id: 7,
+                name: "Maybelline Lash Sensational Sky High Waterproof Mascara",
+                category: "mascara",
+                price: 119000,
+                originalPrice: 149000,
+                rating: 4.9,
+                sold: "64.3rb",
+                image: "https://images.unsplash.com/photo-1560700321-7299a9134a4c?w=500&auto=format&fit=crop&q=80",
+                shades: ["Very Black"],
+                description: "Mascara pelentik bulu mata ekstra melengkung tanpa gumpalan. Dilengkapi Flex Tower Brush yang memanjangkan dari akar.",
+                flashSale: true
+            },
+            {
+                id: 8,
+                name: "Rosé All Day All New Thunder Lash Mascara",
+                category: "mascara",
+                price: 99000,
+                originalPrice: 129000,
+                rating: 4.8,
+                sold: "21.0rb",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format&fit=crop&q=80",
+                shades: ["Hyper Black"],
+                description: "Mascara menebal dan memanjangkan bulu mata secara instan. Mengandung Triple Nourishing Oil yang merawat bulu mata.",
+                flashSale: false
+            },
+            {
+                id: 23,
+                name: "Wardah EyeXpert Volume Expert Mascara Waterproof",
+                category: "mascara",
+                price: 62000,
+                originalPrice: 79000,
+                rating: 4.8,
+                sold: "27.6rb",
+                image: "https://images.unsplash.com/photo-1560700321-7299a9134a4c?w=500&auto=format&fit=crop&q=80",
+                shades: ["Black"],
+                description: "Mascara menebalkan bulu mata dengan teknologi Lash Precision Brush yang mampu menjangkau bulu mata terpendek.",
+                flashSale: false
+            },
+            {
+                id: 24,
+                name: "Heroine Make Long & Curl Mascara Advanced Film",
+                category: "mascara",
+                price: 195000,
+                originalPrice: 235000,
+                rating: 5.0,
+                sold: "11.5rb",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Black", "02 Brown"],
+                description: "Mascara Jepang terbaik anti geser, membuat bulu mata lentik dramatis seharian penuh.",
+                flashSale: true
+            },
+            {
+                id: 25,
+                name: "L'Oreal Paris Lash Paradise Waterproof Mascara",
+                category: "mascara",
+                price: 139000,
+                originalPrice: 179000,
+                rating: 4.9,
+                sold: "41.2rb",
+                image: "https://images.unsplash.com/photo-1560700321-7299a9134a4c?w=500&auto=format&fit=crop&q=80",
+                shades: ["Blackest Black"],
+                description: "Volume volumizing luar biasa dengan formula terbuat dari minyak jarak yang merawat bulu mata.",
+                flashSale: false
+            },
+
+            // 4. EYESHADOW
+            {
+                id: 9,
+                name: "ESQA Goddess Eyeshadow Palette 9 Colors",
+                category: "eyeshadow",
+                price: 185000,
+                originalPrice: 245000,
+                rating: 4.9,
+                sold: "12.7rb",
+                image: "https://images.unsplash.com/photo-1583241800698-e8ab01c85b27?w=500&auto=format&fit=crop&q=80",
+                shades: ["Peach Palette", "Bronze Palette", "Pink Palette"],
+                description: "Palet eyeshadow pigmentasi tinggi yang mudah di-blend. Kombinasi warna Matte, Shimmer berkilau & Satin halus.",
+                flashSale: false
+            },
+            {
+                id: 10,
+                name: "Wardah Colorfit Quad Eyeshadow Palette 4 Colors",
+                category: "eyeshadow",
+                price: 49000,
+                originalPrice: 65000,
+                rating: 4.7,
+                sold: "19.5rb",
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Brunette Dawn", "02 Rose Aurora", "03 Sunlit Golden"],
+                description: "Eyshadow praktis 4 warna hangat untuk tampilan harian maupun acara spesial dengan Microsmooth Pigment.",
+                flashSale: true
+            },
+            {
+                id: 26,
+                name: "Sace Lady 12 Colors Eyeshadow Palette Shimmer Matte",
+                category: "eyeshadow",
+                price: 45000,
+                originalPrice: 75000,
+                rating: 4.7,
+                sold: "52.0rb",
+                image: "https://images.unsplash.com/photo-1583241800698-e8ab01c85b27?w=500&auto=format&fit=crop&q=80",
+                shades: ["Sunset Gold", "Warm Nude", "Berry Glam"],
+                description: "Palet eyeshadow 12 warna intens yang pigmented, mudah di-blend untuk daily maupun party look.",
+                flashSale: true
+            },
+            {
+                id: 27,
+                name: "Dear Me Beauty x Yupi Eyeshadow Palette 25 Colors",
+                category: "eyeshadow",
+                price: 149000,
+                originalPrice: 199000,
+                rating: 4.9,
+                sold: "8.3rb",
+                image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500&auto=format&fit=crop&q=80",
+                shades: ["Gummy Bear Edition"],
+                description: "Edisi terbatas warna-warni cerah dan netral dengan kilau glitter micro-fine anti luntur.",
+                flashSale: false
+            },
+            {
+                id: 28,
+                name: "FOCALLURE 18 Colors Eyeshadow Palette Sunrise",
+                category: "eyeshadow",
+                price: 85000,
+                originalPrice: 120000,
+                rating: 4.8,
+                sold: "35.9rb",
+                image: "https://images.unsplash.com/photo-1583241800698-e8ab01c85b27?w=500&auto=format&fit=crop&q=80",
+                shades: ["Sunrise Palette"],
+                description: "Kombinasi warna senja dramatis dengan keunggulan tahan air dan pigmen warna tinggi.",
+                flashSale: false
+            },
+
+            // 5. EYELINER
+            {
+                id: 11,
+                name: "Make Over Hyperblack Superstay Liquid Eyeliner",
+                category: "eyeliner",
+                price: 98000,
+                originalPrice: 120000,
+                rating: 4.8,
+                sold: "24.9rb",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format&fit=crop&q=80",
+                shades: ["Intense Black"],
+                description: "Eyeliner kuas presisi fleksibel dengan warna hitam pekat. Formula cepat kering, smudge-proof dan tahan air.",
+                flashSale: true
+            },
+            {
+                id: 12,
+                name: "Somethinc Forever Stay Waterproof Liquid Eyeliner",
+                category: "eyeliner",
+                price: 59000,
+                originalPrice: 79000,
+                rating: 4.8,
+                sold: "17.3rb",
+                image: "https://images.unsplash.com/photo-1597225244660-1cd128c64284?w=500&auto=format&fit=crop&q=80",
+                shades: ["Midnight Black", "Dark Brown"],
+                description: "Garis mata tajam dan tahan seharian tanpa luntur. Ujung spidol yang sangat stabil memudahkan pembuatan winged liner.",
+                flashSale: false
+            },
+            {
+                id: 29,
+                name: "Pinkflash Waterproof Hyperfine Liquid Eyeliner Pen",
+                category: "eyeliner",
+                price: 19000,
+                originalPrice: 35000,
+                rating: 4.7,
+                sold: "95.0rb",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Black", "02 Brown"],
+                description: "Eyeliner spidol dengan tip super tipis 0.1mm, garis rapi instan anti baret.",
+                flashSale: true
+            },
+            {
+                id: 30,
+                name: "Wardah EyeXpert Optima Precise Liquid Eyeliner",
+                category: "eyeliner",
+                price: 58000,
+                originalPrice: 72000,
+                rating: 4.8,
+                sold: "18.8rb",
+                image: "https://images.unsplash.com/photo-1597225244660-1cd128c64284?w=500&auto=format&fit=crop&q=80",
+                shades: ["Black"],
+                description: "Eyeliner pena waterproof dengan formula cepat kering dan pigmen hitam pekat elegan.",
+                flashSale: false
+            },
+            {
+                id: 31,
+                name: "Maybelline Hypercurl Liner & Pencil Combo",
+                category: "eyeliner",
+                price: 75000,
+                originalPrice: 95000,
+                rating: 4.8,
+                sold: "29.4rb",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&auto=format&fit=crop&q=80",
+                shades: ["Intense Black"],
+                description: "Tahan gesekan hingga 24 jam dengan hasil akhir hitam berkilau yang tegas di mata.",
+                flashSale: false
+            },
+
+            // 6. BLUSH ON
+            {
+                id: 13,
+                name: "Emina Cheeklit Cream Blush On Natural Fresh",
+                category: "blush",
+                price: 34000,
+                originalPrice: 42000,
+                rating: 4.8,
+                sold: "45.0rb",
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format&fit=crop&q=80",
+                shades: ["Pink", "Peach", "Nude Berry", "Violet"],
+                description: "Cream blush ringan yang memberikan rona pipi alami merona. Mudah dibalurkan dengan jari tangan.",
+                flashSale: false
+            },
+            {
+                id: 14,
+                name: "BLP Beauty Face Powder & Blush On Pressed",
+                category: "blush",
+                price: 118000,
+                originalPrice: 145000,
+                rating: 4.9,
+                sold: "11.2rb",
+                image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&auto=format&fit=crop&q=80",
+                shades: ["Sunset Peach", "Coral Bloom", "Strawberry Pie"],
+                description: "Perona pipi padat dengan tekstur halus selemut sutra untuk hasil makeup merona dan tahan lama.",
+                flashSale: true
+            },
+            {
+                id: 32,
+                name: "Barenbliss Berry Makes Comfort Liquid Blush",
+                category: "blush",
+                price: 79000,
+                originalPrice: 99000,
+                rating: 4.9,
+                sold: "26.3rb",
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Peach Makes Perfect", "02 Pink Blossom", "03 Red Mango"],
+                description: "Liquid blush beraroma buah berry manis yang memberi efek pipi merona segar dan dewy alami.",
+                flashSale: true
+            },
+            {
+                id: 33,
+                name: "Make Over Multifix Matte Blusher Stick",
+                category: "blush",
+                price: 110000,
+                originalPrice: 135000,
+                rating: 4.8,
+                sold: "13.9rb",
+                image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Rose Hour", "02 Quickpeach", "03 Velvet Crimson"],
+                description: "Blush on bentuk stick praktis dengan Powder Shift Technology, merata di wajah tanpa merusak foundation.",
+                flashSale: false
+            },
+            {
+                id: 34,
+                name: "Wardah Colorfit Cream Blush Hydrating",
+                category: "blush",
+                price: 38000,
+                originalPrice: 48000,
+                rating: 4.8,
+                sold: "39.1rb",
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Summer Peach", "02 Merry Mauve", "03 Sand Coral"],
+                description: "Cream to powder blush dengan Vitamin E yang melembutkan kulit pipi sepanjang hari.",
+                flashSale: false
+            },
+
+            // 7. LIPSTIK & LIP TINT
+            {
+                id: 15,
+                name: "Rom&nd Juicy Lasting Tint Glossy Lipstick",
+                category: "lipstik",
+                price: 115000,
+                originalPrice: 150000,
+                rating: 5.0,
+                sold: "58.4rb",
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500&auto=format&fit=crop&q=80",
+                shades: ["Figfig", "Jujube", "Almond Rose", "Cherry Bomb", "Nucadamia"],
+                description: "Lip tint glossy viral asal Korea dengan hasil bibir juicy berkilau, terasa lembab dan stain tahan lama.",
+                flashSale: true
+            },
+            {
+                id: 16,
+                name: "Hanasui Tinted Lip Glow Velvet Matte",
+                category: "lipstik",
+                price: 22000,
+                originalPrice: 30000,
+                rating: 4.7,
+                sold: "82.1rb",
+                image: "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=500&auto=format&fit=crop&q=80",
+                shades: ["01 Cherry", "02 Peachy", "03 Terracotta", "04 Nude Rose"],
+                description: "Lipstik velvet matte cair hemat berkandungan Shea Butter & Vitamin E untuk kelembapan ekstra.",
+                flashSale: true
+            },
+            {
+                id: 35,
+                name: "Maybelline Superstay Vinyl Ink Liquid Lipstick",
+                category: "lipstik",
+                price: 119000,
+                originalPrice: 149000,
+                rating: 4.9,
+                sold: "75.8rb",
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500&auto=format&fit=crop&q=80",
+                shades: ["60 Mischievous", "61 Risky", "62 Irresistible", "63 Intriguing", "120 Punchy"],
+                description: "Lipstik glossy tahan hingga 16 jam tanpa transfer! Cukup kocok dan oleskan untuk hasil shiny maksimal.",
+                flashSale: true
+            },
+            {
+                id: 36,
+                name: "Somethinc Idol Blurring Matte Lip Tint",
+                category: "lipstik",
+                price: 65000,
+                originalPrice: 85000,
+                rating: 4.8,
+                sold: "42.1rb",
+                image: "https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=500&auto=format&fit=crop&q=80",
+                shades: ["Poker", "Lover", "Blow", "Enzo", "Hyped"],
+                description: "Lip tint lembut dengan Blurring Filter Effect yang menutup garis hitam bibir secara halus.",
+                flashSale: false
+            },
+            {
+                id: 37,
+                name: "Dazzle Me Ink-Licious Lip Tint Long Lasting",
+                category: "lipstik",
+                price: 19500,
+                originalPrice: 28000,
+                rating: 4.7,
+                sold: "89.0rb",
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500&auto=format&fit=crop&q=80",
+                shades: ["R597 Rose Touch", "O387 Orange Glow", "P487 Pink Berry"],
+                description: "Lip tint berbasis air yang cepat meresap dan melembabkan bibir dengan warna cerah natural.",
+                flashSale: false
+            }
+        ];
+
+        let cart = [];
+        let wishlist = [];
+        let currentCategory = 'all';
+        let currentProducts = [...PRODUCTS];
+        let activeVoucherDiscount = 0;
+
+        let selectedPayment = 'shopeepay';
+        let shippingFee = 0;
+
+        // Currency Formatting Helper
+        function formatRupiah(amount) {
+            return 'Rp' + amount.toLocaleString('id-ID');
+        }
+
+        window.onload = function() {
+            renderFlashSale();
+            renderProducts(PRODUCTS);
+            startCountdown();
+        };
+
+        function renderFlashSale() {
+            const container = document.getElementById('flashSaleContainer');
+            const flashItems = PRODUCTS.filter(p => p.flashSale);
+            
+            container.innerHTML = flashItems.map(item => `
+                <div onclick="openProductModal(${item.id})" class="bg-white text-gray-800 min-w-[135px] md:min-w-[155px] p-2.5 rounded-2xl shadow-md cursor-pointer hover:scale-105 transition-all flex-shrink-0 relative border border-rose-100">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white font-black text-[9px] px-1.5 py-0.5 rounded-md shadow">
+                        -${Math.round((1 - item.price/item.originalPrice)*100)}%
+                    </span>
+                    <img src="${item.image}" alt="${item.name}" class="w-full h-24 md:h-28 object-cover rounded-xl mb-2">
+                    <h4 class="text-[11px] font-bold line-clamp-1 text-gray-800">${item.name}</h4>
+                    <div class="text-shopee-orange font-black text-xs mt-1">${formatRupiah(item.price)}</div>
+                    <div class="text-[10px] text-gray-400 line-through">${formatRupiah(item.originalPrice)}</div>
+                    <div class="w-full bg-rose-100 h-2.5 rounded-full mt-2 relative overflow-hidden">
+                        <div class="bg-gradient-to-r from-orange-500 to-red-600 h-full w-[82%] rounded-full"></div>
+                        <span class="absolute inset-0 text-[8px] text-center font-black text-white leading-3 drop-shadow">TERJUAL 82%</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderProducts(productsToRender) {
+            const grid = document.getElementById('productGrid');
+            const countEl = document.getElementById('productCount');
+            const noResults = document.getElementById('noResults');
+
+            countEl.innerText = productsToRender.length;
+
+            if (productsToRender.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            grid.innerHTML = productsToRender.map(product => {
+                const isWish = wishlist.includes(product.id);
+                return `
+                <div class="product-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col justify-between cursor-pointer group" onclick="openProductModal(${product.id})">
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition duration-300">
+                        <button onclick="event.stopPropagation(); toggleWishlist(${product.id})" class="absolute top-2 right-2 bg-white/90 hover:bg-white text-gray-600 p-1.5 rounded-full shadow backdrop-blur-sm transition">
+                            <i class="${isWish ? 'fa-solid text-red-500' : 'fa-regular'} fa-heart text-xs md:text-sm"></i>
+                        </button>
+                        ${product.flashSale ? '<span class="absolute bottom-2 left-2 bg-shopee-orange text-white text-[9px] font-black px-2 py-0.5 rounded-full shadow">MALL</span>' : ''}
+                    </div>
+
+                    <div class="p-3 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[9px] uppercase font-black tracking-wider bg-rose-50 text-rose-600 px-2 py-0.5 rounded-md inline-block mb-1">
+                                ${product.category}
+                            </span>
+                            <h3 class="text-xs font-bold text-gray-800 line-clamp-2 leading-snug">${product.name}</h3>
+                        </div>
+
+                        <div class="mt-3">
+                            <div class="flex items-center gap-1.5 text-[10px] text-gray-500 mb-1">
+                                <span class="text-yellow-400 font-bold"><i class="fa-solid fa-star"></i> ${product.rating}</span>
+                                <span>•</span>
+                                <span>Terjual ${product.sold}</span>
+                            </div>
+
+                            <div class="flex items-baseline justify-between">
+                                <div>
+                                    <div class="text-shopee-orange font-black text-xs md:text-sm">${formatRupiah(product.price)}</div>
+                                    <div class="text-[10px] text-gray-400 line-through">${formatRupiah(product.originalPrice)}</div>
+                                </div>
+                                <button onclick="event.stopPropagation(); addToCartDirect(${product.id})" class="bg-rose-50 hover:bg-shopee-orange hover:text-white text-shopee-orange p-2 rounded-xl transition shadow-sm">
+                                    <i class="fa-solid fa-cart-plus text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.classList.add('border-2', 'border-shopee-orange', 'bg-orange-50');
+                    btn.classList.remove('border-gray-100', 'bg-gray-50/70');
+                } else {
+                    btn.classList.remove('border-2', 'border-shopee-orange', 'bg-orange-50');
+                    btn.classList.add('border-gray-100', 'bg-gray-50/70');
+                }
+            });
+
+            if (category === 'all') {
+                currentProducts = [...PRODUCTS];
+            } else {
+                currentProducts = PRODUCTS.filter(p => p.category === category);
+            }
+            renderProducts(currentProducts);
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const filtered = PRODUCTS.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query) ||
+                p.description.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+        }
+
+        function sortProducts(type) {
+            document.querySelectorAll('.sort-btn').forEach(b => {
+                b.classList.remove('bg-shopee-orange', 'text-white');
+                b.classList.add('bg-gray-100', 'text-gray-700');
+            });
+
+            if (type === 'popular') {
+                document.getElementById('sortPopular').classList.add('bg-shopee-orange', 'text-white');
+                currentProducts.sort((a, b) => b.rating - a.rating);
+            } else if (type === 'cheapest') {
+                document.getElementById('sortCheapest').classList.add('bg-shopee-orange', 'text-white');
+                currentProducts.sort((a, b) => a.price - b.price);
+            } else if (type === 'highest') {
+                document.getElementById('sortHighest').classList.add('bg-shopee-orange', 'text-white');
+                currentProducts.sort((a, b) => b.price - a.price);
+            }
+            renderProducts(currentProducts);
+        }
+
+        function openProductModal(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const modalContent = document.getElementById('productModalContent');
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <img src="${product.image}" alt="${product.name}" class="w-full h-64 md:h-full object-cover">
+                    <div class="p-6 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs uppercase font-black bg-pink-100 text-pink-600 px-2.5 py-1 rounded-md">${product.category}</span>
+                            <h2 class="text-base md:text-lg font-bold text-gray-800 mt-2">${product.name}</h2>
+                            <div class="flex items-center gap-2 text-xs text-gray-500 mt-1">
+                                <span class="text-yellow-500 font-bold"><i class="fa-solid fa-star"></i> ${product.rating}</span>
+                                <span>•</span>
+                                <span>${product.sold} Terjual</span>
+                            </div>
+
+                            <div class="mt-4 bg-orange-50 p-3 rounded-2xl border border-orange-100">
+                                <div class="text-shopee-orange font-black text-2xl">${formatRupiah(product.price)}</div>
+                                <div class="text-xs text-gray-400 line-through">${formatRupiah(product.originalPrice)}</div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label class="block text-xs font-bold text-gray-700 mb-1.5">Pilih Shade / Varian Warna:</label>
+                                <div class="flex flex-wrap gap-2" id="shadeSelector">
+                                    ${product.shades.map((shade, idx) => `
+                                        <button onclick="selectShade(this)" class="shade-btn ${idx === 0 ? 'border-shopee-orange bg-orange-50 text-shopee-orange font-bold' : 'border-gray-200 text-gray-600'} border text-xs px-3 py-1.5 rounded-xl transition">
+                                            ${shade}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label class="block text-xs font-bold text-gray-700 mb-1">Deskripsi Produk:</label>
+                                <p class="text-xs text-gray-600 leading-relaxed">${product.description}</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex gap-3">
+                            <button onclick="addToCartFromModal(${product.id})" class="flex-1 bg-rose-100 hover:bg-rose-200 text-rose-700 font-bold py-3 rounded-xl text-xs transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> Masuk Keranjang
+                            </button>
+                            <button onclick="buyNowFromModal(${product.id})" class="flex-1 bg-gradient-to-r from-shopee-orange to-pink-500 hover:opacity-95 text-white font-extrabold py-3 rounded-xl text-xs transition shadow-md">
+                                Beli Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        function selectShade(btn) {
+            document.querySelectorAll('.shade-btn').forEach(b => {
+                b.classList.remove('border-shopee-orange', 'bg-orange-50', 'text-shopee-orange', 'font-bold');
+                b.classList.add('border-gray-200', 'text-gray-600');
+            });
+            btn.classList.add('border-shopee-orange', 'bg-orange-50', 'text-shopee-orange', 'font-bold');
+        }
+
+        function addToCartDirect(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            const defaultShade = product.shades[0];
+            const existing = cart.find(item => item.id === productId && item.shade === defaultShade);
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, shade: defaultShade, qty: 1 });
+            }
+            updateCartUI();
+            showToast(`"${product.name}" ditambahkan ke keranjang!`);
+        }
+
+        function addToCartFromModal(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            const selectedShadeBtn = document.querySelector('.shade-btn.border-shopee-orange');
+            const selectedShade = selectedShadeBtn ? selectedShadeBtn.innerText : product.shades[0];
+
+            const existing = cart.find(item => item.id === productId && item.shade === selectedShade);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, shade: selectedShade, qty: 1 });
+            }
+            updateCartUI();
+            closeProductModal();
+            showToast(`Ditambahkan ke keranjang dengan shade (${selectedShade})`);
+        }
+
+        function buyNowFromModal(productId) {
+            addToCartFromModal(productId);
+            openCartModal();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+            badge.innerText = totalQty;
+
+            const cartList = document.getElementById('cartItemsList');
+            if (cart.length === 0) {
+                cartList.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-solid fa-basket-shopping text-5xl mb-2 text-rose-200"></i>
+                        <p class="text-xs font-medium">Keranjang belanjamu masih kosong</p>
+                    </div>
+                `;
+            } else {
+                cartList.innerHTML = cart.map((item, index) => `
+                    <div class="flex gap-3 bg-gray-50 p-2.5 rounded-2xl border items-center">
+                        <img src="${item.image}" class="w-14 h-14 object-cover rounded-xl">
+                        <div class="flex-1">
+                            <h4 class="text-xs font-bold text-gray-800 line-clamp-1">${item.name}</h4>
+                            <span class="text-[10px] bg-rose-100 text-rose-700 px-2 py-0.5 rounded-md font-bold">${item.shade}</span>
+                            <div class="text-shopee-orange font-bold text-xs mt-1">${formatRupiah(item.price)}</div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button onclick="changeQty(${index}, -1)" class="w-6 h-6 bg-white border rounded-lg flex items-center justify-center text-xs font-bold text-gray-600 hover:bg-gray-100">-</button>
+                            <span class="text-xs font-bold w-4 text-center">${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)" class="w-6 h-6 bg-white border rounded-lg flex items-center justify-center text-xs font-bold text-gray-600 hover:bg-gray-100">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            const total = Math.max(0, subtotal - activeVoucherDiscount);
+
+            document.getElementById('cartSubtotal').innerText = formatRupiah(subtotal);
+            document.getElementById('cartDiscount').innerText = `- ${formatRupiah(activeVoucherDiscount)}`;
+            document.getElementById('cartTotal').innerText = formatRupiah(total);
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function applyVoucher() {
+            const code = document.getElementById('voucherCode').value.trim().toUpperCase();
+            const msg = document.getElementById('voucherMsg');
+            msg.classList.remove('hidden');
+
+            if (code === 'MAKEUPCANTIK' || code === 'BEAUTY00') {
+                activeVoucherDiscount = 50000;
+                msg.className = "text-[11px] font-bold text-green-600";
+                msg.innerText = "Voucher Diskon Rp50.000 Berhasil Dipasang!";
+            } else {
+                activeVoucherDiscount = 0;
+                msg.className = "text-[11px] font-bold text-red-500";
+                msg.innerText = "Kode voucher tidak valid atau kedaluwarsa.";
+            }
+            updateCartUI();
+        }
+
+        function copyVoucher(code) {
+            document.getElementById('voucherCode').value = code;
+            showToast(`Kode Voucher ${code} tersalin! Salin ke keranjang.`);
+            openCartModal();
+            applyVoucher();
+        }
+
+        function openCartModal() {
+            updateCartUI();
+            document.getElementById('cartModal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.add('hidden');
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                showToast("Keranjang belanjamu masih kosong!");
+                return;
+            }
+            closeCartModal();
+            openCheckoutModal();
+        }
+
+        function openCheckoutModal() {
+            document.getElementById('checkoutStep1').classList.remove('hidden');
+            document.getElementById('checkoutStep2').classList.add('hidden');
+            document.getElementById('checkoutStep3').classList.add('hidden');
+            
+            updateCheckoutSummary();
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function selectCourier(type, fee) {
+            shippingFee = fee;
+            document.querySelectorAll('.courier-option').forEach(el => {
+                el.classList.remove('border-2', 'border-shopee-orange', 'bg-orange-50');
+                el.classList.add('border-gray-200');
+            });
+            event.currentTarget.classList.add('border-2', 'border-shopee-orange', 'bg-orange-50');
+            event.currentTarget.classList.remove('border-gray-200');
+            updateCheckoutSummary();
+        }
+
+        function selectPaymentMethod(method) {
+            selectedPayment = method;
+            const methods = ['shopeepay', 'va_bca', 'qris', 'cod'];
+            
+            methods.forEach(m => {
+                const btn = document.getElementById(`pay-${m}`);
+                const icon = btn.querySelector('span:last-child');
+                if (m === method) {
+                    btn.classList.add('border-2', 'border-shopee-orange', 'bg-orange-50');
+                    btn.classList.remove('border-gray-200');
+                    icon.className = 'text-xs text-shopee-orange';
+                    icon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                } else {
+                    btn.classList.remove('border-2', 'border-shopee-orange', 'bg-orange-50');
+                    btn.classList.add('border-gray-200');
+                    icon.className = 'text-xs text-gray-300';
+                    icon.innerHTML = '<i class="fa-regular fa-circle"></i>';
+                }
+            });
+        }
+
+        function updateCheckoutSummary() {
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            const total = Math.max(0, subtotal - activeVoucherDiscount + shippingFee);
+
+            document.getElementById('checkoutSubtotal').innerText = formatRupiah(subtotal);
+            document.getElementById('checkoutDiscount').innerText = `- ${formatRupiah(activeVoucherDiscount)}`;
+            document.getElementById('checkoutShipping').innerText = shippingFee === 0 ? 'GRATIS' : formatRupiah(shippingFee);
+            document.getElementById('checkoutTotal').innerText = formatRupiah(total);
+        }
+
+        function goToPaymentStep2() {
+            const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+            const total = Math.max(0, subtotal - activeVoucherDiscount + shippingFee);
+
+            const detailsBox = document.getElementById('paymentDetailsBox');
+
+            if (selectedPayment === 'shopeepay') {
+                detailsBox.innerHTML = `
+                    <div class="w-12 h-12 bg-shopee-orange text-white rounded-2xl flex items-center justify-center text-xl mx-auto shadow">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500">Bayar dengan ShopeePay</div>
+                        <div class="text-2xl font-black text-shopee-orange mt-0.5">${formatRupiah(total)}</div>
+                    </div>
+                    <div class="text-xs text-gray-600 bg-white p-2.5 rounded-xl border">
+                        Saldo ShopeePay: <strong>Rp500.000</strong> (Sisa setelah bayar: ${formatRupiah(500000 - total)})
+                    </div>
+                `;
+            } else if (selectedPayment === 'va_bca') {
+                const randomVA = '88012' + Math.floor(100000000 + Math.random() * 900000000);
+                detailsBox.innerHTML = `
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-2xl flex items-center justify-center font-black text-sm mx-auto shadow">
+                        BCA
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500">BCA Virtual Account</div>
+                        <div class="text-2xl font-black text-blue-700 mt-0.5">${formatRupiah(total)}</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-xl border text-left space-y-1">
+                        <div class="text-[10px] text-gray-400 font-bold uppercase">Nomor Virtual Account:</div>
+                        <div class="flex justify-between items-center font-mono text-sm font-bold text-gray-800">
+                            <span>${randomVA}</span>
+                            <button onclick="navigator.clipboard ? navigator.clipboard.writeText('${randomVA}') : document.execCommand('copy'); showToast('Nomor VA tersalin!');" class="text-xs text-shopee-orange font-bold">Salin</button>
+                        </div>
+                    </div>
+                `;
+            } else if (selectedPayment === 'qris') {
+                detailsBox.innerHTML = `
+                    <div class="text-xs font-bold text-gray-700">Scan Kode QRIS Pembayaran</div>
+                    <div class="bg-white p-3 rounded-2xl inline-block shadow border">
+                        <svg width="130" height="130" viewBox="0 0 100 100" class="mx-auto">
+                            <rect width="100" height="100" fill="#fff"/>
+                            <path d="M10 10 h30 v30 h-30 z M15 15 v20 h20 v-20 z M20 20 h10 v10 h-10 z" fill="#000"/>
+                            <path d="M60 10 h30 v30 h-30 z M65 15 v20 h20 v-20 z M70 20 h10 v10 h-10 z" fill="#000"/>
+                            <path d="M10 60 h30 v30 h-30 z M15 65 v20 h20 v-20 z M20 70 h10 v10 h-10 z" fill="#000"/>
+                            <rect x="45" y="10" width="10" height="30" fill="#000"/>
+                            <rect x="45" y="50" width="45" height="10" fill="#000"/>
+                            <rect x="60" y="70" width="30" height="20" fill="#000"/>
+                            <rect x="45" y="70" width="10" height="20" fill="#000"/>
+                        </svg>
+                    </div>
+                    <div class="text-xl font-black text-purple-700">${formatRupiah(total)}</div>
+                    <div class="text-[11px] text-gray-500">Buka aplikasi e-wallet / M-Banking Anda untuk scan.</div>
+                `;
+            } else if (selectedPayment === 'cod') {
+                detailsBox.innerHTML = `
+                    <div class="w-12 h-12 bg-emerald-600 text-white rounded-2xl flex items-center justify-center font-black text-sm mx-auto shadow">
+                        COD
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500">Bayar di Tempat (Cash On Delivery)</div>
+                        <div class="text-2xl font-black text-emerald-700 mt-0.5">${formatRupiah(total)}</div>
+                    </div>
+                    <p class="text-xs text-gray-600 bg-white p-2.5 rounded-xl border">
+                        Siapkan uang tunai pas sebesar <strong>${formatRupiah(total)}</strong> saat kurir mengantar barang ke alamat Anda.
+                    </p>
+                `;
+            }
+
+            document.getElementById('checkoutStep1').classList.add('hidden');
+            document.getElementById('checkoutStep2').classList.remove('hidden');
+        }
+
+        function backToStep1() {
+            document.getElementById('checkoutStep2').classList.add('hidden');
+            document.getElementById('checkoutStep1').classList.remove('hidden');
+        }
+
+        function processSimulatedPayment() {
+            const btn = document.getElementById('btnPayNow');
+            const btnText = document.getElementById('btnPayText');
+
+            btn.disabled = true;
+            btnText.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Memverifikasi Pembayaran...';
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btnText.innerText = 'Bayar Sekarang (Simulasi)';
+
+                const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+                const total = Math.max(0, subtotal - activeVoucherDiscount + shippingFee);
+
+                const randomReceiptNo = 'SB-' + Math.floor(10000000 + Math.random() * 90000000);
+                const now = new Date();
+                const formattedDate = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+                let methodLabel = 'ShopeePay';
+                if (selectedPayment === 'va_bca') methodLabel = 'BCA Virtual Account';
+                if (selectedPayment === 'qris') methodLabel = 'QRIS Instant';
+                if (selectedPayment === 'cod') methodLabel = 'COD (Bayar di Tempat)';
+
+                document.getElementById('receiptNo').innerText = randomReceiptNo;
+                document.getElementById('receiptMethod').innerText = methodLabel;
+                document.getElementById('receiptTotal').innerText = formatRupiah(total);
+                document.getElementById('receiptDate').innerText = formattedDate;
+
+                document.getElementById('checkoutStep2').classList.add('hidden');
+                document.getElementById('checkoutStep3').classList.remove('hidden');
+
+                showToast("Pembayaran Berhasil Diverifikasi! 🎉");
+            }, 1800);
+        }
+
+        function downloadReceiptMock() {
+            showToast("Struk pembayaran tersimpan ke perangkat!");
+        }
+
+        function finishCheckout() {
+            cart = [];
+            activeVoucherDiscount = 0;
+            shippingFee = 0;
+            updateCartUI();
+            closeCheckoutModal();
+        }
+
+        function toggleWishlist(productId) {
+            const idx = wishlist.indexOf(productId);
+            if (idx > -1) {
+                wishlist.splice(idx, 1);
+                showToast("Dihapus dari Favorit");
+            } else {
+                wishlist.push(productId);
+                showToast("Ditambahkan ke Favorit ❤️");
+            }
+            document.getElementById('wishlistBadge').innerText = wishlist.length;
+            if (wishlist.length > 0) {
+                document.getElementById('wishlistBadge').classList.remove('hidden');
+            } else {
+                document.getElementById('wishlistBadge').classList.add('hidden');
+            }
+            renderProducts(currentProducts);
+            renderWishlistItems();
+        }
+
+        function toggleWishlistModal() {
+            renderWishlistItems();
+            document.getElementById('wishlistModal').classList.toggle('hidden');
+        }
+
+        function renderWishlistItems() {
+            const container = document.getElementById('wishlistContainer');
+            if (wishlist.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-gray-400 text-xs font-medium">
+                        Belum ada item makeup favorit.
+                    </div>
+                `;
+                return;
+            }
+
+            const wishProducts = PRODUCTS.filter(p => wishlist.includes(p.id));
+            container.innerHTML = wishProducts.map(p => `
+                <div class="flex items-center justify-between bg-rose-50/50 p-2.5 rounded-2xl border">
+                    <div class="flex items-center gap-3">
+                        <img src="${p.image}" class="w-12 h-12 object-cover rounded-xl">
+                        <div>
+                            <h4 class="text-xs font-bold text-gray-800 line-clamp-1">${p.name}</h4>
+                            <div class="text-shopee-orange font-black text-xs">${formatRupiah(p.price)}</div>
+                        </div>
+                    </div>
+                    <button onclick="addToCartDirect(${p.id})" class="bg-shopee-orange text-white text-xs px-3 py-1.5 rounded-xl font-bold hover:bg-shopee-darkorange transition">
+                        + Keranjang
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function openTryOnModal() {
+            document.getElementById('tryOnModal').classList.remove('hidden');
+        }
+
+        function closeTryOnModal() {
+            document.getElementById('tryOnModal').classList.add('hidden');
+        }
+
+        function changeLipColor(color) {
+            const lips = document.getElementById('tryOnLips');
+            lips.setAttribute('fill', color);
+        }
+
+        function changeBlushColor(color, opacity) {
+            const blushL = document.getElementById('tryOnBlushLeft');
+            const blushR = document.getElementById('tryOnBlushRight');
+            blushL.setAttribute('fill', color);
+            blushL.setAttribute('opacity', opacity);
+            blushR.setAttribute('fill', color);
+            blushR.setAttribute('opacity', opacity);
+        }
+
+        function changeEyeshadowColor(color, opacity) {
+            const shadowL = document.getElementById('tryOnEyeshadowLeft');
+            const shadowR = document.getElementById('tryOnEyeshadowRight');
+            shadowL.setAttribute('fill', color);
+            shadowL.setAttribute('opacity', opacity);
+            shadowR.setAttribute('fill', color);
+            shadowR.setAttribute('opacity', opacity);
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-20 md:bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-900/90 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-2xl z-50 transition-opacity duration-300';
+            toast.innerText = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        function startCountdown() {
+            let hours = 2, minutes = 14, seconds = 59;
+            const timerEl = document.getElementById('countdown');
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) { seconds = 59; minutes--; }
+                if (minutes < 0) { minutes = 59; hours--; }
+                if (hours < 0) { hours = 2; minutes = 59; seconds = 59; }
+
+                const h = String(hours).padStart(2, '0');
+                const m = String(minutes).padStart(2, '0');
+                const s = String(seconds).padStart(2, '0');
+                timerEl.innerText = `${h} : ${m} : ${s}`;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

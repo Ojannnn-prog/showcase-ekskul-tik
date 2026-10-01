@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Store - Toko Online & Simulasi Pembayaran</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                            950: '#172554',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+        .glow-blue {
+            box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.3);
+        }
+        .glow-blue-sm {
+            box-shadow: 0 0 12px -2px rgba(59, 130, 246, 0.4);
+        }
+        .glow-emerald {
+            box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes wave-bar {
+            0%, 100% { height: 8px; }
+            50% { height: 32px; }
+        }
+        .animate-wave-bar {
+            animation: wave-bar 1.2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-black via-slate-950 to-blue-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-slate-950/85 border-b border-blue-900/40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3 cursor-pointer" onclick="resetFilters()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-500/30">
+                    N
+                </div>
+                <div>
+                    <span class="text-2xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-200 to-blue-500">NEXUS</span>
+                    <span class="text-xs block text-blue-400 font-medium tracking-widest uppercase -mt-1">Digital Store</span>
+                </div>
+            </div>
+
+            <!-- Search Bar (Desktop) -->
+            <div class="hidden md:flex flex-1 max-w-md mx-4 relative">
+                <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Cari gadget, elektronik, fashion..." 
+                    class="w-full bg-slate-900/90 border border-slate-700/80 rounded-full py-2.5 pl-11 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+            </div>
+
+            <!-- Action Buttons (Cart & History) -->
+            <div class="flex items-center gap-3">
+                <button onclick="openHistoryModal()" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 text-slate-300 hover:text-white text-sm font-medium transition flex items-center gap-2">
+                    <i class="fa-solid fa-receipt text-blue-400"></i>
+                    <span class="hidden sm:inline">Riwayat</span>
+                </button>
+
+                <button onclick="openCallModal()" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500/50 text-slate-300 hover:text-white text-sm font-medium transition flex items-center gap-2 group">
+                    <i class="fa-solid fa-phone text-emerald-400 group-hover:animate-bounce"></i>
+                    <span class="hidden sm:inline">Layanan Telepon</span>
+                </button>
+
+                <button onclick="toggleCartModal()" class="relative px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition shadow-lg shadow-blue-600/30 flex items-center gap-2.5">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="hidden sm:inline">Keranjang</span>
+                    <span id="cartBadge" class="bg-white text-blue-900 font-bold text-xs px-2 py-0.5 rounded-full min-w-[20px] text-center">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar Mobile -->
+        <div class="md:hidden px-4 pb-3">
+            <div class="relative">
+                <input type="text" id="searchInputMobile" oninput="handleSearch(this.value)" placeholder="Cari produk..." 
+                    class="w-full bg-slate-900/90 border border-slate-800 rounded-lg py-2 pl-10 pr-4 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-blue-500">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+        <!-- Hero Promo Banner -->
+        <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 border border-blue-800/40 p-6 sm:p-10 mb-8 glow-blue">
+            <div class="absolute -right-10 -bottom-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="relative z-10 max-w-2xl">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30 mb-4">
+                    <i class="fa-solid fa-bolt text-amber-400"></i> Promo Spesial Minggu Ini
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight mb-3">
+                    Upgrade Gadget & Lifestyle Terbaru
+                </h1>
+                <p class="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
+                    Gunakan kode voucher <span class="bg-blue-900/80 px-2 py-0.5 rounded font-mono text-blue-300 border border-blue-700/50 font-bold">DISKON50</span> untuk diskon 50% atau <span class="bg-blue-900/80 px-2 py-0.5 rounded font-mono text-blue-300 border border-blue-700/50 font-bold">GRATISONGKIR</span> saat checkout.
+                </p>
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="#katalog" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition shadow-md shadow-blue-600/30">
+                        Belanja Sekarang <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                    <button onclick="copyVoucher('DISKON50')" class="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-medium text-sm border border-slate-700 transition flex items-center gap-2">
+                        <i class="fa-regular fa-copy text-blue-400"></i> Salin Kode DISKON50
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- KATALOG & FILTER BAR -->
+        <section id="katalog" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-store text-blue-500 text-xl"></i> Katalog Produk
+                    </h2>
+                    <p class="text-xs text-slate-400 mt-1">Pilih produk favorit Anda dan nikmati simulasi checkout instan</p>
+                </div>
+
+                <!-- Category Pills & Sort -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <div id="categoryContainer" class="flex flex-wrap gap-2">
+                        <!-- Categories dynamically rendered -->
+                    </div>
+                    
+                    <select id="sortSelect" onchange="handleSort(this.value)" class="bg-slate-900 border border-slate-800 text-slate-300 text-xs rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500">
+                        <option value="default">Urutkan: Relevansi</option>
+                        <option value="price-low">Harga: Terendah</option>
+                        <option value="price-high">Harga: Tertinggi</option>
+                        <option value="rating">Rating Tertinggi</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PRODUCT GRID -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Product cards injected via JS -->
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="emptyState" class="hidden text-center py-16 bg-slate-900/40 rounded-3xl border border-slate-800">
+                <i class="fa-solid fa-box-open text-5xl text-slate-600 mb-3"></i>
+                <h3 class="text-lg font-semibold text-slate-300">Produk Tidak Ditemukan</h3>
+                <p class="text-sm text-slate-500 mt-1">Coba kata kunci pencarian lain atau pilih kategori lain.</p>
+                <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl">
+                    Reset Filter
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="detailModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto glow-blue">
+            <button onclick="closeDetailModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="detailContent">
+                <!-- Dynamic detail HTML -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOPPING CART MODAL -->
+    <div id="cartModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-end hidden">
+        <div class="bg-slate-900 border-l border-slate-800 w-full max-w-md h-full flex flex-col justify-between p-6 shadow-2xl">
+            <!-- Cart Header -->
+            <div>
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-blue-500"></i> Keranjang Belanja
+                    </h3>
+                    <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items Container -->
+                <div id="cartItemsContainer" class="space-y-4 max-h-[55vh] overflow-y-auto pr-1">
+                    <!-- Dynamic Cart Items -->
+                </div>
+            </div>
+
+            <!-- Cart Footer Summary -->
+            <div class="border-t border-slate-800 pt-4 space-y-4 bg-slate-900">
+                <!-- Voucher Input -->
+                <div class="flex gap-2">
+                    <input type="text" id="voucherInput" placeholder="Kode Promo (cth: DISKON50)" class="flex-1 bg-slate-950 border border-slate-800 text-xs rounded-xl px-3 py-2.5 text-slate-200 focus:outline-none focus:border-blue-500 uppercase">
+                    <button onclick="applyVoucher()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-blue-400 text-xs font-semibold rounded-xl border border-slate-700">
+                        Gunakan
+                    </button>
+                </div>
+                <div id="voucherMessage" class="text-xs hidden"></div>
+
+                <!-- Price Calculation -->
+                <div class="space-y-2 text-xs text-slate-400">
+                    <div class="flex justify-between">
+                        <span>Subtotal</span>
+                        <span id="cartSubtotal" class="text-slate-200 font-medium">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Diskon Promo</span>
+                        <span id="cartDiscount" class="text-emerald-400 font-medium">- Rp 0</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Estimasi Ongkir</span>
+                        <span id="cartShipping" class="text-slate-200 font-medium">Rp 15.000</span>
+                    </div>
+                    <div class="flex justify-between text-sm font-bold text-white pt-2 border-t border-slate-800">
+                        <span>Total Bayar</span>
+                        <span id="cartTotal" class="text-blue-400">Rp 0</span>
+                    </div>
+                </div>
+
+                <button onclick="proceedToCheckout()" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-sm transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
+                    Lanjut ke Checkout <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT & PAYMENT SIMULATION MODAL -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto glow-blue">
+            <button onclick="closeCheckoutModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- STEP 1: Form Checkout -->
+            <div id="checkoutStep1">
+                <h3 class="text-xl font-bold text-white mb-1 flex items-center gap-2">
+                    <i class="fa-solid fa-credit-card text-blue-500"></i> Checkout & Pembayaran
+                </h3>
+                <p class="text-xs text-slate-400 mb-6">Isi data penerima dan pilih metode pembayaran simulasi.</p>
+
+                <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nama Lengkap</label>
+                        <input type="text" id="custName" required placeholder="Budi Santoso" class="w-full bg-slate-950 border border-slate-800 text-xs rounded-xl p-3 text-slate-200 focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Nomor WhatsApp</label>
+                            <input type="tel" id="custPhone" required placeholder="081234567890" class="w-full bg-slate-950 border border-slate-800 text-xs rounded-xl p-3 text-slate-200 focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-300 mb-1">Kota Pengiriman</label>
+                            <input type="text" id="custCity" required placeholder="Jakarta Selatan" class="w-full bg-slate-950 border border-slate-800 text-xs rounded-xl p-3 text-slate-200 focus:outline-none focus:border-blue-500">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Alamat Lengkap</label>
+                        <textarea id="custAddress" required rows="2" placeholder="Jl. Sudirman No. 12, RT 01/RW 02" class="w-full bg-slate-950 border border-slate-800 text-xs rounded-xl p-3 text-slate-200 focus:outline-none focus:border-blue-500"></textarea>
+                    </div>
+
+                    <!-- Payment Method Selection -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-2">Pilih Metode Pembayaran Simulasi</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 p-3 bg-slate-950 border border-slate-800 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="qris" checked class="text-blue-600 focus:ring-0">
+                                <div>
+                                    <div class="text-xs font-bold text-slate-200">QRIS Instant</div>
+                                    <div class="text-[10px] text-slate-400">Scan QR All e-Wallet</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-slate-950 border border-slate-800 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="bca_va" class="text-blue-600 focus:ring-0">
+                                <div>
+                                    <div class="text-xs font-bold text-slate-200">BCA Virtual Account</div>
+                                    <div class="text-[10px] text-slate-400">Transfer Otomatis</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-slate-950 border border-slate-800 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="ewallet" class="text-blue-600 focus:ring-0">
+                                <div>
+                                    <div class="text-xs font-bold text-slate-200">E-Wallet (GoPay/OVO)</div>
+                                    <div class="text-[10px] text-slate-400">Notifikasi Aplikasi</div>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 bg-slate-950 border border-slate-800 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                                <input type="radio" name="paymentMethod" value="cod" class="text-blue-600 focus:ring-0">
+                                <div>
+                                    <div class="text-xs font-bold text-slate-200">COD (Bayar di Tempat)</div>
+                                    <div class="text-[10px] text-slate-400">Cash saat Kurir Datang</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-blue-600/30 mt-4">
+                        Proses Pembayaran Simulasi
+                    </button>
+                </form>
+            </div>
+
+            <!-- STEP 2: Gateway Payment Simulation Screen -->
+            <div id="checkoutStep2" class="hidden text-center space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <span class="text-xs font-mono text-blue-400 bg-blue-950 border border-blue-800 px-3 py-1 rounded-full">
+                        GATEWAY SIMULATOR ACTIVE
+                    </span>
+                    <h3 class="text-xl font-bold text-white mt-3">Selesaikan Pembayaran Anda</h3>
+                    <p class="text-xs text-slate-400">Silakan lakukan instruksi berikut untuk menyelesaikan tes transaksi.</p>
+                </div>
+
+                <!-- Timer -->
+                <div class="bg-blue-950/40 border border-blue-900/60 rounded-2xl p-4">
+                    <div class="text-xs text-slate-400 mb-1">Sisa Waktu Pembayaran</div>
+                    <div id="paymentTimer" class="text-2xl font-mono font-bold text-blue-400">15:00</div>
+                </div>
+
+                <!-- Dynamic Method Graphic -->
+                <div id="paymentInstructions" class="p-4 bg-slate-950 border border-slate-800 rounded-2xl">
+                    <!-- QRIS / VA / E-wallet instruction inserted here -->
+                </div>
+
+                <!-- Total Amount Banner -->
+                <div class="flex justify-between items-center px-4 py-3 bg-slate-950 rounded-xl border border-slate-800">
+                    <span class="text-xs text-slate-400">Total Tagihan:</span>
+                    <span id="simPayAmount" class="text-lg font-bold text-blue-400">Rp 0</span>
+                </div>
+
+                <!-- SIMULATION TRIGGER BUTTONS -->
+                <div class="border-t border-slate-800 pt-4">
+                    <label class="block text-xs font-semibold text-slate-400 mb-3">Simulasikan Respon Bank / Payment Provider:</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button onclick="triggerPaymentResult('SUCCESS')" class="py-2.5 px-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/20 transition">
+                            <i class="fa-solid fa-circle-check block text-sm mb-1"></i> Simulasikan Sukses
+                        </button>
+                        <button onclick="triggerPaymentResult('FAILED')" class="py-2.5 px-2 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-rose-600/20 transition">
+                            <i class="fa-solid fa-circle-xmark block text-sm mb-1"></i> Simulasikan Gagal
+                        </button>
+                        <button onclick="triggerPaymentResult('EXPIRED')" class="py-2.5 px-2 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-amber-600/20 transition">
+                            <i class="fa-solid fa-clock block text-sm mb-1"></i> Simulasikan Expired
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVOICE / RECEIPT MODAL -->
+    <div id="invoiceModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative max-h-[92vh] overflow-y-auto glow-blue">
+            <button onclick="closeInvoiceModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div id="invoiceContent" class="space-y-6">
+                <!-- Dynamic Invoice HTML -->
+            </div>
+
+            <div class="mt-6 flex gap-3 border-t border-slate-800 pt-4">
+                <button onclick="window.print()" class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition">
+                    <i class="fa-solid fa-print mr-1"></i> Cetak Struk
+                </button>
+                <button onclick="closeInvoiceModal()" class="flex-1 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold rounded-xl transition">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- HISTORY MODAL -->
+    <div id="historyModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[85vh] overflow-y-auto">
+            <button onclick="closeHistoryModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-blue-500"></i> Riwayat Transaksi Simulasi
+            </h3>
+
+            <div id="historyList" class="space-y-3">
+                <!-- History list dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- PHONE CALL & CALLBACK SERVICE MODAL -->
+    <div id="callModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-md w-full p-6 sm:p-8 relative overflow-hidden glow-emerald">
+            <button onclick="closeCallModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white z-10">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Navigation Tabs -->
+            <div class="flex border-b border-slate-800 mb-6 text-xs font-semibold text-slate-400">
+                <button id="tabSimCallBtn" onclick="switchCallTab('live')" class="flex-1 pb-3 text-emerald-400 border-b-2 border-emerald-500 flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-headset"></i> Telepon CS Live
+                </button>
+                <button id="tabCallbackBtn" onclick="switchCallTab('callback')" class="flex-1 pb-3 hover:text-slate-200 border-b-2 border-transparent flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-phone-incoming"></i> Minta Telepon Ulang
+                </button>
+            </div>
+
+            <!-- TAB 1: Live Simulated Call UI -->
+            <div id="tabSimCall" class="space-y-6 text-center">
+                <!-- Avatar & Call Status -->
+                <div class="relative inline-block my-2">
+                    <div id="callAvatarPulse" class="absolute -inset-3 rounded-full bg-emerald-500/20 animate-ping hidden"></div>
+                    <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white text-3xl font-black shadow-xl mx-auto border-4 border-slate-950 relative z-10">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold text-white">NEXUS Voice Support</h3>
+                    <p id="callStatusText" class="text-xs text-slate-400 mt-1">Layanan Bantuan Suara 24/7 Gratis</p>
+                    <div id="callTimer" class="text-lg font-mono font-bold text-emerald-400 mt-1 hidden">00:00</div>
+                </div>
+
+                <!-- Animated Sound Waveform (Visible during active call) -->
+                <div id="soundWave" class="flex items-center justify-center gap-1.5 h-10 hidden">
+                    <span class="w-1.5 bg-emerald-400 rounded-full animate-wave-bar" style="animation-delay: 0s;"></span>
+                    <span class="w-1.5 bg-emerald-400 rounded-full animate-wave-bar" style="animation-delay: 0.2s;"></span>
+                    <span class="w-1.5 bg-emerald-400 rounded-full animate-wave-bar" style="animation-delay: 0.4s;"></span>
+                    <span class="w-1.5 bg-emerald-400 rounded-full animate-wave-bar" style="animation-delay: 0.1s;"></span>
+                    <span class="w-1.5 bg-emerald-400 rounded-full animate-wave-bar" style="animation-delay: 0.3s;"></span>
+                </div>
+
+                <!-- CS Live Voice Text Subtitle -->
+                <div id="csSpeechBubble" class="bg-slate-950 border border-slate-800 rounded-2xl p-3 text-xs text-slate-300 min-h-[50px] flex items-center justify-center italic">
+                    "Klik 'Mulai Panggilan' untuk terhubung dengan Agen CS NEXUS."
+                </div>
+
+                <!-- Active Call Control Buttons -->
+                <div id="callControls" class="grid grid-cols-3 gap-3 pt-2">
+                    <button id="muteBtn" onclick="toggleMute()" disabled class="p-3 bg-slate-950 border border-slate-800 rounded-2xl text-slate-500 hover:text-white transition flex flex-col items-center gap-1 text-[11px] disabled:opacity-40">
+                        <i class="fa-solid fa-microphone-slash text-base"></i>
+                        <span id="muteLabel">Mute</span>
+                    </button>
+
+                    <button id="mainCallBtn" onclick="toggleSimulatedCall()" class="p-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl shadow-lg shadow-emerald-600/40 transition flex flex-col items-center justify-center text-xs font-bold col-span-1">
+                        <i class="fa-solid fa-phone-volume text-xl mb-1"></i>
+                        <span id="mainCallBtnText">Panggil</span>
+                    </button>
+
+                    <button id="speakerBtn" onclick="toggleSpeaker()" disabled class="p-3 bg-slate-950 border border-slate-800 rounded-2xl text-slate-500 hover:text-white transition flex flex-col items-center gap-1 text-[11px] disabled:opacity-40">
+                        <i class="fa-solid fa-volume-high text-base"></i>
+                        <span id="speakerLabel">Speaker</span>
+                    </button>
+                </div>
+
+                <!-- Hotline Phone Number -->
+                <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                    <span>Hotline Bebas Pulsa:</span>
+                    <a href="tel:0800163987" class="font-mono font-bold text-emerald-400 hover:underline">0800-1-NEXUS (63987)</a>
+                </div>
+            </div>
+
+            <!-- TAB 2: Request Callback Form -->
+            <div id="tabCallback" class="space-y-4 hidden">
+                <div class="text-left">
+                    <h3 class="text-sm font-bold text-white mb-1">Minta Ditelepon Kembali</h3>
+                    <p class="text-xs text-slate-400">Tim CS kami akan menghubungi nomor ponsel Anda dalam 5-10 menit.</p>
+                </div>
+
+                <form onsubmit="handleCallbackSubmit(event)" class="space-y-3 text-left">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nama Lengkap</label>
+                        <input type="text" id="cbName" required placeholder="Budi Santoso" class="w-full bg-slate-950 border border-slate-800 text-xs rounded-xl p-3 text-slate-200 focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Nomor Telepon / WhatsApp</label>
+                        <input type="tel" id="cbPhone" required placeholder="081234567890" class="w-full bg-slate-950 border border-slate-800 text-xs rounded-xl p-3 text-slate-200 focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 mb-1">Topik Bantuan</label>
+                        <select id="cbTopic" class="w-full bg-slate-950 border border-slate-800 text-xs rounded-xl p-3 text-slate-200 focus:outline-none focus:border-emerald-500">
+                            <option value="Status Pengiriman">Status Pengiriman & Resi</option>
+                            <option value="Kendala Pembayaran">Kendala Pembayaran / Voucher</option>
+                            <option value="Informasi Produk">Informasi & Konsultasi Produk</option>
+                            <option value="Garansi & Retur">Garansi & Pengembalian Barang</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-emerald-600/30 mt-2 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Kirim Permintaan Telepon
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING LIVE CHAT & CALL CS WIDGET -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-end">
+        <!-- Phone Call Quick Button -->
+        <button onclick="openCallModal()" title="Layanan Telepon CS" class="relative w-12 h-12 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 text-white flex items-center justify-center shadow-2xl hover:scale-105 transition glow-emerald group">
+            <i class="fa-solid fa-phone text-lg group-hover:animate-wiggle"></i>
+        </button>
+
+        <!-- Chat Button -->
+        <button onclick="toggleChatWindow()" class="relative w-14 h-14 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-400 text-white flex items-center justify-center shadow-2xl hover:scale-105 transition glow-blue">
+            <i class="fa-solid fa-comments text-xl"></i>
+            <span id="chatBadge" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-rose-500 text-white font-bold text-[10px] flex items-center justify-center border-2 border-slate-950 hidden">1</span>
+        </button>
+
+        <!-- Chat Box Window -->
+        <div id="chatWindow" class="hidden absolute bottom-18 right-0 w-[90vw] sm:w-96 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden h-[450px]">
+            <!-- Chat Header -->
+            <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
+                            CS
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-slate-950"></span>
+                    </div>
+                    <div>
+                        <div class="text-xs font-bold text-white">NEXUS Support Agent</div>
+                        <div class="text-[10px] text-emerald-400">Online | Siap Membantu</div>
+                    </div>
+                </div>
+                <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div id="chatMessages" class="flex-1 p-4 space-y-3 overflow-y-auto text-xs">
+                <!-- Messages dynamic -->
+            </div>
+
+            <!-- Typing Indicator -->
+            <div id="typingIndicator" class="px-4 py-1 text-[11px] text-slate-400 italic hidden">
+                CS Agent sedang mengetik...
+            </div>
+
+            <!-- Quick Questions Chips -->
+            <div class="p-2 border-t border-slate-800/60 bg-slate-950/50 flex gap-1.5 overflow-x-auto text-[11px]">
+                <button onclick="sendQuickMessage('Bagaimana cara pakai promo?')" class="whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800 text-blue-300 hover:bg-slate-700">
+                    Promo Voucher?
+                </button>
+                <button onclick="sendQuickMessage('Berapa lama estimasi pengiriman?')" class="whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800 text-blue-300 hover:bg-slate-700">
+                    Estimasi Kirim?
+                </button>
+                <button onclick="sendQuickMessage('Apakah simulasi pembayaran aman?')" class="whitespace-nowrap px-2.5 py-1 rounded-full bg-slate-800 text-blue-300 hover:bg-slate-700">
+                    Keamanan Pembayaran?
+                </button>
+            </div>
+
+            <!-- Chat Input -->
+            <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
+                <input type="text" id="chatInput" placeholder="Tanyakan sesuatu..." class="flex-1 bg-slate-900 border border-slate-800 text-xs rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-blue-500">
+                <button type="submit" class="px-3 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 border-t border-blue-900/30 py-8 mt-16 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-300">NEXUS Store</span> &copy; 2026. Platform Simulasi Toko Online & Gateway Pembayaran.
+            </div>
+            <div class="flex gap-4 text-slate-400">
+                <span class="hover:text-blue-400 cursor-pointer">Syarat & Ketentuan</span>
+                <span class="hover:text-blue-400 cursor-pointer">Kebijakan Privasi</span>
+                <span class="hover:text-blue-400 cursor-pointer">Bantuan</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA PRODUK COMPLETE (20 ITEM) ---
+        const PRODUCTS = [
+            {
+                id: 1,
+                name: "Headphone Wireless Noise Cancelling Pro",
+                category: "Elektronik",
+                price: 1499000,
+                originalPrice: 2100000,
+                rating: 4.9,
+                reviewsCount: 128,
+                stock: 12,
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=80",
+                badge: "Terlaris",
+                description: "Headphone nirkabel premium dengan fitur Active Noise Cancelling (ANC), daya tahan baterai 40 jam, serta audio resolusi tinggi untuk kenyamanan bermusik seharian."
+            },
+            {
+                id: 2,
+                name: "Smartwatch AMOLED Series X Titanium",
+                category: "Gadget",
+                price: 899000,
+                originalPrice: 1299000,
+                rating: 4.8,
+                reviewsCount: 95,
+                stock: 8,
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=80",
+                badge: "Diskon 30%",
+                description: "Jam tangan pintar dengan layar AMOLED selalu aktif, sensor detak jantung 24/7, pemantauan tidur, dan ketahanan air hingga 50 meter."
+            },
+            {
+                id: 3,
+                name: "Mechanical Gaming Keyboard RGB Wireless",
+                category: "Elektronik",
+                price: 649000,
+                originalPrice: 850000,
+                rating: 4.7,
+                reviewsCount: 210,
+                stock: 25,
+                image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&auto=format&fit=crop&q=80",
+                badge: "Populer",
+                description: "Keyboard mekanikal 75% hot-swappable dengan switch Tactile Yellow, lampu backlight RGB kustom, dan konektivitas tri-mode (Bluetooth/2.4G/Kabel)."
+            },
+            {
+                id: 4,
+                name: "Mouse Ergonomis Wireless Silent Click",
+                category: "Elektronik",
+                price: 299000,
+                originalPrice: 399000,
+                rating: 4.6,
+                reviewsCount: 64,
+                stock: 18,
+                image: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=500&auto=format&fit=crop&q=80",
+                badge: "Baru",
+                description: "Mouse ergonomis yang mengurangi ketegangan pergelangan tangan, klik tanpa suara (silent click), dan resolusi sensor hingga 4000 DPI."
+            },
+            {
+                id: 5,
+                name: "Ransel Minimalis Waterproof Tech 20L",
+                category: "Fashion",
+                price: 385000,
+                originalPrice: 550000,
+                rating: 4.9,
+                reviewsCount: 88,
+                stock: 15,
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=80",
+                badge: "Best Seller",
+                description: "Tas punggung kedap air berbahan Cordura premium dengan kompartemen laptop khusus hingga 15.6 inci dan port USB charging eksternal."
+            },
+            {
+                id: 6,
+                name: "Kacamata Hitam Polarized UV400 Urban",
+                category: "Fashion",
+                price: 199000,
+                originalPrice: 299000,
+                rating: 4.5,
+                reviewsCount: 42,
+                stock: 30,
+                image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=500&auto=format&fit=crop&q=80",
+                badge: null,
+                description: "Kacamata bergaya klasik dengan lensa polarized anti-silau UV400 dan bingkai aluminium super ringan namun kokoh."
+            },
+            {
+                id: 7,
+                name: "Mesin Pembuat Kopi Espresso Portable",
+                category: "Rumah",
+                price: 520000,
+                originalPrice: 750000,
+                rating: 4.8,
+                reviewsCount: 53,
+                stock: 6,
+                image: "https://images.unsplash.com/photo-1517668808822-9ed02ebe1076?w=500&auto=format&fit=crop&q=80",
+                badge: "Pilihan Editor",
+                description: "Alat pembuat kopi espresso manual portable dengan tekanan 15 bar, praktis dibawa saat traveling, bekerja, maupun kemping."
+            },
+            {
+                id: 8,
+                name: "Powerbank Fast Charge 20.000mAh 65W",
+                category: "Gadget",
+                price: 349000,
+                originalPrice: 499000,
+                rating: 4.9,
+                reviewsCount: 310,
+                stock: 40,
+                image: "https://images.unsplash.com/photo-1609592424109-dd9892f1b177?w=500&auto=format&fit=crop&q=80",
+                badge: "Diskon 30%",
+                description: "Powerbank berkapasitas besar dengan teknologi Power Delivery (PD) 65W, sanggup mengisi ulang baterai laptop dan smartphone dengan sangat cepat."
+            },
+            {
+                id: 9,
+                name: "Smart Monitor 4K UHD 27 Inci HDR10",
+                category: "Elektronik",
+                price: 3299000,
+                originalPrice: 4200000,
+                rating: 4.9,
+                reviewsCount: 76,
+                stock: 10,
+                image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&auto=format&fit=crop&q=80",
+                badge: "Baru",
+                description: "Monitor cerdas 27 inci layar IPS 4K dengan refresh rate 144Hz, waktu respon 1ms, dan dukungan HDR10 untuk produktivitas & gaming terbaik."
+            },
+            {
+                id: 10,
+                name: "TWS Earbuds ANC Hi-Fi Audio Wireless",
+                category: "Gadget",
+                price: 499000,
+                originalPrice: 750000,
+                rating: 4.8,
+                reviewsCount: 142,
+                stock: 22,
+                image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=80",
+                badge: "Terlaris",
+                description: "Earbuds TWS berdesain ergonomis dengan peredam kebisingan aktif (ANC), mode transparansi, bass mendalam, dan daya tahan hingga 32 jam."
+            },
+            {
+                id: 11,
+                name: "Jaket Bomber Windproof Urban Techwear",
+                category: "Fashion",
+                price: 425000,
+                originalPrice: 600000,
+                rating: 4.7,
+                reviewsCount: 58,
+                stock: 14,
+                image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&auto=format&fit=crop&q=80",
+                badge: "Hot Deal",
+                description: "Jaket bomber bergaya futuristik techwear dengan bahan tahan angin dan percikan air, memiliki 6 saku taktis modular yang stylish."
+            },
+            {
+                id: 12,
+                name: "Smart Air Purifier HEPA Filter H13",
+                category: "Rumah",
+                price: 1150000,
+                originalPrice: 1650000,
+                rating: 4.9,
+                reviewsCount: 94,
+                stock: 9,
+                image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=500&auto=format&fit=crop&q=80",
+                badge: "Rekomendasi",
+                description: "Pembersih udara pintar dengan filter True HEPA H13 yang menyaring 99.97% debu, alergen, dan bakteri. Dapat dikontrol via aplikasi HP."
+            },
+            {
+                id: 13,
+                name: "Lampu Meja LED Smart RGB Minimalis",
+                category: "Rumah",
+                price: 245000,
+                originalPrice: 350000,
+                rating: 4.6,
+                reviewsCount: 110,
+                stock: 35,
+                image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&auto=format&fit=crop&q=80",
+                badge: null,
+                description: "Lampu meja kerja modern dengan tingkat kecerahan yang dapat disesuaikan, 16 juta warna RGB, kontrol sentuh, dan fitur pelindung mata."
+            },
+            {
+                id: 14,
+                name: "Sepatu Sneaker Streetwear Cushioning",
+                category: "Fashion",
+                price: 599000,
+                originalPrice: 899000,
+                rating: 4.8,
+                reviewsCount: 180,
+                stock: 16,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=80",
+                badge: "Diskon 33%",
+                description: "Sepatu kets bergaya streetwear kasual dengan sol bantalan udara yang empuk, sangat nyaman dipakai untuk aktivitas harian dan olahraga ringan."
+            },
+            {
+                id: 15,
+                name: "Kamera Action 4K Ultra HD Waterproof",
+                category: "Gadget",
+                price: 1299000,
+                originalPrice: 1850000,
+                rating: 4.7,
+                reviewsCount: 67,
+                stock: 7,
+                image: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&auto=format&fit=crop&q=80",
+                badge: "Pilihan Editor",
+                description: "Kamera aksi perekam video 4K 60fps dengan stabilizer digital Gyro-EIS, layar ganda ganda, dan casing tahan air hingga kedalaman 30m."
+            },
+            {
+                id: 16,
+                name: "Stand Laptop Aluminium Ergonomis Adjustable",
+                category: "Elektronik",
+                price: 175000,
+                originalPrice: 250000,
+                rating: 4.9,
+                reviewsCount: 245,
+                stock: 50,
+                image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop&q=80",
+                badge: "Terlaris",
+                description: "Dudukan laptop berbahan aluminium tebal yang kokoh, memiliki tingkat sudut kemiringan yang fleksibel untuk menjaga postur leher dan punggung."
+            },
+            {
+                id: 17,
+                name: "Drone Mini Foldable 4K Camera GPS",
+                category: "Gadget",
+                price: 1850000,
+                originalPrice: 2500000,
+                rating: 4.8,
+                reviewsCount: 45,
+                stock: 8,
+                image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?w=500&auto=format&fit=crop&q=80",
+                badge: "Baru",
+                description: "Drone mini lipat berkamera 4K Ultra HD dengan sistem navigasi GPS, fitur return-to-home otomatis, dan stabilitas penerbangan tinggi."
+            },
+            {
+                id: 18,
+                name: "Proyektor Mini Portable Smart Android WiFi",
+                category: "Elektronik",
+                price: 1250000,
+                originalPrice: 1750000,
+                rating: 4.7,
+                reviewsCount: 89,
+                stock: 12,
+                image: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=500&auto=format&fit=crop&q=80",
+                badge: "Diskon 28%",
+                description: "Proyektor saku pintar bersistem operasi Android, mendukung koneksi Wi-Fi, YouTube, Netflix, serta proyeksi layar hingga 120 inci."
+            },
+            {
+                id: 19,
+                name: "Jam Tangan Otomatis Skeleton Leather Strap",
+                category: "Fashion",
+                price: 799000,
+                originalPrice: 1100000,
+                rating: 4.9,
+                reviewsCount: 34,
+                stock: 11,
+                image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500&auto=format&fit=crop&q=80",
+                badge: "Eksklusif",
+                description: "Jam tangan pria mekanis otomatis dengan desain piringan transparan (skeleton design), kaca kristal sapphire anti-gores, dan tali kulit asli."
+            },
+            {
+                id: 20,
+                name: "Air Fryer Digital Low Watt 4 Liter",
+                category: "Rumah",
+                price: 680000,
+                originalPrice: 950000,
+                rating: 4.9,
+                reviewsCount: 156,
+                stock: 18,
+                image: "https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=500&auto=format&fit=crop&q=80",
+                badge: "Terlaris",
+                description: "Penggorengan tanpa minyak hemat listrik (350W) berkapasitas 4 liter dengan layar sentuh digital dan 8 mode memasak prasetel."
+            }
+        ];
+
+        // --- GLOBAL APP STATE ---
+        let state = {
+            cart: [],
+            activeCategory: 'Semua',
+            searchQuery: '',
+            sortBy: 'default',
+            appliedVoucher: null,
+            currentCheckout: null,
+            paymentTimer: null,
+            paymentTimerSeconds: 900,
+            transactionHistory: [],
+            chatMessages: [
+                { sender: 'cs', text: 'Halo! Selamat datang di NEXUS Store 👋 Ada yang bisa kami bantu mengenai produk atau pembayaran hari ini?', time: 'Baru saja' }
+            ],
+            // Call State
+            callStatus: 'idle', // 'idle' | 'calling' | 'connected' | 'ended'
+            callTimer: null,
+            callSeconds: 0,
+            isMuted: false,
+            isSpeaker: false,
+            audioCtx: null
+        };
+
+        // Format Currency Helper
+        function formatRupiah(amount) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(amount);
+        }
+
+        // Render Categories Bar
+        function renderCategories() {
+            const categories = ['Semua', 'Elektronik', 'Gadget', 'Fashion', 'Rumah'];
+            const container = document.getElementById('categoryContainer');
+            
+            container.innerHTML = categories.map(cat => `
+                <button onclick="setCategory('${cat}')" 
+                    class="px-3.5 py-1.5 rounded-full text-xs font-medium transition ${state.activeCategory === cat ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30' : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function setCategory(cat) {
+            state.activeCategory = cat;
+            renderCategories();
+            renderProducts();
+        }
+
+        function handleSearch(query) {
+            state.searchQuery = query.toLowerCase();
+            renderProducts();
+        }
+
+        function handleSort(sortVal) {
+            state.sortBy = sortVal;
+            renderProducts();
+        }
+
+        function resetFilters() {
+            state.activeCategory = 'Semua';
+            state.searchQuery = '';
+            state.sortBy = 'default';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchInputMobile').value = '';
+            document.getElementById('sortSelect').value = 'default';
+            renderCategories();
+            renderProducts();
+        }
+
+        // Render Products List
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            let filtered = PRODUCTS.filter(p => {
+                const matchCategory = state.activeCategory === 'Semua' || p.category === state.activeCategory;
+                const matchSearch = p.name.toLowerCase().includes(state.searchQuery) || p.description.toLowerCase().includes(state.searchQuery);
+                return matchCategory && matchSearch;
+            });
+
+            // Sorting
+            if (state.sortBy === 'price-low') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (state.sortBy === 'price-high') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (state.sortBy === 'rating') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-slate-900/90 border border-slate-800/90 hover:border-blue-500/50 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between group glow-blue-sm">
+                    <div>
+                        <!-- Image Container -->
+                        <div class="relative overflow-hidden bg-slate-950 aspect-square">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.src='https://placehold.co/500x500/0f172a/3b82f6?text=NEXUS+Product'">
+                            ${p.badge ? `<span class="absolute top-3 left-3 bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow">${p.badge}</span>` : ''}
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-4 space-y-2">
+                            <div class="text-[11px] font-medium text-blue-400 uppercase tracking-wider">${p.category}</div>
+                            <h3 class="font-semibold text-slate-100 text-sm line-clamp-2 hover:text-blue-400 transition cursor-pointer" onclick="openDetailModal(${p.id})">${p.name}</h3>
+                            
+                            <!-- Rating -->
+                            <div class="flex items-center gap-1.5 text-xs text-amber-400">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="font-bold text-slate-200">${p.rating}</span>
+                                <span class="text-slate-500 text-[11px]">(${p.reviewsCount})</span>
+                            </div>
+
+                            <!-- Price -->
+                            <div class="pt-2 flex items-baseline gap-2">
+                                <span class="text-base font-extrabold text-blue-400">${formatRupiah(p.price)}</span>
+                                ${p.originalPrice ? `<span class="text-xs text-slate-500 line-through">${formatRupiah(p.originalPrice)}</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Actions -->
+                    <div class="p-4 pt-0 grid grid-cols-2 gap-2">
+                        <button onclick="openDetailModal(${p.id})" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold border border-slate-700 transition">
+                            Detail
+                        </button>
+                        <button onclick="addToCart(${p.id})" class="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-md shadow-blue-600/20 transition flex items-center justify-center gap-1">
+                            <i class="fa-solid fa-cart-plus"></i> +Beli
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Product Detail Modal
+        function openDetailModal(id) {
+            const product = PRODUCTS.find(p => p.id === id);
+            if (!product) return;
+
+            const container = document.getElementById('detailContent');
+            container.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="rounded-2xl overflow-hidden bg-slate-950 aspect-square border border-slate-800">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="space-y-4 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">${product.category}</span>
+                            <h2 class="text-xl font-bold text-white mt-1">${product.name}</h2>
+                            <div class="flex items-center gap-2 text-xs text-amber-400 mt-2">
+                                <i class="fa-solid fa-star"></i>
+                                <span class="font-bold text-white">${product.rating}</span>
+                                <span class="text-slate-400">| ${product.reviewsCount} ulasan pembeli</span>
+                            </div>
+                            <p class="text-xs text-slate-300 mt-4 leading-relaxed">${product.description}</p>
+                            <div class="mt-4 text-xs text-slate-400">Stok Tersedia: <span class="text-emerald-400 font-bold">${product.stock} pcs</span></div>
+                        </div>
+
+                        <div class="space-y-4 border-t border-slate-800 pt-4">
+                            <div class="flex items-baseline gap-3">
+                                <span class="text-2xl font-black text-blue-400">${formatRupiah(product.price)}</span>
+                                ${product.originalPrice ? `<span class="text-sm text-slate-500 line-through">${formatRupiah(product.originalPrice)}</span>` : ''}
+                            </div>
+
+                            <div class="flex gap-2">
+                                <button onclick="addToCart(${product.id}); closeDetailModal();" class="flex-1 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs transition shadow-lg shadow-blue-600/30">
+                                    + Tambah ke Keranjang
+                                </button>
+                                <button onclick="askSellerAboutProduct('${product.name}')" class="px-4 py-3 bg-slate-800 hover:bg-slate-700 text-blue-400 rounded-xl text-xs font-bold border border-slate-700 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-comment-dots"></i> Chat Penjual
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // Shopping Cart Management
+        function addToCart(productId) {
+            const product = PRODUCTS.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = state.cart.find(item => item.product.id === productId);
+            if (existing) {
+                if (existing.quantity < product.stock) {
+                    existing.quantity++;
+                } else {
+                    showToast('Stok maksimum tercapai!');
+                    return;
+                }
+            } else {
+                state.cart.push({ product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast('Produk ditambahkan ke keranjang!');
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const item = state.cart.find(i => i.product.id === productId);
+            if (!item) return;
+
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                state.cart = state.cart.filter(i => i.product.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const container = document.getElementById('cartItemsContainer');
+            
+            const totalItems = state.cart.reduce((sum, i) => sum + i.quantity, 0);
+            badge.innerText = totalItems;
+
+            if (state.cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-slate-500 space-y-2">
+                        <i class="fa-solid fa-cart-flatbed text-4xl"></i>
+                        <p class="text-xs">Keranjang Anda masih kosong</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = state.cart.map(item => `
+                    <div class="flex items-center gap-3 p-3 bg-slate-950 border border-slate-800 rounded-2xl">
+                        <img src="${item.product.image}" class="w-14 h-14 object-cover rounded-xl bg-slate-900">
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-xs font-semibold text-slate-200 truncate">${item.product.name}</h4>
+                            <div class="text-xs font-bold text-blue-400 mt-0.5">${formatRupiah(item.product.price)}</div>
+                        </div>
+                        <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-lg p-1">
+                            <button onclick="updateCartQuantity(${item.product.id}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white text-xs">-</button>
+                            <span class="text-xs font-bold text-slate-200 px-1">${item.quantity}</span>
+                            <button onclick="updateCartQuantity(${item.product.id}, 1)" class="w-6 h-6 flex items-center justify-center text-slate-400 hover:text-white text-xs">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            calculateCartTotals();
+        }
+
+        function calculateCartTotals() {
+            const subtotal = state.cart.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+            let discount = 0;
+            let shipping = subtotal > 0 ? 15000 : 0;
+
+            if (state.appliedVoucher) {
+                if (state.appliedVoucher.code === 'DISKON50') {
+                    discount = subtotal * 0.5;
+                } else if (state.appliedVoucher.code === 'GRATISONGKIR') {
+                    shipping = 0;
+                }
+            }
+
+            const total = subtotal - discount + shipping;
+
+            document.getElementById('cartSubtotal').innerText = formatRupiah(subtotal);
+            document.getElementById('cartDiscount').innerText = `- ${formatRupiah(discount)}`;
+            document.getElementById('cartShipping').innerText = formatRupiah(shipping);
+            document.getElementById('cartTotal').innerText = formatRupiah(total);
+
+            return { subtotal, discount, shipping, total };
+        }
+
+        function applyVoucher() {
+            const input = document.getElementById('voucherInput').value.trim().toUpperCase();
+            const msg = document.getElementById('voucherMessage');
+
+            if (input === 'DISKON50') {
+                state.appliedVoucher = { code: 'DISKON50', name: 'Diskon 50%' };
+                msg.className = "text-xs text-emerald-400 block";
+                msg.innerText = "Voucher DISKON50 berhasil dipasang! (Potongan 50%)";
+            } else if (input === 'GRATISONGKIR') {
+                state.appliedVoucher = { code: 'GRATISONGKIR', name: 'Gratis Ongkir' };
+                msg.className = "text-xs text-emerald-400 block";
+                msg.innerText = "Voucher GRATISONGKIR berhasil dipasang!";
+            } else {
+                msg.className = "text-xs text-rose-400 block";
+                msg.innerText = "Kode voucher tidak valid!";
+            }
+            calculateCartTotals();
+        }
+
+        function copyVoucher(code) {
+            document.getElementById('voucherInput').value = code;
+            showToast(`Kode voucher ${code} disalin!`);
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Checkout & Payment Simulation
+        function proceedToCheckout() {
+            if (state.cart.length === 0) {
+                showToast('Keranjang Anda kosong!');
+                return;
+            }
+            toggleCartModal();
+            document.getElementById('checkoutStep1').classList.remove('hidden');
+            document.getElementById('checkoutStep2').classList.add('hidden');
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+            if (state.paymentTimer) clearInterval(state.paymentTimer);
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            const method = document.querySelector('input[name="paymentMethod"]:checked').value;
+            const totals = calculateCartTotals();
+
+            state.currentCheckout = {
+                id: 'INV-' + Date.now().toString().slice(-6),
+                customer: {
+                    name: document.getElementById('custName').value,
+                    phone: document.getElementById('custPhone').value,
+                    city: document.getElementById('custCity').value,
+                    address: document.getElementById('custAddress').value
+                },
+                method: method,
+                cart: [...state.cart],
+                totals: totals,
+                date: new Date().toLocaleString('id-ID')
+            };
+
+            // Switch to step 2 (Gateway Simulator)
+            document.getElementById('checkoutStep1').classList.add('hidden');
+            document.getElementById('checkoutStep2').classList.remove('hidden');
+
+            renderPaymentInstructions(method, totals.total);
+            startPaymentTimer();
+        }
+
+        function renderPaymentInstructions(method, amount) {
+            const container = document.getElementById('paymentInstructions');
+            document.getElementById('simPayAmount').innerText = formatRupiah(amount);
+
+            if (method === 'qris') {
+                container.innerHTML = `
+                    <div class="space-y-3 flex flex-col items-center">
+                        <div class="bg-white p-3 rounded-2xl inline-block shadow-lg">
+                            <!-- SVG QR Code Placeholder -->
+                            <svg class="w-40 h-40" viewBox="0 0 100 100">
+                                <rect width="100" height="100" fill="white"/>
+                                <path d="M10 10h30v30h-30zM15 15v20h20v-20zM60 10h30v30h-30zM65 15v20h20v-20zM10 60h30v30h-30zM15 65v20h20v-20z" fill="black"/>
+                                <rect x="20" y="20" width="10" height="10" fill="black"/>
+                                <rect x="70" y="20" width="10" height="10" fill="black"/>
+                                <rect x="20" y="70" width="10" height="10" fill="black"/>
+                                <path d="M45 10h10v20h-10zM45 40h20v10h-20zM80 50h10v30h-10zM50 60h20v20h-20z" fill="black"/>
+                            </svg>
+                        </div>
+                        <p class="text-xs text-slate-300">Scan QRIS menggunakan GoPay, OVO, Dana, ShopeePay, atau m-Banking Anda.</p>
+                    </div>
+                `;
+            } else if (method === 'bca_va') {
+                const vaNum = '88012' + Math.floor(100000000 + Math.random() * 900000000);
+                container.innerHTML = `
+                    <div class="space-y-2 text-center">
+                        <div class="text-xs text-slate-400">Nomor Virtual Account BCA:</div>
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-xl font-mono font-bold text-blue-400 tracking-wider">${vaNum}</span>
+                            <button onclick="navigator.clipboard.writeText('${vaNum}'); showToast('Nomor VA disalin!');" class="text-xs text-slate-400 hover:text-white bg-slate-800 px-2 py-1 rounded">
+                                <i class="fa-regular fa-copy"></i> Salin
+                            </button>
+                        </div>
+                        <p class="text-[11px] text-slate-400">Transfer melalui m-BCA / ATM BCA menu Virtual Account.</p>
+                    </div>
+                `;
+            } else if (method === 'ewallet') {
+                container.innerHTML = `
+                    <div class="space-y-2 text-center">
+                        <i class="fa-solid fa-mobile-screen-button text-3xl text-blue-400 mb-1"></i>
+                        <p class="text-xs text-slate-300">Notifikasi pembayaran telah dikirimkan ke aplikasi E-Wallet Anda. Silakan buka aplikasi HP Anda untuk menyetujui transaksi.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="space-y-2 text-center">
+                        <i class="fa-solid fa-truck-ramp-box text-3xl text-amber-400 mb-1"></i>
+                        <p class="text-xs text-slate-300">Pesanan COD telah dikonfirmasi. Persiapkan uang pas saat kurir mengantarkan barang ke alamat Anda.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function startPaymentTimer() {
+            if (state.paymentTimer) clearInterval(state.paymentTimer);
+            state.paymentTimerSeconds = 900;
+            
+            const timerEl = document.getElementById('paymentTimer');
+            state.paymentTimer = setInterval(() => {
+                state.paymentTimerSeconds--;
+                const mins = Math.floor(state.paymentTimerSeconds / 60).toString().padStart(2, '0');
+                const secs = (state.paymentTimerSeconds % 60).toString().padStart(2, '0');
+                if (timerEl) timerEl.innerText = `${mins}:${secs}`;
+
+                if (state.paymentTimerSeconds <= 0) {
+                    clearInterval(state.paymentTimer);
+                    triggerPaymentResult('EXPIRED');
+                }
+            }, 1000);
+        }
+
+        function triggerPaymentResult(status) {
+            if (state.paymentTimer) clearInterval(state.paymentTimer);
+            closeCheckoutModal();
+
+            const record = {
+                ...state.currentCheckout,
+                status: status,
+                timestamp: new Date().toISOString()
+            };
+
+            state.transactionHistory.unshift(record);
+
+            if (status === 'SUCCESS') {
+                state.cart = [];
+                state.appliedVoucher = null;
+                updateCartUI();
+            }
+
+            renderInvoiceModal(record);
+        }
+
+        function renderInvoiceModal(record) {
+            const container = document.getElementById('invoiceContent');
+            const statusBadge = record.status === 'SUCCESS' 
+                ? `<span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-check"></i> PEMBAYARAN LUNAS</span>`
+                : record.status === 'FAILED'
+                ? `<span class="bg-rose-500/20 text-rose-400 border border-rose-500/30 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-xmark"></i> TRANSAKSI GAGAL</span>`
+                : `<span class="bg-amber-500/20 text-amber-400 border border-amber-500/30 px-3 py-1 rounded-full text-xs font-bold"><i class="fa-solid fa-clock"></i> KEDALUWARSA</span>`;
+
+            container.innerHTML = `
+                <div class="text-center space-y-2 border-b border-slate-800 pb-4">
+                    <div class="text-xl font-bold text-white">NEXUS STORE</div>
+                    <div class="text-xs text-slate-400">Bukti Transaksi Simulasi</div>
+                    <div class="pt-2">${statusBadge}</div>
+                </div>
+
+                <div class="text-xs space-y-1.5 text-slate-300 font-mono bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <div class="flex justify-between"><span>No. Invoice:</span> <span class="text-white">${record.id}</span></div>
+                    <div class="flex justify-between"><span>Tanggal:</span> <span class="text-white">${record.date}</span></div>
+                    <div class="flex justify-between"><span>Metode:</span> <span class="text-white uppercase">${record.method}</span></div>
+                    <div class="flex justify-between"><span>Penerima:</span> <span class="text-white">${record.customer.name}</span></div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="text-xs font-bold text-slate-400">Rincian Barang:</div>
+                    ${record.cart.map(item => `
+                        <div class="flex justify-between text-xs text-slate-300 py-1 border-b border-slate-800/60">
+                            <span>${item.product.name} (x${item.quantity})</span>
+                            <span class="font-medium text-slate-100">${formatRupiah(item.product.price * item.quantity)}</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="space-y-1 text-xs text-slate-400 border-t border-slate-800 pt-3">
+                    <div class="flex justify-between"><span>Subtotal:</span> <span>${formatRupiah(record.totals.subtotal)}</span></div>
+                    <div class="flex justify-between"><span>Diskon:</span> <span>- ${formatRupiah(record.totals.discount)}</span></div>
+                    <div class="flex justify-between"><span>Ongkir:</span> <span>${formatRupiah(record.totals.shipping)}</span></div>
+                    <div class="flex justify-between text-sm font-bold text-white pt-2 border-t border-slate-800">
+                        <span>Total:</span>
+                        <span class="text-blue-400">${formatRupiah(record.totals.total)}</span>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('invoiceModal').classList.remove('hidden');
+        }
+
+        function closeInvoiceModal() {
+            document.getElementById('invoiceModal').classList.add('hidden');
+        }
+
+        // History Modal
+        function openHistoryModal() {
+            const container = document.getElementById('historyList');
+            if (state.transactionHistory.length === 0) {
+                container.innerHTML = `<div class="text-center py-8 text-xs text-slate-500">Belum ada riwayat transaksi simulasi.</div>`;
+            } else {
+                container.innerHTML = state.transactionHistory.map(tx => `
+                    <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl flex items-center justify-between text-xs">
+                        <div>
+                            <div class="font-bold text-white">${tx.id}</div>
+                            <div class="text-[10px] text-slate-400">${tx.date} • ${tx.method.toUpperCase()}</div>
+                        </div>
+                        <div class="text-right">
+                            <div class="font-bold text-blue-400">${formatRupiah(tx.totals.total)}</div>
+                            <span class="text-[10px] ${tx.status === 'SUCCESS' ? 'text-emerald-400' : 'text-rose-400'} font-semibold">${tx.status}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            document.getElementById('historyModal').classList.remove('hidden');
+        }
+
+        function closeHistoryModal() {
+            document.getElementById('historyModal').classList.add('hidden');
+        }
+
+        // --- LAYANAN TELEPON & CALL SIMULATOR LOGIC ---
+        function openCallModal() {
+            document.getElementById('callModal').classList.remove('hidden');
+        }
+
+        function closeCallModal() {
+            if (state.callStatus === 'calling' || state.callStatus === 'connected') {
+                endSimulatedCall();
+            }
+            document.getElementById('callModal').classList.add('hidden');
+        }
+
+        function switchCallTab(tab) {
+            const simTab = document.getElementById('tabSimCall');
+            const cbTab = document.getElementById('tabCallback');
+            const simBtn = document.getElementById('tabSimCallBtn');
+            const cbBtn = document.getElementById('tabCallbackBtn');
+
+            if (tab === 'live') {
+                simTab.classList.remove('hidden');
+                cbTab.classList.add('hidden');
+                simBtn.className = "flex-1 pb-3 text-emerald-400 border-b-2 border-emerald-500 flex items-center justify-center gap-1.5";
+                cbBtn.className = "flex-1 pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center justify-center gap-1.5";
+            } else {
+                simTab.classList.add('hidden');
+                cbTab.classList.remove('hidden');
+                cbBtn.className = "flex-1 pb-3 text-emerald-400 border-b-2 border-emerald-500 flex items-center justify-center gap-1.5";
+                simBtn.className = "flex-1 pb-3 text-slate-400 hover:text-slate-200 border-b-2 border-transparent flex items-center justify-center gap-1.5";
+            }
+        }
+
+        // Web Audio Synthesizer for Phone Ringing Sound Effect
+        function playRingtoneSound() {
+            try {
+                if (!state.audioCtx) {
+                    state.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                const ctx = state.audioCtx;
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const osc1 = ctx.createOscillator();
+                const osc2 = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc1.type = 'sine';
+                osc2.type = 'sine';
+                osc1.frequency.setValueAtTime(440, ctx.currentTime); // 440Hz Tone
+                osc2.frequency.setValueAtTime(480, ctx.currentTime); // 480Hz Tone
+
+                gain.gain.setValueAtTime(0.1, ctx.currentTime);
+
+                osc1.connect(gain);
+                osc2.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc1.start();
+                osc2.start();
+                osc1.stop(ctx.currentTime + 1.2);
+                osc2.stop(ctx.currentTime + 1.2);
+            } catch (e) {
+                console.log('Audio playback supported/disabled:', e);
+            }
+        }
+
+        function toggleSimulatedCall() {
+            if (state.callStatus === 'idle' || state.callStatus === 'ended') {
+                startSimulatedCall();
+            } else {
+                endSimulatedCall();
+            }
+        }
+
+        function startSimulatedCall() {
+            state.callStatus = 'calling';
+            
+            // UI Updates
+            document.getElementById('callAvatarPulse').classList.remove('hidden');
+            document.getElementById('callStatusText').innerText = "Menghubungkan ke CS NEXUS...";
+            document.getElementById('csSpeechBubble').innerText = "Memanggil agen customer service...";
+            
+            const mainBtn = document.getElementById('mainCallBtn');
+            mainBtn.className = "p-4 bg-rose-600 hover:bg-rose-500 text-white rounded-2xl shadow-lg shadow-rose-600/40 transition flex flex-col items-center justify-center text-xs font-bold col-span-1";
+            document.getElementById('mainCallBtnText').innerText = "Tutup";
+
+            playRingtoneSound();
+
+            // Simulate CS Answer after 2.5 seconds
+            setTimeout(() => {
+                if (state.callStatus !== 'calling') return;
+
+                state.callStatus = 'connected';
+                document.getElementById('callStatusText').innerText = "Panggilan Terhubung • HD Voice";
+                document.getElementById('soundWave').classList.remove('hidden');
+                document.getElementById('callTimer').classList.remove('hidden');
+                document.getElementById('muteBtn').disabled = false;
+                document.getElementById('speakerBtn').disabled = false;
+
+                // Start Call Timer
+                state.callSeconds = 0;
+                state.callTimer = setInterval(() => {
+                    state.callSeconds++;
+                    const m = Math.floor(state.callSeconds / 60).toString().padStart(2, '0');
+                    const s = (state.callSeconds % 60).toString().padStart(2, '0');
+                    document.getElementById('callTimer').innerText = `${m}:${s}`;
+                }, 1000);
+
+                speakCSVoice("Halo! Selamat datang di Layanan Suara NEXUS Store. Nama saya Sarah, agen CS Anda. Ada yang bisa saya bantu?");
+
+            }, 2500);
+        }
+
+        function speakCSVoice(text) {
+            document.getElementById('csSpeechBubble').innerText = `"${text}"`;
+
+            // Use browser speech synthesis if available
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'id-ID';
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function toggleMute() {
+            state.isMuted = !state.isMuted;
+            const btn = document.getElementById('muteBtn');
+            const label = document.getElementById('muteLabel');
+            if (state.isMuted) {
+                btn.classList.add('bg-rose-950', 'text-rose-400', 'border-rose-800');
+                label.innerText = "Muted";
+                showToast("Mikrofon dibisukan");
+            } else {
+                btn.classList.remove('bg-rose-950', 'text-rose-400', 'border-rose-800');
+                label.innerText = "Mute";
+                showToast("Mikrofon aktif");
+            }
+        }
+
+        function toggleSpeaker() {
+            state.isSpeaker = !state.isSpeaker;
+            const btn = document.getElementById('speakerBtn');
+            const label = document.getElementById('speakerLabel');
+            if (state.isSpeaker) {
+                btn.classList.add('bg-emerald-950', 'text-emerald-400', 'border-emerald-800');
+                label.innerText = "Loudspeaker";
+                showToast("Loudspeaker diaktifkan");
+            } else {
+                btn.classList.remove('bg-emerald-950', 'text-emerald-400', 'border-emerald-800');
+                label.innerText = "Speaker";
+                showToast("Speaker normal");
+            }
+        }
+
+        function endSimulatedCall() {
+            state.callStatus = 'ended';
+            if (state.callTimer) clearInterval(state.callTimer);
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
+            // Reset UI
+            document.getElementById('callAvatarPulse').classList.add('hidden');
+            document.getElementById('soundWave').classList.add('hidden');
+            document.getElementById('callStatusText').innerText = "Panggilan Selesai";
+            document.getElementById('csSpeechBubble').innerText = "Terima kasih telah menghubungi Layanan Telepon NEXUS!";
+            
+            const mainBtn = document.getElementById('mainCallBtn');
+            mainBtn.className = "p-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl shadow-lg shadow-emerald-600/40 transition flex flex-col items-center justify-center text-xs font-bold col-span-1";
+            document.getElementById('mainCallBtnText').innerText = "Panggil";
+
+            document.getElementById('muteBtn').disabled = true;
+            document.getElementById('speakerBtn').disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('callTimer').classList.add('hidden');
+                document.getElementById('callTimer').innerText = "00:00";
+            }, 1000);
+        }
+
+        function handleCallbackSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('cbName').value;
+            const phone = document.getElementById('cbPhone').value;
+            const topic = document.getElementById('cbTopic').value;
+
+            showToast(`Permintaan diterima! Agen CS akan menghubungi ${phone} (${name}).`);
+            document.getElementById('cbName').value = '';
+            document.getElementById('cbPhone').value = '';
+            switchCallTab('live');
+        }
+
+        // Live Chat Widget Logic
+        function toggleChatWindow() {
+            const win = document.getElementById('chatWindow');
+            win.classList.toggle('hidden');
+            document.getElementById('chatBadge').classList.add('hidden');
+            renderChatMessages();
+        }
+
+        function renderChatMessages() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = state.chatMessages.map(m => `
+                <div class="flex ${m.sender === 'user' ? 'justify-end' : 'justify-start'}">
+                    <div class="max-w-[80%] rounded-2xl px-3.5 py-2 ${m.sender === 'user' ? 'bg-blue-600 text-white rounded-br-none' : 'bg-slate-800 text-slate-200 border border-slate-700 rounded-bl-none'}">
+                        <p>${m.text}</p>
+                        <span class="text-[9px] opacity-60 block text-right mt-1">${m.time}</span>
+                    </div>
+                </div>
+            `).join('');
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            sendMessage(text);
+            input.value = '';
+        }
+
+        function sendQuickMessage(text) {
+            sendMessage(text);
+        }
+
+        function sendMessage(text) {
+            state.chatMessages.push({ sender: 'user', text: text, time: 'Baru saja' });
+            renderChatMessages();
+
+            // Simulate CS Automated Intelligent Response
+            const typing = document.getElementById('typingIndicator');
+            typing.classList.remove('hidden');
+
+            setTimeout(() => {
+                typing.classList.add('hidden');
+                let reply = "Terima kasih telah menghubungi NEXUS CS. Tim kami siap membantu Anda kapan saja!";
+                
+                const lower = text.toLowerCase();
+                if (lower.includes('promo') || lower.includes('voucher')) {
+                    reply = "Gunakan kode voucher DISKON50 untuk potongan 50% atau GRATISONGKIR saat checkout!";
+                } else if (lower.includes('kirim') || lower.includes('estimasi')) {
+                    reply = "Estimasi pengiriman reguler adalah 1-3 hari kerja tergantung kota tujuan Anda.";
+                } else if (lower.includes('bayar') || lower.includes('simulasi')) {
+                    reply = "Sistem pembayaran di web ini adalah SIMULASI instan. Anda bisa menguji status Sukses/Gagal untuk mencoba fitur invoice!";
+                } else if (lower.includes('tanya tentang')) {
+                    reply = `Mengenai produk tersebut, stok kami ready dan bisa langsung dipesan sekarang! Ada promo potongan harga juga.`;
+                }
+
+                state.chatMessages.push({ sender: 'cs', text: reply, time: 'Baru saja' });
+                renderChatMessages();
+            }, 1000);
+        }
+
+        function askSellerAboutProduct(productName) {
+            closeDetailModal();
+            if (document.getElementById('chatWindow').classList.contains('hidden')) {
+                toggleChatWindow();
+            }
+            sendQuickMessage(`Halo, saya mau tanya tentang produk "${productName}" apakah ready?`);
+        }
+
+        // Notification Toast Helper
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-20 right-6 z-50 bg-blue-600 text-white font-semibold text-xs px-4 py-3 rounded-xl shadow-2xl border border-blue-400 animate-bounce';
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2500);
+        }
+
+        // INITIALIZATION ON LOAD
+        window.onload = function() {
+            renderCategories();
+            renderProducts();
+            updateCartUI();
+        };
+    </script>
+</body>
+</html>

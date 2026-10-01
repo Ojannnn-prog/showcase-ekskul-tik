@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoVerse ID - Toko Photocard K-Pop & Anime Official</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fff5f2',
+                            100: '#ffe8e1',
+                            200: '#ffd0c3',
+                            500: '#ff4d22',
+                            600: '#ee3c10',
+                            700: '#c82a04',
+                            purple: '#6C5CE7',
+                            dark: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -10px rgba(0, 0, 0, 0.08)',
+                        'glow': '0 0 25px -5px rgba(255, 77, 34, 0.35)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Photocard Hover Effects */
+        .pc-card {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .pc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px -10px rgba(238, 60, 16, 0.2);
+        }
+
+        .holo-overlay {
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.08) 25%,
+                rgba(255, 0, 150, 0.3) 45%,
+                rgba(0, 204, 255, 0.3) 55%,
+                rgba(255,255,255,0.08) 75%,
+                rgba(255,255,255,0) 100%
+            );
+            position: absolute;
+            top: -120%;
+            left: -120%;
+            width: 340%;
+            height: 340%;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+            mix-blend-mode: color-dodge;
+            z-index: 10;
+        }
+
+        .pc-card:hover .holo-overlay {
+            transform: translate(35%, 35%);
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+        }
+        .pulse-badge {
+            animation: pulseGlow 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-gradient-to-r from-brand-600 via-brand-500 to-brand-purple text-white text-xs py-2 px-4 shadow-sm">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2 truncate">
+                <span class="bg-white/20 px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">HOT RELEASE</span>
+                <span class="truncate font-medium text-xs sm:text-xs">
+                    CORTIS 1st EP Debut Official Photocard Launch! Diskon s/d 50% + Gratis Ongkir Min. 50rb
+                </span>
+            </div>
+            <div class="hidden md:flex items-center space-x-5 text-[11px] font-medium opacity-90">
+                <a href="#katalog" class="hover:text-amber-200 transition flex items-center gap-1.5"><i class="fa-solid fa-fire text-amber-300"></i> Best Sellers</a>
+                <span>•</span>
+                <a href="#" onclick="openPromoModal()" class="hover:text-amber-200 transition flex items-center gap-1.5"><i class="fa-solid fa-ticket text-amber-300"></i> Voucher Rp25Rb</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Navigation -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+            <div class="flex items-center justify-between gap-3 sm:gap-6">
+                
+                <!-- Brand Logo -->
+                <a href="#" onclick="resetAllFilters()" class="flex items-center gap-2.5 shrink-0 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-purple flex items-center justify-center text-white shadow-md group-hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-sparkles text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-xl font-black bg-gradient-to-r from-brand-600 via-brand-500 to-brand-purple bg-clip-text text-transparent tracking-tight leading-none">PhotoVerse</span>
+                            <span class="bg-brand-50 text-brand-600 border border-brand-200 text-[9px] font-extrabold px-1.5 py-0.5 rounded">ID</span>
+                        </div>
+                        <span class="text-[10px] text-slate-500 font-semibold tracking-wide block">K-Pop & Anime Official PC</span>
+                    </div>
+                </a>
+
+                <!-- Search Bar with Live Autocomplete -->
+                <div class="flex-1 max-w-xl relative">
+                    <div class="relative">
+                        <input type="text" id="searchInput" oninput="handleSearchInput(event)" onkeydown="handleSearchKeyDown(event)" 
+                            placeholder="Cari Juhoon, Sunghoon, Yeonjun, Wonhee, ENHYPEN, CORTIS, POB..." 
+                            class="w-full pl-10 pr-24 py-2.5 rounded-2xl border border-slate-200 bg-slate-50/80 focus:bg-white focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-500/10 text-xs sm:text-sm transition-all shadow-inner">
+                        <div class="absolute left-3.5 top-3 text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        </div>
+                        <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-20 top-2.5 text-slate-400 hover:text-slate-600 p-1 rounded-full transition">
+                            <i class="fa-solid fa-circle-xmark text-sm"></i>
+                        </button>
+                        <button onclick="executeSearch()" class="absolute right-1.5 top-1.5 bottom-1.5 bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white px-4 rounded-xl text-xs font-bold transition shadow-sm flex items-center gap-1">
+                            <span>Cari</span>
+                        </button>
+                    </div>
+
+                    <!-- Autocomplete Suggestions Dropdown -->
+                    <div id="searchSuggestions" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-100 z-50 overflow-hidden max-h-80 overflow-y-auto divide-y divide-slate-100">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+                <!-- Right Header Actions (Cart & Profile) -->
+                <div class="flex items-center gap-2.5 shrink-0">
+                    <!-- Tracking & Owner Chat Quick Buttons -->
+                    <button onclick="openTrackingModal()" class="p-2 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 transition hidden lg:flex items-center gap-1.5 text-xs font-bold border border-slate-200/80">
+                        <i class="fa-solid fa-truck-fast text-brand-500"></i> Lacak Paket
+                    </button>
+                    <button onclick="openOwnerChat()" class="p-2 py-1.5 rounded-xl bg-slate-100 hover:bg-brand-50 text-slate-700 hover:text-brand-600 transition hidden sm:flex items-center gap-1.5 text-xs font-bold border border-slate-200/80">
+                        <i class="fa-solid fa-headset text-brand-500"></i> Chat Owner
+                    </button>
+
+                    <!-- Favorite Icon (Desktop) -->
+                    <button onclick="showToast('Sistem Favorit tersimpan!')" class="p-2.5 rounded-xl text-slate-600 hover:text-brand-500 hover:bg-slate-100 transition hidden sm:flex items-center justify-center relative">
+                        <i class="fa-regular fa-heart text-lg"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-brand-500 rounded-full"></span>
+                    </button>
+
+                    <!-- Cart Trigger Button -->
+                    <button onclick="toggleCartDrawer()" class="relative flex items-center gap-2 bg-slate-100 hover:bg-brand-50 text-slate-800 hover:text-brand-600 px-3.5 py-2.5 rounded-2xl border border-slate-200/80 hover:border-brand-200 transition font-bold text-xs group">
+                        <div class="relative">
+                            <i class="fa-solid fa-bag-shopping text-base text-brand-500 group-hover:scale-110 transition"></i>
+                        </div>
+                        <span class="hidden sm:inline">Keranjang</span>
+                        <span id="cartBadge" class="bg-brand-500 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-full shadow-sm">0</span>
+                    </button>
+
+                    <!-- User Profile Avatar -->
+                    <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=COER_KpopFan" alt="Avatar" class="w-9 h-9 rounded-xl border-2 border-brand-500/30 p-0.5 bg-slate-100 object-cover shadow-sm">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Category Tags Bar -->
+            <div class="flex items-center gap-2 mt-3 pt-2 border-t border-slate-100 overflow-x-auto no-scrollbar text-xs">
+                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider shrink-0 flex items-center gap-1 mr-1">
+                    <i class="fa-solid fa-fire text-brand-500"></i> Populer:
+                </span>
+                <button onclick="filterCategory('All')" class="shrink-0 px-3 py-1 rounded-xl bg-slate-100 hover:bg-brand-500 hover:text-white font-semibold text-slate-700 transition">🌟 Semua</button>
+                <button onclick="filterCategory('CORTIS')" class="shrink-0 px-3 py-1 rounded-xl bg-orange-100/80 text-brand-600 font-extrabold hover:bg-brand-500 hover:text-white transition">🔥 CORTIS</button>
+                <button onclick="filterCategory('ENHYPEN')" class="shrink-0 px-3 py-1 rounded-xl bg-blue-50 text-blue-700 font-bold hover:bg-blue-600 hover:text-white transition">⚡ ENHYPEN</button>
+                <button onclick="filterCategory('TXT')" class="shrink-0 px-3 py-1 rounded-xl bg-emerald-50 text-emerald-700 font-bold hover:bg-emerald-600 hover:text-white transition">✨ TXT</button>
+                <button onclick="filterCategory('ILLIT')" class="shrink-0 px-3 py-1 rounded-xl bg-pink-50 text-pink-700 font-bold hover:bg-pink-600 hover:text-white transition">💖 ILLIT</button>
+                <button onclick="filterMember('Sunghoon')" class="shrink-0 px-3 py-1 rounded-xl bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition">Sunghoon</button>
+                <button onclick="filterMember('Yeonjun')" class="shrink-0 px-3 py-1 rounded-xl bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition">Yeonjun</button>
+                <button onclick="filterMember('Wonhee')" class="shrink-0 px-3 py-1 rounded-xl bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition">Wonhee</button>
+                <button onclick="filterMember('Juhoon')" class="shrink-0 px-3 py-1 rounded-xl bg-slate-100 text-slate-700 font-medium hover:bg-slate-200 transition">Juhoon</button>
+                <button onclick="filterRarity('POB')" class="shrink-0 px-3 py-1 rounded-xl bg-purple-50 text-purple-700 font-semibold hover:bg-purple-600 hover:text-white transition">✨ POB Holo</button>
+                <button onclick="filterCategory('Anime')" class="shrink-0 px-3 py-1 rounded-xl bg-amber-50 text-amber-700 font-semibold hover:bg-amber-600 hover:text-white transition">🃏 Anime Rare</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full space-y-8">
+        
+        <!-- Hero Banner Showcase -->
+        <div class="relative rounded-3xl overflow-hidden shadow-xl bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white p-6 sm:p-10 border border-slate-700/50">
+            <!-- Decorative Glow Elements -->
+            <div class="absolute -right-16 -bottom-16 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute right-1/3 -top-16 w-80 h-80 bg-brand-purple/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-4">
+                    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-500 to-brand-purple text-white text-[11px] font-extrabold px-3.5 py-1 rounded-full shadow-md uppercase tracking-wider">
+                        <i class="fa-solid fa-crown text-amber-300"></i> OFFICIAL HYBE BIGHIT DEBUT
+                    </div>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight">
+                        CORTIS Debut Album <br>
+                        <span class="bg-gradient-to-r from-amber-300 via-orange-400 to-pink-400 bg-clip-text text-transparent">Color Outside The Lines</span>
+                    </h1>
+                    <p class="text-slate-300 text-xs sm:text-sm max-w-lg leading-relaxed">
+                        Koleksi resmi Exclusive Broadcast Selfie PCs Juhoon, Seonghyeon, Keonho, Martin & James! 100% Mint Condition, Sleeved Safety Guarantee & Official Holo POB.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-3 pt-3">
+                        <button onclick="filterCategory('CORTIS')" class="bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-black px-6 py-3 rounded-2xl shadow-glow hover:scale-105 transition duration-300 flex items-center gap-2 text-xs sm:text-sm">
+                            <i class="fa-solid fa-bag-shopping"></i> Belanja Koleksi CORTIS
+                        </button>
+                        <button onclick="openPromoModal()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-5 py-3 rounded-2xl transition backdrop-blur-md flex items-center gap-2 text-xs sm:text-sm">
+                            <i class="fa-solid fa-ticket text-amber-300"></i> Klaim Kupon Rp25.000
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Featured Card Display -->
+                <div class="md:col-span-5 flex justify-center md:justify-end">
+                    <div class="relative w-52 sm:w-60 aspect-[2/3] rounded-2xl p-2.5 bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rotate-2 hover:rotate-0 transition duration-500 group cursor-pointer" onclick="openDetailModal(1)">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Juhoon CORTIS" class="w-full h-full object-cover rounded-xl shadow-inner">
+                        <div class="absolute inset-2.5 rounded-xl bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-3.5 text-white">
+                            <span class="text-[9px] font-extrabold uppercase bg-brand-500 px-2 py-0.5 rounded w-max mb-1 shadow-sm">SECRET RARE POB</span>
+                            <p class="font-black text-xs sm:text-sm leading-tight">CORTIS Juhoon - Broadcast Holo Selfie</p>
+                            <p class="text-xs text-amber-300 font-extrabold mt-1">Rp 85.000 <span class="line-through text-slate-400 text-[10px] font-normal">Rp 120.000</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flash Sale Section -->
+        <section class="bg-gradient-to-br from-slate-900 via-rose-950 to-brand-dark rounded-3xl p-5 sm:p-7 text-white shadow-xl relative overflow-hidden border border-rose-900/40">
+            <!-- Header Flash Sale -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-white/10 pb-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-gradient-to-tr from-amber-400 to-rose-500 text-slate-950 font-black rounded-2xl flex items-center justify-center text-xl shadow-lg pulse-badge">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h2 class="text-lg sm:text-2xl font-black uppercase tracking-wider text-white">FLASH SALE SULTAN</h2>
+                            <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-md uppercase">DISKON S.D 50%</span>
+                        </div>
+                        <p class="text-xs text-rose-200/80 font-medium mt-0.5">Photocard Original Langka dengan Stok Terbatas!</p>
+                    </div>
+                </div>
+
+                <!-- Timer -->
+                <div class="flex items-center gap-2 bg-slate-950/60 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/10 w-fit">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest text-slate-300">BERAKHIR DALAM:</span>
+                    <div class="flex items-center gap-1 font-mono font-black text-xs sm:text-sm">
+                        <span id="timerHours" class="bg-white text-brand-600 px-2 py-0.5 rounded-lg shadow-sm">02</span>
+                        <span>:</span>
+                        <span id="timerMinutes" class="bg-white text-brand-600 px-2 py-0.5 rounded-lg shadow-sm">45</span>
+                        <span>:</span>
+                        <span id="timerSeconds" class="bg-white text-brand-600 px-2 py-0.5 rounded-lg shadow-sm">18</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flash Sale Cards Grid -->
+            <div id="flashSaleGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
+                <!-- Injected dynamically via renderFlashSale() -->
+            </div>
+        </section>
+
+        <!-- Main Catalog Controls & Filter Section -->
+        <div id="katalog" class="space-y-4 pt-2">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Katalog Photocard Pilihan</h3>
+                    <p class="text-xs text-slate-500 font-medium mt-0.5">100% Original Guarantee • Mint Condition • Free Toploader & Bubble Sleeves</p>
+                </div>
+
+                <!-- Category Filtering Buttons -->
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <button onclick="filterCategory('All')" id="btn-cat-All" class="filter-btn active px-3.5 py-2 rounded-xl font-bold bg-brand-500 text-white shadow-md transition">Semua</button>
+                    <button onclick="filterCategory('CORTIS')" id="btn-cat-CORTIS" class="filter-btn px-3.5 py-2 rounded-xl font-bold bg-white text-slate-700 border border-slate-200 hover:border-brand-500 hover:text-brand-500 transition">CORTIS</button>
+                    <button onclick="filterCategory('ENHYPEN')" id="btn-cat-ENHYPEN" class="filter-btn px-3.5 py-2 rounded-xl font-bold bg-white text-slate-700 border border-slate-200 hover:border-brand-500 hover:text-brand-500 transition">ENHYPEN</button>
+                    <button onclick="filterCategory('TXT')" id="btn-cat-TXT" class="filter-btn px-3.5 py-2 rounded-xl font-bold bg-white text-slate-700 border border-slate-200 hover:border-brand-500 hover:text-brand-500 transition">TXT</button>
+                    <button onclick="filterCategory('ILLIT')" id="btn-cat-ILLIT" class="filter-btn px-3.5 py-2 rounded-xl font-bold bg-white text-slate-700 border border-slate-200 hover:border-brand-500 hover:text-brand-500 transition">ILLIT</button>
+                    <button onclick="filterCategory('K-Pop')" id="btn-cat-K-Pop" class="filter-btn px-3.5 py-2 rounded-xl font-bold bg-white text-slate-700 border border-slate-200 hover:border-brand-500 hover:text-brand-500 transition">K-Pop Lain</button>
+                    <button onclick="filterCategory('Anime')" id="btn-cat-Anime" class="filter-btn px-3.5 py-2 rounded-xl font-bold bg-white text-slate-700 border border-slate-200 hover:border-brand-500 hover:text-brand-500 transition">Anime Rare</button>
+                </div>
+            </div>
+
+            <!-- Price Range & Sorting Filters -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+                
+                <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                    <!-- Price Range Inputs -->
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold text-slate-600 shrink-0"><i class="fa-solid fa-sliders text-brand-500 mr-1"></i>Harga:</span>
+                        <input type="number" id="minPriceInput" oninput="renderProducts()" placeholder="Min (Rp)" class="w-24 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-500 text-xs">
+                        <span class="text-slate-400">-</span>
+                        <input type="number" id="maxPriceInput" oninput="renderProducts()" placeholder="Max (Rp)" class="w-24 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:border-brand-500 text-xs">
+                    </div>
+
+                    <!-- Rarity Filter Dropdown -->
+                    <select id="raritySelect" onchange="renderProducts()" class="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 font-semibold focus:outline-none focus:border-brand-500">
+                        <option value="All">Semua Jenis Rarity</option>
+                        <option value="POB">Official POB / Holo</option>
+                        <option value="Lucky Draw">Lucky Draw Soundwave</option>
+                        <option value="Broadcast">Official Broadcast</option>
+                        <option value="SSR">SSR Anime Foil</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center justify-between md:justify-end gap-3 w-full md:w-auto">
+                    <!-- Sorting Dropdown -->
+                    <select id="sortSelect" onchange="renderProducts()" class="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 font-semibold focus:outline-none focus:border-brand-500">
+                        <option value="populer">Terpopuler</option>
+                        <option value="termurah">Harga: Terendah - Tertinggi</option>
+                        <option value="termahal">Harga: Tertinggi - Terendah</option>
+                    </select>
+
+                    <button id="resetFiltersBtn" onclick="resetAllFilters()" class="hidden text-xs text-rose-500 font-bold hover:underline flex items-center shrink-0">
+                        <i class="fa-solid fa-rotate-left mr-1"></i> Reset Filter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Status Indicator -->
+            <div id="searchStatusInfo" class="text-xs font-semibold text-slate-500">
+                <span id="resultCountBadge" class="inline-flex items-center gap-1.5 bg-brand-50 text-brand-600 px-3 py-1 rounded-full border border-brand-200/60 font-bold">
+                    Menampilkan semua photocard
+                </span>
+            </div>
+        </div>
+
+        <!-- Product Grid Container -->
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5 sm:gap-5">
+            <!-- Injected dynamically via JS -->
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-400 text-xs mt-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-xl bg-brand-500 flex items-center justify-center text-white font-bold text-base">
+                            <i class="fa-solid fa-sparkles"></i>
+                        </div>
+                        <span class="text-lg font-black text-white">PhotoVerse ID</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Destinasi #1 kolektor Photocard Official K-Pop & Anime Rare di Indonesia. 100% Original, pengemasan ekstra aman dengan toploader & bubble wrap tebal.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3 uppercase tracking-wider">Jaminan Layanan</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><i class="fa-solid fa-shield-halved text-brand-500 mr-1.5"></i> 100% Official Merchandise</li>
+                        <li><i class="fa-solid fa-box text-brand-500 mr-1.5"></i> Sleeve & Toploader Gratis</li>
+                        <li><i class="fa-solid fa-truck-fast text-brand-500 mr-1.5"></i> Pengiriman Cepat 24 Jam</li>
+                        <li><i class="fa-solid fa-headset text-brand-500 mr-1.5"></i> Layanan Bantuan Fan 24/7</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3 uppercase tracking-wider">Kategori Utama</h4>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#" onclick="filterCategory('CORTIS')" class="hover:text-brand-500 transition">CORTIS Debut Exclusive</a></li>
+                        <li><a href="#" onclick="filterCategory('ENHYPEN')" class="hover:text-brand-500 transition">ENHYPEN Official Album & LD</a></li>
+                        <li><a href="#" onclick="filterCategory('TXT')" class="hover:text-brand-500 transition">TXT Broadcast Selfie</a></li>
+                        <li><a href="#" onclick="filterCategory('Anime')" class="hover:text-brand-500 transition">Anime Rare SSR Holographic</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-3 uppercase tracking-wider">Metode Pembayaran</h4>
+                    <div class="flex flex-wrap gap-2 text-slate-300">
+                        <span class="bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700 font-bold">QRIS</span>
+                        <span class="bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700 font-bold">DANA</span>
+                        <span class="bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700 font-bold">SeaPay</span>
+                        <span class="bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700 font-bold">BCA VA</span>
+                        <span class="bg-slate-800 px-2.5 py-1 rounded-lg border border-slate-700 font-bold">ShopeePay</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800 text-center text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p>© 2026 PhotoVerse ID. Hak Cipta Dilindungi. Dibuat untuk Komunitas COER Fan & K-Pop Collector.</p>
+                <div class="flex space-x-4 text-base">
+                    <a href="#" class="hover:text-brand-500 transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-brand-500 transition"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-brand-500 transition"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Photocard Detail Preview Modal -->
+    <div id="detailModal" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden relative animate-in fade-in zoom-in duration-200 border border-slate-100">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
+                <!-- Left: Interactive Photocard Display -->
+                <div class="flex flex-col items-center justify-center bg-slate-900 rounded-2xl p-6 relative overflow-hidden group min-h-[340px]">
+                    <div id="modalHoloCard" class="relative w-48 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border-2 border-white/20 transition-transform duration-300">
+                        <img id="modalCardImg" src="" alt="Photocard" class="w-full h-full object-cover">
+                        <div class="holo-overlay"></div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-4 flex items-center gap-1.5"><i class="fa-solid fa-hand-pointer text-brand-500"></i> Arahkan kursor untuk efek sinar hologram</p>
+                </div>
+
+                <!-- Right: Details & Action Buttons -->
+                <div class="flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span id="modalCategory" class="bg-brand-50 text-brand-600 border border-brand-200 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase">CORTIS</span>
+                            <span id="modalRarity" class="bg-purple-50 text-purple-700 border border-purple-200 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase">OFFICIAL POB</span>
+                        </div>
+                        <h2 id="modalTitle" class="text-lg font-black text-slate-900 leading-snug">CORTIS - Juhoon Broadcast PC</h2>
+                        <p id="modalAlbum" class="text-xs text-slate-500 font-medium mt-1">Album: Color Outside The Lines (1st EP)</p>
+
+                        <div class="my-4 p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80">
+                            <div class="flex items-baseline gap-2">
+                                <span id="modalPrice" class="text-2xl font-black text-brand-600">Rp 85.000</span>
+                                <span id="modalOldPrice" class="text-xs text-slate-400 line-through">Rp 120.000</span>
+                                <span id="modalDiscount" class="bg-rose-500 text-white text-[10px] font-black px-1.5 py-0.5 rounded">-29%</span>
+                            </div>
+                            <p class="text-[11px] text-emerald-600 font-bold mt-1.5 flex items-center gap-1">
+                                <i class="fa-solid fa-circle-check"></i> Stok Tersedia • Sleeve & Toploader Gratis
+                            </p>
+                        </div>
+
+                        <!-- Card Specifications -->
+                        <div class="space-y-2 text-xs text-slate-600 mb-2">
+                            <div class="flex justify-between border-b border-slate-100 pb-1.5">
+                                <span class="text-slate-400">Member/Karakter:</span>
+                                <span id="modalMember" class="font-extrabold text-slate-800">Juhoon</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-100 pb-1.5">
+                                <span class="text-slate-400">Kondisi Kartu:</span>
+                                <span class="font-bold text-slate-800">100% Mint Condition (No Scratch)</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-100 pb-1.5">
+                                <span class="text-slate-400">Keaslian:</span>
+                                <span class="font-extrabold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-shield"></i> Official Merchandise</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex items-center gap-3 pt-2">
+                        <button id="modalAddToCartBtn" class="flex-1 bg-brand-50 hover:bg-brand-500 hover:text-white text-brand-600 font-bold py-3 px-4 rounded-xl transition text-xs sm:text-sm flex items-center justify-center gap-2 border border-brand-200">
+                            <i class="fa-solid fa-cart-plus"></i> + Keranjang
+                        </button>
+                        <button id="modalBuyNowBtn" class="flex-1 bg-brand-500 hover:bg-brand-600 text-white font-extrabold py-3 px-4 rounded-xl shadow-md transition text-xs sm:text-sm flex items-center justify-center">
+                            Beli Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Slide-over Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-xs transition-opacity" onclick="toggleCartDrawer()"></div>
+        
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+                
+                <!-- Drawer Header -->
+                <div class="p-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <h2 class="text-base font-black">Keranjang Belanja Kamu</h2>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="p-1 hover:bg-white/20 rounded-lg transition text-white">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Items List Container -->
+                <div id="cartItemsList" class="flex-1 overflow-y-auto p-4 space-y-3">
+                    <!-- Dynamic Items via JS -->
+                </div>
+
+                <!-- Voucher Code Input -->
+                <div class="p-4 bg-slate-50 border-t border-slate-100">
+                    <p class="text-xs font-bold text-slate-700 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-ticket text-brand-500"></i> Diskon Kode Voucher</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="voucherInput" placeholder="Contoh: CORTIS2026" class="flex-1 px-3 py-2 text-xs rounded-xl border border-slate-200 focus:outline-none focus:border-brand-500 uppercase font-mono">
+                        <button onclick="applyVoucher()" class="bg-slate-900 hover:bg-black text-white text-xs font-bold px-4 py-2 rounded-xl transition">Gunakan</button>
+                    </div>
+                    <p id="voucherMsg" class="text-[11px] mt-1 font-semibold hidden"></p>
+                </div>
+
+                <!-- Cart Footer & Total Calculation -->
+                <div class="p-4 border-t border-slate-200 bg-white space-y-3 shadow-lg">
+                    <div class="space-y-1.5 text-xs text-slate-600">
+                        <div class="flex justify-between">
+                            <span>Subtotal Produk:</span>
+                            <span id="cartSubtotal" class="font-bold text-slate-900">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Diskon Voucher:</span>
+                            <span id="cartDiscount" class="font-bold text-brand-600">- Rp 0</span>
+                        </div>
+                        <div class="flex justify-between pt-2 border-t border-slate-100 text-sm font-black text-slate-900">
+                            <span>Total Pembayaran:</span>
+                            <span id="cartGrandTotal" class="text-brand-600 text-base">Rp 0</span>
+                        </div>
+                    </div>
+
+                    <button onclick="openCheckoutModal()" id="checkoutBtn" class="w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-black py-3.5 rounded-2xl shadow-lg transition text-center flex items-center justify-center gap-2 text-xs sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span>Lanjut Ke Pembayaran</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout & Payment Method Selection Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col relative border border-slate-100">
+            
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <h3 class="text-base font-black text-slate-900">Pilih Metode Pembayaran</h3>
+                </div>
+                <button onclick="closeCheckoutModal()" class="w-8 h-8 rounded-full bg-slate-200 text-slate-600 hover:bg-slate-300 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-5 overflow-y-auto space-y-5 flex-1">
+                
+                <!-- Shipping Address Summary -->
+                <div class="bg-brand-50/50 p-4 rounded-2xl border border-brand-100 text-xs space-y-1">
+                    <div class="flex justify-between font-bold text-slate-800">
+                        <span><i class="fa-solid fa-location-dot text-brand-500 mr-1"></i> Alamat Pengiriman</span>
+                        <span class="text-brand-600 cursor-pointer hover:underline">Ubah</span>
+                    </div>
+                    <p class="font-bold text-slate-800 mt-1">COER Collector (+62 812-3456-7890)</p>
+                    <p class="text-slate-500 leading-snug">Jl. K-Pop Idol No. 18, Block Bighit, Cileunyi, Bandung, Jawa Barat, 40393</p>
+                </div>
+
+                <!-- Payment Methods Grid -->
+                <div>
+                    <p class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mb-2.5">Metode Instan & E-Wallet</p>
+                    
+                    <div class="space-y-2">
+                        
+                        <!-- QRIS Option -->
+                        <label class="payment-option flex items-center justify-between p-3 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-500 transition">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="paymentMethod" value="QRIS" checked class="accent-brand-500 w-4 h-4">
+                                <div class="w-9 h-9 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center">
+                                    <i class="fa-solid fa-qrcode text-rose-600 text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-black text-slate-800">QRIS (Semua E-Wallet & Bank)</p>
+                                    <p class="text-[10px] text-slate-500">Scan via DANA, GoPay, OVO, ShopeePay, BCA, dll.</p>
+                                </div>
+                            </div>
+                            <span class="bg-rose-100 text-rose-700 text-[9px] font-extrabold px-2 py-0.5 rounded">OTOMATIS</span>
+                        </label>
+
+                        <!-- DANA Option -->
+                        <label class="payment-option flex items-center justify-between p-3 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-500 transition">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="paymentMethod" value="DANA" class="accent-brand-500 w-4 h-4">
+                                <div class="w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 font-black text-xs">
+                                    DANA
+                                </div>
+                                <div>
+                                    <p class="text-xs font-black text-slate-800">DANA E-Wallet</p>
+                                    <p class="text-[10px] text-slate-500">Bayar cepat langsung dari dompet DANA</p>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- SeaPay Option -->
+                        <label class="payment-option flex items-center justify-between p-3 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-500 transition">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="paymentMethod" value="SeaPay" class="accent-brand-500 w-4 h-4">
+                                <div class="w-9 h-9 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-brand-600 font-black text-xs">
+                                    SeaPay
+                                </div>
+                                <div>
+                                    <p class="text-xs font-black text-slate-800">SeaPay / SeaBank Direct</p>
+                                    <p class="text-[10px] text-slate-500">Bebas biaya admin & promo spesial</p>
+                                </div>
+                            </div>
+                            <span class="bg-orange-100 text-brand-600 text-[9px] font-extrabold px-2 py-0.5 rounded">BEBAS BIAYA</span>
+                        </label>
+
+                        <!-- BCA VA -->
+                        <label class="payment-option flex items-center justify-between p-3 border-2 border-slate-200 rounded-2xl cursor-pointer hover:border-brand-500 transition">
+                            <div class="flex items-center gap-3">
+                                <input type="radio" name="paymentMethod" value="BCA" class="accent-brand-500 w-4 h-4">
+                                <div class="w-9 h-9 rounded-xl bg-blue-900 text-white font-black flex items-center justify-center text-xs">
+                                    BCA
+                                </div>
+                                <div>
+                                    <p class="text-xs font-black text-slate-800">BCA Virtual Account</p>
+                                    <p class="text-[10px] text-slate-500">Transfer via m-BCA / KlikBCA</p>
+                                </div>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <!-- Total Summary -->
+                <div class="border-t border-slate-100 pt-3 space-y-1.5 text-xs">
+                    <div class="flex justify-between text-slate-500">
+                        <span>Total Barang:</span>
+                        <span id="paySubtotal" class="font-bold text-slate-800">Rp 0</span>
+                    </div>
+                    <div class="flex justify-between text-slate-500">
+                        <span>Biaya Pengiriman (J&T Express):</span>
+                        <span class="font-extrabold text-emerald-600">FREE PROMO</span>
+                    </div>
+                    <div class="flex justify-between text-base font-black text-slate-900 pt-2 border-t border-slate-100">
+                        <span>Total Tagihan:</span>
+                        <span id="payTotal" class="text-brand-600">Rp 0</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Submit Button -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100">
+                <button onclick="processOrder()" class="w-full bg-gradient-to-r from-brand-500 to-brand-600 text-white font-black py-3 rounded-2xl shadow-lg hover:from-brand-600 hover:to-brand-700 transition text-center text-xs sm:text-sm">
+                    Bayar Sekarang
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- QRIS & Order Receipt Success Modal -->
+    <div id="paymentReceiptModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden text-center p-6 space-y-5 border border-slate-100">
+            
+            <div id="qrisContainer" class="space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-500 flex items-center justify-center mx-auto text-xl">
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-black text-slate-900">Scan QRIS Untuk Bayar</h3>
+                    <p class="text-xs text-slate-500 mt-1">Gunakan DANA, OVO, GoPay, BCA, atau SeaBank untuk memindai QR code:</p>
+                </div>
+
+                <!-- QRIS Visual -->
+                <div class="p-4 bg-white rounded-2xl border-2 border-dashed border-slate-300 inline-block shadow-inner relative">
+                    <svg class="w-44 h-44 mx-auto" viewBox="0 0 100 100">
+                        <path d="M0,0 h30 v30 h-30 z M40,0 h20 v10 h-20 z M70,0 h30 v30 h-30 z M10,10 h10 v10 h-10 z M80,10 h10 v10 h-10 z M0,40 h10 v20 h-10 z M20,40 h30 v10 h-30 z M60,40 h40 v10 h-40 z M0,70 h30 v30 h-30 z M10,80 h10 v10 h-10 z M40,60 h20 v40 h-20 z M70,70 h10 v10 h-10 z M90,80 h10 v20 h-10 z M70,90 h20 v10 h-20 z" fill="#0f172a" />
+                        <rect x="35" y="35" width="30" height="30" fill="#ee3c10" rx="4"/>
+                        <text x="50" y="54" font-size="9" fill="white" font-weight="900" text-anchor="middle">PV</text>
+                    </svg>
+                    <p id="receiptOrderCode" class="text-[11px] font-mono font-bold text-slate-600 mt-2">ORDER-PV882910</p>
+                </div>
+
+                <div class="bg-slate-50 p-3 rounded-2xl border border-slate-200 text-xs flex justify-between items-center">
+                    <span class="text-slate-500">Total Pembayaran:</span>
+                    <span id="qrisTotalAmount" class="font-black text-brand-600 text-base">Rp 0</span>
+                </div>
+
+                <button onclick="simulatePaymentSuccess()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow transition text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-circle-check"></i> Simulasi Pembayaran Berhasil
+                </button>
+            </div>
+
+            <!-- Receipt Completed View -->
+            <div id="receiptSuccessContainer" class="hidden space-y-4">
+                <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl animate-bounce">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900">Pembayaran Berhasil!</h3>
+                    <p class="text-xs text-slate-500 mt-1">Terima kasih! Photocard pilihan kamu sedang dipack rapi dengan bubble mailer & toploader tebal.</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl text-left text-xs space-y-2 border border-slate-200">
+                    <div class="flex justify-between border-b pb-1">
+                        <span class="text-slate-400">Status Pembayaran:</span>
+                        <span class="font-extrabold text-emerald-600">Lunas (Paid)</span>
+                    </div>
+                    <div class="flex justify-between border-b pb-1">
+                        <span class="text-slate-400">Metode:</span>
+                        <span id="receiptMethod" class="font-bold text-slate-800">DANA / QRIS</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-400">Estimasi Tiba:</span>
+                        <span class="font-bold text-slate-800">2-3 Hari Kerja</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2 pt-1">
+                    <button onclick="openTrackingModal()" class="w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-extrabold py-3 rounded-xl shadow-md transition text-xs sm:text-sm flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-route"></i> Lacak Perjalanan Paket
+                    </button>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="openCourierChat()" class="bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-200 font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-motorcycle"></i> Chat Kurir
+                        </button>
+                        <button onclick="openOwnerChat()" class="bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-headset"></i> Chat Owner
+                        </button>
+                    </div>
+                    <button onclick="closeReceiptModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-2.5 rounded-xl transition text-xs mt-1">
+                        Selesai & Belanja Lagi
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Chat Owner Modal -->
+    <div id="ownerChatModal" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[520px] relative border border-slate-100">
+            <!-- Header Chat Owner -->
+            <div class="p-4 bg-gradient-to-r from-brand-600 to-brand-500 text-white flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=PhotoVerseOwner" alt="Owner" class="w-10 h-10 rounded-xl bg-white/20 p-0.5 object-cover">
+                        <span class="w-3 h-3 bg-emerald-400 border-2 border-white rounded-full absolute -bottom-0.5 -right-0.5"></span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black flex items-center gap-1.5">
+                            Owner PhotoVerse ID
+                            <i class="fa-solid fa-circle-check text-amber-300 text-xs"></i>
+                        </h3>
+                        <p class="text-[10px] text-white/80 font-medium">Online • Balas cepat (&lt; 2 menit)</p>
+                    </div>
+                </div>
+                <button onclick="closeOwnerChat()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="ownerChatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-xs">
+                <!-- Welcome bubble -->
+                <div class="flex items-start gap-2.5">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=PhotoVerseOwner" class="w-7 h-7 rounded-lg bg-slate-200">
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-xs border border-slate-200/80 max-w-[80%] space-y-1">
+                        <p class="font-bold text-slate-800">Halo COER Collector! 👋</p>
+                        <p class="text-slate-600 leading-relaxed">Ada yang bisa kami bantu? Silakan tanyakan ketersediaan PC, pengemasan, atau info member favoritmu!</p>
+                        <span class="text-[9px] text-slate-400 block text-right pt-0.5">Baru saja</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preset Quick Question Chips -->
+            <div class="px-3 py-2 bg-white border-t border-slate-100 flex gap-2 overflow-x-auto no-scrollbar shrink-0 text-[11px]">
+                <button onclick="sendOwnerPreset('Apakah PC CORTIS 100% Official?')" class="shrink-0 bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-700 px-3 py-1 rounded-full font-bold transition">
+                    ❓ Official Guarantee?
+                </button>
+                <button onclick="sendOwnerPreset('Apakah sudah termasuk Toploader & Sleeve?')" class="shrink-0 bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-700 px-3 py-1 rounded-full font-bold transition">
+                    🎁 Bonus Sleeve & Toploader?
+                </button>
+                <button onclick="sendOwnerPreset('Kapan pesanan saya dikirim?')" class="shrink-0 bg-slate-100 hover:bg-brand-50 hover:text-brand-600 text-slate-700 px-3 py-1 rounded-full font-bold transition">
+                    🚚 Jadwal Pengiriman?
+                </button>
+            </div>
+
+            <!-- Input Box -->
+            <div class="p-3 bg-white border-t border-slate-200 shrink-0 flex items-center gap-2">
+                <input type="text" id="ownerChatInput" onkeydown="if(event.key==='Enter') sendOwnerMessage()" placeholder="Tulis pesan ke Owner..." class="flex-1 bg-slate-100 border border-slate-200 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-brand-500 focus:bg-white transition">
+                <button onclick="sendOwnerMessage()" class="bg-brand-500 hover:bg-brand-600 text-white w-10 h-10 rounded-xl flex items-center justify-center transition shadow-md shrink-0">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Courier Modal -->
+    <div id="courierChatModal" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden flex flex-col h-[520px] relative border border-slate-100">
+            <!-- Header Chat Courier -->
+            <div class="p-4 bg-gradient-to-r from-blue-700 to-blue-600 text-white flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-10 h-10 rounded-xl bg-white text-blue-700 font-black flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-motorcycle"></i>
+                        </div>
+                        <span class="w-3 h-3 bg-emerald-400 border-2 border-white rounded-full absolute -bottom-0.5 -right-0.5"></span>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-black flex items-center gap-1.5">
+                            Pak Budi (Kurir J&T Express)
+                        </h3>
+                        <p class="text-[10px] text-blue-100 font-semibold">Sedang Mengantar • Plat Motor: D 4892 KPO</p>
+                    </div>
+                </div>
+                <button onclick="closeCourierChat()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="courierChatMessages" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-xs">
+                <!-- Initial Courier message -->
+                <div class="flex items-start gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">
+                        <i class="fa-solid fa-helmet-safety text-xs"></i>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-xs border border-slate-200/80 max-w-[85%] space-y-1">
+                        <p class="font-bold text-slate-800">Halo Kak! Saya Budi Kurir J&T 📦</p>
+                        <p class="text-slate-600 leading-relaxed">Paket Photocard kamu (Resi #JP882910291) sedang saya bawa menuju lokasi Cileunyi, Bandung. Estimasi sampai 30 menit lagi ya kak!</p>
+                        <span class="text-[9px] text-slate-400 block text-right pt-0.5">10:15 WIB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preset Courier Buttons -->
+            <div class="px-3 py-2 bg-white border-t border-slate-100 flex gap-2 overflow-x-auto no-scrollbar shrink-0 text-[11px]">
+                <button onclick="sendCourierPreset('Titip di satpam/pagar ya Pak')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold transition">
+                    🏠 Titip di Satpam / Pagar
+                </button>
+                <button onclick="sendCourierPreset('Saya ada di rumah kok Pak')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold transition">
+                    ✅ Saya di Rumah
+                </button>
+                <button onclick="sendCourierPreset('Patokan rumah pagar hitam cat putih')" class="shrink-0 bg-blue-50 hover:bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-bold transition">
+                    📍 Info Patokan Rumah
+                </button>
+            </div>
+
+            <!-- Input Box -->
+            <div class="p-3 bg-white border-t border-slate-200 shrink-0 flex items-center gap-2">
+                <input type="text" id="courierChatInput" onkeydown="if(event.key==='Enter') sendCourierMessage()" placeholder="Tulis instruksi pengiriman ke Pak Budi..." class="flex-1 bg-slate-100 border border-slate-200 text-xs rounded-xl px-3.5 py-2.5 focus:outline-none focus:border-blue-500 focus:bg-white transition">
+                <button onclick="sendCourierMessage()" class="bg-blue-600 hover:bg-blue-700 text-white w-10 h-10 rounded-xl flex items-center justify-center transition shadow-md shrink-0">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Package Tracking / Journey Modal -->
+    <div id="trackingModal" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] relative border border-slate-100">
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 bg-slate-900 text-white flex justify-between items-center border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-2xl bg-brand-500 text-white flex items-center justify-center font-black text-lg shadow-md">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-black">Lacak Perjalanan Paket</h3>
+                        <p class="text-xs text-slate-400 font-mono">Resi: <span class="text-amber-300 font-bold">JP882910291</span> (J&T Express)</p>
+                    </div>
+                </div>
+                <button onclick="closeTrackingModal()" class="w-8 h-8 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Content Area -->
+            <div class="p-5 overflow-y-auto space-y-6 flex-1 text-xs">
+                
+                <!-- Package Live Status Card -->
+                <div class="bg-gradient-to-r from-slate-900 to-indigo-950 text-white p-4 rounded-2xl shadow-md border border-slate-800 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-400 text-slate-950 font-black text-[10px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                            <i class="fa-solid fa-truck-ramp-box mr-1"></i> SEDANG DIANTAR
+                        </span>
+                        <span class="text-[11px] text-slate-300 font-semibold">Estimasi: Hari Ini, 11:30 WIB</span>
+                    </div>
+
+                    <!-- Progress Bar Indicator -->
+                    <div class="space-y-1.5">
+                        <div class="flex justify-between text-[11px] font-bold text-slate-300">
+                            <span>Gudang PhotoVerse</span>
+                            <span class="text-brand-500">75% Dalam Perjalanan</span>
+                            <span>Alamat Tujuan</span>
+                        </div>
+                        <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden p-0.5 border border-slate-700">
+                            <div class="bg-gradient-to-r from-brand-500 via-amber-400 to-emerald-400 h-1.5 rounded-full animate-pulse" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-white/10 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=BudiDriver" class="w-7 h-7 rounded-full bg-white/20 p-0.5">
+                            <div>
+                                <p class="font-extrabold text-white text-xs">Pak Budi (Kurir Lapangan)</p>
+                                <p class="text-[10px] text-slate-300">J&T Express Hub Cileunyi</p>
+                            </div>
+                        </div>
+                        <button onclick="closeTrackingModal(); openCourierChat();" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-1.5 rounded-xl transition text-[11px] flex items-center gap-1.5">
+                            <i class="fa-solid fa-comments"></i> Chat Kurir
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Timeline Perjalanan Paket -->
+                <div class="space-y-1">
+                    <h4 class="font-black text-slate-900 text-sm mb-3 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-brand-500"></i> Riwayat Perjalanan Detail
+                    </h4>
+
+                    <div class="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-200">
+                        
+                        <!-- Step 4 (Current) -->
+                        <div class="relative group">
+                            <span class="absolute -left-6 top-0 w-5 h-5 rounded-full bg-emerald-500 text-white flex items-center justify-center text-[10px] shadow-md ring-4 ring-emerald-100">
+                                <i class="fa-solid fa-motorcycle"></i>
+                            </span>
+                            <div class="bg-emerald-50/60 border border-emerald-200 p-3 rounded-2xl space-y-0.5">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-extrabold text-emerald-800 text-xs">Paket Sedang Dibawa Kurir Ke Alamat Tujuan</span>
+                                    <span class="text-[10px] font-mono font-bold text-emerald-600">Hari Ini, 10:15 WIB</span>
+                                </div>
+                                <p class="text-slate-600 text-[11px]">Kurir Pak Budi sedang dalam perjalanan membawa paket menuju alamat kamu di Cileunyi, Bandung.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative group">
+                            <span class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-slate-400 text-white flex items-center justify-center text-[10px]">
+                                <i class="fa-solid fa-warehouse"></i>
+                            </span>
+                            <div class="space-y-0.5 pl-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-slate-800">Tiba di Gateway Transit Bandung</span>
+                                    <span class="text-[10px] font-mono text-slate-400">Hari Ini, 07:30 WIB</span>
+                                </div>
+                                <p class="text-slate-500 text-[11px]">Paket telah disortir di Hub Utama J&T Express Bandung dan diserahkan ke kurir area.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative group">
+                            <span class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-slate-400 text-white flex items-center justify-center text-[10px]">
+                                <i class="fa-solid fa-box-open"></i>
+                            </span>
+                            <div class="space-y-0.5 pl-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-slate-800">Selesai Dikemas & Diserahkan ke Ekspedisi</span>
+                                    <span class="text-[10px] font-mono text-slate-400">Kemarin, 19:40 WIB</span>
+                                </div>
+                                <p class="text-slate-500 text-[11px]">Paket photocard telah dipacking safety menggunakan toploader tebal & bubble mailer berlapis oleh tim PhotoVerse ID.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 1 -->
+                        <div class="relative group">
+                            <span class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-slate-400 text-white flex items-center justify-center text-[10px]">
+                                <i class="fa-solid fa-receipt"></i>
+                            </span>
+                            <div class="space-y-0.5 pl-1">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-slate-800">Pesanan Dibuat & Pembayaran Dikonfirmasi</span>
+                                    <span class="text-[10px] font-mono text-slate-400">Kemarin, 18:00 WIB</span>
+                                </div>
+                                <p class="text-slate-500 text-[11px]">Pembayaran terverifikasi otomatis. Pesanan masuk ke antrean packing.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Action Buttons -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex gap-2">
+                <button onclick="closeTrackingModal(); openCourierChat();" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-motorcycle"></i> Chat Kurir Budi
+                </button>
+                <button onclick="closeTrackingModal(); openOwnerChat();" class="flex-1 bg-slate-800 hover:bg-slate-900 text-white font-bold py-2.5 rounded-xl transition text-xs flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-headset"></i> Chat Owner Toko
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons (Bottom Left) -->
+    <div class="fixed bottom-5 left-5 z-40 flex flex-col gap-2.5">
+        <button onclick="openTrackingModal()" title="Lacak Perjalanan Paket" class="w-12 h-12 rounded-2xl bg-slate-900 hover:bg-black text-amber-400 shadow-xl flex items-center justify-center transition hover:scale-110 border border-slate-700 relative group">
+            <i class="fa-solid fa-route text-lg"></i>
+            <span class="absolute left-full ml-2 bg-slate-900 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-md">
+                Lacak Perjalanan Paket
+            </span>
+        </button>
+
+        <button onclick="openCourierChat()" title="Chat Kurir Pengirim" class="w-12 h-12 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white shadow-xl flex items-center justify-center transition hover:scale-110 relative group">
+            <i class="fa-solid fa-motorcycle text-lg"></i>
+            <span class="w-3 h-3 bg-emerald-400 border-2 border-white rounded-full absolute top-1 right-1"></span>
+            <span class="absolute left-full ml-2 bg-slate-900 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-md">
+                Chat Kurir (Pak Budi)
+            </span>
+        </button>
+
+        <button onclick="openOwnerChat()" title="Chat Owner Toko" class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-brand-500 text-white shadow-glow flex items-center justify-center transition hover:scale-110 relative group">
+            <i class="fa-solid fa-headset text-lg"></i>
+            <span class="absolute left-full ml-2 bg-slate-900 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none shadow-md">
+                Chat Owner Toko
+            </span>
+        </button>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 space-y-2 pointer-events-none"></div>
+
+    <script>
+        const products = [
+            // --- CORTIS ---
+            {
+                id: 1,
+                name: "CORTIS Juhoon - Color Outside The Lines Broadcast PC",
+                category: "CORTIS",
+                member: "Juhoon",
+                price: 85000,
+                originalPrice: 120000,
+                discount: 29,
+                isFlashSale: true,
+                stockLeft: 3,
+                rarity: "Official Broadcast",
+                album: "Color Outside The Lines (1st EP)",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                name: "CORTIS Seonghyeon - RedRed Weverse POB Holographic",
+                category: "CORTIS",
+                member: "Seonghyeon",
+                price: 110000,
+                originalPrice: 150000,
+                discount: 26,
+                isFlashSale: true,
+                stockLeft: 2,
+                rarity: "Weverse POB Holo",
+                album: "RedRed Single",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                name: "CORTIS Keonho - What You Want Lucky Draw PC",
+                category: "CORTIS",
+                member: "Keonho",
+                price: 95000,
+                originalPrice: 130000,
+                discount: 27,
+                isFlashSale: true,
+                stockLeft: 5,
+                rarity: "Lucky Draw Soundwave",
+                album: "What You Want Debut",
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 4,
+                name: "CORTIS Martin - Leader Special Hologram Edition",
+                category: "CORTIS",
+                member: "Martin",
+                price: 135000,
+                originalPrice: 180000,
+                discount: 25,
+                isFlashSale: true,
+                stockLeft: 1,
+                rarity: "Secret Rare POB",
+                album: "Color Outside The Lines",
+                image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 5,
+                name: "CORTIS James - Fashion Concept Photo Card",
+                category: "CORTIS",
+                member: "James",
+                price: 90000,
+                originalPrice: 125000,
+                discount: 28,
+                isFlashSale: false,
+                stockLeft: 8,
+                rarity: "Official Album PC",
+                album: "Color Outside The Lines",
+                image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=600&q=80"
+            },
+
+            // --- ENHYPEN ---
+            {
+                id: 11,
+                name: "ENHYPEN Heeseung - Orange Blood Weverse POB Holo",
+                category: "ENHYPEN",
+                member: "Heeseung",
+                price: 115000,
+                originalPrice: 155000,
+                discount: 25,
+                isFlashSale: true,
+                stockLeft: 3,
+                rarity: "Weverse POB Holo",
+                album: "ORANGE BLOOD",
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 12,
+                name: "ENHYPEN Sunghoon - Romance:Untold Lucky Draw Soundwave",
+                category: "ENHYPEN",
+                member: "Sunghoon",
+                price: 130000,
+                originalPrice: 175000,
+                discount: 26,
+                isFlashSale: false,
+                stockLeft: 2,
+                rarity: "Lucky Draw Soundwave",
+                album: "ROMANCE : UNTOLD",
+                image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 13,
+                name: "ENHYPEN Jungwon - Dark Blood Special Edition PC",
+                category: "ENHYPEN",
+                member: "Jungwon",
+                price: 98000,
+                originalPrice: 130000,
+                discount: 24,
+                isFlashSale: false,
+                stockLeft: 6,
+                rarity: "Official Album PC",
+                album: "DARK BLOOD",
+                image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=600&q=80"
+            },
+
+            // --- TXT ---
+            {
+                id: 15,
+                name: "TXT Yeonjun - Minisode 3: TOMORROW Broadcast Selfie",
+                category: "TXT",
+                member: "Yeonjun",
+                price: 125000,
+                originalPrice: 165000,
+                discount: 24,
+                isFlashSale: false,
+                stockLeft: 2,
+                rarity: "Official Broadcast",
+                album: "minisode 3: TOMORROW",
+                image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 16,
+                name: "TXT Soobin - The Name Chapter: FREEFALL Holo Card",
+                category: "TXT",
+                member: "Soobin",
+                price: 110000,
+                originalPrice: 145000,
+                discount: 24,
+                isFlashSale: false,
+                stockLeft: 5,
+                rarity: "Weverse POB Holo",
+                album: "The Name Chapter: FREEFALL",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+            },
+
+            // --- ILLIT ---
+            {
+                id: 18,
+                name: "ILLIT Wonhee - SUPER REAL ME Debut Weverse POB",
+                category: "ILLIT",
+                member: "Wonhee",
+                price: 120000,
+                originalPrice: 160000,
+                discount: 25,
+                isFlashSale: false,
+                stockLeft: 3,
+                rarity: "Weverse POB Holo",
+                album: "SUPER REAL ME (1st Mini)",
+                image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80"
+            },
+
+            // --- K-Pop Others & Anime ---
+            {
+                id: 6,
+                name: "NewJeans Hanni - Get Up Bunny Beach PC",
+                category: "K-Pop",
+                member: "Hanni",
+                price: 75000,
+                originalPrice: 95000,
+                discount: 21,
+                isFlashSale: false,
+                stockLeft: 10,
+                rarity: "Official Album",
+                album: "Get Up EP",
+                image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 7,
+                name: "Jujutsu Kaisen - Gojo Satoru Holographic SSR Card",
+                category: "Anime",
+                member: "Gojo",
+                price: 65000,
+                originalPrice: 85000,
+                discount: 23,
+                isFlashSale: false,
+                stockLeft: 12,
+                rarity: "SSR Holo Foil",
+                album: "Shibuya Incident Collector",
+                image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 8,
+                name: "Demon Slayer - Nezuko Kamado Sparkle Edition",
+                category: "Anime",
+                member: "Nezuko",
+                price: 50000,
+                originalPrice: 70000,
+                discount: 28,
+                isFlashSale: false,
+                stockLeft: 15,
+                rarity: "Secret Rare",
+                album: "Kimetsu Series 3",
+                image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 10,
+                name: "CORTIS Full Group OT5 - Special Album Set",
+                category: "CORTIS",
+                member: "CORTIS",
+                price: 320000,
+                originalPrice: 450000,
+                discount: 28,
+                isFlashSale: false,
+                stockLeft: 2,
+                rarity: "5 Cards Complete Set",
+                album: "Color Outside The Lines",
+                image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        let cart = [];
+        let currentFilterCategory = 'All';
+        let activeVoucher = null;
+
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderFlashSale();
+            renderProducts();
+            startCountdownTimer();
+
+            // Close search suggestions when clicking outside
+            document.addEventListener('click', (e) => {
+                const searchBox = document.getElementById('searchInput');
+                const sugBox = document.getElementById('searchSuggestions');
+                if (searchBox && sugBox && !searchBox.contains(e.target) && !sugBox.contains(e.target)) {
+                    sugBox.classList.add('hidden');
+                }
+            });
+        });
+
+        function renderFlashSale() {
+            const grid = document.getElementById('flashSaleGrid');
+            if (!grid) return;
+
+            const flashItems = products.filter(p => p.isFlashSale);
+
+            grid.innerHTML = flashItems.map(p => `
+                <div class="bg-white rounded-2xl p-2.5 text-slate-800 shadow-md flex flex-col justify-between pc-card group border border-slate-100 relative overflow-hidden">
+                    <div class="relative aspect-[2/3] rounded-xl overflow-hidden bg-slate-100 mb-2 cursor-pointer" onclick="openDetailModal(${p.id})">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="holo-overlay"></div>
+                        <span class="absolute top-1.5 left-1.5 bg-brand-600 text-white text-[9px] font-black px-1.5 py-0.5 rounded shadow-sm">
+                            FLASH
+                        </span>
+                        <span class="absolute top-1.5 right-1.5 bg-amber-400 text-slate-950 text-[9px] font-black px-1 py-0.5 rounded shadow-sm">
+                            -${p.discount}%
+                        </span>
+                    </div>
+
+                    <div>
+                        <span class="text-[9px] font-extrabold uppercase bg-brand-50 text-brand-600 px-2 py-0.5 rounded-full inline-block mb-1">${p.member}</span>
+                        <h4 class="text-xs font-bold text-slate-900 line-clamp-1 cursor-pointer hover:text-brand-600 transition" onclick="openDetailModal(${p.id})">
+                            ${p.name}
+                        </h4>
+                        
+                        <div class="mt-1 flex items-baseline justify-between">
+                            <p class="text-xs sm:text-sm font-black text-brand-600">${formatRupiah(p.price)}</p>
+                            <p class="text-[9px] text-slate-400 line-through">${formatRupiah(p.originalPrice)}</p>
+                        </div>
+
+                        <!-- Progress Bar Stock -->
+                        <div class="mt-2 space-y-1">
+                            <div class="w-full bg-rose-100 rounded-full h-1.5 overflow-hidden">
+                                <div class="bg-gradient-to-r from-amber-500 to-rose-600 h-1.5 rounded-full" style="width: ${(p.stockLeft / 10) * 100}%"></div>
+                            </div>
+                            <p class="text-[9px] font-bold text-rose-600 text-right">Sisa ${p.stockLeft} pcs!</p>
+                        </div>
+                    </div>
+
+                    <button onclick="addToCart(${p.id})" class="mt-2.5 w-full bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-extrabold py-1.5 rounded-xl text-xs transition shadow-sm flex items-center justify-center gap-1">
+                        <i class="fa-solid fa-bolt text-[10px]"></i> Beli Flash
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function handleSearchInput(e) {
+            const val = e.target.value.trim();
+            const clearBtn = document.getElementById('clearSearchBtn');
+            const sugBox = document.getElementById('searchSuggestions');
+
+            if (val.length > 0) {
+                clearBtn.classList.remove('hidden');
+                showSuggestions(val);
+            } else {
+                clearBtn.classList.add('hidden');
+                sugBox.classList.add('hidden');
+            }
+
+            renderProducts();
+        }
+
+        function handleSearchKeyDown(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('searchSuggestions').classList.add('hidden');
+                executeSearch();
+            }
+        }
+
+        function executeSearch() {
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            renderProducts();
+        }
+
+        function showSuggestions(query) {
+            const sugBox = document.getElementById('searchSuggestions');
+            const q = query.toLowerCase();
+
+            const matches = products.filter(p => 
+                p.name.toLowerCase().includes(q) || 
+                p.member.toLowerCase().includes(q) || 
+                p.category.toLowerCase().includes(q) ||
+                p.rarity.toLowerCase().includes(q)
+            ).slice(0, 5);
+
+            if (matches.length === 0) {
+                sugBox.innerHTML = `
+                    <div class="p-3 text-center text-xs text-slate-400 font-semibold">
+                        <i class="fa-solid fa-magnifying-glass mr-1"></i> Tidak ada photocard cocok dengan "${query}"
+                    </div>
+                `;
+            } else {
+                sugBox.innerHTML = matches.map(m => `
+                    <div onclick="selectSuggestion('${m.member}')" class="p-2.5 hover:bg-brand-50/60 cursor-pointer flex items-center gap-3 transition">
+                        <img src="${m.image}" class="w-8 h-12 object-cover rounded-md shadow-xs shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <p class="text-xs font-bold text-slate-900 truncate">${highlightText(m.name, query)}</p>
+                            <p class="text-[10px] text-slate-500 font-medium"><span class="text-brand-600 font-bold">${m.member}</span> • ${m.rarity}</p>
+                        </div>
+                        <span class="text-xs font-black text-brand-600 shrink-0">${formatRupiah(m.price)}</span>
+                    </div>
+                `).join('');
+            }
+
+            sugBox.classList.remove('hidden');
+        }
+
+        function highlightText(text, query) {
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span class="bg-amber-200 text-slate-900 px-0.5 rounded font-extrabold">$1</span>');
+        }
+
+        function selectSuggestion(memberName) {
+            document.getElementById('searchInput').value = memberName;
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            document.getElementById('clearSearchBtn').classList.remove('hidden');
+            renderProducts();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            renderProducts();
+        }
+
+        function filterRarity(rarityName) {
+            const select = document.getElementById('raritySelect');
+            if (select) select.value = rarityName;
+            renderProducts();
+        }
+
+        function resetAllFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            document.getElementById('searchSuggestions').classList.add('hidden');
+            if (document.getElementById('minPriceInput')) document.getElementById('minPriceInput').value = '';
+            if (document.getElementById('maxPriceInput')) document.getElementById('maxPriceInput').value = '';
+            if (document.getElementById('raritySelect')) document.getElementById('raritySelect').value = 'All';
+            filterCategory('All');
+        }
+
+        function renderProducts() {
+            const grid = document.getElementById('productGrid');
+            if (!grid) return;
+
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+            const sortVal = document.getElementById('sortSelect') ? document.getElementById('sortSelect').value : 'populer';
+            const rarityVal = document.getElementById('raritySelect') ? document.getElementById('raritySelect').value : 'All';
+            
+            const minPrice = parseFloat(document.getElementById('minPriceInput')?.value) || 0;
+            const maxPrice = parseFloat(document.getElementById('maxPriceInput')?.value) || Infinity;
+
+            let filtered = products.filter(p => {
+                const matchCategory = currentFilterCategory === 'All' || p.category === currentFilterCategory;
+                const matchSearch = !searchVal || 
+                    p.name.toLowerCase().includes(searchVal) || 
+                    p.member.toLowerCase().includes(searchVal) ||
+                    p.category.toLowerCase().includes(searchVal) ||
+                    p.rarity.toLowerCase().includes(searchVal);
+                
+                const matchRarity = rarityVal === 'All' || p.rarity.toLowerCase().includes(rarityVal.toLowerCase());
+                const matchPrice = p.price >= minPrice && p.price <= maxPrice;
+
+                return matchCategory && matchSearch && matchRarity && matchPrice;
+            });
+
+            if (sortVal === 'termurah') filtered.sort((a, b) => a.price - b.price);
+            if (sortVal === 'termahal') filtered.sort((a, b) => b.price - a.price);
+
+            const countBadge = document.getElementById('resultCountBadge');
+            const resetBtn = document.getElementById('resetFiltersBtn');
+
+            const isFiltered = searchVal || currentFilterCategory !== 'All' || rarityVal !== 'All' || minPrice > 0 || maxPrice < Infinity;
+
+            if (countBadge) {
+                if (isFiltered) {
+                    countBadge.innerHTML = `<i class="fa-solid fa-magnifying-glass mr-1"></i> Ditemukan <strong>${filtered.length}</strong> photocard ${searchVal ? `untuk "${searchVal}"` : ''}`;
+                    if (resetBtn) resetBtn.classList.remove('hidden');
+                } else {
+                    countBadge.innerHTML = `Menampilkan <strong>${filtered.length}</strong> photocard`;
+                    if (resetBtn) resetBtn.classList.add('hidden');
+                }
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-slate-400 space-y-3 bg-white rounded-3xl border border-slate-200/80 p-8 shadow-xs">
+                        <div class="w-14 h-14 bg-brand-50 text-brand-500 rounded-2xl flex items-center justify-center mx-auto text-2xl">
+                            <i class="fa-solid fa-magnifying-glass-minus"></i>
+                        </div>
+                        <h4 class="text-base font-extrabold text-slate-800">Photocard Tidak Ditemukan</h4>
+                        <p class="text-xs text-slate-500 max-w-sm mx-auto">Coba kata kunci member lain seperti <span class="text-brand-600 font-bold">Juhoon</span>, <span class="text-brand-600 font-bold">Keonho</span>, <span class="text-brand-600 font-bold">Gojo</span>, atau atur ulang filter Anda.</p>
+                        <button onclick="resetAllFilters()" class="bg-brand-500 hover:bg-brand-600 text-white font-bold px-5 py-2 rounded-xl text-xs shadow-md transition">
+                            Reset Semua Filter
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="pc-card bg-white rounded-2xl p-3 border border-slate-200/80 shadow-xs flex flex-col justify-between group">
+                    <div class="relative aspect-[2/3] rounded-xl overflow-hidden bg-slate-100 mb-2.5 cursor-pointer" onclick="openDetailModal(${p.id})">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="holo-overlay"></div>
+                        <span class="absolute top-2 left-2 bg-slate-950/70 backdrop-blur-md text-white text-[9px] font-extrabold px-2 py-0.5 rounded-md shadow-xs">
+                            ${p.rarity}
+                        </span>
+                        ${p.discount > 0 ? `
+                            <span class="absolute top-2 right-2 bg-rose-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded shadow-xs">
+                                -${p.discount}%
+                            </span>
+                        ` : ''}
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-1.5 mb-1">
+                            <span class="text-[9px] font-extrabold uppercase bg-brand-50 text-brand-600 px-2 py-0.5 rounded-full">${p.member}</span>
+                            <span class="text-[9px] font-semibold text-slate-400 truncate">${p.category}</span>
+                        </div>
+                        <h4 class="text-xs font-bold text-slate-900 line-clamp-2 leading-snug cursor-pointer hover:text-brand-600 transition" onclick="openDetailModal(${p.id})">
+                            ${p.name}
+                        </h4>
+                        
+                        <div class="mt-2">
+                            <p class="text-sm font-black text-brand-600">${formatRupiah(p.price)}</p>
+                            ${p.originalPrice ? `<p class="text-[9px] text-slate-400 line-through">${formatRupiah(p.originalPrice)}</p>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <button onclick="addToCart(${p.id})" class="w-full bg-brand-50 hover:bg-brand-500 hover:text-white text-brand-600 font-bold py-2 rounded-xl text-xs transition border border-brand-200/80 flex items-center justify-center gap-1 shadow-2xs">
+                            <i class="fa-solid fa-cart-plus"></i> + Pesanan
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            currentFilterCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-500', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+            const activeBtn = document.getElementById(`btn-cat-${cat}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-brand-500', 'text-white', 'shadow-md');
+            }
+            renderProducts();
+        }
+
+        function filterMember(memberName) {
+            const input = document.getElementById('searchInput');
+            if (input) {
+                input.value = memberName;
+                document.getElementById('clearSearchBtn')?.classList.remove('hidden');
+            }
+            renderProducts();
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`"${product.name}" ditambahkan ke keranjang!`);
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (badge) badge.innerText = totalItems;
+
+            const list = document.getElementById('cartItemsList');
+            if (list) {
+                if (cart.length === 0) {
+                    list.innerHTML = `
+                        <div class="text-center py-16 text-slate-400 space-y-2">
+                            <i class="fa-solid fa-cart-flatbed text-4xl text-slate-300"></i>
+                            <p class="text-xs font-semibold">Keranjang kamu masih kosong</p>
+                        </div>
+                    `;
+                } else {
+                    list.innerHTML = cart.map(item => `
+                        <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-2xl border border-slate-200/80">
+                            <img src="${item.image}" class="w-12 h-16 object-cover rounded-xl shadow-xs">
+                            <div class="flex-1 min-w-0">
+                                <h5 class="text-xs font-bold text-slate-800 truncate">${item.name}</h5>
+                                <p class="text-xs font-black text-brand-600 mt-0.5">${formatRupiah(item.price)}</p>
+                                
+                                <div class="flex items-center gap-2 mt-1.5">
+                                    <button onclick="updateQuantity(${item.id}, -1)" class="w-5 h-5 rounded-lg bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">-</button>
+                                    <span class="text-xs font-black px-1">${item.quantity}</span>
+                                    <button onclick="updateQuantity(${item.id}, 1)" class="w-5 h-5 rounded-lg bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs">+</button>
+                                </div>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-rose-500 p-2 transition">
+                                <i class="fa-solid fa-trash-can text-sm"></i>
+                            </button>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+            let discountAmount = 0;
+            if (activeVoucher === 'CORTIS2026') discountAmount = 25000;
+
+            const grandTotal = Math.max(0, subtotal - discountAmount);
+
+            if (document.getElementById('cartSubtotal')) document.getElementById('cartSubtotal').innerText = formatRupiah(subtotal);
+            if (document.getElementById('cartDiscount')) document.getElementById('cartDiscount').innerText = `- ${formatRupiah(discountAmount)}`;
+            if (document.getElementById('cartGrandTotal')) document.getElementById('cartGrandTotal').innerText = formatRupiah(grandTotal);
+
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            if (checkoutBtn) checkoutBtn.disabled = cart.length === 0;
+        }
+
+        function toggleCartDrawer() {
+            document.getElementById('cartDrawer').classList.toggle('hidden');
+        }
+
+        function applyVoucher() {
+            const input = document.getElementById('voucherInput').value.trim().toUpperCase();
+            const msg = document.getElementById('voucherMsg');
+
+            if (input === 'CORTIS2026') {
+                activeVoucher = 'CORTIS2026';
+                msg.innerText = "Voucher Berhasil Dipakai (- Rp 25.000)";
+                msg.className = "text-[11px] mt-1 font-bold text-emerald-600 block";
+                updateCartUI();
+            } else {
+                msg.innerText = "Kode voucher tidak valid!";
+                msg.className = "text-[11px] mt-1 font-bold text-rose-500 block";
+            }
+        }
+
+        function openDetailModal(productId) {
+            const p = products.find(prod => prod.id === productId);
+            if (!p) return;
+
+            document.getElementById('modalCardImg').src = p.image;
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalCategory').innerText = p.category;
+            document.getElementById('modalRarity').innerText = p.rarity;
+            document.getElementById('modalAlbum').innerText = `Album: ${p.album}`;
+            document.getElementById('modalPrice').innerText = formatRupiah(p.price);
+            document.getElementById('modalOldPrice').innerText = formatRupiah(p.originalPrice || p.price * 1.3);
+            document.getElementById('modalMember').innerText = p.member;
+
+            document.getElementById('modalAddToCartBtn').onclick = () => {
+                addToCart(p.id);
+                closeDetailModal();
+            };
+
+            document.getElementById('modalBuyNowBtn').onclick = () => {
+                addToCart(p.id);
+                closeDetailModal();
+                toggleCartDrawer();
+            };
+
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        function openCheckoutModal() {
+            if (cart.length === 0) return;
+            toggleCartDrawer();
+
+            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+            let discountAmount = activeVoucher === 'CORTIS2026' ? 25000 : 0;
+            const total = Math.max(0, subtotal - discountAmount);
+
+            document.getElementById('paySubtotal').innerText = formatRupiah(subtotal);
+            document.getElementById('payTotal').innerText = formatRupiah(total);
+
+            document.getElementById('checkoutModal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').classList.add('hidden');
+        }
+
+        function processOrder() {
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            closeCheckoutModal();
+
+            const subtotal = cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+            let discountAmount = activeVoucher === 'CORTIS2026' ? 25000 : 0;
+            const total = Math.max(0, subtotal - discountAmount);
+
+            document.getElementById('qrisTotalAmount').innerText = formatRupiah(total);
+            document.getElementById('receiptOrderCode').innerText = `ORDER-PV${Math.floor(100000 + Math.random() * 900000)}`;
+
+            document.getElementById('qrisContainer').classList.remove('hidden');
+            document.getElementById('receiptSuccessContainer').classList.add('hidden');
+            document.getElementById('receiptMethod').innerText = selectedMethod;
+
+            document.getElementById('paymentReceiptModal').classList.remove('hidden');
+        }
+
+        function simulatePaymentSuccess() {
+            document.getElementById('qrisContainer').classList.add('hidden');
+            document.getElementById('receiptSuccessContainer').classList.remove('hidden');
+            cart = [];
+            updateCartUI();
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('paymentReceiptModal').classList.add('hidden');
+        }
+
+        function startCountdownTimer() {
+            let seconds = 9918;
+            setInterval(() => {
+                seconds--;
+                if (seconds <= 0) seconds = 10000;
+
+                const h = Math.floor(seconds / 3600);
+                const m = Math.floor((seconds % 3600) / 60);
+                const s = seconds % 60;
+
+                if (document.getElementById('timerHours')) document.getElementById('timerHours').innerText = String(h).padStart(2, '0');
+                if (document.getElementById('timerMinutes')) document.getElementById('timerMinutes').innerText = String(m).padStart(2, '0');
+                if (document.getElementById('timerSeconds')) document.getElementById('timerSeconds').innerText = String(s).padStart(2, '0');
+            }, 1000);
+        }
+
+        function openPromoModal() {
+            document.getElementById('promoModal').classList.remove('hidden');
+        }
+
+        function closePromoModal() {
+            document.getElementById('promoModal').classList.add('hidden');
+        }
+
+        function copyPromoCode(code) {
+            const input = document.getElementById('voucherInput');
+            if (input) input.value = code;
+            showToast(`Kode promo "${code}" telah disalin!`);
+            closePromoModal();
+        }
+
+        // --- CHAT OWNER LOGIC ---
+        function openOwnerChat() {
+            document.getElementById('ownerChatModal').classList.remove('hidden');
+        }
+
+        function closeOwnerChat() {
+            document.getElementById('ownerChatModal').classList.add('hidden');
+        }
+
+        function sendOwnerMessage() {
+            const input = document.getElementById('ownerChatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            appendMessage('ownerChatMessages', msg, 'user');
+            input.value = '';
+
+            // Simulated Owner Auto Reply
+            setTimeout(() => {
+                let reply = "Terima kasih pesannya kak! Semua photocard kami jamin 100% Official merchandise original. Pengemasan gratis toploader & bubble wrap ekstra aman ya! ✨";
+                if (msg.toLowerCase().includes('stok') || msg.toLowerCase().includes('ready')) {
+                    reply = "Semua varian photocard yang tampil di katalog berstatus READY STOCK dan siap dikirim hari ini sebelum jam 17:00 WIB kak!";
+                } else if (msg.toLowerCase().includes('kirim') || msg.toLowerCase().includes('resi')) {
+                    reply = "Pesanan dikirim di hari yang sama jika checkout sebelum jam 5 sore. Untuk cek perjalanan paket, silakan tekan tombol 'Lacak Paket' di bawah!";
+                }
+                appendMessage('ownerChatMessages', reply, 'owner');
+            }, 1000);
+        }
+
+        function sendOwnerPreset(text) {
+            document.getElementById('ownerChatInput').value = text;
+            sendOwnerMessage();
+        }
+
+        // --- CHAT COURIER LOGIC ---
+        function openCourierChat() {
+            document.getElementById('courierChatModal').classList.remove('hidden');
+        }
+
+        function closeCourierChat() {
+            document.getElementById('courierChatModal').classList.add('hidden');
+        }
+
+        function sendCourierMessage() {
+            const input = document.getElementById('courierChatInput');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            appendMessage('courierChatMessages', msg, 'user');
+            input.value = '';
+
+            // Simulated Courier Auto Reply
+            setTimeout(() => {
+                let reply = "Siap kak! Pesan tercatat. Paket photocard aman dan rapi di dalam tas kurir. Sebentar lagi saya sampai ya!";
+                if (msg.toLowerCase().includes('satpam') || msg.toLowerCase().includes('pagar')) {
+                    reply = "Siap kak, nanti kalau tidak ada orang di depan akan saya titipkan ke satpam/taruh di dalam pagar dengan aman!";
+                }
+                appendMessage('courierChatMessages', reply, 'courier');
+            }, 1200);
+        }
+
+        function sendCourierPreset(text) {
+            document.getElementById('courierChatInput').value = text;
+            sendCourierMessage();
+        }
+
+        // --- PACKAGE TRACKING MODAL LOGIC ---
+        function openTrackingModal() {
+            document.getElementById('trackingModal').classList.remove('hidden');
+        }
+
+        function closeTrackingModal() {
+            document.getElementById('trackingModal').classList.add('hidden');
+        }
+
+        // Helper function to append message to chat boxes
+        function appendMessage(containerId, text, sender) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const now = new Date();
+            const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} WIB`;
+
+            const msgDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                msgDiv.className = 'flex justify-end';
+                msgDiv.innerHTML = `
+                    <div class="bg-gradient-to-r from-brand-500 to-brand-600 text-white p-3 rounded-2xl rounded-tr-none shadow-xs max-w-[80%] space-y-1">
+                        <p class="leading-relaxed">${escapeHtml(text)}</p>
+                        <span class="text-[9px] text-white/80 block text-right pt-0.5">${timeStr}</span>
+                    </div>
+                `;
+            } else if (sender === 'owner') {
+                msgDiv.className = 'flex items-start gap-2.5';
+                msgDiv.innerHTML = `
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=PhotoVerseOwner" class="w-7 h-7 rounded-lg bg-slate-200 shrink-0">
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-xs border border-slate-200/80 max-w-[80%] space-y-1">
+                        <p class="font-bold text-brand-600 text-[10px]">Owner PhotoVerse ID</p>
+                        <p class="text-slate-600 leading-relaxed">${escapeHtml(text)}</p>
+                        <span class="text-[9px] text-slate-400 block text-right pt-0.5">${timeStr}</span>
+                    </div>
+                `;
+            } else if (sender === 'courier') {
+                msgDiv.className = 'flex items-start gap-2.5';
+                msgDiv.innerHTML = `
+                    <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">
+                        <i class="fa-solid fa-helmet-safety text-xs"></i>
+                    </div>
+                    <div class="bg-white p-3 rounded-2xl rounded-tl-none shadow-xs border border-slate-200/80 max-w-[80%] space-y-1">
+                        <p class="font-bold text-blue-600 text-[10px]">Pak Budi (Kurir J&T)</p>
+                        <p class="text-slate-600 leading-relaxed">${escapeHtml(text)}</p>
+                        <span class="text-[9px] text-slate-400 block text-right pt-0.5">${timeStr}</span>
+                    </div>
+                `;
+            }
+
+            container.appendChild(msgDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.innerText = text;
+            return div.innerHTML;
+        }
+
+        function showToast(message) {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            
+            const toast = document.createElement('div');
+            toast.className = 'bg-slate-900 text-white text-xs font-extrabold px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2 border border-slate-700 pointer-events-auto animate-in slide-in-from-bottom duration-300';
+            toast.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400"></i> <span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'transition', 'duration-300');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
